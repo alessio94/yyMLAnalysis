@@ -158,6 +158,9 @@ run_checks:
   stage: run
   dependencies:
     - asg_compile
+  only:
+    changes:
+      - "share/config/samples/maps/*/*.map"
   script:
     - source build/setupAnalysis.sh
     - source $CAFANALYSISBASE/tools/CI_checks.sh

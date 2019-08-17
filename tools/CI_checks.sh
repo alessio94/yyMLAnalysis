@@ -23,7 +23,7 @@ HWWAnalysis_checkMapFiles(){
             nMatches=$(grep -r "$DSID" $file | grep -v "^ *#" | wc -l)
 
             # if more than one line matches this DSID and the DSID hasn't been reported before, add it to the list of DSIDs and print warning
-            ! [[ nMatches -eq 1 ]] && ! [[ $(echo "$listOfDuplicateDSIDs" | grep "$DSID") ]] && listOfDuplicateDSIDs="$listOfDuplicateDSIDs,$DSID" && echo "duplicate: $DSID, file: $file" && grep -r "$DSID" $file
+            ! [[ nMatches -eq 1 ]] && ! [[ $(echo "$listOfDuplicateDSIDs" | grep "$DSID") ]] && listOfDuplicateDSIDs="$listOfDuplicateDSIDs,$DSID" && echo "duplicate: $DSID, file: $file" > /dev/stderr && grep -r "$DSID" $file > /dev/stderr
 
         done
     done
