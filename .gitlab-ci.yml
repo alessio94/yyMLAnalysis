@@ -163,7 +163,6 @@ run_checks:
       - "share/config/samples/maps/*/*.map"
   script:
     - source tools/CI_checks.sh
-    - HWWAnalysis_checkMapFiles
 
 
 ##########################################################################
