@@ -156,11 +156,13 @@ run_checks:
   <<: *asg
   <<: *asg_setup
   stage: run
-  dependencies:
-    - asg_compile
-  script:
-    - source build/setupAnalysis.sh
-    - source $CAFANALYSISBASE/tools/CI_checks.sh
+  only:
+  refs:
+    - merge_requests
+  changes:
+    - "share/config/samples/maps/*/*.map"
+script:
+    - source tools/CI_checks.sh
     - HWWAnalysis_checkMapFiles
 
 
