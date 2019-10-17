@@ -3,7 +3,7 @@
 # This script searches all files that match share/config/samples/maps/*/*.map
 # and prints a warning if they have overlapping/duplicate DSID mappings
 
-
+sed +e
 
 listOfDuplicateDSIDs=""
 
@@ -29,5 +29,7 @@ for file in `[ -z "$CAFANALYSISBASE" ] && ls $mapsPath || ls $CAFANALYSISBASE/$m
 
     done
 done
+
+set -e
 
 [ "$listOfDuplicateDSIDs" == "" ]
