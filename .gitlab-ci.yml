@@ -162,7 +162,9 @@ run_checks:
     changes:
       - "share/config/samples/maps/*/*.map"
   script:
+    - set +e
     - source tools/CI_checks.sh
+    - set -e
 
 
 ##########################################################################
