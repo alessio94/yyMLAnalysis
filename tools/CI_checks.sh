@@ -8,7 +8,10 @@ HWWAnalysis_checkMapFiles(){
 
     listOfDuplicateDSIDs=""
 
-    for file in `ls $CAFANALYSISBASE/share/config/samples/maps/*/*.map` ; do
+    mapsPath="share/config/samples/maps/*/*.map"
+
+    # CAFANALYSISBASE might not be set in a CI job. In that case, hope that we are in the right location
+    for file in `[ -z "$CAFANALYSISBASE" ] && ls $mapsPath || ls $CAFANALYSISBASE/$mapsPath` ; do
         for line_orig in `cat $file | sed 's/ /_/g'` ; do
 
             # ignore spaces in the beginning
