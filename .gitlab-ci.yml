@@ -157,10 +157,10 @@ run_checks:
   <<: *asg_setup
   stage: run
   only:
-  refs:
-    - merge_requests
-  changes:
-    - "share/config/samples/maps/*/*.map"
+    refs:
+      - merge_requests
+    changes:
+      - "share/config/samples/maps/*/*.map"
 script:
     - source tools/CI_checks.sh
     - HWWAnalysis_checkMapFiles
