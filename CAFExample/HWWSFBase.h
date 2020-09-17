@@ -43,7 +43,7 @@ protected:
   // varied. This is an important check to make sure that all systematic
   // variations are really executed. To use it, call registerVariation() from
   // initializeSelf() whenever you vary a scale factor.
-  std::vector<SG::AuxElement::Accessor<float>**> accessors_float;
+  std::vector<SG::AuxElement::Accessor<float>**> accessors_float;//!
   static std::map<TString, int> nVariations;
 
   mutable bool simulationWarningPrintedForThisSample = false;
