@@ -30,8 +30,6 @@ class CompositeParticleContainer;
 
 
 class HWWTriggerWeight : public HWWSFBase {
-protected:
-  mutable CompositeParticleContainer const * mCand = 0;
 
 public:
   class TriggerSetup{ // nested
