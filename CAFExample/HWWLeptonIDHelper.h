@@ -41,6 +41,10 @@ namespace HWW {
         sel = new AuxDataSelection<char>(cutname, auxvarname, cutvalue, operator_str, validOnlyInPtRegion, ptcut_low, ptcut_up);
       } else if (type_str == "unsigned short") {
         sel = new AuxDataSelection<unsigned short>(cutname, auxvarname, cutvalue, operator_str, validOnlyInPtRegion, ptcut_low, ptcut_up);
+      } else if (type_str == "float") {
+        sel = new AuxDataSelection<float>(cutname, auxvarname, cutvalue, operator_str, validOnlyInPtRegion, ptcut_low, ptcut_up);
+      } else if (type_str == "int") {
+        sel = new AuxDataSelection<int>(cutname, auxvarname, cutvalue, operator_str, validOnlyInPtRegion, ptcut_low, ptcut_up);
       } else {
         sel = new AuxDataSelection<T>(cutname, auxvarname, cutvalue, operator_str, validOnlyInPtRegion, ptcut_low, ptcut_up);
       }
