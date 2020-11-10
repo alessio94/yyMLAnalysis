@@ -56,6 +56,9 @@ protected:
   // for example, use
   mutable xAOD::CompositeParticleContainer const * mCand = 0;
 
+  mutable Long64_t fCachedEntry; //!
+  mutable double fCachedValue; //!
+
   // lepton id helper to check which object is anti-id
   const HWWLeptonIDHelper* fLeptonIDHelper = nullptr;
 
@@ -97,6 +100,8 @@ public:
   HWWZBosonPairFakeIndex(const HWWZBosonPairFakeIndex& obs);
   // nominal constructor
   HWWZBosonPairFakeIndex(const TString& name, const std::vector<HWWTrigConfig*>& trigConfigs, const HWWLeptonIDHelper* lepIDHelper);
+  // nominal constructor
+  HWWZBosonPairFakeIndex(const TString& name, const HWWLeptonIDHelper* lepIDHelper);
   virtual ~HWWZBosonPairFakeIndex();
   ClassDefOverride(HWWZBosonPairFakeIndex, 1);
 

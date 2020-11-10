@@ -15,7 +15,7 @@ variables:
 # job defaults
 
 .asg: &asg
-  image: atlas/analysisbase:21.2.78
+  image: atlas/analysisbase:21.2.139
   tags:
     - cvmfs
 
@@ -27,6 +27,7 @@ variables:
   before_script:
     - sudo apt-get update
     - sudo apt-get -y install libboost-dev
+    - sed -i 's|CAFANALYSISBASE/../output|CAFANALYSISBASE/run|' setup/setupLocal.sh
 
 .asg_setup: &asg_setup
   before_script:
@@ -39,36 +40,37 @@ variables:
     - klist
     - echo -e "Host svn.cern.ch lxplus.cern.ch\n\tUser ${CERN_USER}\n\tStrictHostKeyChecking no\n\tGSSAPIAuthentication yes\n\tGSSAPIDelegateCredentials yes\n\tProtocol 2\n\tForwardX11 no\n\tIdentityFile ~/.ssh/id_rsa" >> ~/.ssh/config
     - cat ~/.ssh/config
+    - sed -i 's|CAFANALYSISBASE/../output|CAFANALYSISBASE/run|' setup/setupLocal.sh
 
 .minimal_script: &minimal_script
   script:
     - source build/setupAnalysis.sh
     - mkdir run
     - cd run
-    - prepare.py minimal/config/master/prepare-Minimal-Example.cfg
-    - initialize.py minimal/config/master/initialize-Minimal-Example.cfg --options lineUpdates=false consoleWidth=160
-    - analyze.py minimal/config/master/analyze-Minimal-Example.cfg --options lineUpdates=false consoleWidth=160
-    - visualize.py minimal/config/master/visualize-Minimal-Example.cfg
+    - prepare.py minimal/config/master/prepare-Minimal-Example.cfg --snowflakeThresh 0
+    - initialize.py minimal/config/master/initialize-Minimal-Example.cfg --snowflakeThresh 1 --options lineUpdates=false consoleWidth=160
+    - analyze.py minimal/config/master/analyze-Minimal-Example.cfg --snowflakeThresh 2 --options lineUpdates=false consoleWidth=160
+    - visualize.py minimal/config/master/visualize-Minimal-Example.cfg --snowflakeThresh 0
 
 .flatNTuple_script: &flatNTuple_script
   script:
     - source build/setupAnalysis.sh
     - mkdir run
     - cd run
-    - prepare.py flatNTuple/config/master/prepare-flatNTuple-Example.cfg
-    - initialize.py flatNTuple/config/master/initialize-flatNTuple-Example.cfg --options lineUpdates=false consoleWidth=160
-    - analyze.py flatNTuple/config/master/analyze-flatNTuple-Example.cfg --options lineUpdates=false consoleWidth=160
-    - visualize.py flatNTuple/config/master/visualize-flatNTuple-Example.cfg
+    - prepare.py flatNTuple/config/master/prepare-flatNTuple-Example.cfg --snowflakeThresh 0
+    - initialize.py flatNTuple/config/master/initialize-flatNTuple-Example.cfg --snowflakeThresh 0 --options lineUpdates=false consoleWidth=160
+    - analyze.py flatNTuple/config/master/analyze-flatNTuple-Example.cfg --snowflakeThresh 2 --options lineUpdates=false consoleWidth=160
+    - visualize.py flatNTuple/config/master/visualize-flatNTuple-Example.cfg --snowflakeThresh 0
 
 .xAOD_script: &xAOD_script
   script:
     - source build/setupAnalysis.sh
     - mkdir run
     - cd run
-    - prepare.py xAOD/config/master/prepare-xAOD-Example.cfg
-    - initialize.py xAOD/config/master/initialize-xAOD-Example.cfg --options lineUpdates=false consoleWidth=160
-    - analyze.py xAOD/config/master/analyze-xAOD-Example.cfg --options lineUpdates=false consoleWidth=160
-    - visualize.py xAOD/config/master/visualize-xAOD-Example.cfg
+    - prepare.py xAOD/config/master/prepare-xAOD-Example.cfg --snowflakeThresh 0
+    - initialize.py xAOD/config/master/initialize-xAOD-Example.cfg --snowflakeThresh 0 --options lineUpdates=false consoleWidth=160
+    - analyze.py xAOD/config/master/analyze-xAOD-Example.cfg --snowflakeThresh 3 --options lineUpdates=false consoleWidth=160 maxEvents=100
+    - visualize.py xAOD/config/master/visualize-xAOD-Example.cfg --snowflakeThresh 0
 
 ##########################################################################
 # job definitions

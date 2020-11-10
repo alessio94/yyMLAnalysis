@@ -26,23 +26,21 @@
 class HWWTrigBase  {
 protected:
 
-  const std::vector<HWWTrigConfig*> m_trigConfigs;
-  const TString m_trigpass_prefix;
-  const TString m_trigmatch_prefix;
+  std::vector<HWWTrigConfig*> m_trigConfigs;
+  TString m_trigpass_prefix;
+  TString m_trigmatch_prefix;
 
   // get trig configs (useful for copy constructor)
   inline std::vector<HWWTrigConfig*> getTrigConfVector() const { return m_trigConfigs; }
 
 
 public:
-  // virtual double getValue() const override;
-  // virtual bool initializeSelf() override;
-  // TString m_candName = "";
-  HWWTrigBase() { } // default constructor
+  HWWTrigBase();
   HWWTrigBase(const std::vector<HWWTrigConfig*>& trigConfig);
 
+  void addTriggerConfig(HWWTrigConfig* trigConfig);
+
   virtual ~HWWTrigBase();
-  // ClassDefOverride(HWWTrigBase, 1);
 
 private:
   /***   hidden-away functions used privately to execute the below protected ones  ***/

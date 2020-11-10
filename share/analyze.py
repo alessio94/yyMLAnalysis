@@ -7,7 +7,7 @@ def main(config):
 
     # print a welcome message
     print(QFramework.TQStringUtils.makeBoldWhite("\nAnalyzing Analysis ROOT File\n"))
-    
+
     try:
         ROOT.StatusCode.enableFailure()
     except AttributeError:
@@ -191,7 +191,7 @@ def main(config):
     #common.printUnreadKeys(config)
 
     # write and print some performance information like memory usage and runtime
-    common.printExecutionStatistics(config)
+    common.printExecutionSummary(config)
 
     # temporary fix to prevent segfaults in AnaBase 2.3.48 and beyond
     # update: still necessary in 21.2.4
@@ -217,4 +217,3 @@ if __name__ == "__main__":
 
     # call the main function
     main(config)
-

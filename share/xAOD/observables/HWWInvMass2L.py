@@ -1,5 +1,5 @@
-from QFramework import TQTreeObservable, INFO, ERROR
-import ROOT
+from QFramework import TQObservable,INFO,ERROR,BREAK,WARN
+
 
 from CAFExample import HWWInvMass2L
 
@@ -11,13 +11,13 @@ def addObservables(config):
   invmass_l0otherPart0= HWWInvMass2L("invMassl0otherPart0", 0, 2)
   invmass_l1otherPart0= HWWInvMass2L("invMassl1otherPart0", 1, 2)
 
-  if not TQTreeObservable.addObservable(invmass_l0l1):
+  if not TQObservable.addObservable(invmass_l0l1):
     INFO("failed to add invariant mass Observable")
     return False
-  if not TQTreeObservable.addObservable(invmass_l0otherPart0):
+  if not TQObservable.addObservable(invmass_l0otherPart0):
     INFO("failed to add invariant mass Observable")
     return False
-  if not TQTreeObservable.addObservable(invmass_l1otherPart0):
+  if not TQObservable.addObservable(invmass_l1otherPart0):
     INFO("failed to add invariant mass Observable")
     return False
 

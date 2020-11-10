@@ -10,9 +10,15 @@
 <isLeadE=false, isLeadM=true> @ ?/mm,?/me;
 <isSubE=true, isSubM=false> @ ?/ee,?/me;
 <isSubE=false, isSubM=true> @ ?/em,?/mm;
-<wildcarded = true> @ ?/?; # we usually don't care about the channel-part of the path
-<usemcweights = false> @ data; # we don't want to apply any weights on data samples
+<wildcarded = true> @ ?/?;   # we usually don't care about the channel-part of the path
+<wildcarded = true> @ ?/?/?; # we usually don't care about the campaign-parts of the path
 <isData = true, isMC = false, variation="nominal"> @ data; # for data,revert the data/MC tags
 <isData = false, isMC = true, variation="nominal"> @ sig,bkg;
 <isVjets = false> @ sig,bkg,data;
-<isVjets = true> @ /bkg/?/Zjets;
+<isVjets = true> @ /bkg/?/?/Zjets_Powheg,/bkg/?/?/Zjets_Sherpa2p2p1;
+
+# we want to apply mc event weights on MC samples
+# this tag is used by the sample initializer
+# to determine if it should extract bookkeeping info
+<usemcweights = true> @ sig,bkg; # we want to apply mc event weights on MC samples
+<usemcweights = false> @ data; # we don't want to apply any weights on data samples

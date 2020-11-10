@@ -1,5 +1,5 @@
-from QFramework import TQTreeObservable, INFO, ERROR
-import ROOT
+from QFramework import TQObservable,INFO,ERROR,BREAK,WARN
+
 
 from CAFExample import HWWZBosonPairFakeIndex
 
@@ -17,7 +17,7 @@ def addObservables(config):
 
   ### which triggers to use and for what periods are specified in the HWWTrigConfig.py snippet
   # only single-lepton triggers
-  triggerConfigsSingleLepOnly = TrigConfig.getTrigConfigVector()
+  triggerConfigsSingleLepOnly = TrigConfig.getTrigConfigs()
 
   #======================
   #===== import lepton ID helper snippet, wil pass object to observable
@@ -33,9 +33,11 @@ def addObservables(config):
   INFO("in HWWZBosonPairFakeIndex: Using lepton ID selection '{}' (see CAFExample/python/LeptonIDHelper.py for details)".format(lepTag))
 
 
-  hwwZbosonPairFakeIndex = HWWZBosonPairFakeIndex("ZBosonPairFakeIndex", triggerConfigsSingleLepOnly, lepIDHelper)
+  hwwZbosonPairFakeIndex = HWWZBosonPairFakeIndex("ZBosonPairFakeIndex", lepIDHelper)
+  for t in triggerConfigsSingleLepOnly:
+    hwwZbosonPairFakeIndex.addTriggerConfig(t)
 
-  if not TQTreeObservable.addObservable(hwwZbosonPairFakeIndex):
+  if not TQObservable.addObservable(hwwZbosonPairFakeIndex):
     INFO("failed to add Zboson-pair fake index observable")
     return False
 

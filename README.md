@@ -31,12 +31,12 @@ Building the project
 ---------------------
 
 ```bash
-mkdir build run
+mkdir build
 cd build
-asetup AnalysisBase,21.2.78
+asetup AnalysisBase,21.2.102
 cmake ../CAFExample
-source CAFExample/setupAnalysis.sh
-make -j4
+asetup source setupAnalysis.sh # this configures asetup to automatically call setupAnalysis.sh next time
+cafbuild # build the code (check details by typing "type cafbuild")
 ```
 
 Running a minimal example
@@ -70,7 +70,7 @@ cd ../CAFExample/share
 Running an example analysis on xAOD inputs
 ------------------------------------------
 
-The following commands will (on order of minutes) run over a selection of xAOD inputs to reproduce the same Zjets Fake Factor analysis as in the flat nTuple example above. A couple of important differences exist between the two variants. First, while the xAODs have been skimmed to cut down on runtime, their events haven't been removed quite as aggressively as in the flat nTuple case - there are still about an order of magnitude more. Secondly, the xAOD analysis showcases in addition the use of a number of custom observables to calculate quantities for on-the-fly use, which again contributes to a slightly longer runtime.
+The following commands will (on order of hours) run over a selection of xAOD inputs to reproduce the same Zjets Fake Factor analysis as in the flat nTuple example above. A few important differences exist between the two variants. First, while the xAODs have been skimmed to cut down on runtime, their events haven't been removed quite as aggressively as in the flat nTuple case - there are still about an order of magnitude more. Secondly, the xAOD example runs over the data years 2015-2018 instead of only 2015-2016 to show how different campaigns with their own luminosity and samples are treated. Lastly, the xAOD analysis showcases in addition the use of a number of custom observables to calculate quantities for on-the-fly use. All of these three changes cause the significantly longer runtime.
 
 ```bash
 cd ../CAFExample/share
@@ -88,7 +88,7 @@ Alternatively, each of the analysis scripts above can also be run from an arbitr
 e.g.
 
 ```bash
-cd run/or/any/other/location/
+cd any/location/
 prepare.py flatNTuple/config/master/prepare-ZjetsFF-Example.cfg
 initialize.py flatNTuple/config/master/initialize-ZjetsFF-Example.cfg
 analyze.py flatNTuple/config/master/analyze-ZjetsFF-Example.cfg
@@ -104,6 +104,5 @@ Navigate to the working directory and
 setupATLAS
 lsetup git
 cd build
-asetup --restore
-source CAFExample/setupAnalysis.sh
+asetup
 ```

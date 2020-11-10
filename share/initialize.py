@@ -8,16 +8,13 @@ def main(config):
 
     # print a welcome message
     print(QFramework.TQStringUtils.makeBoldWhite("\nInitializing Analysis ROOT File\n"))
-    
+
     # load the sample folder from disk
     samples = common.loadSampleFolder(config)
 
     # make sure that the sample folder is writable before we go any further
     # helps to discover typos ahead of time
     common.testWriteSampleFolder(config, samples)
-
-    # apply pre-initialize patches as given by the config
-    common.patchSampleFolder(config.getTagVStandardString("preInit_patches"), samples)
 
     # if the initialize step is parallelized,
     # it's nice to have a flag to be able to optionally attempt to add the data
@@ -26,6 +23,9 @@ def main(config):
         initialize.addData(config, samples)
     else:
         QFramework.WARN("skipping data addition as requested!")
+
+    # apply pre-initialize patches as given by the config
+    common.patchSampleFolder(config.getTagVStandardString("preInit_patches"), samples)
 
     # run the monte carlo initialization
     #  - collect meta-information including the sum-of-weights from the input files
@@ -44,7 +44,8 @@ def main(config):
         common.reduceSampleFolder(config, samples)
 
     # produce some output for the user to have a look at the result
-    QFramework.INFO("please investigate the top-level structure of your sample folder to make sure everything is in place!")
+    QFramework.INFO("Done with initializing samples! Please investigate the top-level structure "  \
+                    "of your sample folder to make sure everything is in place!")
     samples.printContents(config.getTagStringDefault("printFolderTags","r1dt"))
 
     # write the sample folder to disk
@@ -53,6 +54,8 @@ def main(config):
     # TODO: this doesn't work as intended for now
     # print any keys which were not read during the job
     #common.printUnreadKeys(config)
+
+    common.printExecutionSummary(config)
 
     # temporary fix to prevent segfaults in AnaBase 2.3.48 and beyond
     # update: still necessary in 21.2.4
@@ -72,9 +75,8 @@ if __name__ == "__main__":
     # use the argument parser to read the command line arguments and config options from the config file
     config = common.getConfigOptions(parser.parse_args())
 
-    # ignore command line arguments since ROOT is very greedy here (and tends to choke from it!) 
+    # ignore command line arguments since ROOT is very greedy here (and tends to choke from it!)
     ROOT.PyConfig.IgnoreCommandLineOptions = True
 
-    # call the main function    
+    # call the main function
     main(config)
-

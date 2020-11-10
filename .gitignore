@@ -2,7 +2,6 @@
 Root/LinkDef.h
 python/__init__.py
 setup/setupLocal.sh
-setup/setupAnalysis.sh
 build
 */sampleFolders
 */results

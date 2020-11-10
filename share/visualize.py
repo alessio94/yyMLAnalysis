@@ -25,6 +25,9 @@ def main(config):
     # retrieve properties of channels provided in config
     channelsDict = visualize.getDictOfChannels(config)
 
+    # retrieve properties of campaigns provided in config
+    campaignsDict = visualize.getDictOfCampaigns(config)
+
     # TODO: check that all channels specified in channelsDict is actually found in samples
 
     # initialize object which will read the results from the sample folder
@@ -35,7 +38,7 @@ def main(config):
         visualize.generateFakeData(config)
 
     # calculate normalization factors based on a series of config files and save this information in the sample folder
-    visualize.generateNormalizationFactors(config, samples)
+    visualize.generateNormalizationFactors(config, samples, campaignsDict=campaignsDict)
 
     # create a document which will summarize all of the results
     summary = visualize.createSummaryDocument(samples, outputdir)
@@ -44,13 +47,13 @@ def main(config):
     visualize.createCutDiagram(config, samples, summary, outputdir)
 
     # print a cutflow for each combination of processes and cuts defined in the config for each channel
-    visualize.printCutflows(config, reader, summary, channelsDict, outputdir)
+    visualize.printCutflows(config, reader, summary, channelsDict, outputdir, campaignsDict=campaignsDict)
 
     # print event level quantities defined by the user
-    visualize.printEventLists(config, reader, channelsDict, outputdir)
+    visualize.printEventLists(config, reader, channelsDict, outputdir, campaignsDict=campaignsDict)
 
     # make all of the plots with the processes stacked which are requested by the user
-    visualize.makePlots(config, reader, summary, channelsDict, outputdir)
+    visualize.makePlots(config, reader, summary, channelsDict, outputdir, campaignsDict=campaignsDict)
 
     # make a selection of advanced plots to more easily compare specific processes defined by the user
     visualize.makeComparisonPlots(config, reader, outputdir)
@@ -60,14 +63,16 @@ def main(config):
         common.writeSampleFolder(config, samples)
 
     # finalize the summary document
-    visualize.finalizeSummaryDocument(summary)
+    visualize.finalizeSummaryDocument(summary, config)
+
+    common.printExecutionSummary(config)
 
     QFramework.INFO("all done!")
 
     # TODO: this doesn't work as intended for now
     # print any keys which were not read during the job
     #common.printUnreadKeys(config)
-    
+
 if __name__ == "__main__":
 
     # create a pre-configures argument parser
@@ -86,4 +91,4 @@ if __name__ == "__main__":
     ROOT.gROOT.SetBatch(True)
 
     # call the main function
-    main(config)    
+    main(config)

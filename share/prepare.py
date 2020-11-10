@@ -5,7 +5,7 @@ from CommonAnalysisHelpers import common,prepare
 def main(config):
     """create the sample folder for your analysis according to the given configuration (can be created from a config file)
     by populating it with a selection of DSIDs chosen from a cross section file"""
-    
+
     # print a welcome message
     print(QFramework.TQStringUtils.makeBoldWhite("\nPreparing Analysis ROOT File\n"))
 
@@ -38,6 +38,8 @@ def main(config):
     # write the sample folder to disk
     common.writeSampleFolder(config, samples)
 
+    common.printExecutionSummary(config)
+
     # TODO: this doesn't work as intended for now
     # print any keys which were not read during the job
     #common.printUnreadKeys(config)
@@ -65,4 +67,3 @@ if __name__ == "__main__":
 
     # call the main function
     main(config)
-

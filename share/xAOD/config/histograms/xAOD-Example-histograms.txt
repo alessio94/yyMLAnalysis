@@ -9,9 +9,9 @@ TH1F('fakeMuonPt', '', 27, 15., 150.) << ( [$(fakeLepCand_pt)]*0.001 : 'mu fake 
 TH1F('fakeMuonEta', '', 20, -3.0, 3.0) << ([$(fakeLepCand_eta)] : 'mu fake \#eta');
 TH2F('FakeMuonEtaVsPt', '', {15., 20., 25., 1000.}, {0., 1.05, 2.5}) << ( [$(fakeLepCand_pt)]/1000 : 'Fake candidate p_{T} [GeV]', abs([$(fakeLepCand_eta)])  : 'Fake candidate |\#eta|' );
 
-
+TH1F('thirdLepPt', '', 27, 15., 150.) << ( [$(fakeLepCand_pt)]*0.001 : 'Fake lepton p_{T} [GeV]');
 TH1F('invMass', '', 40, 70., 110.) << ( $(invMassOptZTag)*0.001: 'm_{l,l}^{Z} [GeV]' );
-
+TH1F('mT','',50, 0, 500) << ($(TransMassW)/1000.: 'm_{T}');
 
 #################################################
 # and specify for which cut levels to fill them #
@@ -28,7 +28,7 @@ TH1F('invMass', '', 40, 70., 110.) << ( $(invMassOptZTag)*0.001: 'm_{l,l}^{Z} [G
 @CutFakeMuonID: FakeMuonEtaVsPt;
 @CutFakeMuonAntiID: FakeMuonEtaVsPt;
 
+### other distributions
 
-### Invariant mass of Zcand pair
-
-@CutLeptonsPt: invMass;
+@CutWZControl: thirdLepPt, mT;
+@CutLeptonsPt: invMass, mT;

@@ -19,13 +19,17 @@ namespace HWW {
     // ASG_TOOL_CLASS0( HWWLeptonIDHelper )
 
     private:
-    bool m_debug=false;
 
     // HWWLeptonIDHelper is responsible for cleaning up the memory allocated in vector
     std::map<xAOD::Type::ObjectType, std::vector<Selection*> > m_id_selections;
     std::map<xAOD::Type::ObjectType, std::vector<Selection*> > m_antiid_selections;
 
-    void debugmsg(const char* msg) const;
+    // At the risk of overcomplicating things, it may be nice to know that the cuts are being added properly so this flag turns on debug statements when adding cuts
+    // However, you may want to know if it's being call on ID electron, anti-ID muon, etc., so those are controlled by the _DEBUG flag in the cxx file
+    // There's no overhead for turning on the debug with m_debug = true as you add a finite number of cuts
+    // I tried moving the template function declarations to the cxx file, but I could not get python to recognize the template functions (and I think the explicit instantiations have
+    // to be in this file)
+    bool m_debug = false;
 
     // private add-selection methods to be used by the more verbose public ones called from outside (see below)
     // template functions, need full definition here in header file
@@ -37,6 +41,10 @@ namespace HWW {
         sel = new AuxDataSelection<char>(cutname, auxvarname, cutvalue, operator_str, validOnlyInPtRegion, ptcut_low, ptcut_up);
       } else if (type_str == "unsigned short") {
         sel = new AuxDataSelection<unsigned short>(cutname, auxvarname, cutvalue, operator_str, validOnlyInPtRegion, ptcut_low, ptcut_up);
+      } else if (type_str == "float") {
+        sel = new AuxDataSelection<float>(cutname, auxvarname, cutvalue, operator_str, validOnlyInPtRegion, ptcut_low, ptcut_up);
+      } else if (type_str == "int") {
+        sel = new AuxDataSelection<int>(cutname, auxvarname, cutvalue, operator_str, validOnlyInPtRegion, ptcut_low, ptcut_up);
       } else {
         sel = new AuxDataSelection<T>(cutname, auxvarname, cutvalue, operator_str, validOnlyInPtRegion, ptcut_low, ptcut_up);
       }
@@ -54,7 +62,6 @@ namespace HWW {
     bool isAntiIDMuon(const xAOD::IParticle* ipart) const;
     bool isIDElectron(const xAOD::IParticle* ipart) const;
     bool isAntiIDElectron(const xAOD::IParticle* ipart) const;
-
 
     /*** add cut functions: two per id/anti-id and flavour. Reflect what's being set in function names so that call from outside is clear ***/
     template <class T>
@@ -113,19 +120,17 @@ namespace HWW {
     // ClassDefT(HWWLeptonIDHelper, 1);
 
   };
-  /** apparently one needs to declare one example (with any type) template specification of the template functions to make them visible from python.
-      See https://root-forum.cern.ch/t/class-with-a-template-member-function/20101
-      **/
-  // private addCut function(s)
-  template void HWWLeptonIDHelper::addCut<int>(std::vector<Selection*>& selections_to_add_to, const TString& cutname, const TString& type_str, const TString& auxvarname, const int& cutvalue, const TString& operator_str, const bool validOnlyInPtRegion, const float& ptcut_low, const float& ptcut_up);
-  // public particle-id/antiid-specific public functions
-  template void HWWLeptonIDHelper::addCut_MuonAntiID<int>(const TString cutname, const TString type_str, const TString auxvarname, const int value, const TString operator_str, const bool validOnlyInPtRegion=false, const float ptcut_low=0., const float ptcut_up=0.);
-  template void HWWLeptonIDHelper::addCut_MuonID<int>(const TString cutname, const TString type_str, const TString auxvarname, const int value, const TString operator_str, const bool validOnlyInPtRegion=false, const float ptcut_low=0., const float ptcut_up=0.);
-  template void HWWLeptonIDHelper::addCut_ElectronAntiID<int>(const TString cutname, const TString type_str, const TString auxvarname, const int value, const TString operator_str, const bool validOnlyInPtRegion=false, const float ptcut_low=0., const float ptcut_up=0.);
-  template void HWWLeptonIDHelper::addCut_ElectronID<int>(const TString cutname, const TString type_str, const TString auxvarname, const int value, const TString operator_str, const bool validOnlyInPtRegion=false, const float ptcut_low=0., const float ptcut_up=0.);
 
-
-
+/** apparently one needs to declare one example (with any type) template specification of the template functions to make them visible from python.
+    See https://root-forum.cern.ch/t/class-with-a-template-member-function/20101
+**/
+// private addCut function(s)
+template void HWWLeptonIDHelper::addCut<int>(std::vector<Selection*>& selections_to_add_to, const TString& cutname, const TString& type_str, const TString& auxvarname, const int& cutvalue, const TString& operator_str, const bool validOnlyInPtRegion, const float& ptcut_low, const float& ptcut_up);
+// public particle-id/antiid-specific public functions
+template void HWWLeptonIDHelper::addCut_MuonAntiID<int>(const TString cutname, const TString type_str, const TString auxvarname, const int value, const TString operator_str, const bool validOnlyInPtRegion=false, const float ptcut_low=0., const float ptcut_up=0.);
+template void HWWLeptonIDHelper::addCut_MuonID<int>(const TString cutname, const TString type_str, const TString auxvarname, const int value, const TString operator_str, const bool validOnlyInPtRegion=false, const float ptcut_low=0., const float ptcut_up=0.);
+template void HWWLeptonIDHelper::addCut_ElectronAntiID<int>(const TString cutname, const TString type_str, const TString auxvarname, const int value, const TString operator_str, const bool validOnlyInPtRegion=false, const float ptcut_low=0., const float ptcut_up=0.);
+template void HWWLeptonIDHelper::addCut_ElectronID<int>(const TString cutname, const TString type_str, const TString auxvarname, const int value, const TString operator_str, const bool validOnlyInPtRegion=false, const float ptcut_low=0., const float ptcut_up=0.);
 
  } // end namespace HWW
 #endif //> !__HWWLEPTONIDHELPER__

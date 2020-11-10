@@ -2,13 +2,21 @@
 #include <algorithm>
 // #include "CAFExample/HWWObservableBaseTool.h"
 
+// Uncomment the following line to enable debug printouts
+// #define _DEBUG_
+// You can perform debug printouts with statements like this:
+// DEBUG("error number %d occurred", someInteger);
+
+// For debug messages
+#include "QFramework/TQLibrary.h"
+
 // ClassImpT(HWW::HWWLeptonIDHelper, 1)
 
 /** default constructor, put the default arguments here **/
 HWW::HWWLeptonIDHelper::HWWLeptonIDHelper()
   // HWW::ObservableBaseTool(name)
 {
-  if (this->m_debug) debugmsg("Inside default constructor");
+  DEBUG("HWWLeptonIDHelper::HWWLeptonIDHelper(...) : Inside default constructor");
 
 
   // initialize selection map with empty vectors with selections
@@ -23,14 +31,13 @@ HWW::HWWLeptonIDHelper::HWWLeptonIDHelper()
 HWW::HWWLeptonIDHelper::HWWLeptonIDHelper(const HWWLeptonIDHelper& helper) :
 // copy over the members
   // TObject(helper),
-  m_debug(helper.m_debug),
   // copy the vector -- means that new object will have pointers to the same selection
   // original. This should be OK.
   m_id_selections(helper.m_id_selections),
   m_antiid_selections(helper.m_antiid_selections)
 
 {
-  if (this->m_debug) debugmsg("Inside copy constructor");
+  DEBUG("HWWLeptonIDHelper::HWWLeptonIDHelper(...) : Inside copy constructor");
   // m_id_selections(helper.m_id_selections),
   // m_antiid_selections(helper.m_antiid_selections)
   // m_id_selections[xAOD::Type::Electron] = std::vector<Selection*>{};
@@ -115,17 +122,13 @@ bool HWW::HWWLeptonIDHelper::isAntiID(const xAOD::IParticle* ipart) const {
   }
 }
 
-
-void HWW::HWWLeptonIDHelper::debugmsg(const char* msg) const {
-  std::cout << "HWWLeptonIDHelper DEBUG :: " << msg << std::endl;
-}
-
 bool HWW::HWWLeptonIDHelper::allOK() const {
   return true;
 }
 
 bool HWW::HWWLeptonIDHelper::isIDElectron(const xAOD::IParticle* ipart) const {
   // if (m_debug) std::cout << "*** HWWLeptonIDHelper :: about to check selections for id electron..." << std::endl;
+  DEBUG("Inside HWWLeptonIDHelper::isIDElectron(...)");
   const std::vector<Selection*>& id_selections_electron = m_id_selections.at(xAOD::Type::Electron);
   for (const auto& sel : id_selections_electron) {
     if (!sel->pass(ipart)) return false;
@@ -135,8 +138,9 @@ bool HWW::HWWLeptonIDHelper::isIDElectron(const xAOD::IParticle* ipart) const {
 }
 
 bool HWW::HWWLeptonIDHelper::isIDMuon(const xAOD::IParticle* ipart) const {
+  DEBUG("Inside HWWLeptonIDHelper::isIDMuon(...)");
   const std::vector<Selection*>& id_selections_muon = m_id_selections.at(xAOD::Type::Muon);
-  for (auto const& sel : id_selections_muon) {
+  for (const auto& sel : id_selections_muon) {
     if (!sel->pass(ipart)) return false;
   }
   // passed all selections, return true
@@ -145,10 +149,11 @@ bool HWW::HWWLeptonIDHelper::isIDMuon(const xAOD::IParticle* ipart) const {
 
 bool HWW::HWWLeptonIDHelper::isAntiIDElectron(const xAOD::IParticle* ipart) const {
   // anti-id electron should fail the identified electron...
+  DEBUG("Inside HWWLeptonIDHelper::isAntiIDElectron(...)");
   if (isIDElectron(ipart)) return false;
   // ... but still pass some looser requirements
   const std::vector<Selection*>& antiid_selections_electron = m_antiid_selections.at(xAOD::Type::Electron);
-  for (auto const& sel : antiid_selections_electron) {
+  for (const auto& sel : antiid_selections_electron) {
     if (!sel->pass(ipart)) return false;
   }
   // passed all selections, return true
@@ -157,10 +162,11 @@ bool HWW::HWWLeptonIDHelper::isAntiIDElectron(const xAOD::IParticle* ipart) cons
 
 bool HWW::HWWLeptonIDHelper::isAntiIDMuon(const xAOD::IParticle* ipart) const {
   // anti-id electron should fail the identified muon...
+  DEBUG("Inside HWWLeptonIDHelper::isAntiIDMuon(...)");
   if (isIDMuon(ipart)) return false;
   // ... but still pass some looser requirements
   const std::vector<Selection*>& antiid_selections_muon = m_antiid_selections.at(xAOD::Type::Muon);
-  for (auto const& sel : antiid_selections_muon) {
+  for (const auto& sel : antiid_selections_muon) {
     if (!sel->pass(ipart)) return false;
   }
   // passed all selections, return true

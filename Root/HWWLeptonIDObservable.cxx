@@ -11,9 +11,11 @@ ClassImp(HWWLeptonIDObservable)
 
 //______________________________________________________________________________________________
 HWWLeptonIDObservable::HWWLeptonIDObservable() :
-fIndexLeading(0),
-fIndexSubleading(1),
-fIndexOtherLepton(0)
+fIndexLeadLep(0),
+fIndexSubleadLep(1),
+fIndexThirdLep(2),
+fIndexFourthLep(3),
+fIndexOtherLep(0)
 {
   // default constructor
   DEBUGclass("default constructor called");
@@ -25,9 +27,12 @@ HWWLeptonIDObservable::HWWLeptonIDObservable(const HWWLeptonIDObservable& obs) :
   TQEventObservable(obs),
   fLeptonIDHelper(new HWW::HWWLeptonIDHelper(*obs.fLeptonIDHelper)),
   fHWWLepIDModeOfRunning(obs.fHWWLepIDModeOfRunning),
-  fIndexLeading(obs.fIndexLeading),
-  fIndexSubleading(obs.fIndexSubleading),
-  fIndexOtherLepton(obs.fIndexOtherLepton),
+  fHWWAnalysisType(obs.fHWWAnalysisType),
+  fIndexLeadLep(obs.fIndexLeadLep),
+  fIndexSubleadLep(obs.fIndexSubleadLep),
+  fIndexThirdLep(obs.fIndexThirdLep),
+  fIndexFourthLep(obs.fIndexFourthLep),
+  fIndexOtherLep(obs.fIndexOtherLep),
   mCand(obs.mCand),
   mCandName(obs.mCandName) {
 
@@ -38,20 +43,39 @@ HWWLeptonIDObservable::HWWLeptonIDObservable(const HWWLeptonIDObservable& obs) :
       break;
     case HWWLepIDModeOfRunning::SubleadLepID:
       break;
+    case HWWLepIDModeOfRunning::ThirdLepID:
+      break;
+    case HWWLepIDModeOfRunning::FourthLepID:
+      break;
     case HWWLepIDModeOfRunning::OtherLepID:
       break;
     case HWWLepIDModeOfRunning::LeadLepAntiID:
       break;
     case HWWLepIDModeOfRunning::SubleadLepAntiID:
       break;
+    case HWWLepIDModeOfRunning::ThirdLepAntiID:
+      break;
+    case HWWLepIDModeOfRunning::FourthLepAntiID:
+      break;
     case HWWLepIDModeOfRunning::OtherLepAntiID:
       break;
     default:
-      throw std::runtime_error("[HWWLeptonIDObservable] Unvalid mode-of-running value given!");
+      throw std::runtime_error("[HWWLeptonIDObservable] Invalid mode-of-running value given!");
+  }
+  switch (fHWWAnalysisType) {
+    case HWWAnalysisType::TwoLep:
+      break;
+    case HWWAnalysisType::WH:
+      break;
+    case HWWAnalysisType::ZH:
+      break;
+    default:
+      throw std::runtime_error("ERROR in HWWLeptonIDObservable :: Unknown analysis type given!");
   }
   if (!fLeptonIDHelper) { throw std::runtime_error("ERROR in HWWLeptonIDObservable :: you must pass a valid pointer to your HWWLeptonIDHelper object!"); }
 
-  DEBUGclass("Running with mode %d", fHWWLepIDModeOfRunning);
+  DEBUGclass("Running with mode of running: %d", fHWWLepIDModeOfRunning);
+  DEBUGclass("Running with anlysis type: %d:", fHWWAnalysisType);
 }
 
 //______________________________________________________________________________________________
@@ -66,10 +90,10 @@ HWWLeptonIDObservable::~HWWLeptonIDObservable(){
 double HWWLeptonIDObservable::getValue() const {
   // value retrieval function, called on every event for every cut and histogram
   DEBUGclass("entering function");
-  // the TQEventObservable only works in an ASG environment which HAS_XAOD, hence
+  // the TQEventObservable only works in an ASG RELEASE, hence
   // we encapsulate the implementation in an ifdef/ifndef block
   #ifndef HAS_XAOD
-  #warning "using plain ROOT compilation scheme - please add '-DASG_RELEASE' to your packages 'Makefile.RootCore'"
+  #warning "using plain ROOT compilation scheme - please add an ASG Analysis Release in order to use this feature!"
   return std::numeric_limits<double>::quiet_NaN();
   #else
   // in the rest of this function, you should retrieve the data and calculate your return value
@@ -105,23 +129,55 @@ double HWWLeptonIDObservable::getValue() const {
   // lepton of interest
   const xAOD::IParticle* lepOfInterest = nullptr;
   // get it from event candidate depending on mode of running
+
+  DEBUGclass("Retrieving candidate for %d", fHWWLepIDModeOfRunning);
   switch (fHWWLepIDModeOfRunning) {
     // leading lepton
     case HWWLepIDModeOfRunning::LeadLepID: case HWWLepIDModeOfRunning::LeadLepAntiID:
-         lepOfInterest = Evt->part(fIndexLeading);
-         break;
+        lepOfInterest = Evt->part(fIndexLeadLep);
+        break;
     // subleading lepton
     case HWWLepIDModeOfRunning::SubleadLepID: case HWWLepIDModeOfRunning::SubleadLepAntiID:
-         lepOfInterest = Evt->part(fIndexSubleading);
-         break;
-    // other lepton
+        lepOfInterest = Evt->part(fIndexSubleadLep);
+        break;
+    // third lepton (for VH)
+    case HWWLepIDModeOfRunning::ThirdLepID: case HWWLepIDModeOfRunning::ThirdLepAntiID:
+        switch (fHWWAnalysisType) {
+            case HWWAnalysisType::WH: case HWWAnalysisType::ZH:
+                lepOfInterest = Evt->part(fIndexThirdLep);
+                break;
+            default:
+                throw std::runtime_error("ERROR in HWWLeptonIDObservable :: HWWAnalysisType::TwoLepton should not be trying to access third lepton mode of running.");
+        }
+        // BREAK
+        break;
+    // fourth lepton (for ZH)
+    case HWWLepIDModeOfRunning::FourthLepID: case HWWLepIDModeOfRunning::FourthLepAntiID:
+        switch (fHWWAnalysisType) {
+            case HWWAnalysisType::ZH:
+                lepOfInterest = Evt->part(fIndexFourthLep);
+                break;
+            default:
+                throw std::runtime_error("ERROR in HWWLeptonIDObservable :: HWWAnalysisType::TwoLepton or HWWAnalysisType::WH should not be trying to access fourth lepton mode of running.");
+        }
+        // BREAK
+        break;
+    // other lepton (for 2L)
     case HWWLepIDModeOfRunning::OtherLepID: case HWWLepIDModeOfRunning::OtherLepAntiID:
-         lepOfInterest = Evt->otherPart(fIndexOtherLepton);
-         break;
+        switch (fHWWAnalysisType) {
+            case HWWAnalysisType::TwoLep:
+                lepOfInterest = Evt->otherPart(fIndexOtherLep);
+                break;
+            default:
+                throw std::runtime_error("ERROR in HWWLeptonIDObservable :: Other lepton mode of running is currently restricted to HWWAnalysisType::TwoLepton -- does this make sense?");
+        }
+        // BREAK
+        break;
     default:
+        DEBUGclass("In event retrieval error.");
         throw std::runtime_error("ERROR in HWWLeptonIDObservable :: unrecognised mode of running. Check your configuration of this observable.");
-
   }
+
   // check that particle exists
   if (!lepOfInterest) throw std::runtime_error("[HWWLeptonIDObservable] failed to retrieve iParticle!");
 
@@ -129,17 +185,18 @@ double HWWLeptonIDObservable::getValue() const {
   bool pass(false);
   switch (fHWWLepIDModeOfRunning) {
     // id
-    case HWWLepIDModeOfRunning::LeadLepID: case HWWLepIDModeOfRunning::SubleadLepID: case HWWLepIDModeOfRunning::OtherLepID:
-      pass = fLeptonIDHelper->isID(lepOfInterest);
-      break;
+    case HWWLepIDModeOfRunning::LeadLepID: case HWWLepIDModeOfRunning::SubleadLepID: case HWWLepIDModeOfRunning::ThirdLepID: case HWWLepIDModeOfRunning::FourthLepID: case HWWLepIDModeOfRunning::OtherLepID:
+        pass = fLeptonIDHelper->isID(lepOfInterest);
+        break;
     // anti-id
-    case HWWLepIDModeOfRunning::LeadLepAntiID: case HWWLepIDModeOfRunning::SubleadLepAntiID: case HWWLepIDModeOfRunning::OtherLepAntiID:
-      pass = fLeptonIDHelper->isAntiID(lepOfInterest);
-      break;
+    case HWWLepIDModeOfRunning::LeadLepAntiID: case HWWLepIDModeOfRunning::SubleadLepAntiID: case HWWLepIDModeOfRunning::ThirdLepAntiID: case HWWLepIDModeOfRunning::FourthLepAntiID: case HWWLepIDModeOfRunning::OtherLepAntiID:
+        pass = fLeptonIDHelper->isAntiID(lepOfInterest);
+        break;
     default:
-      throw std::runtime_error("ERROR in HWWLeptonIDObservable :: unrecognised mode of running. Check your configuration of this observable.");
+        DEBUGclass("In event cut error.");
+        throw std::runtime_error("ERROR in HWWLeptonIDObservable :: unrecognised mode of running. Check your configuration of this observable.");
   }
-  DEBUGclass("returning");
+  DEBUGclass("returning: %d", pass);
   return static_cast<double>(pass);
   #endif
 }
@@ -168,24 +225,31 @@ bool HWWLeptonIDObservable::initializeSelf(){
 }
 //______________________________________________________________________________________________
 HWWLeptonIDObservable::HWWLeptonIDObservable(const TString& name, const HWW::HWWLeptonIDHelper* lepIDHelper,
-                                    const int mode_of_running,
+                                    const int mode_of_running, const int analysis_type,
                                     const unsigned int indexLeadLep, const unsigned int indexSubleadLep,
-                                    const unsigned int indexOtherLepton):
+                                    const unsigned int indexThirdLep, const unsigned int indexFourthLep,
+                                    const unsigned int indexOtherLep):
   TQEventObservable(name),
   fLeptonIDHelper(lepIDHelper),
-  fIndexLeading(indexLeadLep),
-  fIndexSubleading(indexSubleadLep),
-  fIndexOtherLepton(indexOtherLepton)
-
+  fIndexLeadLep(indexLeadLep),
+  fIndexSubleadLep(indexSubleadLep),
+  fIndexThirdLep(indexThirdLep),
+  fIndexFourthLep(indexFourthLep),
+  fIndexOtherLep(indexOtherLep)
 {
   // constructor with name argument
   DEBUGclass("constructor called with '%s'",name.Data());
   fHWWLepIDModeOfRunning = static_cast<HWWLepIDModeOfRunning>(mode_of_running);
+  fHWWAnalysisType = static_cast<HWWAnalysisType>(analysis_type);
   // check that a valid value was given
   switch (fHWWLepIDModeOfRunning) {
     case HWWLepIDModeOfRunning::LeadLepID:
       break;
     case HWWLepIDModeOfRunning::SubleadLepID:
+      break;
+    case HWWLepIDModeOfRunning::ThirdLepID:
+      break;
+    case HWWLepIDModeOfRunning::FourthLepID:
       break;
     case HWWLepIDModeOfRunning::OtherLepID:
       break;
@@ -193,12 +257,27 @@ HWWLeptonIDObservable::HWWLeptonIDObservable(const TString& name, const HWW::HWW
       break;
     case HWWLepIDModeOfRunning::SubleadLepAntiID:
       break;
+    case HWWLepIDModeOfRunning::ThirdLepAntiID:
+      break;
+    case HWWLepIDModeOfRunning::FourthLepAntiID:
+      break;
     case HWWLepIDModeOfRunning::OtherLepAntiID:
       break;
     default:
-      throw std::runtime_error("[HWWLeptonIDObservable] Unvalid mode-of-running value given!");
+      throw std::runtime_error("[HWWLeptonIDObservable] Invalid mode-of-running value given!");
+  }
+  switch (fHWWAnalysisType) {
+    case HWWAnalysisType::TwoLep:
+      break;
+    case HWWAnalysisType::WH:
+      break;
+    case HWWAnalysisType::ZH:
+      break;
+    default:
+      throw std::runtime_error("ERROR in HWWLeptonIDObservable :: Unknown analysis type given!");
   }
   if (!fLeptonIDHelper) { throw std::runtime_error("ERROR in HWWLeptonIDObservable :: you must pass a valid pointer to your HWWLeptonIDHelper object!"); }
 
   DEBUGclass("Running with mode %d", fHWWLepIDModeOfRunning);
+  DEBUGclass("Running with analysis type %d", fHWWAnalysisType);
 }

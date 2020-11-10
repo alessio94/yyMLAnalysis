@@ -4,7 +4,7 @@
 # This is a cutfile that makes only very basic selections for the GridScanner example
 
 +CutChannels {
-  <.cutExpression = "$(fitsChannel)", .weightExpression = "Weight_$(weightname):$(cand)", .title="Channel Selection">
+  <.cutExpression = "$(fitsChannel)", .weightExpression = "[muonIsoWeight] * [muonTTVAWeight] * [muonRecoWeight] * [electronRecoWeight] * [electronIDWeight] * [jvtWeight] * [forwardJVTWeight] * [prwWeight] * [mcWeight]", .title="Channel Selection">
   +Cut2Leptons{
     <.cutExpression = "[$(nOtherElec)] == 0. && [$(nOtherMuon)] == 0.", .title="Only two Leptons">
     +CutLeadLeptonPt {

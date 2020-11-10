@@ -55,7 +55,11 @@ bool HWWZBosonPairFakeIndex::initializeSelf() {
     return false;
   }
   this->fCandName = "Event"+s;
-  return  true;
+
+  this->fCachedEntry = -999;
+  this->fCachedValue = 1.0;
+
+  return true;
 }
 
 
@@ -113,15 +117,15 @@ bool HWWZBosonPairFakeIndex::isGoodZCand(const std::pair< const xAOD::IParticle*
   // debugging
   if (debugMissingEvts && evtNrUnique(evtInfo)) {
     if (!isSFOS(zPair)) std::cout<<"evtNr unique --> zPair is not SFOS!" << std::endl;
-    if (!isID(zPair))  std::cout << "evtNr unique --> zPair is not ID!" << std::endl; 
-    if (!isTriggerMatched(zPair, evtInfo))  std::cout << "evtNr unique --> zPair is not trigger matched!" << std::endl; 
-    if (!isWithinZWindow(zPair, fakeType))  std::cout << "evtNr unique --> zPair is not within Zmass window!" << std::endl; 
-   
-  } 
-  
+    if (!isID(zPair))  std::cout << "evtNr unique --> zPair is not ID!" << std::endl;
+    if (!isTriggerMatched(zPair, evtInfo))  std::cout << "evtNr unique --> zPair is not trigger matched!" << std::endl;
+    if (!isWithinZWindow(zPair, fakeType))  std::cout << "evtNr unique --> zPair is not within Zmass window!" << std::endl;
+
+  }
+
   // check that this pair is SFOS, has both leptons ID, at least one lepton trigger matched and
   // mll within Z window
-  return  (  
+  return  (
           isSFOS(zPair)
       &&  isID(zPair)
       &&  isTriggerMatched(zPair, evtInfo)
@@ -198,7 +202,7 @@ bool HWWZBosonPairFakeIndex::evtNrUnique(const xAOD::EventInfo* evtInfo) const {
     3061906790
   };
   long long unsigned int evtNr = static_cast<long long unsigned int>(evtInfo->eventNumber());
-  
+
   return ( evtNumbers.end() != std::find(evtNumbers.begin(), evtNumbers.end(), evtNr) );
 }
 //______________________________________________________________________________________________
@@ -208,13 +212,17 @@ double HWWZBosonPairFakeIndex::getValue() const {
   // value retrieval function, called on every event for every cut and histogram
   DEBUGclass("entering getValue() function");
 
-  // the TQEventObservable only works in an ASG environment which HAS_XAOD, hence
+  // the TQEventObservable only works in an ASG RELEASE, hence
   // we encapsulate the implementation in an ifdef/ifndef block
   #ifndef HAS_XAOD
-  #warning "using plain ROOT compilation scheme - please add '-DASG_RELEASE' to your packages 'Makefile.RootCore'"
+  #warning "using plain ROOT compilation scheme - please add an ASG Analysis Release in order to use this feature!"
   return std::numeric_limits<double>::quiet_NaN();
   #else
 
+  if(this->getCurrentEntry() == this->fCachedEntry) {
+    DEBUGclass("skipping reevalution for event %d, returning %f", this->getCurrentEntry(), this->fCachedValue);
+    return this->fCachedValue;
+  }
 
   if (!this->fEvent->retrieve(this->mCand,this->fCandName.Data()).isSuccess()){
     DEBUGclass("Failed to retrieve event candidate!");//" %s", this->fCandName.Data()).Data());
@@ -264,7 +272,7 @@ double HWWZBosonPairFakeIndex::getValue() const {
       std::cout << "evtNr unique --> didn't find any Zcand! " << std::endl;
     }
   }
-    
+
 
   // step through map (which could be empty) and find the pair closest to the z mass
   zBosonPairIdentifier bestZPair = zBosonPairIdentifier::NO_PAIR_FOUND; // default: no candidate found
@@ -294,6 +302,9 @@ double HWWZBosonPairFakeIndex::getValue() const {
     default:
       throw std::runtime_error("[HWWZBosonPairFakeIndex] unrecognised z-pair index! shouldn't end up here.");
   }
+
+  this->fCachedEntry = this->getCurrentEntry();
+  this->fCachedValue = static_cast<double> (theFakeIndex);
 
   // return index of fake
   DEBUGclass("returning %d", theFakeIndex);
@@ -327,6 +338,21 @@ TQEventObservable(name),
 HWWTrigBase(trigConfigs),
 fLeptonIDHelper(lepIDHelper)
 
+{
+  // constructor with name argument
+  DEBUGclass("[HWWZBosonPairFakeIndex] constructor called with '%s'",name.Data());
+
+  // check that valid lepton id helper was passed
+  if (!fLeptonIDHelper) throw std::runtime_error("ERROR in [HWWZBosonPairFakeIndex] :: you must pass along a valid pointer to a HWWLeptonIDHelper object.");
+
+}
+
+//______________________________________________________________________________________________
+// nominal constructor
+HWWZBosonPairFakeIndex::HWWZBosonPairFakeIndex(const TString& name,
+                                        const HWWLeptonIDHelper* lepIDHelper) :
+TQEventObservable(name),
+fLeptonIDHelper(lepIDHelper)
 {
   // constructor with name argument
   DEBUGclass("[HWWZBosonPairFakeIndex] constructor called with '%s'",name.Data());

@@ -71,7 +71,6 @@ class Selection  {
   protected:
     const TString m_name;
     Operator m_operator;
-    bool m_debug=false;
     // TQObservable* m_decObs = nullptr;
   public:
     virtual bool pass(const xAOD::IParticle* ipart) const=0; // must be implemented by derived class

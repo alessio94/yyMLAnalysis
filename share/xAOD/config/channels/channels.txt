@@ -1,0 +1,4 @@
+name path latex datapath
+eemm,mmee,sf   [ee$(variation)+mm$(variation)]  ee/\mu\mu  [ee+mm]
+emme,meem,df   [em$(variation)+me$(variation)]  e\mu+\mu{}e  [em+me]
+ll,?,all   [em$(variation)+me$(variation)+ee$(variation)+mm$(variation)]  \ell\ell  [em+me+ee+mm]

@@ -1,6 +1,4 @@
 This document is intended to provide instructions on how to utilize the GridScanner feature provided by [CAF](https://gitlab.cern.ch/atlas-caf/CAFCore). The tool takes a multidimensional histogram (technically realized with ROOT's THnSparse) as a feature space and scans through this grid by evaluating a figure of merit (usually a significance estimator) for one cut configuration after another. The optimal cut configuration is simply found by sorting the configurations with respect to their resulting figure of merit.
-Note: Currently, the branch `GridScanner-rewrite` of CAF needs to be checked out to use the tool.
-
 
 # Running the full example (you-have-no-time-to-read-pseudo-documentation)
 The following commands provide an example of how to utilize the tool. From here you can start your own endeavours of finding the ultimate cut based analysis. Assuming you are in the `CAFExample/share` directory execute the following:

@@ -1,0 +1,4 @@
+#!/bin/bash
+
+export CAFOUTPUTDIR="$CAFANALYSISBASE/../output"
+export CAFAUTOCOMPLETEOPT=3

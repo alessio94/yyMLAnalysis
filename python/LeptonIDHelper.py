@@ -55,9 +55,7 @@ selections_2L.electron_id = {
                "z0"                      : ["float", "|z0*sinTheta|", 0.5, "<"],
                "likelihoodLowPt"         : ["char",  "isLHTight", 1, "TRUE", True, 0., 25000.],
                "likelihoodHighPt"        : ["char",  "isLHMedium", 1, "TRUE", True, 25000., 1e9],
-               "isolationPtvarconeLowPt" : ["float", "ptvarcone40/pt", 0.06, "<", True, 0., 25000.],
-               "isolationtopoEtconeLowPt": ["float", "topoetcone20/pt", 0.11, "<", True, 0., 25000.],
-               "isolationHighPt"         : ["char",  "passIsoGradient", 1, "TRUE", True, 25000., 1e9]
+               "isolation"               : ["char", "passIsoFCTight", 1, "TRUE"]
                }
 
 
@@ -70,15 +68,14 @@ selections_2L.electron_antiid = {
                    "z0"         : ["float", "|z0*sinTheta|", 0.5, "<"],
                    "likelihood" : ["char",  "isLHLoose", 1, "TRUE"]
                    }
-                   
+
 # muon id
 selections_2L.muon_id = {
            #"overlaps"                : ["char", "overlaps", 0, "FALSE"],
            "qualityLowPt"            : ["int",   "Quality", 0, "=", True, 0., 1e9],
            "d0"                      : ["float", "|d0sig|",   3., "<"],
            "z0"                      : ["float", "|z0*sinTheta|", 0.5, "<"],
-           "isolationPtvarcone"      : ["float", "ptvarcone30/pt",  0.06, "<",    True, 0., 1e9],
-           "isolationtopoEtcone"     : ["float", "topoetcone20/pt", 0.09, "<",    True, 0., 1e9]
+           "isolation"               : ["char", "passIsoFCTight", 1, "TRUE"]
            }
 
 selections_2L.muon_antiid = {
@@ -118,7 +115,7 @@ selections_2L_allAuthor.electron_antiid = {
                    "z0"         : ["float", "|z0*sinTheta|", 0.5, "<"],
                    "likelihood" : ["char",  "isLHLoose", 1, "TRUE"]
                    }
-                   
+
 # muon id
 selections_2L_allAuthor.muon_id = {
            #"overlaps"                : ["char", "overlaps", 0, "FALSE"],
@@ -237,47 +234,88 @@ selections_2L_VeryLooseBLayerNoMuOR.muon_antiid = {
 #========= END 2L VeryLooseBLayerNoMuOR selections
 
 #=========================================
-#========== VH selections
+#========== WH selections
 #=========================================
-selections_VH = Selections("VH")
+selections_WH = Selections("WH")
 
 # electron id
-selections_VH.electron_id = {
+selections_WH.electron_id = {
                "author" : ["unsigned short", "author", 1, "=="],
                "d0": ["float", "|d0sig|", 5., "<"],
                "z0": ["float", "|z0*sinTheta|", 0.5, "<"],
                "likelihoodLowPt": [ "char", "isLHTight", 1, "TRUE", True, 0., 25000.],
                "likelihoodHighPt": [ "char", "isLHMedium", 1, "TRUE", True, 25000., 1e9],
                #"isolationGradient": ["char", "passIsoGradient", 1, "TRUE"]
-               "isolationEle": ["char", "passIsoFixedCutTightTrackOnly", 1, "TRUE"]
+               "isolationEle": ["char", "passIsoFCLoose", 1, "TRUE"]
                }
 
 # electron anti-id
-selections_VH.electron_antiid = {
+selections_WH.electron_antiid = {
                    "author" : ["unsigned short", "author", 1, "=="],
                    "d0": ["float", "|d0sig|", 5., "<"],
                    "z0": ["float", "|z0*sinTheta|", 0.5, "<"],
                    "likelihood": ["char", "isLHLoose", 1, "TRUE"]
                    }
 # muon id
-selections_VH.muon_id = {
+selections_WH.muon_id = {
            "qualityLowPt": ["int", "Quality", 1, "<=", True, 0., 25000.],
            "qualityHighPt": ["int", "Quality", 1, "<=", True, 25000., 1e9],
            "d0":            ["float", "|d0sig|",   3., "<"],
            "z0":            ["float", "|z0*sinTheta|", 0.5, "<"],
-           #"isolation":     ["char", "passIsoGradient", 1, "TRUE"]
-           "isolationMuon": ["char", "passIsoFixedCutTightTrackOnly", 1, "TRUE"]
+           "isolationMuon":     ["char", "passIsoFCLoose", 1, "TRUE"]
            }
 
-selections_VH.muon_antiid = {
+selections_WH.muon_antiid = {
            "qualityLowPt": ["int", "Quality", 1, "<=", True, 0., 25000.],
            "qualityHighPt": ["int", "Quality", 1, "<=", True, 25000., 1e9],
+           "d0":            ["float", "|d0sig|",   6., "<"],
+           "z0":            ["float", "|z0*sinTheta|", 0.5, "<"]
+           }
+
+#============ END WH selections
+
+#=========================================
+#========== ZH selections
+#=========================================
+selections_ZH = Selections("ZH")
+
+# electron id
+selections_ZH.electron_id = {
+               "author" : ["unsigned short", "author", 1, "=="],
+               "d0": ["float", "|d0sig|", 5., "<"],
+               "z0": ["float", "|z0*sinTheta|", 0.5, "<"],
+               "likelihoodLowPt": [ "char", "isLHTight", 1, "TRUE", True, 0., 25000.],
+               "likelihoodHighPt": [ "char", "isLHMedium", 1, "TRUE", True, 25000., 1e9],
+               #"isolationGradient": ["char", "passIsoGradient", 1, "TRUE"]
+               "isolationEle": ["char", "passIsoFCLoose", 1, "TRUE"]
+               }
+
+# electron anti-id
+selections_ZH.electron_antiid = {
+                   "author" : ["unsigned short", "author", 1, "=="],
+                   "d0": ["float", "|d0sig|", 5., "<"],
+                   "z0": ["float", "|z0*sinTheta|", 0.5, "<"],
+                   "likelihood": ["char", "isLHVeryLoose", 1, "TRUE"]
+                   }
+# muon id
+selections_ZH.muon_id = {
+           "qualityLowPt": ["int", "Quality", 1, "<=", True, 0., 25000.], # "Medium" muons
+           "qualityHighPt": ["int", "Quality", 1, "<=", True, 25000., 1e9],
+           "d0":            ["float", "|d0sig|",   3., "<"],
+           "z0":            ["float", "|z0*sinTheta|", 0.5, "<"],
+           "isolationMuon":     ["char", "passIsoFCLoose", 1, "TRUE"]
+           ###"isolationMuon": ["char", "passIsoFixedCutTightTrackOnly", 1, "TRUE"]
+           }
+
+selections_ZH.muon_antiid = {
+           "qualityLowPt": ["int", "Quality", 0, "<=", True, 0., 25000.], # "Loose" muons
+           "qualityHighPt": ["int", "Quality", 0, "<=", True, 25000., 1e9],
            #"d0":            ["float", "|d0sig|",   6., "<"],
            "d0":            ["float", "|d0sig|",   15., "<"],
            "z0":            ["float", "|z0*sinTheta|", 0.5, "<"]
            }
 
-#============ END VH selections
+#============ END ZH selections
 
 
 #==============================================================================
@@ -416,7 +454,8 @@ all_selections = {}
 # add selections to the dictionary
 all_selections[selections_2L.name] = selections_2L # 2L
 all_selections[selections_2L_allAuthor.name] = selections_2L_allAuthor # 2L without author requirement
-all_selections[selections_VH.name] = selections_VH # VH
+all_selections[selections_WH.name] = selections_WH # WH
+all_selections[selections_ZH.name] = selections_ZH # ZH
 all_selections[selections_ZCand.name] = selections_ZCand # ZCand
 all_selections[selections_HighMass.name] = selections_HighMass # HighMass
 all_selections[selections_VgammaCR.name] = selections_VgammaCR # Selection of electrons converted from photons

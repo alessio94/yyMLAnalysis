@@ -9,7 +9,7 @@
 # will only work for these scripts and only if they are in the
 # $CAFAutoCompleteDirectories.
 CAFPythonScriptDirectories="$CAFANALYSISSHARE:$CAFANALYSISBASE/tools"
-pythonScripts="prepare.py initialize.py analyze.py visualize.py submit.py runGridScanner.py"
+pythonScripts="prepare.py initialize.py analyze.py visualize.py submit.py statistics.py runGridScanner.py"
 
 
 _CAFdoAutoCompletion(){
@@ -457,6 +457,8 @@ _CAFRegularComplete(){
     local thisDir=$4
     local CAFAnalysisShare=$5
     local option=$6
+    local immediateCompleteStr=$7
+    local extensions=$8
 
     # echo ""
     # echo "_CAFRegularComplete called with arguments:"
@@ -472,8 +474,8 @@ _CAFRegularComplete(){
 	prefixes="${command/%.py/}"
     fi
     
-    _CAFFindPossibleCompletions "$thisWord" "$thisDir" "$CAFAnalysisShare" "$option" "config/master/"
-    _CAFFilterFiles "$prefixes" ".cfg"
+    _CAFFindPossibleCompletions "$thisWord" "$thisDir" "$CAFAnalysisShare" "$option" "$immediateCompleteStr"
+    _CAFFilterFiles "$prefixes" "$extensions"
     _CAFSetNoSpaceOpt
     _CAFRemoveTrailingSlash
 
@@ -599,7 +601,7 @@ _CAFAutoComplete(){
     local statusCode=$?
 
     if [ $statusCode -eq 0 ] ; then
-	_CAFRegularComplete "$command" "$thisWord" "$previousWord" "$thisDir" "./" "0"
+	_CAFRegularComplete "$command" "$thisWord" "$previousWord" "$thisDir" "./" "0" "" ""
 	return 0
     fi
 
@@ -618,8 +620,15 @@ _CAFAutoComplete(){
 	    option=$(($option-2))
 	fi
 	_CAFBasicComplete "$command" "$thisWord" "$previousWord" "$thisDir" "$CAFAnalysisShare" "$option"
+    elif [ $command == "statistics.py" ] ; then
+	local re='^[23]$'
+	if [[ "$option" =~ $re ]] ; then
+	    # don't require the filename to match the script name
+	    option=$(($option-2))
+	fi
+	_CAFRegularComplete "$command" "$thisWord" "$previousWord" "$thisDir" "$CAFAnalysisShare" "$option" "config/statistics/" ".txt"
     else
-	_CAFRegularComplete "$command" "$thisWord" "$previousWord" "$thisDir" "$CAFAnalysisShare" "$option"
+	_CAFRegularComplete "$command" "$thisWord" "$previousWord" "$thisDir" "$CAFAnalysisShare" "$option" "config/master/" ".cfg"
     fi
     return 0
 }

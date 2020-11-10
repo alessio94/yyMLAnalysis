@@ -6,13 +6,24 @@
 #include "xAODParticleEvent/CompositeParticleContainer.h"
 
 // which lepton to check and what to check for
-enum HWWLepIDModeOfRunning{
+enum HWWLepIDModeOfRunning {
   LeadLepID,
   SubleadLepID,
+  ThirdLepID,
+  FourthLepID,
   OtherLepID,
   LeadLepAntiID,
   SubleadLepAntiID,
+  ThirdLepAntiID,
+  FourthLepAntiID,
   OtherLepAntiID
+};
+
+// type of analysis being performed
+enum HWWAnalysisType {
+  TwoLep,
+  WH,
+  ZH
 };
 
 class HWWLeptonIDObservable : public TQEventObservable {
@@ -25,9 +36,13 @@ private:
   /** mode of running, which lepton to check on **/
   HWWLepIDModeOfRunning fHWWLepIDModeOfRunning;
 
-  const unsigned int fIndexLeading;
-  const unsigned int fIndexSubleading;
-  const unsigned int fIndexOtherLepton;
+  HWWAnalysisType fHWWAnalysisType;
+
+  const unsigned int fIndexLeadLep;
+  const unsigned int fIndexSubleadLep;
+  const unsigned int fIndexThirdLep;
+  const unsigned int fIndexFourthLep;
+  const unsigned int fIndexOtherLep;
 
 protected:
   // put here data members you wish to retrieve
@@ -54,9 +69,9 @@ public:
   // copy constructor
   HWWLeptonIDObservable(const HWWLeptonIDObservable& obs);
   // nominal constructor
-  HWWLeptonIDObservable(const TString& name, const HWW::HWWLeptonIDHelper* lepIDHelper, const int mode_of_running,
+  HWWLeptonIDObservable(const TString& name, const HWW::HWWLeptonIDHelper* lepIDHelper, const int mode_of_running, const int analysis_type,
                           const unsigned int indexLeadLep = 0, const unsigned int indexSubleadLep = 1,
-                           const unsigned int indexOtherLepton = 0);
+                           const unsigned int indexThirdLep = 2, const unsigned int indexFourthLep = 3, const unsigned int indexOtherLep = 0);
   virtual ~HWWLeptonIDObservable();
   ClassDefOverride(HWWLeptonIDObservable, 1);
 

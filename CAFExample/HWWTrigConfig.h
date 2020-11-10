@@ -13,7 +13,7 @@
      for HWW triggers, like trigger names and corresponding data periods.
      An object of this class can then be bassed to constructors
      of trigger-related observables, such that these settings can
-     easily be shared among observables. 
+     easily be shared among observables.
      ***/
 
 class HWWTrigConfig  {
@@ -53,58 +53,44 @@ public:
 
   void setRunNumbers(unsigned int low, unsigned int up) { runNumberLow = low; runNumberUp = up; }
 
-  // set trigger lists
+  // set trigger
   // data
-  void setTriggersSingleEl_Data(std::vector<TString>& triggers, double ptcut = 0.) {
-    for (auto& trigname : triggers) trigSingleEl_Data.push_back(trigname);
-    ptcut_singleel = ptcut;
-  }
-  void setTriggersSingleMu_Data(std::vector<TString>& triggers, double ptcut = 0.) { 
-    for (auto& trigname : triggers) trigSingleMu_Data.push_back(trigname);
-    ptcut_singlemu = ptcut;
-  } //trigSingleMu_Data = triggers; }
-  void setTriggersDilep_Data(std::vector<TString>& triggers, double ptcut_ele = 0., double ptcut_mu = 0.)    { 
-    for (auto& trigname : triggers) trigDilep_Data.push_back(trigname);
-    m_useDilepTriggers = true;
-    ptcut_dilep_elleg = ptcut_ele;
-    ptcut_dilep_muleg = ptcut_mu;
-  }
-  
+  void setTriggersSingleEl_Data(const std::vector<TString>& triggers, double ptcut = 0.);
+  void setTriggersSingleMu_Data(const std::vector<TString>& triggers, double ptcut = 0.);
+  void setTriggersDilep_Data(const std::vector<TString>& triggers, double ptcut_ele = 0., double ptcut_mu = 0.);
+
   // mc
-  void setTriggersSingleEl_MC(std::vector<TString>& triggers, double ptcut = 0.) { 
-    for (auto& trigname : triggers) trigSingleEl_MC.push_back(trigname);
-    ptcut_singleel = ptcut;
-  }
-  void setTriggersSingleMu_MC(std::vector<TString>& triggers, double ptcut = 0.) { 
-    for (auto& trigname : triggers) trigSingleMu_MC.push_back(trigname);
-    ptcut_singlemu = ptcut;
-  }//trigSingleMu_MC = triggers; }
-  void setTriggersDilep_MC(std::vector<TString>& triggers, double ptcut_ele = 0., double ptcut_mu = 0.)    { 
-    for (auto& trigname : triggers) trigDilep_MC.push_back(trigname);
-    m_useDilepTriggers = true;
-    ptcut_dilep_elleg = ptcut_ele;
-    ptcut_dilep_muleg = ptcut_mu;
-  }
+  void setTriggersSingleEl_MC(const std::vector<TString>& triggers, double ptcut = 0.);
+  void setTriggersSingleMu_MC(const std::vector<TString>& triggers, double ptcut = 0.);
+  void setTriggersDilep_MC(const std::vector<TString>& triggers, double ptcut_ele = 0., double ptcut_mu = 0.);
 
   // set both MC and data (if MC and data triggers are the same)
-  void setTriggersSingleEl(std::vector<TString>& triggers, double ptcut = 0.) { 
-    for (auto& trigname : triggers) { trigSingleEl_Data.push_back(trigname); trigSingleEl_MC.push_back(trigname); }
-    ptcut_singleel = ptcut;
-  }
-  void setTriggersSingleMu(std::vector<TString>& triggers, double ptcut = 0.) { 
-    for (auto& trigname : triggers) { trigSingleMu_Data.push_back(trigname); trigSingleMu_MC.push_back(trigname); }
-    ptcut_singlemu = ptcut;
-  }
-  void setTriggersDilep(std::vector<TString>& triggers, double ptcut_ele = 0., double ptcut_mu = 0.)    { 
-    for (auto& trigname : triggers) { trigDilep_Data.push_back(trigname); trigDilep_MC.push_back(trigname); }
-    m_useDilepTriggers = true;
-    ptcut_dilep_elleg = ptcut_ele;
-    ptcut_dilep_muleg = ptcut_mu;
-  }
+  void setTriggersSingleEl(const std::vector<TString>& triggers, double ptcut = 0.);
+  void setTriggersSingleMu(const std::vector<TString>& triggers, double ptcut = 0.);
+  void setTriggersDilep(const std::vector<TString>& triggers, double ptcut_ele = 0., double ptcut_mu = 0.);
 
-  // debug fcn
-  // void dumpTriggers() const;
 
+  // set both MC and data (if MC and data triggers are the same)
+  void setTriggersSingleEl(double ptcut = 0.);
+  void setTriggersSingleMu(double ptcut = 0.);
+  void setTriggersDilep(double ptcut_ele = 0., double ptcut_mu = 0.);
+
+
+  // add trigger lists
+  // data
+  void addTriggerSingleEl_Data(const TString& trigger);
+  void addTriggerSingleMu_Data(const TString& trigger);
+  void addTriggerDilep_Data(const TString& trigger);
+
+  // mc
+  void addTriggerSingleEl_MC(const TString& trigger);
+  void addTriggerSingleMu_MC(const TString& trigger);
+  void addTriggerDilep_MC(const TString& trigger);
+
+  // add both MC and data (if MC and data triggers are the same)
+  void addTriggerSingleEl(const TString& trigger);
+  void addTriggerSingleMu(const TString& trigger);
+  void addTriggerDilep(const TString& trigger);
 
 };
 #endif

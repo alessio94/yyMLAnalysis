@@ -1,4 +1,4 @@
-This document is intended to provide hands-on instructions on how to write a custom observable for the [CAF tutorial](https://indico.cern.ch/event/719951/). General reading on observables can be found in the tutorial and also in the observable [README](https://gitlab.cern.ch/atlas-caf/CAFExample/blob/master/share/common/observables).
+This document is intended to provide hands-on instructions on how to write a custom observable for the [CAF tutorial](https://indico.cern.ch/event/875315/). General reading on observables can be found in the tutorial and also in the observable [README](https://gitlab.cern.ch/atlas-caf/CAFExample/blob/master/share/common/observables).
 
 Prerequesite for the tutorial is a working [CAF](https://gitlab.cern.ch/atlas-caf/CAFCore) installation. You can check this
 by running
@@ -19,10 +19,10 @@ There are four steps that need to be performed to introduce a new observable to 
 
 # Creating the MjjMaxObservable
 We want to create a new observable that calculates the invariant mass (called Mjj in the following) for every possible combination of two jets in an event and returns the maximum of those values. 
-The new observable class is to be implemented in the existing [xAOD Example analysis](https://gitlab.cern.ch/atlas-caf/CAFExample/tree/Tutorial/share/xAOD).
+The new observable class is to be implemented in the existing [xAOD Example analysis](https://gitlab.cern.ch/atlas-caf/CAFExample/tree/master/share/xAOD).
 
 ## The magic wizard.py script
-[CAFCore](https://gitlab.cern.ch/atlas-caf/CAFCore) provides the python script [wizard.py](https://gitlab.cern.ch/atlas-caf/CAFCore/blob/master/QFramework/share/TQObservable/wizard.py) helping you to create a source and header file for your new observable. Make sure you are setup (`source setup/setupAnalysis.sh`) and are in the main directory of the CAFExample repository (which you can ensure e.g. with `cd $CAFANALYSISBASE`). Then, you can call the script via
+[CAFCore](https://gitlab.cern.ch/atlas-caf/CAFCore) provides the python script [wizard.py](https://gitlab.cern.ch/atlas-caf/CAFCore/blob/master/QFramework/share/TQObservable/wizard.py) helping you to create a source and header file for your new observable. Make sure you are setup (`source build/setupAnalysis.sh`) and are in the main directory of the CAFExample repository (which you can ensure e.g. with `cd $CAFANALYSISBASE`). Then, you can call the script via
 ```bash
 ./CAFCore/QFramework/share/TQObservable/wizard.py
 ```
@@ -60,7 +60,6 @@ Let's have a look at `MjjMaxObservable.h` first. You should modify it such that 
 #ifndef __MJJMAXOBSERVABLE__
 #define __MJJMAXOBSERVABLE__
 #include "CAFxAODUtils/TQEventObservable.h"
-#include "xAODParticleEvent/CompositeParticleContainer.h"
 
 class MjjMaxObservable : public TQEventObservable {
 protected:
@@ -117,10 +116,17 @@ Now we have to implement the actual calculation of the desired quantity. This ha
   const double retval = MjjMax;
   return retval;
 ```
-After implementing the above (don't forget to make potential includes), the observable should be ready to be compiled. This can be done with `cafcompile`  which invokes an alias and automatically runs cmake and finds the new class.
+After implementing the above, the observable should be ready to be compiled - almost. We use a CompositeParticleContainer, but your c++ doesn't know what this is. So let's include the corresponding header file
+```
+#include "xAODParticleEvent/CompositeParticleContainer.h"
+```
+in the beginning of the file. Now, we are ready to execute `cafcompile`  which will automatically run cmake for you, find the new class and compile it.
 Once your class compiles fine along with the other observable classes we can move on to the next step.
 
-Remark: The line at the top of `MjjMaxObservable.cxx` saying `// #define _DEBUG__` can be uncommented to enable printouts from the DEBUGclass(...) function. This might be useful for initial tests and checks of the new observable.
+Two small remarks:
+
+*  The line at the top of `MjjMaxObservable.cxx` saying `// #define _DEBUG__` can be uncommented to enable printouts from the DEBUGclass(...) function. This might be useful for initial tests and checks of the new observable.
+*  CAF provides the small functions `cafcompile` and `cafbuild`. The latter only compiles your code with `make`, while the former calls `cmake` and then compiles. To see what exactly these functions do, type `type cafcompile` in your shell.
 
 ## Creating an observable snippet
 A small python snippet needs to be added for the new observable to the designated observable/ folder of the analysis.
@@ -128,13 +134,11 @@ In the xAOD Example analysis, the observable snippets are located [here](https:/
 The snippet will instantiate the observable class and adds it to the observable database. The python script should have the same name as the observable itself (in our case MjjMaxObservable.py) and can look like this:
 
 ```python
-from QFramework import *
-from ROOT import *
-
+from QFramework import TQObservable
 from CAFExample import MjjMaxObservable
 
 def addObservables():
-	
+
     obs = MjjMaxObservable("MjjMax")
     if not TQObservable.addObservable(obs, "MjjMax"):
         INFO("failed to add MjjMax Observable")
@@ -166,7 +170,7 @@ If the analysis is executed (you only have to perform the analyze step) and ever
 <!-- It is assumed that you have already learned how to run a complete analysis.-->
 You can check this by opening the respective sample folder with `tqroot -sfr sampleFolders/analyzed/samples-analyzed-xAOD-Example.root` and draw one of the histograms with
 ```
-r_samples->getHistogram("bkg/[ee+mm]/top/ttbar", "CutChannels/hist_MjjMax")->Draw("")
+r_samples->getHistogram("bkg/[ee+mm]/[c16a+c16d+c16e]/top/ttbar", "CutChannels/hist_MjjMax")->Draw("")
 ```
 If you see a reasonable distribution: Congratulations! You just successfully created your own observable.
 Now, you can do with it what ever you want (define cuts/cutflows, event lists, etc.) and/or create more awesome observable!

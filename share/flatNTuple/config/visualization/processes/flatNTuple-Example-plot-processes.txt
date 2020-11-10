@@ -7,4 +7,4 @@
 .path = "bkg/$(channel)/triboson",                     .name = "VVV",    .title = "$VVV$",       .isBackground = true, histFillColor = kGray, histLineColor = kBlack
 .path = "data/$(channel)",                             .name = "data",   .title = "Data",        .isData = true, histMarkerColor = kBlack, histMarkerSize = 1, histMarkerStyle = 20, histLineColor = kBlack, histLineWidth = 3
 #.path = "data/$(channel)-bkg/$(channel)/[Vgamma+diboson+top+triboson]", .name = "fakes", .title = "fakes", .isData = true, histMarkerColor=kBlue
-.path = "data/$(channel)-bkg/$(channel)/[Vgamma+diboson+top+triboson]",  .name = "fakes", .title = "fakes", .isData = false, .isSignal = true, stack=false, drawOptions = "ep", histMarkerColor = kBlue, histMarkerSize = 1, histMarkerStyle = 27, histLineColor = kBlue, histLineWidth = 3
+.path = "data/$(channel)-bkg/$(channel)/[Vgamma+diboson+top+triboson]",  .name = "fakes", .title = "fakes", .isData = false, .isSignal = true, stack=false, drawOptions = "ep", histMarkerColor = kBlue, histMarkerSize = 1, histMarkerStyle = 27, histLineColor = kBlue, histLineWidth = 3, histFillColor=kBlue

@@ -1,5 +1,9 @@
 SampleID , xsection , kfactor , filtereff , uncertainty , mh , generator , process , simulation
+# Units on xsection in this file are in nb, not the default pb!  You MUST specify this correctly in your analyze step.
 
+# This file contains a list of DSIDs and their cross section and serves as a comprehensive example.
+# If you happen to find a mistake in this file, please report it, because a version of this file
+# is used for the HWW analysis.
 
 ###################################################################################################################################################################
 ###################################################################################################################################################################
@@ -24,9 +28,9 @@ SampleID , xsection , kfactor , filtereff , uncertainty , mh , generator , proce
 
 ## ggf + 2 jets CP SM even, CP mixed, CP odd stat. extension
 
-345465, 0.000335, 1.0, 0.226101, --, 125,  MGaMcAtNlo+Pythia8+EvtGen, MGaMcAtNloPy8EG_A14_NNPDF23_ggFhwwlvlv_CP_EVEN, OFLCOND-RUN12-SDR-30
-345466, 0.000335, 1.0, 0.226101, --, 125,  MGaMcAtNlo+Pythia8+EvtGen, MGaMcAtNloPy8EG_A14_NNPDF23_ggFhwwlvlv_CP_ODD,  OFLCOND-RUN12-SDR-30
-345467, 0.000335, 1.0, 0.226101, --, 125,  MGaMcAtNlo+Pythia8+EvtGen, MGaMcAtNloPy8EG_A14_NNPDF23_ggFhwwlvlv_CP_MIX,  OFLCOND-RUN12-SDR-30
+345465, 0.000328, 1.0, 0.209442, --, 125,  MGaMcAtNlo+Pythia8+EvtGen, MGaMcAtNloPy8EG_A14_NNPDF23_ggFhwwlvlv_CP_EVEN, OFLCOND-RUN12-SDR-30
+345466, 0.000746, 1.0, 0.209897, --, 125,  MGaMcAtNlo+Pythia8+EvtGen, MGaMcAtNloPy8EG_A14_NNPDF23_ggFhwwlvlv_CP_ODD,  OFLCOND-RUN12-SDR-30
+345467, 0.000533, 1.0, 0.212564, --, 125,  MGaMcAtNlo+Pythia8+EvtGen, MGaMcAtNloPy8EG_A14_NNPDF23_ggFhwwlvlv_CP_MIX,  OFLCOND-RUN12-SDR-30
 
 ### ggF inclusive CP mixed
 344299, 0.0011020, 1.0, 42.0, --, 125, MadGraph+Pythia8+EvtGen, MadGraphPythia8EvtGen_A14NNPDF23_ggFHWWtoemuCPmixed,  OFLCOND-RUN12-SDR-30
@@ -38,11 +42,22 @@ SampleID , xsection , kfactor , filtereff , uncertainty , mh , generator , proce
 # SM VBF
 341080, 0.00008579, 1.0, 5.1025E-01, --, 125,  Powheg+Pythia8+EvtGen, PowhegPythia8EvtGen_CT10_AZNLOCTEQ6L1_VBFH125_WWlvlv_EF_15_5, OFLCOND-RUN12-SDR-30
 345323, 0.00008579, 1.0, 5.0998E-01, --, 125,  Powheg+Pythia8+EvtGen, PowhegPythia8EvtGen_CT10_AZNLOCTEQ6L1_VBFH125_WWlvlv_EF_15_5, OFLCOND-RUN12-SDR-30
+345948, 0.00008579, 1.0, 0.51037   , --, 125,  Powheg+Pythia8+EvtGen, PowhegPy8EG_NNPDF30_AZNLOCTEQ6L1_VBFH125_WWlvlv             , OFLCOND-MC16-SDR-20
 
 # SM H->tautau
-341122, 0.002764, 1.0, 1.2277E-01, --, 125,  Powheg+Pythia8+EvtGen, PowhegPythia8EvtGen_CT10_AZNLOCTEQ6L1_ggH125_tautaull,     OFLCOND-RUN12-SDR-30
-341155, 0.0002359, 1.0, 1.2271E-01, --, 125,  Powheg+Pythia8+EvtGen, PowhegPythia8EvtGen_CT10_AZNLOCTEQ6L1_VBFH125_tautaull,    OFLCOND-RUN12-SDR-30
-
+341122, 0.002764, 1.0, 1.2277E-01, --, 125,  Powheg+Pythia8+EvtGen, PowhegPythia8EvtGen_CT10_AZNLOCTEQ6L1_ggH125_tautaull         , OFLCOND-RUN12-SDR-30
+345120, 0.0030469, 1.0, 0.053756, --, 125, Powheg+Pythia8(v8.212)+EvtGen(v1.6.0), PowhegPy8EG_NNLOPS_nnlo_30_ggH125_tautaul13l7   , OFLCOND-MC16-SDR-16
+345121, 0.0030469, 2.0, 0.037749, --, 125, Powheg+Pythia8(v8.212)+EvtGen(v1.6.0), PowhegPy8EG_NNLOPS_nnlo_30_ggH125_tautaulm15hp20, OFLCOND-MC16-SDR-16
+345122, 0.0030469, 2.0, 0.037826, --, 125, Powheg+Pythia8(v8.212)+EvtGen(v1.6.0), PowhegPy8EG_NNLOPS_nnlo_30_ggH125_tautaulp15hm20, OFLCOND-MC16-SDR-16
+345123, 0.0030469, 1.0, 0.1889, --, 125, Powheg+Pythia8(v8.212)+EvtGen(v1.6.0), PowhegPy8EG_NNLOPS_nnlo_30_ggH125_tautauh30h20    , OFLCOND-MC16-SDR-16
+341155, 0.0002359, 1.0, 1.2271E-01, --, 125,   Powheg+Pythia8+EvtGen, PowhegPythia8EvtGen_CT10_AZNLOCTEQ6L1_VBFH125_tautaull       , OFLCOND-RUN12-SDR-30
+346190, 0.00023721, 1.0, 0.057926  , --, 125,  Powheg+Pythia8+EvtGen, PowhegPy8EG_NNPDF30_AZNLOCTEQ6L1_VBFH125_tautaul13l7        , OFLCOND-MC16-SDR-16
+346191, 0.00023721, 2.0, 0.040337  , --, 125,  Powheg+Pythia8+EvtGen, PowhegPy8EG_NNPDF30_AZNLOCTEQ6L1_VBFH125_tautaulm15hp20     , OFLCOND-MC16-SDR-16
+346192, 0.00023721, 2.0, 0.040323  , --, 125,  Powheg+Pythia8+EvtGen, PowhegPy8EG_NNPDF30_AZNLOCTEQ6L1_VBFH125_tautaulp15hm20     , OFLCOND-MC16-SDR-16
+346193, 0.00023721, 1.0, 0.19829   , --, 125,  Powheg+Pythia8+EvtGen, PowhegPy8EG_NNPDF30_AZNLOCTEQ6L1_VBFH125_tautauh30h20       , OFLCOND-MC16-SDR-16
+345211, 0.000033417, 1.0, 1.0, --, 125, Powheg+Pythia8(v8.212)+EvtGen(v1.6.0), PowhegPy8EG_NNPDF30_AZNLO_WmH125J_Winc_MINLO_tautau, OFLCOND-MC16-SDR-16
+345212, 0.000052685, 1.0, 1.0, --, 125, Powheg+Pythia8(v8.212)+EvtGen(v1.6.0), PowhegPy8EG_NNPDF30_AZNLO_WpH125J_Winc_MINLO_tautau, OFLCOND-MC16-SDR-16
+345217, 0.000055438, 1.0, 1.0, --, 125, Powheg+Pythia8(v8.212)+EvtGen(v1.6.0), PowhegPy8EG_NNPDF30_AZNLO_ZH125J_Zinc_MINLO_tautau , OFLCOND-MC16-SDR-16
 
 # EFT VBF+VH
 345270, 1.3923E-04, 1.0, 1.0E+00, --, 125,  Powheg+Pythia8+EvtGen, PowhegPythia8EvtGen_CT10_AZNLOCTEQ6L1_VBFH125_WWlvlv_EF_15_5, OFLCOND-RUN12-SDR-30
@@ -100,8 +115,15 @@ SampleID , xsection , kfactor , filtereff , uncertainty , mh , generator , proce
 341434, 5.316E-05, 1.0, 4.3909E-01, --, 125,  Powheg+Pythia8+EvtGen, PowhegPythia8EvtGen_CT10_AZNLO_WpH125J_MINLO_qqWWlvqq, OFLCOND-RUN12-SDR-30
 341435, 2.115E-06, 1.0, 1.0,        --, 125,  Powheg+Pythia8+EvtGen, PowhegPythia8EvtGen_CT10_AZNLO_WpH125J_MINLO_tauvtauWWlvlv, OFLCOND-RUN12-SDR-30
 341436, 8.824E-06, 1.0, 4.3823E-01, --, 125,  Powheg+Pythia8+EvtGen, PowhegPythia8EvtGen_CT10_AZNLO_WpH125J_MINLO_tauvtauWWlvqq, OFLCOND-RUN12-SDR-30
-345433, 8.080E-06, 1.0, 1.0,        --, 125, PowhegPythia8EvtGen, PowhegPythia8EvtGen_NNPDF3_AZNLO_WmH125J_MINLO_qqWWlvlv, DUMMY
-345325, 1.274E-05, 1.0, 1.0,        --, 125, PowhegPythia8EvtGen, PowhegPythia8EvtGen_NNPDF3_AZNLO_WpH125J_MINLO_qqWWlvlv, DUMMY
+# ==================================================================================================================================
+# 2019/09/23 -- MJB: the below Xsecs don't agree with the values I calculated, but I'll use the values I calculated for now
+# 345433, 8.080E-06, 1.0, 1.0,        --, 125, PowhegPythia8EvtGen, PowhegPythia8EvtGen_NNPDF3_AZNLO_WmH125J_MINLO_qqWWlvlv, DUMMY
+# 345325, 1.274E-05, 1.0, 1.0,        --, 125, PowhegPythia8EvtGen, PowhegPythia8EvtGen_NNPDF3_AZNLO_WpH125J_MINLO_qqWWlvlv, DUMMY
+345325, 1.9142050E-05, 1.0, 1.0, --, 125.09, Powheg+Pythia8(v8.212)+EvtGen(v1.2.0), PowhegPythia8EvtGen_NNPDF3_AZNLO_WpH125J_MINLO_qqWWlvlv, OFLCOND-MC16-SDR-16
+345433, 1.2136243E-05, 1.0, 1.0, --, 125.09, Powheg+Pythia8(v8.212)+EvtGen(v1.2.0), PowhegPythia8EvtGen_NNPDF3_AZNLO_WmH125J_MINLO_qqWWlvlv, OFLCOND-MC16-SDR-16
+346560, 2.5807312E-05, 1.0, 0.46314, --, 125.09, Powheg+Pythia8(v.235)+EvtGen(v.1.6.0), PowhegPythia8EvtGen_NNPDF3_AZNLO_WmH125J_MINLO_lvWWlvqq, OFLCOND-MC16-SDR-25
+346561, 1.6362082E-05, 1.0, 0.46338, --, 125.09, Powheg+Pythia8(v.235)+EvtGen(v.1.6.0), PowhegPythia8EvtGen_NNPDF3_AZNLO_WpH125J_MINLO_lvWWlvqq, OFLCOND-MC16-SDR-20
+# ==================================================================================================================================
 345326, 4.027E-06, 1.0, 1.0,        --, 125, PowhegPythia8EvtGen, PowhegPythia8EvtGen_NNPDF3_AZNLO_WmH125J_MINLO_lvWWlvlv, DUMMY
 345327, 6.344E-06, 1.0, 1.0,        --, 125, PowhegPythia8EvtGen, PowhegPythia8EvtGen_NNPDF3_AZNLO_WpH125J_MINLO_lvWWlvlv, DUMMY
 
@@ -119,9 +141,14 @@ SampleID , xsection , kfactor , filtereff , uncertainty , mh , generator , proce
 341459, 1.144E-06, 1.0, 1.0,        --, 125,  PowhegPythia8EG, PowhegPy8EG_CT10_AZNLO_ZH125J_MINLO_vtauvtauWWlvlv_VpT, OFLCOND-RUN12-SDR-30
 341460, 4.775E-06, 1.0, 0.43441,    --, 125,  PowhegPythia8EG, PowhegPy8EG_CT10_AZNLO_ZH125J_MINLO_vtauvtauWWlvqq_VpT, OFLCOND-RUN12-SDR-30
 341461, 1.192E-05, 1.0, 1.0,        --, 125,  PowhegPythia8EvtGen, PowhegPythia8EvtGen_CT10_AZNLO_ZH125J_MINLO_qqWWlvlv_VpT, OFLCOND-RUN12-SDR-30
-345336, 1.192E-05, 1.0, 1.0,        --, 125, PowhegPythia8EvtGen, PowhegPythia8EvtGen_NNPDF3_AZNLO_ZH125J_MINLO_qqWWlvlv, DUMMY
+# ==================================================================================================================================
+# 2019/09/23 -- MJB: the below Xsec doesn't agree with the value I calculated, but I'll use the value I calculated for now
+# 345336, 1.192E-05, 1.0, 1.0,        --, 125, PowhegPythia8EvtGen, PowhegPythia8EvtGen_NNPDF3_AZNLO_ZH125J_MINLO_qqWWlvlv, DUMMY
+345336, 1.7353479E-05, 1.0, 1.0, --, 125.09, Powheg+Pythia8(v8.212)+EvtGen(v1.2.0), PowhegPythia8EvtGen_NNPDF3_AZNLO_ZH125J_MINLO_qqWWlvlv, OFLCOND-MC16-SDR-16
+# ==================================================================================================================================
 345337, 1.728E-06, 1.0, 1.0,        --, 125, PowhegPythia8EvtGen, PowhegPythia8EvtGen_NNPDF3_AZNLO_ZH125J_MINLO_llWWlvlv, DUMMY
 345445, 3.433E-06, 1.0, 1.0,        --, 125, PowhegPythia8EvtGen, PowhegPythia8EvtGen_NNPDF3_AZNLO_ZH125J_MINLO_vvWWlvlv, DUMMY
+345671, 1.728E-06,  1.0, 1.0,     --, 125, PowhegHerwig7EvtGen, PowhegHerwig7EvtGen_NNPDF3_AZNLO_ZH125J_MINLO_llWWlvlv_VpT, DUMMY
 
 # SM gg->ZH
 # FilterEff values for all but 344387 are placeholders (copied from qq->ZH values above)
@@ -138,6 +165,10 @@ SampleID , xsection , kfactor , filtereff , uncertainty , mh , generator , proce
 344386, 1.837E-07, 1.0, 1.0,        --, 125, PowhegPythia8EvtGen, PowhegPythia8EvtGen_CT10_AZNLO_ggZH125_vtauvtauWWlvlv, OFLCOND-RUN12-SDR-30
 344387, 7.667E-07, 1.0, 0.43977,    --, 125, PowhegPythia8EvtGen, PowhegPythia8EvtGen_CT10_AZNLO_ggZH125_vtauvtauWWlvqq, OFLCOND-RUN12-SDR-30
 345446, 2.786E-07, 1.0, 1.0,        --, 125, PowhegPythia8EvtGen, PowhegPythia8EvtGen_NNPDF3_AZNLO_ggZH125J_MINLO_llWWlvlv, DUMMY
+# ==================================================================================================================================
+# 2019/09/23 -- MJB: new ggZH sample
+346524, 2.802780E-06, 1.0, 1.0, --, 125.09, Powheg+Pythia8(v.235)+EvtGen(v.1.6.0), PowhegPythia8EvtGen_NNPDF3_AZNLO_ggZH125J_MINLO_ZinclWWlvlv, OFLCOND-MC16-SDR-16
+# ==================================================================================================================================
 
 ### SM WH tautau
 342684, 3.753E-06, 1.0, 6.0602E-01, --, 125,  PowhegPythia8EvtGen, PowhegPythia8EvtGen_CT10_AZNLO_WmH125J_MINLO_evtautau, OFLCOND-RUN12-SDR-30
@@ -148,48 +179,25 @@ SampleID , xsection , kfactor , filtereff , uncertainty , mh , generator , proce
 343323, 5.821E-05, 1.0, 5.5964E-01, --, 125,  Pythia8EvtGen, Pythia8EvtGen_A14NNPDF23LO_WqqH125_tautauIncl, OFLCOND-RUN12-SDR-30
 
 # NWA ggf
-341006, 1.04976E-04, 1.0000E+00, 5.6403E-01, --, 200,  Powheg+Pythia8+EvtGen, PowhegPythia8EvtGen_CT10_AZNLOCTEQ6L1_ggH200NWA_WWlvlv_15_5,  OFLCOND-RUN12-SDR-30
-341007, 1.04976E-04, 1.0000E+00, 5.8045E-01, --, 300,  Powheg+Pythia8+EvtGen, PowhegPythia8EvtGen_CT10_AZNLOCTEQ6L1_ggH300NWA_WWlvlv_15_5,  OFLCOND-RUN12-SDR-30
-341008, 1.04976E-04, 1.0000E+00, 5.9250E-01, --, 400,  Powheg+Pythia8+EvtGen, PowhegPythia8EvtGen_CT10_AZNLOCTEQ6L1_ggH400NWA_WWlvlv_15_5,  OFLCOND-RUN12-SDR-30
-341009, 1.04976E-04, 1.0000E+00, 5.9930E-01, --, 500,  Powheg+Pythia8+EvtGen, PowhegPythia8EvtGen_CT10_AZNLOCTEQ6L1_ggH500NWA_WWlvlv_15_5,  OFLCOND-RUN12-SDR-30
-341010, 1.04976E-04, 1.0000E+00, 6.0582E-01, --, 600,  Powheg+Pythia8+EvtGen, PowhegPythia8EvtGen_CT10_AZNLOCTEQ6L1_ggH600NWA_WWlvlv_15_5,  OFLCOND-RUN12-SDR-30
-341011, 1.04976E-04, 1.0000E+00, 6.0824E-01, --, 700,  Powheg+Pythia8+EvtGen, PowhegPythia8EvtGen_CT10_AZNLOCTEQ6L1_ggH700NWA_WWlvlv_15_5,  OFLCOND-RUN12-SDR-30
-343465, 1.04976E-04, 1.0000E+00, 6.1000E-01, --, 750,  Powheg+Pythia8+EvtGen, PowhegPythia8EvtGen_CT10_AZNLOCTEQ6L1_ggH750NWA_WWlvlv_15_5,  OFLCOND-RUN12-SDR-31
-341012, 1.04976E-04, 1.0000E+00, 6.1071E-01, --, 800,  Powheg+Pythia8+EvtGen, PowhegPythia8EvtGen_CT10_AZNLOCTEQ6L1_ggH800NWA_WWlvlv_15_5,  OFLCOND-RUN12-SDR-30
-341013, 1.04976E-04, 1.0000E+00, 6.1221E-01, --, 900,  Powheg+Pythia8+EvtGen, PowhegPythia8EvtGen_CT10_AZNLOCTEQ6L1_ggH900NWA_WWlvlv_15_5,  OFLCOND-RUN12-SDR-30
-341014, 1.04976E-04, 1.0000E+00, 6.1489E-01, --, 1000, Powheg+Pythia8+EvtGen, PowhegPythia8EvtGen_CT10_AZNLOCTEQ6L1_ggH1000NWA_WWlvlv_15_5, OFLCOND-RUN12-SDR-30
-343373, 1.04976E-04, 1.0000E+00, 6.1690E-01, --, 1200, Powheg+Pythia8+EvtGen, PowhegPythia8EvtGen_CT10_AZNLOCTEQ6L1_ggH1200NWA_WWlvlv_15_5, OFLCOND-RUN12-SDR-31
-341015, 1.04976E-04, 1.0000E+00, 6.1831E-01, --, 1400, Powheg+Pythia8+EvtGen, PowhegPythia8EvtGen_CT10_AZNLOCTEQ6L1_ggH1400NWA_WWlvlv_15_5, OFLCOND-RUN12-SDR-30
-343374, 1.04976E-04, 1.0000E+00, 6.2180E-01, --, 1600, Powheg+Pythia8+EvtGen, PowhegPythia8EvtGen_CT10_AZNLOCTEQ6L1_ggH1600NWA_WWlvlv_15_5, OFLCOND-RUN12-SDR-31
-341016, 1.04976E-04, 1.0000E+00, 6.2408E-01, --, 1800, Powheg+Pythia8+EvtGen, PowhegPythia8EvtGen_CT10_AZNLOCTEQ6L1_ggH1800NWA_WWlvlv_15_5, OFLCOND-RUN12-SDR-30
-343375, 1.04976E-04, 1.0000E+00, 6.2630E-01, --, 2000, Powheg+Pythia8+EvtGen, PowhegPythia8EvtGen_CT10_AZNLOCTEQ6L1_ggH2000NWA_WWlvlv_15_5, OFLCOND-RUN12-SDR-31
-341017, 1.04976E-04, 1.0000E+00, 6.2537E-01, --, 2200, Powheg+Pythia8+EvtGen, PowhegPythia8EvtGen_CT10_AZNLOCTEQ6L1_ggH2200NWA_WWlvlv_15_5, OFLCOND-RUN12-SDR-30
-343376, 1.04976E-04, 1.0000E+00, 6.2840E-01, --, 2400, Powheg+Pythia8+EvtGen, PowhegPythia8EvtGen_CT10_AZNLOCTEQ6L1_ggH2400NWA_WWlvlv_15_5, OFLCOND-RUN12-SDR-31
-341018, 1.04976E-04, 1.0000E+00, 6.3151E-01, --, 2600, Powheg+Pythia8+EvtGen, PowhegPythia8EvtGen_CT10_AZNLOCTEQ6L1_ggH2600NWA_WWlvlv_15_5, OFLCOND-RUN12-SDR-30
-343377, 1.04976E-04, 1.0000E+00, 6.2940E-01, --, 2800, Powheg+Pythia8+EvtGen, PowhegPythia8EvtGen_CT10_AZNLOCTEQ6L1_ggH2800NWA_WWlvlv_15_5, OFLCOND-RUN12-SDR-31
-341019, 1.04976E-04, 1.0000E+00, 6.3030E-01, --, 3000, Powheg+Pythia8+EvtGen, PowhegPythia8EvtGen_CT10_AZNLOCTEQ6L1_ggH3000NWA_WWlvlv_15_5, OFLCOND-RUN12-SDR-30
-
+341008, 9.2401E-05, 1.0, 0.59128, --, 400, Powheg+Pythia8(v8.186)+EvtGen(v1.2.0), PowhegPythia8EvtGen_CT10_AZNLOCTEQ6L1_ggH400NWA_WWlvlv_15_5, OFLCOND-MC16-SDR-16
+341010, 2.1897E-05, 1.0, 0.60313, --, 600, Powheg+Pythia8(v8.186)+EvtGen(v1.2.0), PowhegPythia8EvtGen_CT10_AZNLOCTEQ6L1_ggH600NWA_WWlvlv_15_5, OFLCOND-MC16-SDR-16
+341012, 1.4937E-05, 1.0, 0.60976, --, 800, Powheg+Pythia8(v8.186)+EvtGen(v1.2.0), PowhegPythia8EvtGen_CT10_AZNLOCTEQ6L1_ggH800NWA_WWlvlv_15_5, OFLCOND-MC16-SDR-16
+341014, 8.8812E-06, 1.0, 0.61533, --, 1000, Powheg+Pythia8(v8.186)+EvtGen(v1.2.0), PowhegPythia8EvtGen_CT10_AZNLOCTEQ6L1_ggH1000NWA_WWlvlv_15_5, OFLCOND-MC16-SDR-16
+341015, 5.1310E-06, 1.0, 0.62127, --, 1400, Powheg+Pythia8(v8.186)+EvtGen(v1.2.0), PowhegPythia8EvtGen_CT10_AZNLOCTEQ6L1_ggH1400NWA_WWlvlv_15_5, OFLCOND-MC16-SDR-16
+341016, 2.8450E-06, 1.0, 0.62427, --, 1800, Powheg+Pythia8(v8.186)+EvtGen(v1.2.0), PowhegPythia8EvtGen_CT10_AZNLOCTEQ6L1_ggH1800NWA_WWlvlv_15_5, OFLCOND-MC16-SDR-16
+341017, 2.1060E-06, 1.0, 0.62709, --, 2200, Powheg+Pythia8(v8.186)+EvtGen(v1.2.0), PowhegPythia8EvtGen_CT10_AZNLOCTEQ6L1_ggH2200NWA_WWlvlv_15_5, OFLCOND-MC16-SDR-16
+341018, 1.2307E-06, 1.0, 0.62907, --, 2600, Powheg+Pythia8(v8.186)+EvtGen(v1.2.0), PowhegPythia8EvtGen_CT10_AZNLOCTEQ6L1_ggH2600NWA_WWlvlv_15_5, OFLCOND-MC16-SDR-16
+341019, 8.6544E-07, 1.0, 0.63145, --, 3000, Powheg+Pythia8(v8.186)+EvtGen(v1.2.0), PowhegPythia8EvtGen_CT10_AZNLOCTEQ6L1_ggH3000NWA_WWlvlv_15_5, OFLCOND-MC16-SDR-1
 # NWA VBF
-341021, 1.04976E-04, 1.0000E+00, 5.7896E-01, --, 200,  Powheg+Pythia8+EvtGen, PowhegPythia8EvtGen_CT10_AZNLOCTEQ6L1_VBF200NWA_WWlvlv_15_5,  OFLCOND-RUN12-SDR-30
-341022, 1.04976E-04, 1.0000E+00, 5.8777E-01, --, 300,  Powheg+Pythia8+EvtGen, PowhegPythia8EvtGen_CT10_AZNLOCTEQ6L1_VBF300NWA_WWlvlv_15_5,  OFLCOND-RUN12-SDR-30
-341023, 1.04976E-04, 1.0000E+00, 5.9817E-01, --, 400,  Powheg+Pythia8+EvtGen, PowhegPythia8EvtGen_CT10_AZNLOCTEQ6L1_VBF400NWA_WWlvlv_15_5,  OFLCOND-RUN12-SDR-30
-341024, 1.04976E-04, 1.0000E+00, 6.0418E-01, --, 500,  Powheg+Pythia8+EvtGen, PowhegPythia8EvtGen_CT10_AZNLOCTEQ6L1_VBF500NWA_WWlvlv_15_5,  OFLCOND-RUN12-SDR-30
-341025, 1.04976E-04, 1.0000E+00, 6.0376E-01, --, 600,  Powheg+Pythia8+EvtGen, PowhegPythia8EvtGen_CT10_AZNLOCTEQ6L1_VBF600NWA_WWlvlv_15_5,  OFLCOND-RUN12-SDR-30
-341026, 1.04976E-04, 1.0000E+00, 6.0835E-01, --, 700,  Powheg+Pythia8+EvtGen, PowhegPythia8EvtGen_CT10_AZNLOCTEQ6L1_VBF700NWA_WWlvlv_15_5,  OFLCOND-RUN12-SDR-30
-343466, 1.04976E-04, 1.0000E+00, 6.0570E-01, --, 750,  Powheg+Pythia8+EvtGen, PowhegPythia8EvtGen_CT10_AZNLOCTEQ6L1_VBF750NWA_WWlvlv_15_5,  OFLCOND-RUN12-SDR-31
-341027, 1.04976E-04, 1.0000E+00, 6.1368E-01, --, 800,  Powheg+Pythia8+EvtGen, PowhegPythia8EvtGen_CT10_AZNLOCTEQ6L1_VBF800NWA_WWlvlv_15_5,  OFLCOND-RUN12-SDR-30
-341028, 1.04976E-04, 1.0000E+00, 6.1477E-01, --, 900,  Powheg+Pythia8+EvtGen, PowhegPythia8EvtGen_CT10_AZNLOCTEQ6L1_VBF900NWA_WWlvlv_15_5,  OFLCOND-RUN12-SDR-30
-341029, 1.04976E-04, 1.0000E+00, 6.1558E-01, --, 1000, Powheg+Pythia8+EvtGen, PowhegPythia8EvtGen_CT10_AZNLOCTEQ6L1_VBF1000NWA_WWlvlv_15_5, OFLCOND-RUN12-SDR-30
-343368, 1.04976E-04, 1.0000E+00, 6.1510E-01, --, 1200, Powheg+Pythia8+EvtGen, PowhegPythia8EvtGen_CT10_AZNLOCTEQ6L1_VBF1200NWA_WWlvlv_15_5, OFLCOND-RUN12-SDR-31
-341030, 1.04976E-04, 1.0000E+00, 6.1409E-01, --, 1400, Powheg+Pythia8+EvtGen, PowhegPythia8EvtGen_CT10_AZNLOCTEQ6L1_VBF1400NWA_WWlvlv_15_5, OFLCOND-RUN12-SDR-30
-343369, 1.04976E-04, 1.0000E+00, 6.1720E-01, --, 1600, Powheg+Pythia8+EvtGen, PowhegPythia8EvtGen_CT10_AZNLOCTEQ6L1_VBF1600NWA_WWlvlv_15_5, OFLCOND-RUN12-SDR-31
-341031, 1.04976E-04, 1.0000E+00, 6.1853E-01, --, 1800, Powheg+Pythia8+EvtGen, PowhegPythia8EvtGen_CT10_AZNLOCTEQ6L1_VBF1800NWA_WWlvlv_15_5, OFLCOND-RUN12-SDR-30
-343370, 1.04976E-04, 1.0000E+00, 6.1610E-01, --, 2000, Powheg+Pythia8+EvtGen, PowhegPythia8EvtGen_CT10_AZNLOCTEQ6L1_VBF2000NWA_WWlvlv_15_5, OFLCOND-RUN12-SDR-31
-341032, 1.04976E-04, 1.0000E+00, 6.1851E-01, --, 2200, Powheg+Pythia8+EvtGen, PowhegPythia8EvtGen_CT10_AZNLOCTEQ6L1_VBF2200NWA_WWlvlv_15_5, OFLCOND-RUN12-SDR-30
-343371, 1.04976E-04, 1.0000E+00, 6.1530E-01, --, 2400, Powheg+Pythia8+EvtGen, PowhegPythia8EvtGen_CT10_AZNLOCTEQ6L1_VBF2400NWA_WWlvlv_15_5, OFLCOND-RUN12-SDR-31
-341033, 1.04976E-04, 1.0000E+00, 6.1895E-01, --, 2600, Powheg+Pythia8+EvtGen, PowhegPythia8EvtGen_CT10_AZNLOCTEQ6L1_VBF2600NWA_WWlvlv_15_5, OFLCOND-RUN12-SDR-30
-343372, 1.04976E-04, 1.0000E+00, 6.1860E-01, --, 2800, Powheg+Pythia8+EvtGen, PowhegPythia8EvtGen_CT10_AZNLOCTEQ6L1_VBF2800NWA_WWlvlv_15_5, OFLCOND-RUN12-SDR-31
-341034, 1.04976E-04, 1.0000E+00, 6.2160E-01, --, 3000, Powheg+Pythia8+EvtGen, PowhegPythia8EvtGen_CT10_AZNLOCTEQ6L1_VBF3000NWA_WWlvlv_15_5, OFLCOND-RUN12-SDR-30
+341023, 3.2023E-05, 1.0, 0.59729, --, 400, Powheg(v1_r2856)+Pythia8(v8.186)+EvtGen(v1.2.0), PowhegPythia8EvtGen_CT10_AZNLOCTEQ6L1_VBF400NWA_WWlvlv_15_5, OFLCOND-MC16-SDR-16
+341025, 1.2015E-05, 1.0, 0.60642, --, 600, Powheg(v1_r2856)+Pythia8(v8.186)+EvtGen(v1.2.0), PowhegPythia8EvtGen_CT10_AZNLOCTEQ6L1_VBF600NWA_WWlvlv_15_5, OFLCOND-MC16-SDR-16
+341027, 4.6064E-06, 1.0, 0.61294, --, 800, Powheg(v1_r2856)+Pythia8(v8.186)+EvtGen(v1.2.0), PowhegPythia8EvtGen_CT10_AZNLOCTEQ6L1_VBF800NWA_WWlvlv_15_5, OFLCOND-MC16-SDR-16
+341029, 2.5925E-06, 1.0, 0.61481, --, 1000, Powheg(v1_r2856)+Pythia8(v8.186)+EvtGen(v1.2.0), PowhegPythia8EvtGen_CT10_AZNLOCTEQ6L1_VBF1000NWA_WWlvlv_15_5, OFLCOND-MC16-SDR-16
+341030, 1.3307E-06, 1.0, 0.616, --, 1400, Powheg(v1_r2856)+Pythia8(v8.186)+EvtGen(v1.2.0), PowhegPythia8EvtGen_CT10_AZNLOCTEQ6L1_VBF1400NWA_WWlvlv_15_5, OFLCOND-MC16-SDR-16
+341031, 7.3743E-07, 1.0, 0.61754, --, 1800, Powheg(v1_r2856)+Pythia8(v8.186)+EvtGen(v1.2.0), PowhegPythia8EvtGen_CT10_AZNLOCTEQ6L1_VBF1800NWA_WWlvlv_15_5, OFLCOND-MC16-SDR-16
+341032, 6.6083E-07, 1.0, 0.62022, --, 2200, Powheg(v1_r2856)+Pythia8(v8.186)+EvtGen(v1.2.0), PowhegPythia8EvtGen_CT10_AZNLOCTEQ6L1_VBF2200NWA_WWlvlv_15_5, OFLCOND-MC16-SDR-16
+341033, 5.1510E-07, 1.0, 0.61884, --, 2600, Powheg(v1_r2856)+Pythia8(v8.186)+EvtGen(v1.2.0), PowhegPythia8EvtGen_CT10_AZNLOCTEQ6L1_VBF2600NWA_WWlvlv_15_5, OFLCOND-MC16-SDR-16
+341034, 4.7708E-07, 1.0, 0.62047, --, 3000, Powheg(v1_r2856)+Pythia8(v8.186)+EvtGen(v1.2.0), PowhegPythia8EvtGen_CT10_AZNLOCTEQ6L1_VBF3000NWA_WWlvlv_15_5, OFLCOND-MC16-SDR-16
 
 # Extended
 
@@ -431,6 +439,25 @@ SampleID , xsection , kfactor , filtereff , uncertainty , mh , generator , proce
 308008, 1.04976E-04, 1, 1 --, 900, VBFNLO+Pythia8+EvtGen, VBFNLOPy8EG_NNPDF30LO_A14NNPDF23LO_Spin2VBFWWlvlvm900, OFLCOND-MC15c-SDR-09
 308009, 1.04976E-04, 1, 1 --, 1000, VBFNLO+Pythia8+EvtGen, VBFNLOPy8EG_NNPDF30LO_A14NNPDF23LO_Spin2VBFWWlvlvm1000, OFLCOND-MC15c-SDR-09
 
+# Radion
+
+310135, 3.595e-13, 1.0, 1, --, 300, EvtGen(v1.6.0), MGPy8EG_A14N23LO_GGF_radion_WW_lvlv_kl35L3_m0300, OFLCOND-MC16-SDR-16
+310136, 2.771e-14, 1.0, 1, --, 700, EvtGen(v1.6.0), MGPy8EG_A14N23LO_GGF_radion_WW_lvlv_kl35L3_m0700, OFLCOND-MC16-SDR-16
+310137, 8.729e-15, 1.0, 1, --, 1000, EvtGen(v1.6.0), MGPy8EG_A14N23LO_GGF_radion_WW_lvlv_kl35L3_m1000, OFLCOND-MC16-SDR-16
+310138, 5.66e-16, 1.0, 1, --, 2000, EvtGen(v1.6.0), MGPy8EG_A14N23LO_GGF_radion_WW_lvlv_kl35L3_m2000, OFLCOND-MC16-SDR-16
+310139, 6.043e-17, 1.0, 1, --, 3000, EvtGen(v1.6.0), MGPy8EG_A14N23LO_GGF_radion_WW_lvlv_kl35L3_m3000, OFLCOND-MC16-SDR-16
+310140, 7.846e-18, 1.0, 1, --, 4000, EvtGen(v1.6.0), MGPy8EG_A14N23LO_GGF_radion_WW_lvlv_kl35L3_m4000, OFLCOND-MC16-SDR-16
+310141, 1.089e-18, 1.0, 1, --, 5000, EvtGen(v1.6.0), MGPy8EG_A14N23LO_GGF_radion_WW_lvlv_kl35L3_m5000, OFLCOND-MC16-SDR-16
+310142, 2.315e-19, 1.0, 1, --, 6000, EvtGen(v1.6.0), MGPy8EG_A14N23LO_GGF_radion_WW_lvlv_kl35L3_m6000, OFLCOND-MC16-SDR-16
+310143, 4.594e-24, 1.0, 1, --, 300, EvtGen(v1.6.0), MGPy8EG_A14N23LO_VBF_radion_WW_lvlv_kl35L3_m0300, OFLCOND-MC16-SDR-16
+310144, 6.921e-25, 1.0, 1, --, 700, EvtGen(v1.6.0), MGPy8EG_A14N23LO_VBF_radion_WW_lvlv_kl35L3_m0700, OFLCOND-MC16-SDR-16
+310145, 2.74e-25, 1.0, 1, --, 1000, EvtGen(v1.6.0), MGPy8EG_A14N23LO_VBF_radion_WW_lvlv_kl35L3_m1000, OFLCOND-MC16-SDR-16
+310146, 2.467e-26, 1.0, 1, --, 2000, EvtGen(v1.6.0), MGPy8EG_A14N23LO_VBF_radion_WW_lvlv_kl35L3_m2000, OFLCOND-MC16-SDR-16
+310147, 2.922e-27, 1.0, 1, --, 3000, EvtGen(v1.6.0), MGPy8EG_A14N23LO_VBF_radion_WW_lvlv_kl35L3_m3000, OFLCOND-MC16-SDR-16
+310148, 4.02e-28, 1.0, 1, --, 4000, EvtGen(v1.6.0), MGPy8EG_A14N23LO_VBF_radion_WW_lvlv_kl35L3_m4000, OFLCOND-MC16-SDR-16
+310149, 5.8e-29, 1.0, 1, --, 5000, EvtGen(v1.6.0), MGPy8EG_A14N23LO_VBF_radion_WW_lvlv_kl35L3_m5000, OFLCOND-MC16-SDR-16
+310150, 1.2e-29, 1.0, 1, --, 6000, EvtGen(v1.6.0), MGPy8EG_A14N23LO_VBF_radion_WW_lvlv_kl35L3_m6000, OFLCOND-MC16-SDR-16
+
 # ttH
 342299, 5.085E-04, 1, 1 --, 125, aMcAtNlo+Herwigpp+EvtGen, aMcAtNloHerwigppEvtGen_UEEE5_CTEQ6L1_CT10ME_ttH125_inc, DUMMY
 343365, 5.343E-05, 1, 1 --, 125, aMcAtNlo+Pythia8+EvtGen, aMcAtNloPythia8EvtGen_A14_NNPDF23_NNPDF30ME_ttH125_dilep, DUMMY
@@ -456,18 +483,18 @@ SampleID , xsection , kfactor , filtereff , uncertainty , mh , generator , proce
 
 
 ## Diboson Powheg ##
-361600, 1.0631E-02, 1.1150E+00, 1.0000E+00, --, 125, Powheg+Pythia8+EvtGen, PowhegPy8EG_CT10nloME_AZNLOCTEQ6L1_WWlvlv, OFLCOND-RUN12-SDR-31
-361601, 4.4625E-03, 1.0000E+00, 1.0000E+00, --, 125, Powheg+Pythia8+EvtGen, PowhegPy8EG_CT10nloME_AZNLOCTEQ6L1_WZlvll_mll4, OFLCOND-RUN12-SDR-31
-361602, 2.7778E-03, 1.0000E+00, 1.0000E+00, --, 125, Powheg+Pythia8+EvtGen, PowhegPy8EG_CT10nloME_AZNLOCTEQ6L1_WZlvvv_mll4, OFLCOND-RUN12-SDR-31
-361603, 1.2568E-03, 1.0000E+00, 1.0000E+00, --, 125, Powheg+Pythia8+EvtGen, PowhegPy8EG_CT10nloME_AZNLOCTEQ6L1_ZZllll_mll4, OFLCOND-RUN12-SDR-31
-361604, 9.2498E-04, 1.0000E+00, 1.0000E+00, --, 125, Powheg+Pythia8+EvtGen, PowhegPy8EG_CT10nloME_AZNLOCTEQ6L1_ZZvvll_mll4, OFLCOND-RUN12-SDR-31
-361605, 5.4901E-04, 1.0000E+00, 1.0000E+00, --, 125, Powheg+Pythia8+EvtGen, PowhegPy8EG_CT10nloME_AZNLOCTEQ6L1_ZZvvvv_mll4, OFLCOND-RUN12-SDR-31
+361600, 1.0637E-02, 1.1150E+00, 1.0000E+00, --, 125, Powheg+Pythia8+EvtGen, PowhegPy8EG_CT10nloME_AZNLOCTEQ6L1_WWlvlv, OFLCOND-RUN12-SDR-31
+361601, 4.5108E-03, 1.0000E+00, 1.0000E+00, --, 125, Powheg+Pythia8+EvtGen, PowhegPy8EG_CT10nloME_AZNLOCTEQ6L1_WZlvll_mll4, OFLCOND-RUN12-SDR-31
+361602, 2.778E-03,  1.0000E+00, 1.0000E+00, --, 125, Powheg+Pythia8+EvtGen, PowhegPy8EG_CT10nloME_AZNLOCTEQ6L1_WZlvvv_mll4, OFLCOND-RUN12-SDR-31
+361603, 1.2689E-03, 1.0000E+00, 1.0000E+00, --, 125, Powheg+Pythia8+EvtGen, PowhegPy8EG_CT10nloME_AZNLOCTEQ6L1_ZZllll_mll4, OFLCOND-RUN12-SDR-31
+361604, 9.2318E-04, 1.0000E+00, 1.0000E+00, --, 125, Powheg+Pythia8+EvtGen, PowhegPy8EG_CT10nloME_AZNLOCTEQ6L1_ZZvvll_mll4, OFLCOND-RUN12-SDR-31
+361605, 5.4886E-04, 1.0000E+00, 1.0000E+00, --, 125, Powheg+Pythia8+EvtGen, PowhegPy8EG_CT10nloME_AZNLOCTEQ6L1_ZZvvvv_mll4, OFLCOND-RUN12-SDR-31
 361606, 4.4176E-02, 1.0000E+00, 1.0000E+00, --, 125, Powheg+Pythia8+EvtGen, PowhegPy8EG_CT10nloME_AZNLOCTEQ6L1_WWlvqq, OFLCOND-RUN12-SDR-31
-361607, 3.2849E-03, 1.0000E+00, 1.0000E+00, --, 125, Powheg+Pythia8+EvtGen, PowhegPy8EG_CT10nloME_AZNLOCTEQ6L1_WZqqll_mll20, OFLCOND-RUN12-SDR-31
-361608, 5.7743E-03, 1.0000E+00, 1.0000E+00, --, 125, Powheg+Pythia8+EvtGen, PowhegPy8EG_CT10nloME_AZNLOCTEQ6L1_WZqqvv, OFLCOND-RUN12-SDR-31
-361609, 1.0099E-02, 1.0000E+00, 1.0000E+00, --, 125, Powheg+Pythia8+EvtGen, PowhegPy8EG_CT10nloME_AZNLOCTEQ6L1_WZlvqq_mqq20, OFLCOND-RUN12-SDR-31
-361610, 2.2739E-03, 1.0000E+00, 1.0000E+00, --, 125, Powheg+Pythia8+EvtGen, PowhegPy8EG_CT10nloME_AZNLOCTEQ6L1_ZZqqll_mqq20mll20, OFLCOND-RUN12-SDR-31
-361611, 3.9448E-03, 1.0000E+00, 1.0000E+00, --, 125, Powheg+Pythia8+EvtGen, PowhegPy8EG_CT10nloME_AZNLOCTEQ6L1_ZZvvqq_mqq20, OFLCOND-RUN12-SDR-31
+361607, 3.2881E-03, 1.0000E+00, 1.0000E+00, --, 125, Powheg+Pythia8+EvtGen, PowhegPy8EG_CT10nloME_AZNLOCTEQ6L1_WZqqll_mll20, OFLCOND-RUN12-SDR-31
+361608, 5.7746E-03, 1.0000E+00, 1.0000E+00, --, 125, Powheg+Pythia8+EvtGen, PowhegPy8EG_CT10nloME_AZNLOCTEQ6L1_WZqqvv, OFLCOND-RUN12-SDR-31
+361609, 1.0095E-02, 1.0000E+00, 1.0000E+00, --, 125, Powheg+Pythia8+EvtGen, PowhegPy8EG_CT10nloME_AZNLOCTEQ6L1_WZlvqq_mqq20, OFLCOND-RUN12-SDR-31
+361610, 2.2763E-03, 1.0000E+00, 1.0000E+00, --, 125, Powheg+Pythia8+EvtGen, PowhegPy8EG_CT10nloME_AZNLOCTEQ6L1_ZZqqll_mqq20mll20, OFLCOND-RUN12-SDR-31
+361611, 3.944E-03,  1.0000E+00, 1.0000E+00, --, 125, Powheg+Pythia8+EvtGen, PowhegPy8EG_CT10nloME_AZNLOCTEQ6L1_ZZvvqq_mqq20, OFLCOND-RUN12-SDR-31
 
 ## Diboson Powheg Herwig++
 361591, 1.0631E-02, 1.1150E+00, 1.0000E+00, --, 125, Powheg+Herwigpp+EvtGen, PhHppEG_AU2CT10_WlnuWlnu, OFLCOND-RUN12-SDR-31
@@ -476,14 +503,30 @@ SampleID , xsection , kfactor , filtereff , uncertainty , mh , generator , proce
 343482, 1.0631E-02, 1.1150E+00, 7.2600E-03, --, 125, Powheg+Pythia8+EvtGen, PowhegPy8EG_CT10nloME_AZNLOCTEQ6L1_WWlvlv_highMjj, OFLCOND-RUN12-SDR-31
 
 ## Diboson Sherpa 2.2.2
-364250, 1.2522E-03, 1.0, 1.0,     --, 125, Sherpa, Sherpa_222_NNPDF30NNLO_llll, DUMMY
-364261, 1.5769E-03, 1.0, 0.19791, --, 125, Sherpa, Sherpa_222_NNPDF30NNLO_lllv_3lepfilter, DUMMY
+364261, 1.5763E-03, 1.0, 0.19791, --, 125, Sherpa, Sherpa_222_NNPDF30NNLO_lllv_3lepfilter, DUMMY
 364254, 0.012501, 1.0000E+00, 1.0000E+00, --, 125, Sherpa, Sherpa_222_NNPDF30NNLO_llvv,  DUMMY
-364253, 4.5832E-03, 1.0, 1.0, --, 125, Sherpa, Sherpa_222_NNPDF30NNLO_lllv, DUMMY
+364253, 4.579E-03, 1.0, 1.0, --, 125, Sherpa, Sherpa_222_NNPDF30NNLO_lllv, DUMMY
+364255, 3.2344E-03, 1.0, 1.0, --, 125, Sherpa(v2.2.2), Sherpa_222_NNPDF30NNLO_lvvv, OFLCOND-MC16-SDR-16
 
-364288, 1.4318E-03, 1.0, 1.0, --, 125, Sherpa, Sherpa_222_NNPDF30NNLO_llll_lowMllPtComplement, DUMMY
-364289, 2.9152E-03, 1.0, 1.0, --, 125, Sherpa, Sherpa_222_NNPDF30NNLO_lllv_lowMllPtComplement, DUMMY
-364290, 0.17046E-03, 1.0, 1.0, --, 125, Sherpa, Sherpa_222_NNPDF30NNLO_llvv_lowMllPtComplement, DUMMY
+364283, 1.0545E-05, 1.0, 1.0, --, 125, Sherpa, Sherpa_222_NNPDF30NNLO_lllljj_EW6, OFLCOND-MC16-SDR-16
+364288, 1.4555E-03, 1.0, 1.0, --, 125, Sherpa, Sherpa_222_NNPDF30NNLO_llll_lowMllPtComplement, DUMMY
+364289, 2.9664E-03, 1.0, 1.0, --, 125, Sherpa, Sherpa_222_NNPDF30NNLO_lllv_lowMllPtComplement, DUMMY
+364290, 0.17337E-03, 1.0, 1.0, --, 125, Sherpa, Sherpa_222_NNPDF30NNLO_llvv_lowMllPtComplement, DUMMY
+364284, 4.7168E-05, 1.0, 1.0, --, 125, Sherpa, Sherpa_222_NNPDF30NNLO_lllvjj_EW6, DUMMY
+
+
+## Diboson Sherpa 2.2.2 systematics
+364256, 1.2774E-03, 1.0, 1.0, --, 125, Sherpa, Sherpa_222_NNPDF30NNLO_llll_CKKW15, DUMMY
+364257, 1.2104E-03, 1.0, 1.0, --, 125, Sherpa, Sherpa_222_NNPDF30NNLO_llll_CKKW30, DUMMY
+364258, 1.2659E-03, 1.0, 1.0, --, 125, Sherpa, Sherpa_222_NNPDF30NNLO_llll_QSF025, DUMMY
+364259, 1.2366E-03, 1.0, 1.0, --, 125, Sherpa, Sherpa_222_NNPDF30NNLO_llll_QSF4,   DUMMY
+364260, 1.247E-03,  1.0, 1.0, --, 125, Sherpa, Sherpa_222_NNPDF30NNLO_llll_CSSKIN, DUMMY
+
+364275, 4.6389E-03, 1.0, 1.0, --, 125, Sherpa, Sherpa_222_NNPDF30NNLO_lllv_CKKW15, DUMMY
+364276, 4.4185E-03, 1.0, 1.0, --, 125, Sherpa, Sherpa_222_NNPDF30NNLO_lllv_CKKW30, DUMMY
+364277, 4.6872E-03, 1.0, 1.0, --, 125, Sherpa, Sherpa_222_NNPDF30NNLO_lllv_QSF025, DUMMY
+364278, 4.4828E-03, 1.0, 1.0, --, 125, Sherpa, Sherpa_222_NNPDF30NNLO_lllv_QSF4,   DUMMY
+364279, 4.5529E-03, 1.0, 1.0, --, 125, Sherpa, Sherpa_222_NNPDF30NNLO_lllv_CSSKIN, DUMMY
 
 ## Diboson Sherpa 2.2.1
 363490, 1.2557E-03 , 1.0000E+00, 1.0000E+00, --, 125, Sherpa, Sherpa_221_NNPDF30NNLO_llll, OFLCOND-MC15c-SDR-09
@@ -493,11 +536,33 @@ SampleID , xsection , kfactor , filtereff , uncertainty , mh , generator , proce
 363494, 6.01545E-04, 1.0000E+00, 1.0000E+00, --, 125, Sherpa, Sherpa_221_NNPDF30NNLO_vvvv, OFLCOND-MC15c-SDR-09
 344791, 1.5715E-03,  1.0000E+00, 0.19982E+00, --, 125, Sherpa, Sherpa_221_NNPDF30NNLO_lllv, OFLCOND-MC15c-SDR-09
 
+363358, 3.4328E-03, 1.0000E+00, 1.0000E+00, --, 125, Sherpa, Sherpa_221_NNPDF30NNLO_WqqZll, OFLCOND-MC16-SDR-25
+
 ## Diboson Sherpa ##
 343478,	0.65113E-03,0.9100E+00, 1.0000E+00, --, 125, Sherpa, Sherpa_CT10_lllvSFMinus, DUMMY
 343479,	1.3238E-03, 0.9100E+00, 1.0000E+00, --, 125, Sherpa, Sherpa_CT10_lllvOFMinus, DUMMY
 343480,	0.92949E-03,0.9100E+00, 1.0000E+00, --, 125, Sherpa, Sherpa_CT10_lllvSFPlus, DUMMY
 343481,	1.8906E-03, 0.9100E+00, 1.0000E+00, --, 125, Sherpa, Sherpa_CT10_lllvOFPlus, DUMMY
+
+364250, 1.252E-03, 1, 1, --, 125, Sherpa(v2.2.2), Sherpa_222_NNPDF30NNLO_llll, OFLCOND-MC16-SDR-16
+#################################################
+# 2019/01/16, MB: Comment out duplicate 364253? #
+#################################################
+# 364253, 4.5765E-03, 1, 1, --, 125, Sherpa(v2.2.2), Sherpa_222_NNPDF30NNLO_lllv, OFLCOND-MC16-SDR-16
+364286, 2.521E-05, 1, 1, --, 125, Sherpa(v2.2.2), Sherpa_222_NNPDF30NNLO_llvvjj_ss_EW4, OFLCOND-MC16-SDR-16
+364285, 1.1634E-04, 1, 1, --, 125, Sherpa(v2.2.2), Sherpa_222_NNPDF30NNLO_llvvjj_EW6, OFLCOND-MC16-SDR-16
+364287, 4.0864E-05, 1, 1, --, 125, Sherpa(v2.2.2), Sherpa_222_NNPDF30NNLO_llvvjj_ss_EW6, OFLCOND-MC16-SDR-16
+#################################################
+# 2019/01/16, MB: Comment out duplicate 364289? #
+#################################################
+# 364289, 2.9708E-03, 1, 1, --, 125, Sherpa(v2.2.2), Sherpa_222_NNPDF30NNLO_lllv_lowMllPtComplement, OFLCOND-MC16-SDR-16
+
+345705, 9.9577E-06, 1.7, 1, --, 125, Sherpa(v2.2.2), Sherpa_222_NNPDF30NNLO_ggllll_0M4l130, OFLCOND-MC16-SDR-16
+345706, 1.0163E-05, 1.7, 1, --, 125, Sherpa(v2.2.2), Sherpa_222_NNPDF30NNLO_ggllll_130M4l, OFLCOND-MC16-SDR-16
+
+345720, 2.0524E-04, 2.3, 1, --, 125, Sherpa, Sherpa_222_NNPDF30NNLO_ggllvvWWNoHiggs, OFLCOND-MC16-SDR-16
+345716, 1.219E-04, 1, 1, --, 125, Sherpa(v2.2.2), Sherpa_222_NNPDF30NNLO_ggllvvIntNoHiggs, OFLCOND-MC16-SDR-16
+345725, 6.9747E-06, 1, 1, --, 125, Sherpa(v2.2.2), Sherpa_222_NNPDF30NNLO_ggllvvZZNoHiggs, OFLCOND-MC16-SDR-16
 
 361063, 1.2583E-02, 0.9100E+00, 1.0000E+00, --, 125, Sherpa, Sherpa_CT10_llll, OFLCOND-RUN12-SDR-31
 361064, 1.8446E-03, 0.9100E+00, 1.0000E+00, --, 125, Sherpa, Sherpa_CT10_lllvSFMinus, OFLCOND-RUN12-SDR-31
@@ -509,6 +574,7 @@ SampleID , xsection , kfactor , filtereff , uncertainty , mh , generator , proce
 361069, 2.5765E-05, 0.9100E+00, 1.0000E+00, --, 125, Sherpa, Sherpa_CT10_llvvjj_ss_EW4, OFLCOND-RUN12-SDR-31
 361070, 4.3375E-05, 0.9100E+00, 1.0000E+00, --, 125, Sherpa, Sherpa_CT10_llvvjj_ss_EW6, OFLCOND-RUN12-SDR-31
 
+361071, 4.2017E-05, 0.9100E+00, 1.0000E+00, --, 125, Sherpa, Sherpa_CT10_lllvjj_EW6, OFLCOND-RUN12-SDR-31
 361071, 4.2017E-05, 0.9100E+00, 1.0000E+00, --, 125, Sherpa, Sherpa_CT10_lllvjj_EW6, OFLCOND-RUN12-SDR-31
 361072, 3.1496E-05, 0.9100E+00, 1.0000E+00, --, 125, Sherpa, Sherpa_CT10_lllljj_EW6, OFLCOND-RUN12-SDR-31
 361073, 2.0931E-05, 1.5470E+00, 1.0000E+00, --, 125, Sherpa, Sherpa_CT10_ggllll, OFLCOND-RUN12-SDR-31
@@ -546,58 +612,58 @@ SampleID , xsection , kfactor , filtereff , uncertainty , mh , generator , proce
 361663, 13.973E-03, 0.9100E+00, 1.0000E+00, --, 125, Sherpa, Sherpa_CT10_llvvjj       , DUMMY
 
 ## Sherpa 2.1 syst-variations
-363042,     1.1871E-02,  0.91,     1.0000E+00, --, 125, Sherpa,  Sherpa_CT10_llll_fac4, DUMMY              
-363043,     1.3014E-02,  0.91,     1.0000E+00, --, 125, Sherpa,  Sherpa_CT10_llll_fac025, DUMMY            
-363044,     1.2568E-02,  0.91,     1.0000E+00, --, 125, Sherpa,  Sherpa_CT10_llll_renorm4, DUMMY           
-363045,     1.3129E-02,  0.91,     1.0000E+00, --, 125, Sherpa,  Sherpa_CT10_llll_renorm025, DUMMY         
-363046,     1.2852E-02,  0.91,     1.0000E+00, --, 125, Sherpa,  Sherpa_CT10_llll_qsf4, DUMMY              
-363047,     1.2411E-02,  0.91,     1.0000E+00, --, 125, Sherpa,  Sherpa_CT10_llll_qsf025, DUMMY            
-363484,     1.3245E-02,  0.91,     1.0000E+00, --, 125, Sherpa,  Sherpa_CT10_llll_ckkw15, DUMMY            
+363042,     1.1871E-02,  0.91,     1.0000E+00, --, 125, Sherpa,  Sherpa_CT10_llll_fac4, DUMMY
+363043,     1.3014E-02,  0.91,     1.0000E+00, --, 125, Sherpa,  Sherpa_CT10_llll_fac025, DUMMY
+363044,     1.2568E-02,  0.91,     1.0000E+00, --, 125, Sherpa,  Sherpa_CT10_llll_renorm4, DUMMY
+363045,     1.3129E-02,  0.91,     1.0000E+00, --, 125, Sherpa,  Sherpa_CT10_llll_renorm025, DUMMY
+363046,     1.2852E-02,  0.91,     1.0000E+00, --, 125, Sherpa,  Sherpa_CT10_llll_qsf4, DUMMY
+363047,     1.2411E-02,  0.91,     1.0000E+00, --, 125, Sherpa,  Sherpa_CT10_llll_qsf025, DUMMY
+363484,     1.3245E-02,  0.91,     1.0000E+00, --, 125, Sherpa,  Sherpa_CT10_llll_ckkw15, DUMMY
 363485,     1.2353E-02,  0.91,     1.0004    , --, 125, Sherpa,  Sherpa_CT10_llll_ckkw30, DUMMY
 363495,     1.2764E-02,  0.91,     1.0000E+00, --, 125, Sherpa,  Sherpa_CT10_llll_CSSKIN, DUMMY
-363048,     1.7919E-03,  0.91,     1.0000E+00, --, 125, Sherpa,  Sherpa_CT10_lllvSFMinus_fac4, DUMMY       
-363049,     1.8676E-03,  0.91,     1.0000E+00, --, 125, Sherpa,  Sherpa_CT10_lllvSFMinus_fac025, DUMMY     
-363050,     1.7140E-03,  0.91,     1.0000E+00, --, 125, Sherpa,  Sherpa_CT10_lllvSFMinus_renorm4, DUMMY    
-363051,     2.0374E-03,  0.91,     1.0000E+00, --, 125, Sherpa,  Sherpa_CT10_lllvSFMinus_renorm025, DUMMY  
-363052,     1.8128E-03,  0.91,     1.0000E+00, --, 125, Sherpa,  Sherpa_CT10_lllvSFMinus_qsf4, DUMMY       
-363053,     1.8813E-03,  0.91,     1.0000E+00, --, 125, Sherpa,  Sherpa_CT10_lllvSFMinus_qsf025, DUMMY     
-363054,     3.5153E-03,  0.91,     1.0000E+00, --, 125, Sherpa,  Sherpa_CT10_lllvOFMinus_fac4, DUMMY       
-363055,     3.6815E-03,  0.91,     1.0000E+00, --, 125, Sherpa,  Sherpa_CT10_lllvOFMinus_fac025, DUMMY     
-363056,     3.3763E-03,  0.91,     1.0000E+00, --, 125, Sherpa,  Sherpa_CT10_lllvOFMinus_renorm4, DUMMY    
-363057,     3.9994E-03,  0.91,     1.0000E+00, --, 125, Sherpa,  Sherpa_CT10_lllvOFMinus_renorm025, DUMMY  
-363058,     3.5853E-03,  0.91,     1.0000E+00, --, 125, Sherpa,  Sherpa_CT10_lllvOFMinus_qsf4, DUMMY       
-363059,     3.6952E-03,  0.91,     1.0000E+00, --, 125, Sherpa,  Sherpa_CT10_lllvOFMinus_qsf025, DUMMY     
-363060,     2.4854E-03,  0.91,     1.0000E+00, --, 125, Sherpa,  Sherpa_CT10_lllvSFPlus_fac4, DUMMY        
-363061,     2.5933E-03,  0.91,     1.0000E+00, --, 125, Sherpa,  Sherpa_CT10_lllvSFPlus_fac025, DUMMY      
-363062,     2.3688E-03,  0.91,     1.0000E+00, --, 125, Sherpa,  Sherpa_CT10_lllvSFPlus_renorm4, DUMMY     
-363063,     2.8265E-03,  0.91,     1.0000E+00, --, 125, Sherpa,  Sherpa_CT10_lllvSFPlus_renorm025, DUMMY   
-363064,     2.5286E-03,  0.91,     1.0000E+00, --, 125, Sherpa,  Sherpa_CT10_lllvSFPlus_qsf4, DUMMY        
-363065,     2.6095E-03,  0.91,     1.0000E+00, --, 125, Sherpa,  Sherpa_CT10_lllvSFPlus_qsf025, DUMMY      
-363066,     4.8875E-03,  0.91,     1.0000E+00, --, 125, Sherpa,  Sherpa_CT10_lllvOFPlus_fac4, DUMMY        
-363067,     5.1038E-03,  0.91,     1.0000E+00, --, 125, Sherpa,  Sherpa_CT10_lllvOFPlus_fac025, DUMMY      
-363068,     4.6719E-03,  0.91,     1.0000E+00, --, 125, Sherpa,  Sherpa_CT10_lllvOFPlus_renorm4, DUMMY     
-363069,     5.5679E-03,  0.91,     1.0000E+00, --, 125, Sherpa,  Sherpa_CT10_lllvOFPlus_renorm025, DUMMY   
-363070,     4.9774E-03,  0.91,     1.0000E+00, --, 125, Sherpa,  Sherpa_CT10_lllvOFPlus_qsf4, DUMMY        
-363071,     5.1285E-03,  0.91,     1.0000E+00, --, 125, Sherpa,  Sherpa_CT10_lllvOFPlus_qsf025, DUMMY      
-363072,     1.3972E-02,  0.91,     1.0000E+00, --, 125, Sherpa,  Sherpa_CT10_llvv_fac4, DUMMY              
-363073,     1.4054E-02,  0.91,     1.0000E+00, --, 125, Sherpa,  Sherpa_CT10_llvv_fac025, DUMMY            
-363075,     1.4391E-02,  0.91,     1.0000E+00, --, 125, Sherpa,  Sherpa_CT10_llvv_renorm025, DUMMY         
-363076,     1.3912E-02,  0.91,     1.0000E+00, --, 125, Sherpa,  Sherpa_CT10_llvv_qsf4, DUMMY              
-363084,     8.7403E-04,  0.91,     1.0000E+00, --, 125, Sherpa,  Sherpa_CT10_ggllvv_fac4, DUMMY            
-363085,     8.2134E-04,  0.91,     1.0000E+00, --, 125, Sherpa,  Sherpa_CT10_ggllvv_fac025, DUMMY          
-363086,     6.5267E-04,  0.91,     1.0000E+00, --, 125, Sherpa,  Sherpa_CT10_ggllvv_renorm4, DUMMY         
-363087,     1.1621E-03,  0.91,     1.0000E+00, --, 125, Sherpa,  Sherpa_CT10_ggllvv_renorm025, DUMMY       
-363088,     6.8686E-04,  0.91,     1.0000E+00, --, 125, Sherpa,  Sherpa_CT10_ggllvv_qsf4, DUMMY            
-363089,     1.1269E-03,  0.91,     1.0000E+00, --, 125, Sherpa,  Sherpa_CT10_ggllvv_qsf025, DUMMY          
-363291,     1.8709E-03,  1.0,      1.0000E+00, --, 125, Sherpa,  Sherpa_CT10_lllvSFMinus_ckkw15, DUMMY     
-363292,     1.8065E-03,  0.91,     1.0000E+00, --, 125, Sherpa,  Sherpa_CT10_lllvSFMinus_ckkw30, DUMMY     
-363293,     3.6790E-03,  0.91,     1.0000E+00, --, 125, Sherpa,  Sherpa_CT10_lllvOFMinus_ckkw15, DUMMY     
-363294,     3.5601E-03,  0.91,     1.0000E+00, --, 125, Sherpa,  Sherpa_CT10_lllvOFMinus_ckkw30, DUMMY     
-363295,     2.5947E-03,  0.91,     1.0000E+00, --, 125, Sherpa,  Sherpa_CT10_lllvSFPlus_ckkw15, DUMMY      
-363296,     2.5035E-03,  0.91,     1.0000E+00, --, 125, Sherpa,  Sherpa_CT10_lllvSFPlus_ckkw30, DUMMY      
-363297,     5.0968E-03,  0.91,     1.0000E+00, --, 125, Sherpa,  Sherpa_CT10_lllvOFPlus_ckkw15, DUMMY      
-363298,     5.4470E-03,  0.91,     1.0000E+00, --, 125, Sherpa,  Sherpa_CT10_lllvOFPlus_ckkw30, DUMMY      
-363299,     1.4177E-02,  0.91,     1.0000E+00, --, 125, Sherpa,  Sherpa_CT10_llvv_ckkw15, DUMMY 
+363048,     1.7919E-03,  0.91,     1.0000E+00, --, 125, Sherpa,  Sherpa_CT10_lllvSFMinus_fac4, DUMMY
+363049,     1.8676E-03,  0.91,     1.0000E+00, --, 125, Sherpa,  Sherpa_CT10_lllvSFMinus_fac025, DUMMY
+363050,     1.7140E-03,  0.91,     1.0000E+00, --, 125, Sherpa,  Sherpa_CT10_lllvSFMinus_renorm4, DUMMY
+363051,     2.0374E-03,  0.91,     1.0000E+00, --, 125, Sherpa,  Sherpa_CT10_lllvSFMinus_renorm025, DUMMY
+363052,     1.8128E-03,  0.91,     1.0000E+00, --, 125, Sherpa,  Sherpa_CT10_lllvSFMinus_qsf4, DUMMY
+363053,     1.8813E-03,  0.91,     1.0000E+00, --, 125, Sherpa,  Sherpa_CT10_lllvSFMinus_qsf025, DUMMY
+363054,     3.5153E-03,  0.91,     1.0000E+00, --, 125, Sherpa,  Sherpa_CT10_lllvOFMinus_fac4, DUMMY
+363055,     3.6815E-03,  0.91,     1.0000E+00, --, 125, Sherpa,  Sherpa_CT10_lllvOFMinus_fac025, DUMMY
+363056,     3.3763E-03,  0.91,     1.0000E+00, --, 125, Sherpa,  Sherpa_CT10_lllvOFMinus_renorm4, DUMMY
+363057,     3.9994E-03,  0.91,     1.0000E+00, --, 125, Sherpa,  Sherpa_CT10_lllvOFMinus_renorm025, DUMMY
+363058,     3.5853E-03,  0.91,     1.0000E+00, --, 125, Sherpa,  Sherpa_CT10_lllvOFMinus_qsf4, DUMMY
+363059,     3.6952E-03,  0.91,     1.0000E+00, --, 125, Sherpa,  Sherpa_CT10_lllvOFMinus_qsf025, DUMMY
+363060,     2.4854E-03,  0.91,     1.0000E+00, --, 125, Sherpa,  Sherpa_CT10_lllvSFPlus_fac4, DUMMY
+363061,     2.5933E-03,  0.91,     1.0000E+00, --, 125, Sherpa,  Sherpa_CT10_lllvSFPlus_fac025, DUMMY
+363062,     2.3688E-03,  0.91,     1.0000E+00, --, 125, Sherpa,  Sherpa_CT10_lllvSFPlus_renorm4, DUMMY
+363063,     2.8265E-03,  0.91,     1.0000E+00, --, 125, Sherpa,  Sherpa_CT10_lllvSFPlus_renorm025, DUMMY
+363064,     2.5286E-03,  0.91,     1.0000E+00, --, 125, Sherpa,  Sherpa_CT10_lllvSFPlus_qsf4, DUMMY
+363065,     2.6095E-03,  0.91,     1.0000E+00, --, 125, Sherpa,  Sherpa_CT10_lllvSFPlus_qsf025, DUMMY
+363066,     4.8875E-03,  0.91,     1.0000E+00, --, 125, Sherpa,  Sherpa_CT10_lllvOFPlus_fac4, DUMMY
+363067,     5.1038E-03,  0.91,     1.0000E+00, --, 125, Sherpa,  Sherpa_CT10_lllvOFPlus_fac025, DUMMY
+363068,     4.6719E-03,  0.91,     1.0000E+00, --, 125, Sherpa,  Sherpa_CT10_lllvOFPlus_renorm4, DUMMY
+363069,     5.5679E-03,  0.91,     1.0000E+00, --, 125, Sherpa,  Sherpa_CT10_lllvOFPlus_renorm025, DUMMY
+363070,     4.9774E-03,  0.91,     1.0000E+00, --, 125, Sherpa,  Sherpa_CT10_lllvOFPlus_qsf4, DUMMY
+363071,     5.1285E-03,  0.91,     1.0000E+00, --, 125, Sherpa,  Sherpa_CT10_lllvOFPlus_qsf025, DUMMY
+363072,     1.3972E-02,  0.91,     1.0000E+00, --, 125, Sherpa,  Sherpa_CT10_llvv_fac4, DUMMY
+363073,     1.4054E-02,  0.91,     1.0000E+00, --, 125, Sherpa,  Sherpa_CT10_llvv_fac025, DUMMY
+363075,     1.4391E-02,  0.91,     1.0000E+00, --, 125, Sherpa,  Sherpa_CT10_llvv_renorm025, DUMMY
+363076,     1.3912E-02,  0.91,     1.0000E+00, --, 125, Sherpa,  Sherpa_CT10_llvv_qsf4, DUMMY
+363084,     8.7403E-04,  0.91,     1.0000E+00, --, 125, Sherpa,  Sherpa_CT10_ggllvv_fac4, DUMMY
+363085,     8.2134E-04,  0.91,     1.0000E+00, --, 125, Sherpa,  Sherpa_CT10_ggllvv_fac025, DUMMY
+363086,     6.5267E-04,  0.91,     1.0000E+00, --, 125, Sherpa,  Sherpa_CT10_ggllvv_renorm4, DUMMY
+363087,     1.1621E-03,  0.91,     1.0000E+00, --, 125, Sherpa,  Sherpa_CT10_ggllvv_renorm025, DUMMY
+363088,     6.8686E-04,  0.91,     1.0000E+00, --, 125, Sherpa,  Sherpa_CT10_ggllvv_qsf4, DUMMY
+363089,     1.1269E-03,  0.91,     1.0000E+00, --, 125, Sherpa,  Sherpa_CT10_ggllvv_qsf025, DUMMY
+363291,     1.8709E-03,  1.0,      1.0000E+00, --, 125, Sherpa,  Sherpa_CT10_lllvSFMinus_ckkw15, DUMMY
+363292,     1.8065E-03,  0.91,     1.0000E+00, --, 125, Sherpa,  Sherpa_CT10_lllvSFMinus_ckkw30, DUMMY
+363293,     3.6790E-03,  0.91,     1.0000E+00, --, 125, Sherpa,  Sherpa_CT10_lllvOFMinus_ckkw15, DUMMY
+363294,     3.5601E-03,  0.91,     1.0000E+00, --, 125, Sherpa,  Sherpa_CT10_lllvOFMinus_ckkw30, DUMMY
+363295,     2.5947E-03,  0.91,     1.0000E+00, --, 125, Sherpa,  Sherpa_CT10_lllvSFPlus_ckkw15, DUMMY
+363296,     2.5035E-03,  0.91,     1.0000E+00, --, 125, Sherpa,  Sherpa_CT10_lllvSFPlus_ckkw30, DUMMY
+363297,     5.0968E-03,  0.91,     1.0000E+00, --, 125, Sherpa,  Sherpa_CT10_lllvOFPlus_ckkw15, DUMMY
+363298,     5.4470E-03,  0.91,     1.0000E+00, --, 125, Sherpa,  Sherpa_CT10_lllvOFPlus_ckkw30, DUMMY
+363299,     1.4177E-02,  0.91,     1.0000E+00, --, 125, Sherpa,  Sherpa_CT10_llvv_ckkw15, DUMMY
 
 
 ## Diboson Powheg WW EW highMjj##
@@ -638,6 +704,14 @@ SampleID , xsection , kfactor , filtereff , uncertainty , mh , generator , proce
 410515, 0.086873,   1.00866,        1.0,        --, 125, Powheg+Pythia8+EvtGen, PowhegPythia8EvtGen_A14v3cUp_ttbar_hdamp517p5_dil, OFLCOND-RUN12-SDR-31
 410516, 0.067474,   1.29866,        1.0,        --, 125, Powheg+Pythia8+EvtGen, PowhegPythia8EvtGen_A14v3cDo_ttbar_hdamp258p75_dil, OFLCOND-RUN12-SDR-31
 
+410644, 2.0267E-03, 1.017, 1, --, 125, Powheg+EvtGen(v1.6.0), PowhegPythia8EvtGen_A14_singletop_schan_lept_top, OFLCOND-MC16-SDR-16
+410645, 1.2674E-03, 1.0167, 1, --, 125, Powheg+EvtGen(v1.6.0), PowhegPythia8EvtGen_A14_singletop_schan_lept_antitop, OFLCOND-MC16-SDR-16
+410658, 3.6996E-02, 1.1935, 1, --, 125, Powheg+Pythia8.230+EvtGen, PhPy8EG_A14_tchan_BW50_lept_top, OFLCOND-MC16-SDR-16
+410659, 2.2175E-02, 1.1849, 1, --, 125, Powheg+Pythia8.230+EvtGen, PhPy8EG_A14_tchan_BW50_lept_antitop, OFLCOND-MC16-SDR-16
+410648, 3.997E-03, 0.9451, 1, --, 125, Powheg+EvtGen(v1.6.0), PowhegPythia8EvtGen_A14_Wt_DR_dilepton_top, OFLCOND-MC16-SDR-16
+410649, 3.9939E-03, 0.9458, 1, --, 125, Powheg+EvtGen(v1.6.0), PowhegPythia8EvtGen_A14_Wt_DR_dilepton_antitop, OFLCOND-MC16-SDR-16
+
+
 410011, 4.3739E-02, 1.0094E+00, 1.0000E+00, --, 125, Powheg+Pythia+EvtGen, PowhegPythiaEvtGen_P2012_singletop_tchan_lept_top, OFLCOND-RUN12-SDR-31
 410012, 2.5778E-02, 1.0193E+00, 1.0000E+00, --, 125, Powheg+Pythia+EvtGen, PowhegPythiaEvtGen_P2012_singletop_tchan_lept_antitop, OFLCOND-RUN12-SDR-31
 410013, 3.4009E-02, 1.0540E+00, 1.0000E+00, --, 125, Powheg+Pythia+EvtGen, PowhegPythiaEvtGen_P2012_Wt_inclusive_top, OFLCOND-RUN12-SDR-31
@@ -663,6 +737,12 @@ SampleID , xsection , kfactor , filtereff , uncertainty , mh , generator , proce
 410145, 4.0000E-03, 1.0000E+00, 1.0000E+00, --, 125, Powheg+Herwigpp+EvtGen, PowhegHerwigppEvtGen_UEEE5_Wt_dilepton_top, OFLCOND-RUN12-SDR-31
 410146, 4.0000E-03, 1.0000E+00, 1.0000E+00, --, 125, Powheg+Herwigpp+EvtGen, PowhegHerwigppEvtGen_UEEE5_Wt_dilepton_antitop, OFLCOND-RUN12-SDR-31
 410164, 7.8714E-03, 1.0000E+00, 1.0000E+00, --, 125, MCatNLO+Herwigpp+EvtGen, aMcAtNloHerwigppEvtGen_UEEE5_CTEQ6L1_CT10ME_Wt_dilepton, DUMMY
+
+411038, 3.9993E-03, 0.9446, 1, --, 125, Powheg+Herwig7(v7.0.4)+EvtGen(v1.6.0), PowhegHerwig7EvtGen_H7UE_Wt_DR_dilepton_top, DUMMY
+411039, 3.9961E-03, 0.9453, 1, --, 125, Powheg+Herwig7(v7.0.4)+EvtGen(v1.6.0), PowhegHerwig7EvtGen_H7UE_Wt_DR_dilepton_antitop, DUMMY
+412003, 7.9027E-03, 0.9559, 1, --, 125, aMcAtNlo+Pythia8+EvtGen(v.1.6.0), aMcAtNloPythia8EvtGen_HThalfscale_tW_dilepton, DUMMY
+410656, 3.8902E-03, 0.9704, 1, --, 125, Powheg+Pythia8.230+EvtGen, PowhegPythia8EvtGen_A14_Wt_DS_dilepton_top, DUMMY
+410657, 3.9665E-03, 0.9493, 1, --, 125, Powheg+Pythia8.230+EvtGen, PowhegPythia8EvtGen_A14_Wt_DS_dilepton_antitop, DUMMY
 
 ## Top Powheg diLepton ##
 410009, 6.9612E-01, 1.1949E+00, 1.0534E-01, --, 125, Powheg+Pythia+EvtGen+Photos+Tauola, PowhegPythiaEvtGen_P2012_ttbar_hdamp172p5_dil, OFLCOND-RUN12-SDR-31
@@ -697,11 +777,16 @@ SampleID , xsection , kfactor , filtereff , uncertainty , mh , generator , proce
 
 ## Top PP A14
 410500, 7.3028E-01 , 1.139,    0.54386, --, 125,  Powheg+Pythia8+EvtGen, PowhegPythia8EvtGen_A14_ttbar_hdamp172p5_nonallhad, OFLCOND-RUN12-SDR-31
+410470, 7.2976E-01, 1.13975636159, 0.54385, --, 125, Powheg+Pythia8+EvtGen, PhPy8EG_A14_ttbar_hdamp258p75_nonallhad, DUMMY
 
 ## PowPy8 ttbar
 # 410503, 7.6932E-02 , 0.10534,  10.8116, --, 125,  Powheg+Pythia8+EvtGen, PowhegPythia8EvtGen_A14_ttbar_hdamp258p75_dil, OFLCOND-RUN12-SDR-31
 
 410503, 7.6932E-02 , 1.139, 1.0, --, 125,  Powheg+Pythia8+EvtGen, PowhegPythia8EvtGen_A14_ttbar_hdamp258p75_dil, OFLCOND-RUN12-SDR-31
+410472, 7.2977E-01, 1.1398, 0.10546, --, 125, Powheg+Pythia8(v8.230)+EvtGen(v1.6.0), PhPy8EG_A14_ttbar_hdamp258p75_dil, OFLCOND-MC16-SDR-16
+410558, 7.3015E-01, 1.1398, 0.10546, --, mHIGGS, Powheg+Herwig7(v7.0.4)+EvtGen(v1.6.0), PowhegHerwig7EvtGen_H7UE_tt_hdamp258p75_704_dil, OFLCOND-MC16-SDR-20
+410482, 7.2974E-01, 1.1398, 0.10546, --, 125, Powheg+Pythia8(v8.230)+EvtGen(v1.6.0), PhPy8EG_A14_ttbar_hdamp517p5_dil, DUMMY
+
 
 ## Top Sherpa ##
 410021, 7.8126E-02, 1.0000E+00, 1.0000E+00, --, 125, Sherpa, Sherpa_CT10_ttbar_DiLepton_MEPS_NLO, OFLCOND-RUN12-SDR-31
@@ -710,8 +795,12 @@ SampleID , xsection , kfactor , filtereff , uncertainty , mh , generator , proce
 
 ## Top aMcAtNlo ##
 410003, 6.9486E-01, 1.1970E+00, 5.4300E-01, --, 125, aMcAtNlo+Herwigpp+EvtGen, aMcAtNloHerwigppEvtGen_ttbar_nonallhad, OFLCOND-RUN12-SDR-31
+410218, 3.6864E-05, 1.12E+00  , 1.0000E+00, --, 125, MadGraph5_aMC@NLO+Pythia8+EvtGen, aMcAtNloPythia8EvtGen_MEN30NLO_A14N23LO_ttee, OFLCOND-MC15c-SDR-09
+410219, 3.6865E-05, 1.12E+00  , 1.0000E+00, --, 125, MadGraph5_aMC@NLO+Pythia8+EvtGen, aMcAtNloPythia8EvtGen_MEN30NLO_A14N23LO_ttmumu, OFLCOND-MC15c-SDR-09
+410220, 3.6555E-05, 1.12E+00  , 1.0000E+00, --, 125, MadGraph5_aMC@NLO+Pythia8+EvtGen, aMcAtNloPythia8EvtGen_MEN30NLO_A14N23LO_tttautau, OFLCOND-MC15c-SDR-09
 410225, 7.1136E-01, 1.1693E+00, 5.4715E-01, --, 125, aMcAtNlo+Pythia8+EvtGen, aMcAtNloPythia8EvtGen_MEN30NLO_A14N23LO_ttbar_nonallhad, OFLCOND-RUN12-SDR-31
 410226, 0.076106  , 1.151       , 1.0       , --, 125, aMcAtNlo+Pythia8+EvtGen, aMcAtNloPythia8EvtGen_MEN30NLO_A14N23LO_ttbar_dil, OFLCOND-RUN12-SDR-31
+410465, 7.1204E-01, 1.1681, 0.10718, --, 125, MadGraph5_aMC@NLO(v2.3.3.p1)+Pythia8(v8.230)+EvtGen(v1.6.0), aMcAtNloPy8EvtGen_MEN30NLO_A14N23LO_ttbar_noShWe_dil, OFLCOND-MC16-SDR-20
 
 ## Top MadGraph ##
 410049, 9.0636E-06, 1.0000E+00, 1.0000E+00, --, 125, MadGraph+Pythia+EvtGen+Photos+Tauola, MadGraphPythiaEvtGen_P2012_tZ_4fl_tchan_trilepton, OFLCOND-RUN12-SDR-31(AMI)
@@ -725,6 +814,9 @@ SampleID , xsection , kfactor , filtereff , uncertainty , mh , generator , proce
 410152, 2.9866E-04, 1.0000E+00, 1.0000E+00, --, 125, MadGraph+Pythia+EvtGen+Photos+Tauola, MadGraphPythiaEvtGen_P2012radHi_tZ_4fl_tchan_noAllHad, OFLCOND-RUN12-SDR-31
 410153, 7.4284E-06, 1.0000E+00, 1.0000E+00, --, 125, MadGraph+Pythia+EvtGen+Photos+Tauola, MadGraphPythiaEvtGen_P2012radLo_tZ_4fl_tchan_trilepton, OFLCOND-RUN12-SDR-31
 410154, 1.1252E-05, 1.0000E+00, 1.0000E+00, --, 125, MadGraph+Pythia+EvtGen+Photos+Tauola, MadGraphPythiaEvtGen_P2012radHi_tZ_4fl_tchan_trilepton, OFLCOND-RUN12-SDR-31
+410550, 2.0736E-05, 1.0000E+00, 1.0000E+00, --, 125, MadGraph5_aMC@NLO+Pythia8+EvtGen, MadGraphPythia8EvtGen_A14_tZ_4fl_tchan_trilepton, OFLCOND-MC16-SDR-25
+410155, 5.4822E-04, 1.096     , 1.0       , --, 125, MadGraph5_aMC@NLO+Pythia8+EvtGen, aMcAtNloPythia8EvtGen_MEN30NLO_A14N23LO_ttW, OFLCOND-MC15c-SDR-09
+
 
 ## W+jets Powheg ##
 361100, 1.1306E+01, 1.0172E+00, 1.0000E+00, --, 125, Powheg+Pythia8+EvtGen+Photospp, PowhegPythia8EvtGen_AZNLOCTEQ6L1_Wplusenu, OFLCOND-RUN12-SDR-31
@@ -735,80 +827,80 @@ SampleID , xsection , kfactor , filtereff , uncertainty , mh , generator , proce
 361105, 8.2826E+00, 1.0358E+00, 1.0000E+00, --, 125, Powheg+Pythia8+EvtGen+Photospp, PowhegPythia8EvtGen_AZNLOCTEQ6L1_Wminustaunu, OFLCOND-RUN12-SDR-31
 
 ## W+jets MadGraph ##
-363600,  16.7190,        1.12,     8.3756E-01, --, 125,   MadGraph+Pythia8+EvtGen,           MGPy8EG_N30NLO_Wenu_Ht0_70_CVetoBVeto,          DUMMY                 
-363601,  16.7200,        1.12,     1.3829E-01, --, 125,   MadGraph+Pythia8+EvtGen,           MGPy8EG_N30NLO_Wenu_Ht0_70_CFilterBVeto,        DUMMY                 
-363602,  16.7170,        1.12,     2.4191E-02, --, 125,   MadGraph+Pythia8+EvtGen,           MGPy8EG_N30NLO_Wenu_Ht0_70_BFilter,             DUMMY                
-363603,  0.7551,         1.12,     7.1172E-01, --, 125,   MadGraph+Pythia8+EvtGen,           MGPy8EG_N30NLO_Wenu_Ht70_140_CVetoBVeto,        DUMMY                 
-363604,  0.75577,        1.12,     2.3976E-01, --, 125,   MadGraph+Pythia8+EvtGen,           MGPy8EG_N30NLO_Wenu_Ht70_140_CFilterBVeto,      DUMMY                 
-363605,  0.75573,        1.12,     4.8330E-02, --, 125,   MadGraph+Pythia8+EvtGen,           MGPy8EG_N30NLO_Wenu_Ht70_140_BFilter,           DUMMY                 
-363606,  0.31896,        1.12,     6.6554E-01, --, 125,   MadGraph+Pythia8+EvtGen,           MGPy8EG_N30NLO_Wenu_Ht140_280_CVetoBVeto,       DUMMY                 
-363607,  0.31993,        1.12,     2.6354E-01, --, 125,   MadGraph+Pythia8+EvtGen,           MGPy8EG_N30NLO_Wenu_Ht140_280_CFilterBVeto,     DUMMY                 
-363608,  0.31945,        1.12,     6.9423E-02, --, 125,   MadGraph+Pythia8+EvtGen,           MGPy8EG_N30NLO_Wenu_Ht140_280_BFilter,          DUMMY                 
-363609,  0.073528,       1.12,     6.1903E-01, --, 125,   MadGraph+Pythia8+EvtGen,           MGPy8EG_N30NLO_Wenu_Ht280_500_CVetoBVeto,       DUMMY                 
-363610,  0.073562,       1.12,     2.8524E-01, --, 125,   MadGraph+Pythia8+EvtGen,           MGPy8EG_N30NLO_Wenu_Ht280_500_CFilterBVeto,     DUMMY                 
-363611,  0.073556,       1.12,     9.5211E-02, --, 125,   MadGraph+Pythia8+EvtGen,           MGPy8EG_N30NLO_Wenu_Ht280_500_BFilter,          DUMMY                 
-363612,  0.011529,       1.12,     5.8680E-01, --, 125,   MadGraph+Pythia8+EvtGen,           MGPy8EG_N30NLO_Wenu_Ht500_700_CVetoBVeto,       DUMMY                 
-363613,  0.011517,       1.12,     2.9823E-01, --, 125,   MadGraph+Pythia8+EvtGen,           MGPy8EG_N30NLO_Wenu_Ht500_700_CFilterBVeto,     DUMMY                 
-363614,  0.01151,        1.12,     1.1526E-01, --, 125,   MadGraph+Pythia8+EvtGen,           MGPy8EG_N30NLO_Wenu_Ht500_700_BFilter,          DUMMY               
-363615,  0.0040158,      1.12,     5.6645E-01, --, 125,   MadGraph+Pythia8+EvtGen,           MGPy8EG_N30NLO_Wenu_Ht700_1000_CVetoBVeto,      DUMMY               
-363616,  0.004014,       1.12,     3.0425E-01, --, 125,   MadGraph+Pythia8+EvtGen,           MGPy8EG_N30NLO_Wenu_Ht700_1000_CFilterBVeto,    DUMMY               
-363617,  0.0040123,      1.12,     1.2837E-01, --, 125,   MadGraph+Pythia8+EvtGen,           MGPy8EG_N30NLO_Wenu_Ht700_1000_BFilter,         DUMMY               
-363618,  0.0013243,      1.12,     5.4797E-01, --, 125,   MadGraph+Pythia8+EvtGen,           MGPy8EG_N30NLO_Wenu_Ht1000_2000_CVetoBVeto,     DUMMY               
-363619,  0.0013286,      1.12,     3.0760E-01, --, 125,   MadGraph+Pythia8+EvtGen,           MGPy8EG_N30NLO_Wenu_Ht1000_2000_CFilterBVeto,   DUMMY               
-363620,  0.001326,       1.12,     1.4260E-01, --, 125,   MadGraph+Pythia8+EvtGen,           MGPy8EG_N30NLO_Wenu_Ht1000_2000_BFilter,        DUMMY               
-363621,  0.000042294,    1.12,     5.2445E-01, --, 125,   MadGraph+Pythia8+EvtGen,           MGPy8EG_N30NLO_Wenu_Ht2000_E_CMS_CVetoBVeto,    DUMMY               
-363622,  0.000041884,    1.12,     3.1678E-01, --, 125,   MadGraph+Pythia8+EvtGen,           MGPy8EG_N30NLO_Wenu_Ht2000_E_CMS_CFilterBVeto,  DUMMY               
-363623,  0.000047382,    1.12,     1.5125E-01, --, 125,   MadGraph+Pythia8+EvtGen,           MGPy8EG_N30NLO_Wenu_Ht2000_E_CMS_BFilter,       DUMMY               
+363600,  16.7190,        1.12,     8.3756E-01, --, 125,   MadGraph+Pythia8+EvtGen,           MGPy8EG_N30NLO_Wenu_Ht0_70_CVetoBVeto,          DUMMY
+363601,  16.7200,        1.12,     1.3829E-01, --, 125,   MadGraph+Pythia8+EvtGen,           MGPy8EG_N30NLO_Wenu_Ht0_70_CFilterBVeto,        DUMMY
+363602,  16.7170,        1.12,     2.4191E-02, --, 125,   MadGraph+Pythia8+EvtGen,           MGPy8EG_N30NLO_Wenu_Ht0_70_BFilter,             DUMMY
+363603,  0.7551,         1.12,     7.1172E-01, --, 125,   MadGraph+Pythia8+EvtGen,           MGPy8EG_N30NLO_Wenu_Ht70_140_CVetoBVeto,        DUMMY
+363604,  0.75577,        1.12,     2.3976E-01, --, 125,   MadGraph+Pythia8+EvtGen,           MGPy8EG_N30NLO_Wenu_Ht70_140_CFilterBVeto,      DUMMY
+363605,  0.75573,        1.12,     4.8330E-02, --, 125,   MadGraph+Pythia8+EvtGen,           MGPy8EG_N30NLO_Wenu_Ht70_140_BFilter,           DUMMY
+363606,  0.31896,        1.12,     6.6554E-01, --, 125,   MadGraph+Pythia8+EvtGen,           MGPy8EG_N30NLO_Wenu_Ht140_280_CVetoBVeto,       DUMMY
+363607,  0.31993,        1.12,     2.6354E-01, --, 125,   MadGraph+Pythia8+EvtGen,           MGPy8EG_N30NLO_Wenu_Ht140_280_CFilterBVeto,     DUMMY
+363608,  0.31945,        1.12,     6.9423E-02, --, 125,   MadGraph+Pythia8+EvtGen,           MGPy8EG_N30NLO_Wenu_Ht140_280_BFilter,          DUMMY
+363609,  0.073528,       1.12,     6.1903E-01, --, 125,   MadGraph+Pythia8+EvtGen,           MGPy8EG_N30NLO_Wenu_Ht280_500_CVetoBVeto,       DUMMY
+363610,  0.073562,       1.12,     2.8524E-01, --, 125,   MadGraph+Pythia8+EvtGen,           MGPy8EG_N30NLO_Wenu_Ht280_500_CFilterBVeto,     DUMMY
+363611,  0.073556,       1.12,     9.5211E-02, --, 125,   MadGraph+Pythia8+EvtGen,           MGPy8EG_N30NLO_Wenu_Ht280_500_BFilter,          DUMMY
+363612,  0.011529,       1.12,     5.8680E-01, --, 125,   MadGraph+Pythia8+EvtGen,           MGPy8EG_N30NLO_Wenu_Ht500_700_CVetoBVeto,       DUMMY
+363613,  0.011517,       1.12,     2.9823E-01, --, 125,   MadGraph+Pythia8+EvtGen,           MGPy8EG_N30NLO_Wenu_Ht500_700_CFilterBVeto,     DUMMY
+363614,  0.01151,        1.12,     1.1526E-01, --, 125,   MadGraph+Pythia8+EvtGen,           MGPy8EG_N30NLO_Wenu_Ht500_700_BFilter,          DUMMY
+363615,  0.0040158,      1.12,     5.6645E-01, --, 125,   MadGraph+Pythia8+EvtGen,           MGPy8EG_N30NLO_Wenu_Ht700_1000_CVetoBVeto,      DUMMY
+363616,  0.004014,       1.12,     3.0425E-01, --, 125,   MadGraph+Pythia8+EvtGen,           MGPy8EG_N30NLO_Wenu_Ht700_1000_CFilterBVeto,    DUMMY
+363617,  0.0040123,      1.12,     1.2837E-01, --, 125,   MadGraph+Pythia8+EvtGen,           MGPy8EG_N30NLO_Wenu_Ht700_1000_BFilter,         DUMMY
+363618,  0.0013243,      1.12,     5.4797E-01, --, 125,   MadGraph+Pythia8+EvtGen,           MGPy8EG_N30NLO_Wenu_Ht1000_2000_CVetoBVeto,     DUMMY
+363619,  0.0013286,      1.12,     3.0760E-01, --, 125,   MadGraph+Pythia8+EvtGen,           MGPy8EG_N30NLO_Wenu_Ht1000_2000_CFilterBVeto,   DUMMY
+363620,  0.001326,       1.12,     1.4260E-01, --, 125,   MadGraph+Pythia8+EvtGen,           MGPy8EG_N30NLO_Wenu_Ht1000_2000_BFilter,        DUMMY
+363621,  0.000042294,    1.12,     5.2445E-01, --, 125,   MadGraph+Pythia8+EvtGen,           MGPy8EG_N30NLO_Wenu_Ht2000_E_CMS_CVetoBVeto,    DUMMY
+363622,  0.000041884,    1.12,     3.1678E-01, --, 125,   MadGraph+Pythia8+EvtGen,           MGPy8EG_N30NLO_Wenu_Ht2000_E_CMS_CFilterBVeto,  DUMMY
+363623,  0.000047382,    1.12,     1.5125E-01, --, 125,   MadGraph+Pythia8+EvtGen,           MGPy8EG_N30NLO_Wenu_Ht2000_E_CMS_BFilter,       DUMMY
 
-363624,  16.7200,        1.12,     8.3755E-01, --, 125,   MadGraph+Pythia8+EvtGen,           MGPy8EG_N30NLO_Wmunu_Ht0_70_CVetoBVeto,         DUMMY               
-363625,  16.7170,        1.12,     1.3835E-01, --, 125,   MadGraph+Pythia8+EvtGen,           MGPy8EG_N30NLO_Wmunu_Ht0_70_CFilterBVeto,       DUMMY               
-363626,  16.7190,        1.12,     2.4199E-02, --, 125,   MadGraph+Pythia8+EvtGen,           MGPy8EG_N30NLO_Wmunu_Ht0_70_BFilter,            DUMMY               
-363627,  0.75519,        1.12,     7.1182E-01, --, 125,   MadGraph+Pythia8+EvtGen,           MGPy8EG_N30NLO_Wmunu_Ht70_140_CVetoBVeto,       DUMMY               
-363628,  0.75562,        1.12,     2.3986E-01, --, 125,   MadGraph+Pythia8+EvtGen,           MGPy8EG_N30NLO_Wmunu_Ht70_140_CFilterBVeto,     DUMMY               
-363629,  0.75577,        1.12,     4.8328E-02, --, 125,   MadGraph+Pythia8+EvtGen,           MGPy8EG_N30NLO_Wmunu_Ht70_140_BFilter,          DUMMY               
-363630,  0.31883,        1.12,     6.6550E-01, --, 125,   MadGraph+Pythia8+EvtGen,           MGPy8EG_N30NLO_Wmunu_Ht140_280_CVetoBVeto,      DUMMY               
-363631,  0.31989,        1.12,     2.6394E-01, --, 125,   MadGraph+Pythia8+EvtGen,           MGPy8EG_N30NLO_Wmunu_Ht140_280_CFilterBVeto,    DUMMY              
-363632,  0.31941,        1.12,     6.9437E-02, --, 125,   MadGraph+Pythia8+EvtGen,           MGPy8EG_N30NLO_Wmunu_Ht140_280_BFilter,         DUMMY               
-363633,  0.073585,       1.12,     6.1863E-01, --, 125,   MadGraph+Pythia8+EvtGen,           MGPy8EG_N30NLO_Wmunu_Ht280_500_CVetoBVeto,      DUMMY               
-363634,  0.073548,       1.12,     2.8512E-01, --, 125,   MadGraph+Pythia8+EvtGen,           MGPy8EG_N30NLO_Wmunu_Ht280_500_CFilterBVeto,    DUMMY               
-363635,  0.073569,       1.12,     9.5191E-02, --, 125,   MadGraph+Pythia8+EvtGen,           MGPy8EG_N30NLO_Wmunu_Ht280_500_BFilter,         DUMMY               
-363636,  0.011522,       1.12,     5.8643E-01, --, 125,   MadGraph+Pythia8+EvtGen,           MGPy8EG_N30NLO_Wmunu_Ht500_700_CVetoBVeto,      DUMMY               
-363637,  0.011524,       1.12,     2.9645E-01, --, 125,   MadGraph+Pythia8+EvtGen,           MGPy8EG_N30NLO_Wmunu_Ht500_700_CFilterBVeto,    DUMMY               
-363638,  0.011522,       1.12,     1.1565E-01, --, 125,   MadGraph+Pythia8+EvtGen,           MGPy8EG_N30NLO_Wmunu_Ht500_700_BFilter,         DUMMY               
-363639,  0.0040194,      1.12,     5.6682E-01, --, 125,   MadGraph+Pythia8+EvtGen,           MGPy8EG_N30NLO_Wmunu_Ht700_1000_CVetoBVeto,     DUMMY               
-363640,  0.0040252,      1.12,     3.0485E-01, --, 125,   MadGraph+Pythia8+EvtGen,           MGPy8EG_N30NLO_Wmunu_Ht700_1000_CFilterBVeto,   DUMMY               
-363641,  0.0040139,      1.12,     1.2845E-01, --, 125,   MadGraph+Pythia8+EvtGen,           MGPy8EG_N30NLO_Wmunu_Ht700_1000_BFilter,        DUMMY              
-363642,  0.0013262,      1.12,     5.4537E-01, --, 125,   MadGraph+Pythia8+EvtGen,           MGPy8EG_N30NLO_Wmunu_Ht1000_2000_CVetoBVeto,    DUMMY               
-363643,  0.0013215,      1.12,     3.0792E-01, --, 125,   MadGraph+Pythia8+EvtGen,           MGPy8EG_N30NLO_Wmunu_Ht1000_2000_CFilterBVeto,  DUMMY               
-363644,  0.0013287,      1.12,     1.4358E-01, --, 125,   MadGraph+Pythia8+EvtGen,           MGPy8EG_N30NLO_Wmunu_Ht1000_2000_BFilter,       DUMMY               
-363645,  0.000041697,    1.12,     5.1966E-01, --, 125,   MadGraph+Pythia8+EvtGen,           MGPy8EG_N30NLO_Wmunu_Ht2000_E_CMS_CVetoBVeto,   DUMMY               
-363646,  0.000042199,    1.12,     3.1695E-01, --, 125,   MadGraph+Pythia8+EvtGen,           MGPy8EG_N30NLO_Wmunu_Ht2000_E_CMS_CFilterBVeto, DUMMY               
-363647,  0.000042049,    1.12,     1.5886E-01, --, 125,   MadGraph+Pythia8+EvtGen,           MGPy8EG_N30NLO_Wmunu_Ht2000_E_CMS_BFilter,      DUMMY               
+363624,  16.7200,        1.12,     8.3755E-01, --, 125,   MadGraph+Pythia8+EvtGen,           MGPy8EG_N30NLO_Wmunu_Ht0_70_CVetoBVeto,         DUMMY
+363625,  16.7170,        1.12,     1.3835E-01, --, 125,   MadGraph+Pythia8+EvtGen,           MGPy8EG_N30NLO_Wmunu_Ht0_70_CFilterBVeto,       DUMMY
+363626,  16.7190,        1.12,     2.4199E-02, --, 125,   MadGraph+Pythia8+EvtGen,           MGPy8EG_N30NLO_Wmunu_Ht0_70_BFilter,            DUMMY
+363627,  0.75519,        1.12,     7.1182E-01, --, 125,   MadGraph+Pythia8+EvtGen,           MGPy8EG_N30NLO_Wmunu_Ht70_140_CVetoBVeto,       DUMMY
+363628,  0.75562,        1.12,     2.3986E-01, --, 125,   MadGraph+Pythia8+EvtGen,           MGPy8EG_N30NLO_Wmunu_Ht70_140_CFilterBVeto,     DUMMY
+363629,  0.75577,        1.12,     4.8328E-02, --, 125,   MadGraph+Pythia8+EvtGen,           MGPy8EG_N30NLO_Wmunu_Ht70_140_BFilter,          DUMMY
+363630,  0.31883,        1.12,     6.6550E-01, --, 125,   MadGraph+Pythia8+EvtGen,           MGPy8EG_N30NLO_Wmunu_Ht140_280_CVetoBVeto,      DUMMY
+363631,  0.31989,        1.12,     2.6394E-01, --, 125,   MadGraph+Pythia8+EvtGen,           MGPy8EG_N30NLO_Wmunu_Ht140_280_CFilterBVeto,    DUMMY
+363632,  0.31941,        1.12,     6.9437E-02, --, 125,   MadGraph+Pythia8+EvtGen,           MGPy8EG_N30NLO_Wmunu_Ht140_280_BFilter,         DUMMY
+363633,  0.073585,       1.12,     6.1863E-01, --, 125,   MadGraph+Pythia8+EvtGen,           MGPy8EG_N30NLO_Wmunu_Ht280_500_CVetoBVeto,      DUMMY
+363634,  0.073548,       1.12,     2.8512E-01, --, 125,   MadGraph+Pythia8+EvtGen,           MGPy8EG_N30NLO_Wmunu_Ht280_500_CFilterBVeto,    DUMMY
+363635,  0.073569,       1.12,     9.5191E-02, --, 125,   MadGraph+Pythia8+EvtGen,           MGPy8EG_N30NLO_Wmunu_Ht280_500_BFilter,         DUMMY
+363636,  0.011522,       1.12,     5.8643E-01, --, 125,   MadGraph+Pythia8+EvtGen,           MGPy8EG_N30NLO_Wmunu_Ht500_700_CVetoBVeto,      DUMMY
+363637,  0.011524,       1.12,     2.9645E-01, --, 125,   MadGraph+Pythia8+EvtGen,           MGPy8EG_N30NLO_Wmunu_Ht500_700_CFilterBVeto,    DUMMY
+363638,  0.011522,       1.12,     1.1565E-01, --, 125,   MadGraph+Pythia8+EvtGen,           MGPy8EG_N30NLO_Wmunu_Ht500_700_BFilter,         DUMMY
+363639,  0.0040194,      1.12,     5.6682E-01, --, 125,   MadGraph+Pythia8+EvtGen,           MGPy8EG_N30NLO_Wmunu_Ht700_1000_CVetoBVeto,     DUMMY
+363640,  0.0040252,      1.12,     3.0485E-01, --, 125,   MadGraph+Pythia8+EvtGen,           MGPy8EG_N30NLO_Wmunu_Ht700_1000_CFilterBVeto,   DUMMY
+363641,  0.0040139,      1.12,     1.2845E-01, --, 125,   MadGraph+Pythia8+EvtGen,           MGPy8EG_N30NLO_Wmunu_Ht700_1000_BFilter,        DUMMY
+363642,  0.0013262,      1.12,     5.4537E-01, --, 125,   MadGraph+Pythia8+EvtGen,           MGPy8EG_N30NLO_Wmunu_Ht1000_2000_CVetoBVeto,    DUMMY
+363643,  0.0013215,      1.12,     3.0792E-01, --, 125,   MadGraph+Pythia8+EvtGen,           MGPy8EG_N30NLO_Wmunu_Ht1000_2000_CFilterBVeto,  DUMMY
+363644,  0.0013287,      1.12,     1.4358E-01, --, 125,   MadGraph+Pythia8+EvtGen,           MGPy8EG_N30NLO_Wmunu_Ht1000_2000_BFilter,       DUMMY
+363645,  0.000041697,    1.12,     5.1966E-01, --, 125,   MadGraph+Pythia8+EvtGen,           MGPy8EG_N30NLO_Wmunu_Ht2000_E_CMS_CVetoBVeto,   DUMMY
+363646,  0.000042199,    1.12,     3.1695E-01, --, 125,   MadGraph+Pythia8+EvtGen,           MGPy8EG_N30NLO_Wmunu_Ht2000_E_CMS_CFilterBVeto, DUMMY
+363647,  0.000042049,    1.12,     1.5886E-01, --, 125,   MadGraph+Pythia8+EvtGen,           MGPy8EG_N30NLO_Wmunu_Ht2000_E_CMS_BFilter,      DUMMY
 
-363648,  16.7020,        1.12,     8.3754E-01, --, 125,   MadGraph+Pythia8+EvtGen,           MGPy8EG_N30NLO_Wtaunu_Ht0_70_CVetoBVeto,          DUMMY            
-363649,  16.7020,        1.12,     1.3832E-01, --, 125,   MadGraph+Pythia8+EvtGen,           MGPy8EG_N30NLO_Wtaunu_Ht0_70_CFilterBVeto,        DUMMY            
-363650,  16.7020,        1.12,     2.4191E-02, --, 125,   MadGraph+Pythia8+EvtGen,           MGPy8EG_N30NLO_Wtaunu_Ht0_70_BFilter,             DUMMY            
-363651,  0.75491,        1.12,     7.1220E-01, --, 125,   MadGraph+Pythia8+EvtGen,           MGPy8EG_N30NLO_Wtaunu_Ht70_140_CVetoBVeto,        DUMMY            
-363652,  0.7553,         1.12,     2.3927E-01, --, 125,   MadGraph+Pythia8+EvtGen,           MGPy8EG_N30NLO_Wtaunu_Ht70_140_CFilterBVeto,      DUMMY            
-363653,  0.75514,        1.12,     4.8464E-02, --, 125,   MadGraph+Pythia8+EvtGen,           MGPy8EG_N30NLO_Wtaunu_Ht70_140_BFilter,           DUMMY            
-363654,  0.31531,        1.12,     6.6716E-01, --, 125,   MadGraph+Pythia8+EvtGen,           MGPy8EG_N30NLO_Wtaunu_Ht140_280_CVetoBVeto,       DUMMY            
-363655,  0.31605,        1.12,     2.6369E-01, --, 125,   MadGraph+Pythia8+EvtGen,           MGPy8EG_N30NLO_Wtaunu_Ht140_280_CFilterBVeto,     DUMMY            
-363656,  0.31564,        1.12,     6.9269E-02, --, 125,   MadGraph+Pythia8+EvtGen,           MGPy8EG_N30NLO_Wtaunu_Ht140_280_BFilter,          DUMMY            
-363657,  0.072275,       1.12,     6.2207E-01, --, 125,   MadGraph+Pythia8+EvtGen,           MGPy8EG_N30NLO_Wtaunu_Ht280_500_CVetoBVeto,       DUMMY            
-363658,  0.07219,        1.12,     2.8470E-01, --, 125,   MadGraph+Pythia8+EvtGen,           MGPy8EG_N30NLO_Wtaunu_Ht280_500_CFilterBVeto,     DUMMY            
-363659,  0.072226,       1.12,     9.5212E-02, --, 125,   MadGraph+Pythia8+EvtGen,           MGPy8EG_N30NLO_Wtaunu_Ht280_500_BFilter,          DUMMY            
-363660,  0.01144,        1.12,     5.8825E-01, --, 125,   MadGraph+Pythia8+EvtGen,           MGPy8EG_N30NLO_Wtaunu_Ht500_700_CVetoBVeto,       DUMMY            
-363661,  0.011463,       1.12,     2.9713E-01, --, 125,   MadGraph+Pythia8+EvtGen,           MGPy8EG_N30NLO_Wtaunu_Ht500_700_CFilterBVeto,     DUMMY            
-363662,  0.011459,       1.12,     1.1623E-01, --, 125,   MadGraph+Pythia8+EvtGen,           MGPy8EG_N30NLO_Wtaunu_Ht500_700_BFilter,          DUMMY            
-363663,  0.0040265,      1.12,     5.6735E-01, --, 125,   MadGraph+Pythia8+EvtGen,           MGPy8EG_N30NLO_Wtaunu_Ht700_1000_CVetoBVeto,      DUMMY            
-363664,  0.004027,       1.12,     3.0313E-01, --, 125,   MadGraph+Pythia8+EvtGen,           MGPy8EG_N30NLO_Wtaunu_Ht700_1000_CFilterBVeto,    DUMMY            
-363665,  0.0040283,      1.12,     1.2992E-01, --, 125,   MadGraph+Pythia8+EvtGen,           MGPy8EG_N30NLO_Wtaunu_Ht700_1000_BFilter,         DUMMY            
-363666,  0.0013264,      1.12,     5.4582E-01, --, 125,   MadGraph+Pythia8+EvtGen,           MGPy8EG_N30NLO_Wtaunu_Ht1000_2000_CVetoBVeto,     DUMMY            
-363667,  0.0013205,      1.12,     3.1192E-01, --, 125,   MadGraph+Pythia8+EvtGen,           MGPy8EG_N30NLO_Wtaunu_Ht1000_2000_CFilterBVeto,   DUMMY           
-363668,  0.0013222,      1.12,     1.4277E-01, --, 125,   MadGraph+Pythia8+EvtGen,           MGPy8EG_N30NLO_Wtaunu_Ht1000_2000_BFilter,        DUMMY            
-363669,  0.000043501,    1.12,     5.2087E-01, --, 125,   MadGraph+Pythia8+EvtGen,           MGPy8EG_N30NLO_Wtaunu_Ht2000_E_CMS_CVetoBVeto,    DUMMY            
-363670,  0.000042721,    1.12,     3.1794E-01, --, 125,   MadGraph+Pythia8+EvtGen,           MGPy8EG_N30NLO_Wtaunu_Ht2000_E_CMS_CFilterBVeto,  DUMMY            
-363671,  0.000042683,    1.12,     1.6552E-01, --, 125,   MadGraph+Pythia8+EvtGen,           MGPy8EG_N30NLO_Wtaunu_Ht2000_E_CMS_BFilter,       DUMMY            
+363648,  16.7020,        1.12,     8.3754E-01, --, 125,   MadGraph+Pythia8+EvtGen,           MGPy8EG_N30NLO_Wtaunu_Ht0_70_CVetoBVeto,          DUMMY
+363649,  16.7020,        1.12,     1.3832E-01, --, 125,   MadGraph+Pythia8+EvtGen,           MGPy8EG_N30NLO_Wtaunu_Ht0_70_CFilterBVeto,        DUMMY
+363650,  16.7020,        1.12,     2.4191E-02, --, 125,   MadGraph+Pythia8+EvtGen,           MGPy8EG_N30NLO_Wtaunu_Ht0_70_BFilter,             DUMMY
+363651,  0.75491,        1.12,     7.1220E-01, --, 125,   MadGraph+Pythia8+EvtGen,           MGPy8EG_N30NLO_Wtaunu_Ht70_140_CVetoBVeto,        DUMMY
+363652,  0.7553,         1.12,     2.3927E-01, --, 125,   MadGraph+Pythia8+EvtGen,           MGPy8EG_N30NLO_Wtaunu_Ht70_140_CFilterBVeto,      DUMMY
+363653,  0.75514,        1.12,     4.8464E-02, --, 125,   MadGraph+Pythia8+EvtGen,           MGPy8EG_N30NLO_Wtaunu_Ht70_140_BFilter,           DUMMY
+363654,  0.31531,        1.12,     6.6716E-01, --, 125,   MadGraph+Pythia8+EvtGen,           MGPy8EG_N30NLO_Wtaunu_Ht140_280_CVetoBVeto,       DUMMY
+363655,  0.31605,        1.12,     2.6369E-01, --, 125,   MadGraph+Pythia8+EvtGen,           MGPy8EG_N30NLO_Wtaunu_Ht140_280_CFilterBVeto,     DUMMY
+363656,  0.31564,        1.12,     6.9269E-02, --, 125,   MadGraph+Pythia8+EvtGen,           MGPy8EG_N30NLO_Wtaunu_Ht140_280_BFilter,          DUMMY
+363657,  0.072275,       1.12,     6.2207E-01, --, 125,   MadGraph+Pythia8+EvtGen,           MGPy8EG_N30NLO_Wtaunu_Ht280_500_CVetoBVeto,       DUMMY
+363658,  0.07219,        1.12,     2.8470E-01, --, 125,   MadGraph+Pythia8+EvtGen,           MGPy8EG_N30NLO_Wtaunu_Ht280_500_CFilterBVeto,     DUMMY
+363659,  0.072226,       1.12,     9.5212E-02, --, 125,   MadGraph+Pythia8+EvtGen,           MGPy8EG_N30NLO_Wtaunu_Ht280_500_BFilter,          DUMMY
+363660,  0.01144,        1.12,     5.8825E-01, --, 125,   MadGraph+Pythia8+EvtGen,           MGPy8EG_N30NLO_Wtaunu_Ht500_700_CVetoBVeto,       DUMMY
+363661,  0.011463,       1.12,     2.9713E-01, --, 125,   MadGraph+Pythia8+EvtGen,           MGPy8EG_N30NLO_Wtaunu_Ht500_700_CFilterBVeto,     DUMMY
+363662,  0.011459,       1.12,     1.1623E-01, --, 125,   MadGraph+Pythia8+EvtGen,           MGPy8EG_N30NLO_Wtaunu_Ht500_700_BFilter,          DUMMY
+363663,  0.0040265,      1.12,     5.6735E-01, --, 125,   MadGraph+Pythia8+EvtGen,           MGPy8EG_N30NLO_Wtaunu_Ht700_1000_CVetoBVeto,      DUMMY
+363664,  0.004027,       1.12,     3.0313E-01, --, 125,   MadGraph+Pythia8+EvtGen,           MGPy8EG_N30NLO_Wtaunu_Ht700_1000_CFilterBVeto,    DUMMY
+363665,  0.0040283,      1.12,     1.2992E-01, --, 125,   MadGraph+Pythia8+EvtGen,           MGPy8EG_N30NLO_Wtaunu_Ht700_1000_BFilter,         DUMMY
+363666,  0.0013264,      1.12,     5.4582E-01, --, 125,   MadGraph+Pythia8+EvtGen,           MGPy8EG_N30NLO_Wtaunu_Ht1000_2000_CVetoBVeto,     DUMMY
+363667,  0.0013205,      1.12,     3.1192E-01, --, 125,   MadGraph+Pythia8+EvtGen,           MGPy8EG_N30NLO_Wtaunu_Ht1000_2000_CFilterBVeto,   DUMMY
+363668,  0.0013222,      1.12,     1.4277E-01, --, 125,   MadGraph+Pythia8+EvtGen,           MGPy8EG_N30NLO_Wtaunu_Ht1000_2000_BFilter,        DUMMY
+363669,  0.000043501,    1.12,     5.2087E-01, --, 125,   MadGraph+Pythia8+EvtGen,           MGPy8EG_N30NLO_Wtaunu_Ht2000_E_CMS_CVetoBVeto,    DUMMY
+363670,  0.000042721,    1.12,     3.1794E-01, --, 125,   MadGraph+Pythia8+EvtGen,           MGPy8EG_N30NLO_Wtaunu_Ht2000_E_CMS_CFilterBVeto,  DUMMY
+363671,  0.000042683,    1.12,     1.6552E-01, --, 125,   MadGraph+Pythia8+EvtGen,           MGPy8EG_N30NLO_Wtaunu_Ht2000_E_CMS_BFilter,       DUMMY
 
 ## W+jets Sherpa ##
 361300, 2.1380E+01, 9.0830E-01, 8.9150E-01, --, 125, Sherpa, Sherpa_CT10_Wenu_Pt0_70_CVetoBVeto, OFLCOND-RUN12-SDR-31
@@ -1298,13 +1390,13 @@ SampleID , xsection , kfactor , filtereff , uncertainty , mh , generator , proce
 361758, 0.0046471 , 1.124 , 1, --,125,   Alpgen+Pythia6+EvtGen,   AlpgenPythiaEvtGen_P2012_ZtautauccNp3Incl.evgen.EVNT.e4915,OFLCOND
 
 ### Z+jets Sherpa 2.2.1 filter sample l13l7//l15h20
-344772, 1.9811  , 0.9751 , 0.02501856, --, 125, Sherpa Z   , Sherpa_221_NNPDF30NNLO_Ztautau_MAXHTPTV0_70_l13l7  , OFLCOND
-344774, 1.9815  , 0.9751 , 0.05317984, --, 125, Sherpa Z   , Sherpa_221_NNPDF30NNLO_Ztautau_MAXHTPTV0_70_l15h20 , OFLCOND
-344776, 0.1105  , 0.9751 , 0.0355256 , --, 125, Sherpa Z   , Sherpa_221_NNPDF30NNLO_Ztautau_MAXHTPTV70_140_l13l7, OFLCOND
-344778, 0.11056 , 0.9751 , 0.0325756 , --, 125, Sherpa Z   , Sherpa_221_NNPDF30NNLO_Ztautau_MAXHTPTV70_140_l15h20, OFLCOND
-344780, 0.040666, 0.9751 , 0.0403827 , --, 125, Sherpa Z   , Sherpa_221_NNPDF30NNLO_Ztautau_MAXHTPTV140_280_l13l7, OFLCOND
-344781, 0.04062 , 0.9751 , 0.0906284 , --, 125, Sherpa Z   , Sherpa_221_NNPDF30NNLO_Ztautau_MAXHTPTV140_280_l15h20, OFLCOND
-344782, 0.040699,  0.9751, 0.1124122 , --, 125, Sherpa Z   , Sherpa_221_NNPDF30NNLO_Ztautau_MAXHTPTV140_280_h30h20, OFLCOND
+344772, 1.9811  , 0.9751 , 0.02530793, --, 125, Sherpa Z   , Sherpa_221_NNPDF30NNLO_Ztautau_MAXHTPTV0_70_l13l7  , OFLCOND
+344774, 1.9815  , 0.9751 , 0.05331809, --, 125, Sherpa Z   , Sherpa_221_NNPDF30NNLO_Ztautau_MAXHTPTV0_70_l15h20 , OFLCOND
+344776, 0.1105  , 0.9751 , 0.03502406 , --, 125, Sherpa Z   , Sherpa_221_NNPDF30NNLO_Ztautau_MAXHTPTV70_140_l13l7, OFLCOND
+344778, 0.11056 , 0.9751 , 0.07185637 , --, 125, Sherpa Z   , Sherpa_221_NNPDF30NNLO_Ztautau_MAXHTPTV70_140_l15h20, OFLCOND
+344780, 0.040666, 0.9751 , 0.04141612 , --, 125, Sherpa Z   , Sherpa_221_NNPDF30NNLO_Ztautau_MAXHTPTV140_280_l13l7, OFLCOND
+344781, 0.04062 , 0.9751 , 0.09361795 , --, 125, Sherpa Z   , Sherpa_221_NNPDF30NNLO_Ztautau_MAXHTPTV140_280_l15h20, OFLCOND
+344782, 0.040699,  0.9751, 0.10956879 , --, 125, Sherpa Z   , Sherpa_221_NNPDF30NNLO_Ztautau_MAXHTPTV140_280_h30h20, OFLCOND
 
 ### Z+jets Sherpa 2.2.1
 364100,      1.9830E+00   ,    0.9751 ,      8.2210E-01  , --, 125,   Sherpa Z   ,      Sherpa_221_NNPDF30NNLO_Zmumu_MAXHTPTV0_70_CVetoBVeto         ,OFLCOND
@@ -1445,6 +1537,9 @@ SampleID , xsection , kfactor , filtereff , uncertainty , mh , generator , proce
 304019, 2.546E-03,  1.0000E+00, 1.0000E+00, --, 125, Sherpa, Sherpa_CT10_Zee2JetsEW1JetQCD15GeVM40, OFLCOND-RUN12-SDR-31
 304020, 2.538E-03,  1.0000E+00, 1.0000E+00, --, 125, Sherpa, Sherpa_CT10_Zmumu2JetsEW1JetQCD15GeVM40, OFLCOND-RUN12-SDR-31
 304021, 2.541E-03,  1.0000E+00, 1.0000E+00, --, 125, Sherpa, Sherpa_CT10_Ztautau2JetsEW1JetQCD15GeVM40, OFLCOND-RUN12-SDR-31
+308092, 6.3197E-04, 1, 1, --, 125, Sherpa(v2.2.1), Sherpa_221_NNPDF30NNLO_Zee2jets_Min_N_TChannel, OFLCOND-MC16-SDR-16
+308093, 6.3433E-04, 1, 1, --, 125, Sherpa(v2.2.1), Sherpa_221_NNPDF30NNLO_Zmm2jets_Min_N_TChannel, OFLCOND-MC16-SDR-16
+308094, 6.3347E-04, 1, 1, --, 125, Sherpa(v2.2.1), Sherpa_221_NNPDF30NNLO_Ztautau2jets_Min_N_TChannel, OFLCOND-MC16-SDR-16
 
 ## W+jets Sherpa EW ##
 304015, 26.653E-03,  1.0000E+00, 1.0000E+00, --, 125, Sherpa, Sherpa_CT10_Wenu2JetsEW1JetQCD15GeV, OFLCOND-RUN12-SDR-31
@@ -1452,30 +1547,30 @@ SampleID , xsection , kfactor , filtereff , uncertainty , mh , generator , proce
 304017, 26.583E-03,  1.0000E+00, 1.0000E+00, --, 125, Sherpa, Sherpa_CT10_Wtaunu2JetsEW1JetQCD15GeV, OFLCOND-RUN12-SDR-31
 
 ## Z+jets MadGraph (fixed Zee) ##
-363147,  1.7197,      1.141,     0.83292,     --, 125,      MadGraph+Pythia8+EvtGen,           MGPy8EG_N30NLO_Zee_Ht0_70_CVetoBVeto, DUMMY                         
-363148,  1.7194,      1.141,     0.10775,     --, 125,      MadGraph+Pythia8+EvtGen,           MGPy8EG_N30NLO_Zee_Ht0_70_CFilterBVeto, DUMMY                       
-363149,  1.7194,      1.141,     0.059156,    --, 125,      MadGraph+Pythia8+EvtGen,           MGPy8EG_N30NLO_Zee_Ht0_70_BFilter, DUMMY                            
-363150,  0.085105,    1.141,     0.71754,     --, 125,      MadGraph+Pythia8+EvtGen,           MGPy8EG_N30NLO_Zee_Ht70_140_CVetoBVeto, DUMMY                       
-363151,  0.085041,    1.141,     0.17377,     --, 125,      MadGraph+Pythia8+EvtGen,           MGPy8EG_N30NLO_Zee_Ht70_140_CFilterBVeto, DUMMY                     
-363152,  0.085175,    1.141,     0.10763,     --, 125,      MadGraph+Pythia8+EvtGen,           MGPy8EG_N30NLO_Zee_Ht70_140_BFilter, DUMMY                          
-363153,  0.036005,    1.141,     0.67279,     --, 125,      MadGraph+Pythia8+EvtGen,           MGPy8EG_N30NLO_Zee_Ht140_280_CVetoBVeto, DUMMY                      
-363154,  0.036028,    1.141,     0.19996,     --, 125,      MadGraph+Pythia8+EvtGen,           MGPy8EG_N30NLO_Zee_Ht140_280_CFilterBVeto, DUMMY                    
-363155,  0.03606,     1.141,     0.12486,     --, 125,      MadGraph+Pythia8+EvtGen,           MGPy8EG_N30NLO_Zee_Ht140_280_BFilter, DUMMY                         
-363156,  0.0082054,   1.141,     0.62846,     --, 125,      MadGraph+Pythia8+EvtGen,           MGPy8EG_N30NLO_Zee_Ht280_500_CVetoBVeto, DUMMY                      
-363157,  0.0082126,   1.141,     0.22726,     --, 125,      MadGraph+Pythia8+EvtGen,           MGPy8EG_N30NLO_Zee_Ht280_500_CFilterBVeto, DUMMY                    
-363158,  0.0082474,   1.141,     0.14193,     --, 125,      MadGraph+Pythia8+EvtGen,           MGPy8EG_N30NLO_Zee_Ht280_500_BFilter, DUMMY                         
-363159,  0.0012733,   1.141,     0.59660,     --, 125,      MadGraph+Pythia8+EvtGen,           MGPy8EG_N30NLO_Zee_Ht500_700_CVetoBVeto, DUMMY                      
-363160,  0.001273,    1.141,     0.24847,     --, 125,      MadGraph+Pythia8+EvtGen,           MGPy8EG_N30NLO_Zee_Ht500_700_CFilterBVeto, DUMMY                    
-363161,  0.0012722,   1.141,     0.15256,     --, 125,      MadGraph+Pythia8+EvtGen,           MGPy8EG_N30NLO_Zee_Ht500_700_BFilter, DUMMY                         
-363162,  0.00044546,  1.141,     0.57676,     --, 125,      MadGraph+Pythia8+EvtGen,           MGPy8EG_N30NLO_Zee_Ht700_1000_CVetoBVeto, DUMMY                     
-363163,  0.00044611,  1.141,     0.26137,     --, 125,      MadGraph+Pythia8+EvtGen,           MGPy8EG_N30NLO_Zee_Ht700_1000_CFilterBVeto, DUMMY                   
-363164,  0.00044603,  1.141,     0.16181,     --, 125,      MadGraph+Pythia8+EvtGen,           MGPy8EG_N30NLO_Zee_Ht700_1000_BFilter, DUMMY                        
-363165,  0.00015208,  1.141,     0.55543,     --, 125,      MadGraph+Pythia8+EvtGen,           MGPy8EG_N30NLO_Zee_Ht1000_2000_CVetoBVeto, DUMMY                    
-363166,  0.00015248,  1.141,     0.27476,     --, 125,      MadGraph+Pythia8+EvtGen,           MGPy8EG_N30NLO_Zee_Ht1000_2000_CFilterBVeto, DUMMY                  
-363167,  0.00015327,  1.141,     0.16618,     --, 125,      MadGraph+Pythia8+EvtGen,           MGPy8EG_N30NLO_Zee_Ht1000_2000_BFilter, DUMMY                       
-363168,  5.6989E-06,  1.141,     0.53136,     --, 125,      MadGraph+Pythia8+EvtGen,           MGPy8EG_N30NLO_Zee_Ht2000_E_CMS_CVetoBVeto, DUMMY                   
-363169,  5.7408E-06,  1.141,     0.29230,     --, 125,      MadGraph+Pythia8+EvtGen,           MGPy8EG_N30NLO_Zee_Ht2000_E_CMS_CFilterBVeto, DUMMY                 
-363170,  5.7164E-06,  1.141,     0.17489,     --, 125,      MadGraph+Pythia8+EvtGen,           MGPy8EG_N30NLO_Zee_Ht2000_E_CMS_BFilter, DUMMY                      
+363147,  1.7197,      1.141,     0.83292,     --, 125,      MadGraph+Pythia8+EvtGen,           MGPy8EG_N30NLO_Zee_Ht0_70_CVetoBVeto, DUMMY
+363148,  1.7194,      1.141,     0.10775,     --, 125,      MadGraph+Pythia8+EvtGen,           MGPy8EG_N30NLO_Zee_Ht0_70_CFilterBVeto, DUMMY
+363149,  1.7194,      1.141,     0.059156,    --, 125,      MadGraph+Pythia8+EvtGen,           MGPy8EG_N30NLO_Zee_Ht0_70_BFilter, DUMMY
+363150,  0.085105,    1.141,     0.71754,     --, 125,      MadGraph+Pythia8+EvtGen,           MGPy8EG_N30NLO_Zee_Ht70_140_CVetoBVeto, DUMMY
+363151,  0.085041,    1.141,     0.17377,     --, 125,      MadGraph+Pythia8+EvtGen,           MGPy8EG_N30NLO_Zee_Ht70_140_CFilterBVeto, DUMMY
+363152,  0.085175,    1.141,     0.10763,     --, 125,      MadGraph+Pythia8+EvtGen,           MGPy8EG_N30NLO_Zee_Ht70_140_BFilter, DUMMY
+363153,  0.036005,    1.141,     0.67279,     --, 125,      MadGraph+Pythia8+EvtGen,           MGPy8EG_N30NLO_Zee_Ht140_280_CVetoBVeto, DUMMY
+363154,  0.036028,    1.141,     0.19996,     --, 125,      MadGraph+Pythia8+EvtGen,           MGPy8EG_N30NLO_Zee_Ht140_280_CFilterBVeto, DUMMY
+363155,  0.03606,     1.141,     0.12486,     --, 125,      MadGraph+Pythia8+EvtGen,           MGPy8EG_N30NLO_Zee_Ht140_280_BFilter, DUMMY
+363156,  0.0082054,   1.141,     0.62846,     --, 125,      MadGraph+Pythia8+EvtGen,           MGPy8EG_N30NLO_Zee_Ht280_500_CVetoBVeto, DUMMY
+363157,  0.0082126,   1.141,     0.22726,     --, 125,      MadGraph+Pythia8+EvtGen,           MGPy8EG_N30NLO_Zee_Ht280_500_CFilterBVeto, DUMMY
+363158,  0.0082474,   1.141,     0.14193,     --, 125,      MadGraph+Pythia8+EvtGen,           MGPy8EG_N30NLO_Zee_Ht280_500_BFilter, DUMMY
+363159,  0.0012733,   1.141,     0.59660,     --, 125,      MadGraph+Pythia8+EvtGen,           MGPy8EG_N30NLO_Zee_Ht500_700_CVetoBVeto, DUMMY
+363160,  0.001273,    1.141,     0.24847,     --, 125,      MadGraph+Pythia8+EvtGen,           MGPy8EG_N30NLO_Zee_Ht500_700_CFilterBVeto, DUMMY
+363161,  0.0012722,   1.141,     0.15256,     --, 125,      MadGraph+Pythia8+EvtGen,           MGPy8EG_N30NLO_Zee_Ht500_700_BFilter, DUMMY
+363162,  0.00044546,  1.141,     0.57676,     --, 125,      MadGraph+Pythia8+EvtGen,           MGPy8EG_N30NLO_Zee_Ht700_1000_CVetoBVeto, DUMMY
+363163,  0.00044611,  1.141,     0.26137,     --, 125,      MadGraph+Pythia8+EvtGen,           MGPy8EG_N30NLO_Zee_Ht700_1000_CFilterBVeto, DUMMY
+363164,  0.00044603,  1.141,     0.16181,     --, 125,      MadGraph+Pythia8+EvtGen,           MGPy8EG_N30NLO_Zee_Ht700_1000_BFilter, DUMMY
+363165,  0.00015208,  1.141,     0.55543,     --, 125,      MadGraph+Pythia8+EvtGen,           MGPy8EG_N30NLO_Zee_Ht1000_2000_CVetoBVeto, DUMMY
+363166,  0.00015248,  1.141,     0.27476,     --, 125,      MadGraph+Pythia8+EvtGen,           MGPy8EG_N30NLO_Zee_Ht1000_2000_CFilterBVeto, DUMMY
+363167,  0.00015327,  1.141,     0.16618,     --, 125,      MadGraph+Pythia8+EvtGen,           MGPy8EG_N30NLO_Zee_Ht1000_2000_BFilter, DUMMY
+363168,  5.6989E-06,  1.141,     0.53136,     --, 125,      MadGraph+Pythia8+EvtGen,           MGPy8EG_N30NLO_Zee_Ht2000_E_CMS_CVetoBVeto, DUMMY
+363169,  5.7408E-06,  1.141,     0.29230,     --, 125,      MadGraph+Pythia8+EvtGen,           MGPy8EG_N30NLO_Zee_Ht2000_E_CMS_CFilterBVeto, DUMMY
+363170,  5.7164E-06,  1.141,     0.17489,     --, 125,      MadGraph+Pythia8+EvtGen,           MGPy8EG_N30NLO_Zee_Ht2000_E_CMS_BFilter, DUMMY
 
 ## Z+jets MadGraph (fixed Zmumu) ##
 363123, 1.7145,     1.1410E+00, 0.8316,     --, 125, MadGraph+Pythia8+EvtGen, MGPy8EG_N30NLO_Zmumu_Ht0_70_CVetoBVeto, DUMMY
@@ -1568,17 +1663,28 @@ SampleID , xsection , kfactor , filtereff , uncertainty , mh , generator , proce
 361620, 8.3430E-06, 1.0000E+00, 1.0000E+00, --, 125, Sherpa, Sherpa_CT10_WWW_3l3v, OFLCOND-RUN12-SDR-31
 361621, 1.7340E-06, 1.0000E+00, 1.0000E+00, --, 125, Sherpa, Sherpa_CT10_WWZ_4l2v, OFLCOND-RUN12-SDR-31
 361622, 3.4299E-06, 1.0000E+00, 1.0000E+00, --, 125, Sherpa, Sherpa_CT10_WWZ_2l4v, OFLCOND-RUN12-SDR-31
-361623, 2.1783E-07, 1.0000E+00, 1.0000E+00, --, 125, Sherpa, Sherpa_CT10_WZZ_5l1v, OFLCOND-RUN12-SDR-31
+361623, 2.178E-07,  1.0000E+00, 1.0000E+00, --, 125, Sherpa, Sherpa_CT10_WZZ_5l1v, OFLCOND-RUN12-SDR-31
 361624, 1.9248E-06, 1.0000E+00, 4.4444E-01, --, 125, Sherpa, Sherpa_CT10_WZZ_3l3v, OFLCOND-RUN12-SDR-31
-361625, 1.7059E-08, 1.0000E+00, 1.0000E+00, --, 125, Sherpa, Sherpa_CT10_ZZZ_6l0v, OFLCOND-RUN12-SDR-31
-361626, 4.4125E-07, 1.0000E+00, 2.2542E-01, --, 125, Sherpa, Sherpa_CT10_ZZZ_4l2v, OFLCOND-RUN12-SDR-31
-361627, 4.4530E-07, 1.0000E+00, 4.4815E-01, --, 125, Sherpa, Sherpa_CT10_ZZZ_2l4v, OFLCOND-RUN12-SDR-31
+361625, 1.71E-08,   1.0000E+00, 1.0000E+00, --, 125, Sherpa, Sherpa_CT10_ZZZ_6l0v, OFLCOND-RUN12-SDR-31
+361626, 4.413E-07,  1.0000E+00, 2.2542E-01, --, 125, Sherpa, Sherpa_CT10_ZZZ_4l2v, OFLCOND-RUN12-SDR-31
+361627, 4.453E-07,  1.0000E+00, 4.4815E-01, --, 125, Sherpa, Sherpa_CT10_ZZZ_2l4v, OFLCOND-RUN12-SDR-31
 407314, 1.5846E-05, 1.0000E+00, 1.0000E+00, --, 125, Sherpa, Sherpa_221_NNPDF30NNLO_3l3v_EW6, OFLCOND-RUN12-SDR-31
 407313, 4.3684E-06, 1.0000E+00, 1.0000E+00, --, 125, Sherpa, Sherpa_221_NNPDF30NNLO_4l2v_EW6, OFLCOND-RUN12-SDR-31
-364242, 7.1931E-06, 1.0000E+00, 1.0000E+00, --, 125, Sherpa, Sherpa_222_NNPDF30NNLO_WWW_3l3v_EW6, DUMMY
-364243, 1.7956E-06, 1.0000E+00, 1.0000E+00, --, 125, Sherpa, Sherpa_222_NNPDF30NNLO_WWZ_4l2v_EW6, DUMMY
+364242, 7.196E-06,  1.0000E+00, 1.0000E+00, --, 125, Sherpa, Sherpa_222_NNPDF30NNLO_WWW_3l3v_EW6, DUMMY
+364243, 1.7973E-06, 1.0000E+00, 1.0000E+00, --, 125, Sherpa, Sherpa_222_NNPDF30NNLO_WWZ_4l2v_EW6, DUMMY
+364244, 3.5467E-06, 1.0000E+00, 1.0000E+00, --, 125, Sherpa, Sherpa_222_NNPDF30NNLO_WWZ_2l4v_EW6, DUMMY
+364245, 1.8807E-07, 1.0000E+00, 1.0000E+00, --, 125, Sherpa, Sherpa_222_NNPDF30NNLO_WZZ_5l1v_EW6, OFLCOND-RUN12-SDR-19
+364246, 1.668E-06,  1.0000E+00, 4.4626E-01, --, 125, Sherpa, Sherpa_222_NNPDF30NNLO_WZZ_3l3v_EW6, DUMMY
+364247, 1.4508E-08, 1.0000E+00, 1.0000E+00, --, 125, Sherpa, Sherpa_222_NNPDF30NNLO_ZZZ_6l0v_EW6, OFLCOND-MC16-SDR-16
+364248, 3.8533E-07, 1.0000E+00, 2.2453E-01, --, 125, Sherpa, Sherpa_222_NNPDF30NNLO_ZZZ_4l2v_EW6, OFLCOND-MC16-SDR-16
+364249, 3.8545E-07, 1.0000E+00, 4.4467E-01, --, 125, Sherpa, Sherpa_222_NNPDF30NNLO_ZZZ_2l4v_EW6, DUMMY
+364336, 9.6070E-06, 1.0000E+00, 4.6810E-01, --, 125, Sherpa, Sherpa_222_NNPDF30NNLO_WpWpWn_sslvlvjj_EW6, OFLCOND-MC16-SDR-14
+364337, 5.3859E-06, 1.0000E+00, 4.6260E-01, --, 125, Sherpa, Sherpa_222_NNPDF30NNLO_WnWnWp_sslvlvjj_EW6, OFLCOND-MC16-SDR-14
+364338, 4.3614E-05, 1.0000E+00, 3.2568E-01, --, 125, Sherpa, Sherpa_222_NNPDF30NNLO_WpWpWn_oslvlvjj_EW6, OFLCOND-MC16-SDR-14
+364339, 2.4695E-05, 1.0000E+00, 3.2915E-01, --, 125, Sherpa, Sherpa_222_NNPDF30NNLO_WnWnWp_oslvlvjj_EW6, OFLCOND-MC16-SDR-14
 345584, 7.175E-06,  1.0000E+00, 1.0000E+00, --, 125, aMcAtNloPy8EG, aMcAtNloPy8EG_NNPDF30NLO_WWW_3l3v, DUMMY
 345585, 1.772E-06,  1.0000E+00, 1.0000E+00, --, 125, aMcAtNloPy8EG, aMcAtNloPy8EG_NNPDF30NLO_WWZ_4l2v, DUMMY
+366090, 1.2414E-05, 1.0000E+00, 1.0000E+00, --, 125, Sherpa, Sherpa_222_N30NNLO_WlvWlvZqq_EW6, OFLCOND-MC16-SDR-16
 
 ## J/Psi ##
 423201, 2.1109E+03, 1.0000E+00, 1.3235E-01, --, 125, Pythia8B+Photospp, Pythia8B_A14_CTEQ6L1_Jpsie3e8, OFLCOND-RUN12-SDR-31
@@ -1653,3 +1759,29 @@ SampleID , xsection , kfactor , filtereff , uncertainty , mh , generator , proce
 361060, 2.4843E-12, 	  1.0,     0.40351, 	       --, 125, 1, Sherpa,          Sherpa_CT10_SinglePhotonPt4000_CVetoBVeto,         DUMMY
 361061, 2.5134E-12, 	  1.0,     0.41614, 	       --, 125, 1, Sherpa,          Sherpa_CT10_SinglePhotonPt4000_CFilterBVeto,       DUMMY
 361062, 2.5431E-12, 	  1.0,     0.14831, 	       --, 125, 1, Sherpa,          Sherpa_CT10_SinglePhotonPt4000_BFilter,            DUMMY
+
+### Orthoganility study high mass
+
+
+302136, 0.0002949, 1.0, 1, --, 3000, MadGraph5_aMC@NLO(v2.2.2.p6)+Pythia8(v8.186)+EvtGen(v1.2.0), MadGraphPythia8EvtGen_A14NNPDF23LO_HVT_Agv1_VzWW_lvqq_m3000, OFLCOND-MC16-SDR-16
+302111, 0.000296, 1.0, 1, --, 3000, MadGraph5_aMC@NLO(v2.2.2.p6)+Pythia8(v8.186)+EvtGen(v1.2.0), MadGraphPythia8EvtGen_A14NNPDF23LO_HVT_Agv1_VzWW_qqqq_m3000, OFLCOND-MC16-SDR-16
+302261, 0.0002011, 1.0, 1, --, 3000, MadGraph5_aMC@NLO(v2.2.2.p6)+Pythia8(v8.186)+EvtGen(v1.2.0), MadGraphPythia8EvtGen_A14NNPDF23LO_HVT_Agv1_VcWZ_vvqq_m3000, OFLCOND-MC16-SDR-16
+302211, 0.0003349, 1.0, 1, --, 3000, MadGraph5_aMC@NLO(v2.2.3.p0)+Pythia8(v8.186)+EvtGen(v1.2.0), MadGraphPythia8EvtGen_A14NNPDF23LO_HVT_Agv1_VcWZ_lvqq_m3000, OFLCOND-MC16-SDR-16
+302236, 0.0001012, 1.0, 1, --, 3000, MadGraph5_aMC@NLO(v2.2.2.p6)+Pythia8(v8.186)+EvtGen(v1.2.0), MadGraphPythia8EvtGen_A14NNPDF23LO_HVT_Agv1_VcWZ_llqq_m3000, OFLCOND-MC16-SDR-16
+302186, 0.0006688, 1.0, 1, --, 3000, MadGraph5_aMC@NLO(v2.2.2.p6)+Pythia8(v8.186)+EvtGen(v1.2.0), MadGraphPythia8EvtGen_A14NNPDF23LO_HVT_Agv1_VcWZ_qqqq_m3000, OFLCOND-MC16-SDR-16
+302411, 7.501e-05, 1.0, 1, --, 3000, MadGraph5_aMC@NLO(v2.2.2.p6)+Pythia8(v8.186)+EvtGen(v1.2.0), MadGraphPythia8EvtGen_A14NNPDF23LO_HVT_Agv1_VzZH_llqq_m3000, OFLCOND-MC16-SDR-16
+302436, 0.0001493, 1.0, 1, --, 3000, MadGraph5_aMC@NLO(v2.2.2.p6)+Pythia8(v8.186)+EvtGen(v1.2.0), MadGraphPythia8EvtGen_A14NNPDF23LO_HVT_Agv1_VzZH_vvqq_m3000, OFLCOND-MC16-SDR-16
+302386, 0.0004998, 1.0, 1, --, 3000, MadGraph5_aMC@NLO(v2.2.2.p6)+Pythia8(v8.186)+EvtGen(v1.2.0), MadGraphPythia8EvtGen_A14NNPDF23LO_HVT_Agv1_VzZH_qqqq_m3000, OFLCOND-MC16-SDR-16
+302361, 0.0005186, 1.0, 1, --, 3000, MadGraph5_aMC@NLO(v2.2.2.p6)+Pythia8(v8.186)+EvtGen(v1.2.0), MadGraphPythia8EvtGen_A14NNPDF23LO_HVT_Agv1_VcWH_lvqq_m3000, OFLCOND-MC16-SDR-16
+302336, 0.001038, 1.0, 1, --, 3000, MadGraph5_aMC@NLO(v2.2.2.p6)+Pythia8(v8.186)+EvtGen(v1.2.0), MadGraphPythia8EvtGen_A14NNPDF23LO_HVT_Agv1_VcWH_qqqq_m3000, OFLCOND-MC16-SDR-16
+301243, 0.011414, 1.0, 1, --, 3000, Pythia8(v8.186)+EvtGen(v1.2.0), Pythia8EvtGen_A14NNPDF23LO_Wprime_enu_SSM3000, OFLCOND-MC16-SDR-16
+301247, 0.011432, 1.0, 1, --, 3000, Pythia8(v8.186)+EvtGen(v1.2.0), Pythia8EvtGen_A14NNPDF23LO_Wprime_munu_SSM3000, OFLCOND-MC16-SDR-16
+301216, 0.00080617, 1.0, 1, --, 3000, Pythia8(v8.186)+EvtGen(v1.2.0), Pythia8EvtGen_A14NNPDF23LO_Zprime_NoInt_ee_E6Chi3000, OFLCOND-MC16-SDR-16
+301221, 0.00080295, 1.0, 1, --, 3000, Pythia8(v8.186)+EvtGen(v1.2.0), Pythia8EvtGen_A14NNPDF23LO_Zprime_NoInt_mumu_E6Chi3000, OFLCOND-MC16-SDR-16
+301323, 8.742, 1.0, 1, --, 500, Pythia8(v8.186)+EvtGen(v1.2.0), Pythia8EvtGen_A14NNPDF23LO_zprime500_tt, OFLCOND-MC16-SDR-16
+301325, 1.1261, 1.0, 1, --, 1000, Pythia8(v8.186)+EvtGen(v1.2.0), Pythia8EvtGen_A14NNPDF23LO_zprime1000_tt, OFLCOND-MC16-SDR-16
+301329, 0.051346, 1.0, 1, --, 2000, Pythia8(v8.186)+EvtGen(v1.2.0), Pythia8EvtGen_A14NNPDF23LO_zprime2000_tt, OFLCOND-MC16-SDR-16
+306136, 0.26724, 1.0, 1, --, 2000, MadGraph5_aMC@NLO(v2.2.3.p0)+Pythia8(v8.186)+EvtGen(v1.2.0), MadGraphPythia8EvtGen_A14NNPDF23LO_WpR_tbhad_M2000, OFLCOND-MC16-SDR-16
+308488, 0.34653, 1.0, 1, --, 1000, Pythia8(v8.212)+EvtGen(v1.6.0), Pythia8EvtGen_A14NNPDF23LO_Wprime1250_Zprime1000, OFLCOND-MC16-SDR-16
+302482, 1.0, 1.0, 1, --, 1400, Pythia8(v8.186)+EvtGen(v1.2.0), ProtosLHEFPythia8EvtGen_A14NNPDF23LO_TTS_M1400, OFLCOND-MC16-SDR-16
+307018, 0.0058449, 1.0, 1, --, 2000, MadGraph5_aMC@NLO(v2.3.3.p1)+Pythia8(v8.212)+EvtGen(v1.2.0), MGPy8EG_NNPDF30LO_A14NNPDF23LO_WTht2000LH01K05, OFLCOND-MC16-SDR-16

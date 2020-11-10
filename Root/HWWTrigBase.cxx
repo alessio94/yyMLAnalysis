@@ -13,20 +13,40 @@ void HWWTrigBase::DEBUGmsg(TString msg) const {
   std::cout << "DEBUG HWWTrigBase *** " << msg << std::endl;
 }
 
+//______________________________________________________________________________________________
 
 // constructor
 HWWTrigBase::HWWTrigBase(const std::vector<HWWTrigConfig*>& trigConfigs):
-  m_trigConfigs(trigConfigs),
+  HWWTrigBase()
+{
+  for(const auto& t:trigConfigs){
+    this->addTriggerConfig(t);
+  }
+}
+//______________________________________________________________________________________________
+
+// constructor
+HWWTrigBase::HWWTrigBase():
   m_trigpass_prefix("pass_"),
   m_trigmatch_prefix("trigMatch_")
 {
 	DEBUGclass("constructor of HWWTrigBase");
 }
 
+//______________________________________________________________________________________________
+
+void HWWTrigBase::addTriggerConfig(HWWTrigConfig* trigConfig){
+  this->m_trigConfigs.push_back(trigConfig);
+}
+
+//______________________________________________________________________________________________
+
 // destructor
 HWWTrigBase::~HWWTrigBase() {
 
 }
+
+//______________________________________________________________________________________________
 
 HWWTrigConfig* HWWTrigBase::getTrigConfig(const xAOD::EventInfo* evtInfo) const {
 	unsigned int runNumber;
@@ -39,8 +59,9 @@ HWWTrigConfig* HWWTrigBase::getTrigConfig(const xAOD::EventInfo* evtInfo) const 
   // find out based on run number which is the correct HWWTrigConf
   // DEBUGclass("runNumber = %d", runNumber); // can't get debug messages to work for this class
 	for (const auto& trigconf : m_trigConfigs) {
+		//std::cout << runNumber << "is the RunNumber" << std::endl;
+		if (runNumber >= trigconf->runNumberLow && runNumber <= trigconf->runNumberUp) {
 
-		if (runNumber > trigconf->runNumberLow && runNumber < trigconf->runNumberUp) {
 			return trigconf;
 		}
 	}
@@ -260,7 +281,7 @@ bool HWWTrigBase::passDilep(const xAOD::EventInfo* evtInfo) const {
     // there seem to be events in MC with RandomRunNr = 0. Coming from mu not represented and thus having weight=0? Previous implementation must then have said false.
     if (evtInfo->eventType(xAOD::EventInfo::IS_SIMULATION)) {
       if (evtInfo->auxdata<unsigned int>("RandomRunNumber") == 0) {
-        // std::cout << "WARNING in HWWTrigBase :: RandomRunNumber == 0, interpreting as trigger miss." << std::endl;
+        //std::cout << "WARNING in HWWTrigBase :: RandomRunNumber == 0, interpreting as trigger miss." << std::endl;
         return false;
       }
     }

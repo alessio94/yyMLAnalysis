@@ -52,10 +52,10 @@ double HWWInvMass2L::getValue() const {
   // value retrieval function, called on every event for every cut and histogram
   DEBUGclass("entering function");
 
-  // the TQEventObservable only works in an ASG environment which HAS_XAOD, hence
+  // the TQEventObservable only works in an ASG RELEASE, hence
   // we encapsulate the implementation in an ifdef/ifndef block
   #ifndef HAS_XAOD
-  #warning "using plain ROOT compilation scheme - please add '-DASG_RELEASE' to your packages 'Makefile.RootCore'"
+  #warning "using plain ROOT compilation scheme - please add an ASG Analysis Release in order to use this feature!"
   return std::numeric_limits<double>::quiet_NaN();
   #else
   // get event candidate

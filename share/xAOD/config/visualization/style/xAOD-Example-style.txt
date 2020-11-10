@@ -1,11 +1,11 @@
 # -*- mode: tqfolder -*-
 
 <style.default.title = "Total Bkg.", style.default.histLineColor = 1, style.default.histFillColor = 15> @ /bkg/;
-<style.default.title = "$Z/#gamma^{*}$", style.default.histFillColor = 210> @ /bkg/?/Zjets/;
-<style.default.title = "$Z/#gamma^{*} ee$", style.default.histFillColor = 211> @ /bkg/?/Zjets/*/ee/;
-<style.default.title = "$Z/#gamma^{*} #mu#mu$", style.default.histFillColor = 212> @ /bkg/?/Zjets/*/mm/;
-<style.default.title = "$Z/#gamma^{*} #tau#tau$", style.default.histFillColor = 228> @ /bkg/?/Zjets/*/tt/;
-<style.default.title = "$t#bar{t}$", style.default.histFillColor = 219> @ /bkg/?/top/ttbar/;
-<style.default.title = "Single Top", style.default.histFillColor = 218> @ /bkg/?/top/singletop/;
-<style.default.title = "Di-boson", style.default.histFillColor = 220> @ /bkg/?/diboson/;
+<style.default.title = "$Z/#gamma^{*}$", style.default.histFillColor = 210> @ /bkg/?/?/Zjets/;
+<style.default.title = "$Z/#gamma^{*} ee$", style.default.histFillColor = 211> @ /bkg/?/?/Zjets/*/ee/;
+<style.default.title = "$Z/#gamma^{*} #mu#mu$", style.default.histFillColor = 212> @ /bkg/?/?/Zjets/*/mm/;
+<style.default.title = "$Z/#gamma^{*} #tau#tau$", style.default.histFillColor = 228> @ /bkg/?/?/Zjets/*/tt/;
+<style.default.title = "$t#bar{t}$", style.default.histFillColor = 219> @ /bkg/?/?/top/ttbar/;
+<style.default.title = "Single Top", style.default.histFillColor = 218> @ /bkg/?/?/top/singletop/;
+<style.default.title = "Di-boson", style.default.histFillColor = 220> @ /bkg/?/?/diboson/;
 <style.default.title = "Data", style.default.isHistogram = false, style.default.histLineColor = 1, style.default.histMarkerStyle = 20, style.default.histMarkerSize = 1.2, style.default.showRaw = true> @ /data/;

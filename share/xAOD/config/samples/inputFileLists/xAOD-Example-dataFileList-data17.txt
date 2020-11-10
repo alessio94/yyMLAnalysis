@@ -1,0 +1,7 @@
+root://eosuser.cern.ch//eos/user/a/atlascaf/tutorial/2020_Feb/xAOD_Example/data/data17/CAFxAOD_ZJetsSkim_data_X_c16d.part0_group.phys-higgs.0032.root
+root://eosuser.cern.ch//eos/user/a/atlascaf/tutorial/2020_Feb/xAOD_Example/data/data17/CAFxAOD_ZJetsSkim_data_X_c16d.part1_group.phys-higgs.003.root
+root://eosuser.cern.ch//eos/user/a/atlascaf/tutorial/2020_Feb/xAOD_Example/data/data17/CAFxAOD_ZJetsSkim_data_X_c16d.part2_group.phys-higgs.0033.root
+root://eosuser.cern.ch//eos/user/a/atlascaf/tutorial/2020_Feb/xAOD_Example/data/data17/CAFxAOD_ZJetsSkim_data_X_c16d.part3_group.phys-higgs.0033.root
+root://eosuser.cern.ch//eos/user/a/atlascaf/tutorial/2020_Feb/xAOD_Example/data/data17/CAFxAOD_ZJetsSkim_data_X_c16d.part4_group.phys-higgs.0033.root
+root://eosuser.cern.ch//eos/user/a/atlascaf/tutorial/2020_Feb/xAOD_Example/data/data17/CAFxAOD_ZJetsSkim_data_X_c16d.part5_group.phys-higgs.0033.root
+root://eosuser.cern.ch//eos/user/a/atlascaf/tutorial/2020_Feb/xAOD_Example/data/data17/CAFxAOD_ZJetsSkim_data_X_c16d.part6_group.phys-higgs.003.root

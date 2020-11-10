@@ -24,7 +24,7 @@ protected:
 
   // the "mutable" keyword ensures that this member can be changed also by const functions
   // the "const" keyword ensures that const containers can be retrieved
-  mutable xAOD::CompositeParticleContainer const * mCand = 0;
+  mutable xAOD::CompositeParticleContainer const * mCand = 0; //!
 
 public:
   virtual double getValue() const override;
