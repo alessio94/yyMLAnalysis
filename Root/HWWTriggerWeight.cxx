@@ -338,19 +338,18 @@ bool HWWTriggerWeight::initializeSF(){
 	  name = "AsgElectronEfficiencyCorrectionTool/ElTrigSF_";
 	else if (j == 1)
 	  name = "AsgElectronEfficiencyCorrectionTool/ElTrigEff_";
-	name.Append(m_variationName);
+	name.Append(TQStringUtils::makeValidIdentifier(m_variationName, TQStringUtils::alphanum+"_"));
 	name.Append("_");
 	name.Append(campaign);
 	name.Append("_");
 	name.Append(std::to_string(nElectronTools));
-
 	electronToolsFactory.emplace_back(name.Data());
 	asg::AnaToolHandle<IAsgElectronEfficiencyCorrectionTool>& t = electronToolsFactory.back();
         // The electron tool picks the most recent map file automatically. The following line can overwrite the default
         // t.setProperty("MapFilePath", "/cvmfs/atlas.cern.ch/repo/sw/database/GroupData/ElectronEfficiencyCorrection/2015_2017/rel21.2/Consolidation_September2018_v1/map1.txt").ignore();
 
 	DEBUGclass("Setting TriggerKey of %s to %s", name.Data(), eSetup.second.Data());
-	t.setProperty("TriggerKey", eSetup.second.Data()).ignore();
+	t.setProperty("TriggerKey", (TString(j==1?"Eff_":"")+eSetup.second).Data()).ignore();
 
 	// todo: read IdKey and IsoKey from lepton id helper
 	t.setProperty("IdKey","Tight").ignore();
@@ -414,7 +413,7 @@ bool HWWTriggerWeight::initializeSF(){
   asg::AnaToolHandle<CP::IMuonTriggerScaleFactors>& t = muonToolsFactory.back();
   ASG_SET_ANA_TOOL_TYPE(t, CP::MuonTriggerScaleFactors);
   TString name = "MuonTrigEff_";
-  name.Append(m_variationName);
+  name.Append(TQStringUtils::makeValidIdentifier(m_variationName, TQStringUtils::alphanum+"_"));
   t.setName(name.Data());
   // todo: read MuonQuality from lepton id helper
   t.setProperty("MuonQuality", "Tight").ignore();
