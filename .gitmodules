@@ -2,3 +2,6 @@
 	path = CAFCore
 	url = ../../atlas-caf/CAFCore
 	branch = master
+[submodule "submissionhelpers"]
+	path = submissionhelpers
+	url = ../../cburgard/submissionhelpers.git

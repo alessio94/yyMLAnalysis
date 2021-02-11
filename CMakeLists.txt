@@ -180,4 +180,7 @@ else()
   message("adding CAFCore")
   add_subdirectory(CAFCore)
 
+  message("adding SubmissionHelpers")
+  add_subdirectory(SubmissionHelpers)  
+
 endif()
