@@ -1,4 +1,5 @@
 #include "CAFExample/FakeLeptonMT.h"
+#include "TObjString.h"
 #include <limits>
 
 // uncomment the following line to enable debug printouts
