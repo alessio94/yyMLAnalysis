@@ -61,3 +61,5 @@ if __name__ == "__main__":
         f.write("export PYTHONPATH=$PYTHONPATH:"+args.binDir+"\n")
         f.write("export LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:"+args.binDir+"\n")
         f.write("export CAFANALYSISSETUP="+scriptPath+"\n")
+        f.write("export ANALYSIS_SETUP="+scriptPath+"\n")
+        f.write("export ANALYSIS_BUILD_DIR="+args.binDir+"\n")        
