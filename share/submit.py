@@ -28,7 +28,7 @@ def main(args):
         taskList = submit.makeTaskList(args, args.jobs, config, templateCommand, setup=setup, inputs=[], outputs=[outputFileNameTemplate])
     else:
         taskList = submit.makeSmartTaskList(args, args.jobs, config, templateCommand, maxSampleCount=args.maxSampleCount, maxSampleSize=args.maxSampleSize, setup=setup, inputs=[], outputs=[outputFileNameTemplate])
-    ctrl = submit.guessSubmissionController()
+    ctrl = submit.guessSubmissionController(args)
     allDone = ctrl.submitTasks(args,taskList)
     if allDone: common.mergeFilesQuery(args, config)
     print("Done")

@@ -49,7 +49,8 @@ def main(args):
       extype,exsource,extext = QFramework.parseException(ex)
       QFramework.BREAK("Failed to run statistics manager for config, exception of type '{:s}' occurred: '{:s}'".format(extype,extext))
     QFramework.INFO("Done processing '{:s}'!".format(configPath))
-
+    common.printExecutionSummary(config)
+    
 if __name__ == "__main__":
   # parse the CLI arguments
   parser = argparse.ArgumentParser(description='Create a workspace for the HSG3 Run2 Analysis.')

@@ -7,5 +7,7 @@
 
 <style.default.histLineWidth = 3> @ ?;
 
-<label = "PFlow", style.default.histLineColor = 417> @ sig/?/mh125/ggf/345324PFlow;
-<label = "EMTopo", style.default.histLineColor = 2> @ sig/?/mh125/ggf/345324EMTopo;
+<label = "PFlow", style.default.histLineColor = 417> @ sig/?/ggf/345324PFlow;
+<label = "EMTopo", style.default.histLineColor = 2> @ sig/?/ggf/345324EMTopo;
+
+<label = "Total Bkg"> @ bkg/;
