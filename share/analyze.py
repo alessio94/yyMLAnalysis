@@ -161,6 +161,9 @@ def main(config):
     analysisError = runtime.getTagStringDefault("analysisError","")
     mvaOK = runtime.getTagBoolDefault("mvaOK",len(mvascriptnames))
 
+    # apply patches as given by the config
+    common.patchSampleFolder(config.getTagVStandardString("postPatches"), samples)
+    
     # write the sample folder to disk
     if len(analysisError) == 0 or mvaOK:
         common.writeSampleFolder(config, samples)

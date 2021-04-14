@@ -135,10 +135,8 @@ double HWWMCWeight::getValue() const {
 
   // variations are read with the decor
   if ( m_mcSFDecor ) {
-    if(evtInfo->mcChannelNumber() == 345324) {
-      DEBUGclass("Using uncertainty from variation");
-      mcWeight = (*m_mcSFDecor)(*evtInfo);
-    }
+    DEBUGclass("Using uncertainty from variation");
+    mcWeight = (*m_mcSFDecor)(*evtInfo);
   }
   else{
     // default values are read here

@@ -20,13 +20,10 @@ variables:
     - cvmfs
 
 .standalone: &standalone
-  #image: rootproject/root-ubuntu:latest
-  image: gitlab-registry.cern.ch/atlas-caf/cafcore/cafcore-standalone-base:19.06.X
+  image: gitlab-registry.cern.ch/atlas-caf/cafcore/standalone-base:root6.22.06-python3.8
   tags:
     - cvmfs
   before_script:
-    - sudo apt-get update
-    - sudo apt-get -y install libboost-dev
     - sed -i 's|CAFANALYSISBASE/../output|CAFANALYSISBASE/run|' setup/setupLocal.sh
 
 .asg_setup: &asg_setup

@@ -28,8 +28,9 @@ def makePreMergeTaskList(args_, preMergeDir, setup):
     # Assign input files to pre-merge jobs
     jobFilesDict = {}
     assignedFiles = 0
+    nParts=int(math.ceil(float(len(inputFiles))/args.maxFiles))
     for thisFile in inputFiles:
-        nPart = int(assignedFiles)/int(args.maxFiles)
+        nPart = int(assignedFiles)%nParts
         partLabel = args.identifier+".part"+str(nPart)
         if not partLabel in jobFilesDict.keys(): jobFilesDict[partLabel]=[]
         jobFilesDict[partLabel].append(thisFile)
@@ -63,7 +64,7 @@ def makePreMergeTaskList(args_, preMergeDir, setup):
             payload = payload+ ' -v '
 
         logFile = os.path.join(args.logpath,key+".log")
-        thisTask = submit.task(key,payload, setup=setup, memory=args.memory, time=args.time, inputs=[], outputs=[preMergedName], logFile=logFile, errFile=logFile)
+        thisTask = submit.task(key,payload, setup=setup, memory=args.memory, queue=args.queue, args=args, time=args.time, inputs=[], outputs=[preMergedName], logFile=logFile, errFile=logFile)
         retList.append(thisTask)
 
     return retList
@@ -79,13 +80,13 @@ def makeFinalMergeTask(args_, retList, setup):
     payload = payload+ '--output '+ os.path.realpath(args.output) + ' '
     if (args.traceid): payload = payload+ ' -t ' + args.traceid
     logFile = os.path.join(args.logpath,args.identifier+".final.log")
-    finalTask = submit.task(args.identifier+".final",payload, setup=setup, memory=args.memoryFinal, time=args.time, inputs=preMergedNames, outputs=[os.path.realpath(args.output)], dependencies=retList, logFile=logFile, errFile=logFile)
+    finalTask = submit.task(args.identifier+".final",payload, setup=setup, args=args, memory=args.memoryFinal, time=args.time, queue=args.queue, inputs=preMergedNames, outputs=[os.path.realpath(args.output)], dependencies=retList, logFile=logFile, errFile=logFile)
 
     return finalTask
 
 
 def main(args):
-    ctrl = submit.guessSubmissionController()
+    ctrl = submit.guessSubmissionController(args)
 
     # Create directory for temporary (premerged) output
     preMergeDir = os.path.dirname(os.path.realpath(args.output))+'/premerged_'+args.identifier
@@ -122,7 +123,7 @@ if __name__ == "__main__":
     parser.add_argument('--queue', default='', type=str, help='name of queue',required=False)
 
     parser.add_argument('-n', '--name', metavar='NAME', type=str, dest="name", help='output folder name')
-    parser.add_argument('-t', '--traceid', metavar='TRACEID', type=str, dest="traceid", default="asv", help='trace ID of the analysis sample visitor')
+    parser.add_argument('-t', '--traceid', metavar='TRACEID', type=str, dest="traceid", default="analyze", help='trace ID of the analysis sample visitor')
     parser.add_argument('-m', '--downmerge', metavar='DOWNMERGE', type=str, dest="downmerge", default=None, help='tag prefix to trigger downmerging')
     parser.add_argument('-p', '--patch', metavar='style.txt', type=str, dest="patch", default=[], action='append', help='a patch style file to apply to every component')
     parser.add_argument('-s', '--sfname', metavar='SFNAME', type=str, dest="sfname",default='samples', help='name of the sample folder being merged')

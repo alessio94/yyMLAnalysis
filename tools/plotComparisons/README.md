@@ -1,25 +1,12 @@
-# Plot Comparisons - comparing distributions for different processes, channels or at different cut stages
+# Comparing distributions for different processes, channels or at different cut stages
+
 The `plotComparison.py` script is a convenient tool to produce fast but nice looking comparison plots. It uses the general concepts of patches and tags in CAF including a config file for steering this script.
-
-## Producing your own comparison plots
-
-In order to make a new plot comparison you can do the following:
-
-   1. Adapt the configuration file 'plotComparisons.cfg' (or write a new one and add its path with the `--config` argument) to your needs
-   2. Adapt the style file 'style-plotComparisons.txt' (or write a new one and specify it in the tag `patches` in your config file) to your needs
-   3. Run this script with:
+A new plot comparison can be done with the following:
+   - Adapt the configuration file 'plotComparisons.cfg' (or write a new one and add its path with the `--config` argument) to your needs
+   - Adapt the style file 'style-plotComparisons.txt' (or write a new one and specify it in your .cfg file) to your needs
+   - Run this script with:
        ```python plotComparisons.py <plotCategories>```
        where `<plotCategories>` specifies the a list of sections you want to produce plots for and available in your config file.
-       
-## Run the example
-For running the example simply execute (assuming you are in the share directory):
-
-```bash
-python ../tools/plotComparisons/plotComparisons.py PFlowVsEMTopoRatio
-python ../tools/plotComparisons/plotComparisons.py PFlowVsEMTopo
-```
-
-Note, you have to be subscribed to the qframework-users email list in order to have access to the example sample folder.
 
 ## Configuration options
 In the configuration file, each section corresponds to one comparison plot that can be created. You can also specify options in a `[common]` section that will be accounted in all other sections (with possibility of overwriting options in the individual sections). The following options/tags are available:

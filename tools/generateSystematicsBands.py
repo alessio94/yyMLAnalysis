@@ -1,10 +1,20 @@
 #!/usr/bin/env python2
+
+# This script generates bands corresponding to systematic uncertainties.
+# The bands are generated using an analyzed SF with systematics as an input.
+# The output can then be used to include the bands when visualizing a 
+# nominal-only analyzed SF.
+# For the distributions available in the sys SF shape and rate variations are
+# considered for the systematic bands. For other distributions, rate variations
+# are considered (separately per process)
+
 import sys
 import argparse
+from os.path import join as pjoin
 
 def main(args):
   from QFramework import INFO,BREAK,ERROR,START,END
-  from QFramework import TQSystematicsHandler,TQTaggable,TQFolder
+  from QFramework import TQSystematicsHandler,TQTaggable,TQFolder,TQMessageStream
   from ROOT import TString
   from ROOT.std import pair as cpair
   pair = cpair('TString','TString')
@@ -32,10 +42,21 @@ def main(args):
     if syst.getTagString("Down",s_down):
       down = variations.getFolder(s_down)
     if up and down:
+      up_pathPattern = up.replaceInText(args.pathPattern)
+      dn_pathPattern = down.replaceInText(args.pathPattern)
+      if syst.GetName().__contains__("fJVT"):
+        continue
+      if syst.GetName().__contains__("ATLAS_JER_"):
+        up_pathPattern.ReplaceAll("em[_","[em+em[_")
+        up_pathPattern.ReplaceAll("me[_","[me+me[_")
+        up_pathPattern.ReplaceAll("PDsmear__1up]","PDsmear__1up]]")
+        dn_pathPattern.ReplaceAll("em[_","[em+em_")
+        dn_pathPattern.ReplaceAll("me[_","[me+me_")
+        dn_pathPattern.ReplaceAll("PDsmear__1down]","PDsmear__1down]]")
       handler.addSystematic(
           syst.GetName(),
-          pair(up.replaceInText(args.inputFile),up.replaceInText(args.pathPattern)),
-          pair(down.replaceInText(args.inputFile),down.replaceInText(args.pathPattern))
+          pair(up.replaceInText(args.inputFile),up_pathPattern),
+          pair(down.replaceInText(args.inputFile),dn_pathPattern)
       )
     elif up:
       handler.addSystematic(
@@ -96,7 +117,9 @@ def main(args):
   # Table.printPlain() to write it as a LaTeX and a CSV file
   for cut in cuts:
     table = handler.getTable(cut)
+    table.setTagString("colAlign", "l")
     table.writeLaTeX(str(TQFolder.concatPaths(args.outputRankings,cut))+".tex", "ensureDirectory=true")
+    table.writeHTML(str(TQFolder.concatPaths(args.outputRankings,cut))+".html", "ensureDirectory=true")
    
   INFO("all done")
 
