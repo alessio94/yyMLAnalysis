@@ -21,7 +21,7 @@ There are four steps that need to be performed to introduce a new observable to 
 We want to create a new observable that calculates the invariant mass (called Mjj in the following) for every possible combination of two jets in an event and returns the maximum of those values. 
 The new observable class is to be implemented in the existing [xAOD Example analysis](https://gitlab.cern.ch/atlas-caf/CAFExample/tree/master/share/xAOD).
 
-## The magic wizard.py script
+## 1. Write c++ code with the magic wizard.py script
 [CAFCore](https://gitlab.cern.ch/atlas-caf/CAFCore) provides the python script [wizard.py](https://gitlab.cern.ch/atlas-caf/CAFCore/blob/master/QFramework/share/TQObservable/wizard.py) helping you to create a source and header file for your new observable. Make sure you are setup (`source build/setupAnalysis.sh`) and are in the main directory of the CAFExample repository (which you can ensure e.g. with `cd $CAFANALYSISBASE`). Then, you can call the script via
 ```bash
 ./CAFCore/QFramework/share/TQObservable/wizard.py
@@ -128,13 +128,13 @@ Two small remarks:
 *  The line at the top of `MjjMaxObservable.cxx` saying `// #define _DEBUG__` can be uncommented to enable printouts from the DEBUGclass(...) function. This might be useful for initial tests and checks of the new observable.
 *  CAF provides the small functions `cafcompile` and `cafbuild`. The latter only compiles your code with `make`, while the former calls `cmake` and then compiles. To see what exactly these functions do, type `type cafcompile` in your shell.
 
-## Creating an observable snippet
+## 2. Creating a python observable snippet
 A small python snippet needs to be added for the new observable to the designated observable/ folder of the analysis.
 In the xAOD Example analysis, the observable snippets are located [here](https://gitlab.cern.ch/atlas-caf/CAFExample/tree/master/share/xAOD/observables) (If you write an observable that is used by multiple analyses, you should think of creating the observable snippet in [common/](https://gitlab.cern.ch/atlas-caf/CAFExample/tree/master/share/common/observables)).
 The snippet will instantiate the observable class and adds it to the observable database. The python script should have the same name as the observable itself (in our case MjjMaxObservable.py) and can look like this:
 
 ```python
-from QFramework import TQObservable
+from QFramework import TQObservable, INFO
 from CAFExample import MjjMaxObservable
 
 def addObservables():
@@ -147,14 +147,14 @@ def addObservables():
 ```
 Here, calling the constructor of the new observable class with `MjjMaxObservable("MjjMax")` will set the name of the observable instance to `MjjMax`. This is the name that we will use later in the analysis to get the value of the observable.
 
-## Tell analysis about the python snippet
+## 3. Tell analysis about the python snippet
 Next, we need to list the path to your script in the config file of the analyze step so that the framework can find the code and execute it. The relevant part you should add to [analyze-xAOD-Example.cfg](https://gitlab.cern.ch/atlas-caf/CAFExample/blob/master/share/xAOD/config/master/analyze-xAOD-Example.cfg) is:
 ```
 customObservables.directories: xAOD/observables
 customObservables.snippets: [...all other observables...], MjjMaxObservable
 ```
 
-## Defining histograms/cuts/...
+## 4. Defining histograms/cuts/...
 The observable can now be used to define histograms, cuts, event lists, etc. Let's define a simple histogram with the MjjMax distribution.
 We add a new histogram definition in the appropriate [histogram definition file](https://gitlab.cern.ch/atlas-caf/CAFExample/blob/master/share/xAOD/config/histograms/xAOD-Example-histograms.txt) and add it at the desired cut stages e.g.:
 ```
@@ -165,7 +165,7 @@ TH1F('hist_MjjMax', '', 50, 0., 500.) << ( [MjjMax]*0.001 : 'm_{jj}^{max} [GeV]'
 The first line defines a new histogram with a syntax reminiscent of a ROOT `TH1` constructor. In the second part of the line, we call our observable `[MjjMax]` with the name that we gave to the constructor in the python snippet. The square brackets indicate that this is an observable.
 The second line books the histogram at the cut `CutChannels` and all subsequent cuts (indicated by `/*`). We could have given the histogram the same name as the observable, which probably makes things easier. But to understand what the different identifiers mean, we appended a `hist_` to the observable name.
 
-## Running the analysis and looking at newly booked histogram
+## Bonus: Running the analysis and looking at newly booked histogram
 If the analysis is executed (you only have to perform the analyze step) and everything was correctly implemented, the new histogram should appear in the output sample folder.
 <!-- It is assumed that you have already learned how to run a complete analysis.-->
 You can check this by opening the respective sample folder with `tqroot -sfr sampleFolders/analyzed/samples-analyzed-xAOD-Example.root` and draw one of the histograms with
