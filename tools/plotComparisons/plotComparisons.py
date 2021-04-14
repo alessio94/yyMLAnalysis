@@ -1,7 +1,6 @@
 #!/usr/bin/env python
 import argparse
 import sys
-import QFramework as QF
 from CommonAnalysisHelpers import common
 toolsPath = common.findConfigPath("../tools", ignoreExecutionDirectory=True)
 sys.path.append(toolsPath)
@@ -45,14 +44,14 @@ def getCustomAxisLabel(var, tags):
   return xlabel, ylabel
 
 def getLegendEntry(samplepath, reader, setNameToTrailingFolder = False):
-  if setNameToTrailingFolder:
-    return str(samplepath).strip("/").split("/")[-1]
   f = reader.getListOfSampleFolders(samplepath).At(0) # if [em+me] is specified read label from one channel (needs to be the same)
   if not f: QF.BREAK("Something is wrong! Check your configuration!")
   leg_label = ROOT.TString()
   if not f.getTagString("~label", leg_label):
-    QF.WARN("No label found for sample with path '{:s}'. Please specify one with the 'label' tag in your style configuration.".format(f.getPath()))
-    return "No label"
+    label = str(samplepath)
+    QF.WARN("No label found for sample with path '{:s}'. Using '{:s}'; if you wish to have a different label " \
+            "please specify one with the 'label' tag in your style configuration.".format(f.getPath(), ROOT.TString(label)))
+    return label
   return str(leg_label)
 
 def setAxesRange(hist, var, tags):
@@ -71,9 +70,20 @@ def setAxesRange(hist, var, tags):
   
 def rebinHistogram(hist, var, tags):
   if tags.hasTag("rebin."+var):
-    hist.Rebin(tags.getTagIntegerDefault("rebin."+var, 1))
-  else:
-    pass
+    rebinValue = tags.getTagStringDefault("rebin."+var, "1")
+    try:
+      rebinValueInt = int(rebinValue)
+      hist.Rebin(rebinValueInt)
+    except:
+      if str(rebinValue) == "VBFDNNrebinning":
+        QF.INFO("Trying to rebin provided histograms!")
+        binboundaries = [0, 26, 60, 74, 84, 90, 94]
+        #binboundaries = [41, 75, 87, 93, 96]
+        vec_binboundaries = ROOT.vector('Int_t')()
+        for b in binboundaries: vec_binboundaries.push_back(int(b))
+        remap = True
+        hist = QF.TQHistogramUtils.getRebinned(hist, vec_binboundaries, remap)
+  return hist
   
 def getNumeratorAndDenominators(histograms, tags):
   # get numerator and denominator to plot ratios for
@@ -108,24 +118,31 @@ def main(args):
   #--------------------------------------------------------
   # Loop over plot categories
   
+  tags = QF.TQTaggable()
+  # Tags in section 'common' will be overwritten by more specific sections
+  if parser.has_section("common"):
+    common.getTagsFromConfigParser(parser, tags, "common")
+
+  # load SF if specified in common section
+  commonInputFilePath = ROOT.TString()
+  if tags.getTagString("input", commonInputFilePath):
+    commonInputFilePath = QF.TQPathManager.getPathManager().getTargetPath(commonInputFilePath)
+    samples = QF.TQSampleFolder.loadSampleFolder(commonInputFilePath)
+  
   for plotCat in args.plotCategory:
       if not parser.has_section(plotCat):
         QF.BREAK("No section with name '{:s}' found in configuration file! Exiting...".format(plotCat))
-    
-      tags = QF.TQTaggable()
-      
-      # Tags in section 'common' will be overwritten by more specific sections
-      if parser.has_section("common"):
-        common.getTagsFromConfigParser(parser, tags, "common")
     
       # Get tags from specific plot category
       common.getTagsFromConfigParser(parser, tags, plotCat)
       inputFilePath = ROOT.TString()
       if tags.getTagString("input", inputFilePath):
-        inputFilePath = common.findConfigPath(inputFilePath)
-        samples = QF.TQSampleFolder.loadSampleFolder(inputFilePath)
-      else:
+        if not inputFilePath  == commonInputFilePath:
+          inputFilePath = QF.TQPathManager.getPathManager().getTargetPath(inputFilePath)
+          samples = QF.TQSampleFolder.loadSampleFolder(inputFilePath)
+      if not samples:
         QF.BREAK("Please specify an input sample folder!")
+        
       styleFilePath = tags.getTagStringDefault("patches", common.findConfigPath("../tools/plotComparisons/style-plotComparisons.txt"))
       common.patchSampleFolder([styleFilePath], samples)
       reader = QF.TQSampleDataReader(samples)
@@ -210,7 +227,7 @@ def main(args):
         # Do rebinning for all histograms first because it effects other properties like hist range
         for ihist, hist in enumerate(histDicts["hists"]):
           # rebin histogram if specified with tag rebin.*
-          rebinHistogram(hist, histDicts["variables"][ihist], tags)
+          histDicts["hists"][ihist] = rebinHistogram(hist, histDicts["variables"][ihist], tags)
         for ihist, hist in enumerate(histDicts["hists"]):
           # option for some special plots
           if tags.getTagBoolDefault("specialPlot.StatUncertainties", False):
@@ -237,24 +254,26 @@ def main(args):
         # ---->> Loop over histograms
         for ihist, hist in enumerate(histDicts["hists"]):
           
-          # Set labels
-          xlabel = hist.GetXaxis().GetTitle()
-          ylabel = hist.GetYaxis().GetTitle()
-          custom_xlabel, custom_ylabel = getCustomAxisLabel(histDicts["variables"][ihist], tags)
-          if custom_xlabel: xlabel = custom_xlabel
-          if custom_ylabel: ylabel = custom_ylabel
-          if tags.getTagBoolDefault("normed", True):
-            hist.Scale(1./hist.Integral())
-            utils.setup_style(hist, xlabel, ylabel+" (Normalized)" )
-          else:
-            utils.setup_style(hist, xlabel, ylabel)
-            
           # set histogram range
           hist.GetYaxis().SetRangeUser(ylow, ymax)
           
           # set custom axis range if specified with tags xlabel.* or ylabel.*
           setAxesRange(hist, histDicts["variables"][ihist], tags)
               
+          # Set labels
+          xlabel = hist.GetXaxis().GetTitle()
+          ylabel = hist.GetYaxis().GetTitle()
+          custom_xlabel, custom_ylabel = getCustomAxisLabel(histDicts["variables"][ihist], tags)
+          if custom_xlabel: xlabel = custom_xlabel
+          if custom_ylabel: ylabel = custom_ylabel
+
+          # normaliize
+          if tags.getTagBoolDefault("normed", True):
+            hist.Scale(1./hist.Integral())
+            utils.setup_style(hist, xlabel, ylabel+" (Normalized)" )
+          else:
+            utils.setup_style(hist, xlabel, ylabel)
+            
           # get legend name for process
           if compareType == "processes":
             leg_cl.AddEntry(hist, getLegendEntry(histDicts["processes"][ihist], reader, tags.getTagBoolDefault("setLegNameToTrailingFolder", False)), "l")
@@ -296,7 +315,7 @@ def main(args):
         utils.drawATLASLabel(xpos1D , ypos1D, "Internal", ROOT.kBlack, textsize*1.2*labelSizeScale, 0.25)
         shift = 0.06*(1+(labelSizeScale-1)/2.)
         for i, l in enumerate(label):
-          utils.myText(xpos1D, (ypos1D-shift)-i*shift, ROOT.kBlack, l, textsize*labelSizeScale)
+          utils.myText(xpos1D, (ypos1D-shift)-i*shift, ROOT.kBlack, l, tags.getTagDoubleDefault("label.textSize", 0.04)*labelSizeScale)
         leg_cl.Draw()
       
         outputfolder = tags.getTagStringDefault("outputFolder", "results/1DShapePlots")
@@ -332,6 +351,9 @@ if __name__ == "__main__":
   parser.add_argument("--config", type=str, default=common.findConfigPath("../tools/plotComparisons/plotComparisons.cfg"), help="Configuration file to be read (please provide path relative to share or absolute path)")
   args = parser.parse_args()
 
+  # import the following here, otherwise QFramework will screw up the  ArgumentParser '--help' option
+  import QFramework as QF
+  
   # setup ROOT
   import ROOT
   ROOT.gROOT.SetBatch(True)

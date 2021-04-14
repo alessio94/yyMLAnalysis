@@ -75,7 +75,7 @@ def main(args):
         t = task(identifier=args.identifier+"_"+makeID(identifiers),args=args,setup=setup,outputs=outputs,inputs=inputs,payload=commands)
         tasks.append(t)
 
-    ctrl = submit.guessSubmissionController()
+    ctrl = submit.guessSubmissionController(args)
     ctrl.submitTasks(args,tasks)
     print("Done")
     

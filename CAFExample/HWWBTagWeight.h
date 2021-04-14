@@ -22,7 +22,8 @@ protected:
   // name of the decoration in PxAODs
   std::string m_bTagSFName = "";
   std::unique_ptr<SG::AuxElement::Accessor<float>> m_bTagSFDecor=0;//!
-  bool m_useOtherJets = true;
+  float m_minPtCut = 20000.;
+  //bool m_useOtherJets = true;
 
   double getBTagWeight(const xAOD::IParticle* p) const ;
 
@@ -45,7 +46,7 @@ public:
   virtual bool initializeSF() override;
 
   HWWBTagWeight();
-  HWWBTagWeight(const TString& expression, const std::string& bTagSFName, bool useOtherJets);
+  HWWBTagWeight(const TString& expression, const std::string& bTagSFName, const float minPt=20000./*bool useOtherJets*/);
   virtual ~HWWBTagWeight();
 
   ClassDefOverride(HWWBTagWeight,1);

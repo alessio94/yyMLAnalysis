@@ -24,7 +24,7 @@ HWWBTagWeight::HWWBTagWeight(){
 
 //______________________________________________________________________________________________
 
-HWWBTagWeight::HWWBTagWeight(const TString& expression, const std::string& bTagSFName, bool useOtherJets):
+HWWBTagWeight::HWWBTagWeight(const TString& expression, const std::string& bTagSFName, const float minPtCut /*, bool useOtherJets*/):
   HWWSFBase(expression)
 {
   // constructor with expression argument
@@ -32,7 +32,8 @@ HWWBTagWeight::HWWBTagWeight(const TString& expression, const std::string& bTagS
 
   this->setExpression(expression);
   this->m_bTagSFName = bTagSFName;
-  this->m_useOtherJets = useOtherJets;
+  this->m_minPtCut = minPtCut;
+  //this->m_useOtherJets = useOtherJets;
 }
 
 //______________________________________________________________________________________________
@@ -100,7 +101,10 @@ double HWWBTagWeight::getBTagWeight(const xAOD::IParticle* p) const {
     DEBUGclass("Jet has eta >= 2.5, will return %f", retval);
     return retval;
   }
-
+  if (p->pt()<this->m_minPtCut){
+    DEBUGclass("Jet has pt < %f MeV, will return %f", this->m_minPtCut, retval);
+    return retval;
+  }
   // access the decoration
   retval = (*m_bTagSFDecor)(*p);
 
@@ -135,11 +139,11 @@ double HWWBTagWeight::getValue() const {
   for( unsigned int i=0; i<evt->nParts(); ++i ) {
     bTagWeight *= this->getBTagWeight(evt->part(i));
   }
-  if (m_useOtherJets) {
-    for( unsigned int i=0; i<evt->nOtherParts(); ++i ) {
-      bTagWeight *= this->getBTagWeight(evt->otherPart(i));
-    }
+  //if (m_useOtherJets) { //always loop over otherParts as well to avoid potential inconsistencies between CAF and PAOD level pT requirements
+  for( unsigned int i=0; i<evt->nOtherParts(); ++i ) {
+    bTagWeight *= this->getBTagWeight(evt->otherPart(i));
   }
+  //}
   DEBUGclass("Total btag weight = %f", bTagWeight);
 
   this->fCachedEntry = this->getCurrentEntry();

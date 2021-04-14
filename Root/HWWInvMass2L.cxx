@@ -38,7 +38,7 @@ HWWInvMass2L::~HWWInvMass2L(){
 
 double HWWInvMass2L::getInvMass(const xAOD::IParticle* part_one, const xAOD::IParticle* part_two) const {
   // make sure both particles are OK
-  if (! (part_two && part_two))
+  if (! (part_one && part_two))
   { throw std::runtime_error("[HWWInvMass2L] inside getMll() :: at least one of your particles are null. You should make your invariant-mass members exist before calling this observable."); }
 
   TLorentzVector part1; part1.SetPtEtaPhiE(part_one->pt(), part_one->eta(), part_one->phi(), part_one->e());
