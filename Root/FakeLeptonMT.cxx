@@ -1,4 +1,5 @@
 #include "CAFExample/FakeLeptonMT.h"
+#include "TObjString.h"
 #include <limits>
 
 // uncomment the following line to enable debug printouts
@@ -24,13 +25,13 @@ FakeLeptonMT::FakeLeptonMT(){
 FakeLeptonMT::~FakeLeptonMT(){
   // default destructor
   DEBUGclass("destructor called");
-} 
+}
 
 
 //______________________________________________________________________________________________
 
 TObjArray* FakeLeptonMT::getBranchNames() const {
-  // retrieve the list of branch names 
+  // retrieve the list of branch names
   // ownership of the list belongs to the caller of the function
   DEBUGclass("retrieving branch names");
   TObjArray* bnames = new TObjArray();
@@ -41,7 +42,7 @@ TObjArray* FakeLeptonMT::getBranchNames() const {
   bnames->Add(new TObjString("fakecandLep_phi"));
   bnames->Add(new TObjString("metObj_met"));
   bnames->Add(new TObjString("metObj_phi"));
-  
+
   return bnames;
 }
 
@@ -53,7 +54,7 @@ double FakeLeptonMT::getValue() const {
   // a couple of comments should guide you through the process
   // when writing your code, please keep in mind that this code can be executed several times on every event
   // make your code efficient. catch all possible problems. when in doubt, contact experts!
-  
+
   // here, you should calculate your return value
   // of course, you can use other data members of your observable at any time
   /* example block for TTreeFormula method:
@@ -62,7 +63,7 @@ double FakeLeptonMT::getValue() const {
   /* exmple block for TTree::SetBranchAddress method:
   const double retval = this->fBranch1 + this->fBranch2;
   */
-  
+
   const double retval = this->fFormula->EvalInstance();
 
   DEBUGclass("returning");
@@ -85,12 +86,12 @@ bool FakeLeptonMT::initializeSelf(){
   /* example block for TTreeFormula method:
   this->fFormula = new TTreeFormula("myFormula", "branch1 + branch2",this->fTree);
   */
-  
+
   // create string expression that calculates fakelepton MT
   TString fakeCandLep_phi = "fakecandLep_phi";
   TString metObj_met = "metObj_met";
   TString metObj_phi = "metObj_phi";
-  
+
   TString deltaPhi = "TVector2::Phi_mpi_pi( fabs("+fakeCandLep_phi+" - "+metObj_phi+") )";
   TString MT_squared = "2*fakecandLep_pt*metObj_met*(1-cos("+deltaPhi+"))";
   TString MT = "sqrt("+MT_squared+")";
@@ -98,7 +99,7 @@ bool FakeLeptonMT::initializeSelf(){
   DEBUGclass("Configured expression: %s", MT.Data());
 
   this->fFormula = new TTreeFormula("transvserse_mass", MT.Data(), this->fTree);
-  
+
   return true;
 }
 
@@ -112,10 +113,10 @@ bool FakeLeptonMT::finalizeSelf(){
   delete this->fFormula;
   this->fFormula = NULL;
   */
-  
+
   delete this->fFormula;
   this->fFormula = NULL;
-  
+
   return true;
 }
 //______________________________________________________________________________________________
