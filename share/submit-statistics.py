@@ -1,7 +1,8 @@
 #!/bin/env python
 
-from CommonAnalysisHelpers import common,submit
-from CommonAnalysisHelpers.task import task,taskStatus
+from CommonAnalysisHelpers import common
+from SubmissionHelpers import submit
+from SubmissionHelpers.task import task,taskStatus
 
 import QFramework
 

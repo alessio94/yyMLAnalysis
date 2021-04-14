@@ -51,13 +51,18 @@ if __name__ == "__main__":
         autoCompletePath = os.path.join(args.setupDir,"setupAutoComplete.sh")
         setupLocalPath = os.path.join(args.setupDir,"setupLocal.sh")
         cafsetupPath = os.path.join(args.CAFCoreSetupDir,"cafsetup.sh")
+        submissionSetupPath = os.path.join(args.binDir,"SubmissionHelpers","setup.sh")
 
         # Source other scripts
-        f.write("if [ -f "+autoCompletePath+" ]; then\n\tsource "+autoCompletePath+"\nfi\n")
+        f.write("shelltype=$(ps -p$$ -ocmd=)\n")
+        f.write('if [[ "$shelltype" == *"bash"* ]] && [ -f '+autoCompletePath+' ]; then\n\tsource '+autoCompletePath+'\nfi\n')
         f.write("if [ -f "+cafsetupPath+" ]; then \n\tsource "+cafsetupPath+"\nfi\n")
         f.write("if [ -f "+setupLocalPath+" ]; then \n\tsource "+setupLocalPath+"\nfi\n")
+        f.write("if [ -f "+submissionSetupPath+" ]; then \n\tsource "+submissionSetupPath+"\nfi\n")
         #add the path to this script (overwriting what might have been set by cafsetup.sh !) :
         f.write("\n#export path to this script for easier re-setup, e.g., for batch submission\n")
         f.write("export PYTHONPATH=$PYTHONPATH:"+args.binDir+"\n")
         f.write("export LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:"+args.binDir+"\n")
         f.write("export CAFANALYSISSETUP="+scriptPath+"\n")
+        f.write("export ANALYSIS_SETUP="+scriptPath+"\n")
+        f.write("export ANALYSIS_BUILD_DIR="+args.binDir+"\n")        

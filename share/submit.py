@@ -1,6 +1,7 @@
 #!/bin/env python
 
-from CommonAnalysisHelpers import common,submit
+from CommonAnalysisHelpers import common
+from SubmissionHelpers import submit
 import os
 
 def main(args):

@@ -1,6 +1,6 @@
 #!/bin/env python
 
-from CommonAnalysisHelpers import common,submit
+from SubmissionHelpers import submit
 import os, subprocess, math
 from datetime import datetime
 
