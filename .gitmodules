@@ -4,4 +4,4 @@
 	branch = master
 [submodule "SubmissionHelpers"]
 	path = SubmissionHelpers
-	url = ../../cburgard/submissionhelpers.git
+	url = ../../atlas-caf/SubmissionHelpers.git
