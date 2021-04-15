@@ -3,5 +3,6 @@
 
 TH1F('Mll', '', 50,0.,100.) << ( $(Mll)/1000. : 'm_{ll} [GeV]' );
 
-@CutLeptonsPt:Mll;
+
+@CutChannels:Mll;
 
