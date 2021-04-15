@@ -1,6 +1,7 @@
 #!/bin/env python
 
 from CommonAnalysisHelpers import common,analyze
+from CAFExample import hwwanalyze
 
 def main(config):
     """execute your analysis according to the given configuration (can be created from a config file)"""
@@ -107,7 +108,7 @@ def main(config):
 
     # perform any pre-processing of the sample folder for handling of systematic uncertainties
     # this step is likely to be highly analysis-dependent, so this is just an example implementation
-    analyze.prepareSystematicsExample(config, samples)
+    hwwanalyze.prepareSystematics(config, samples)
 
     # load all the observables that allow access of the physics-content of your samples
     customobservables = analyze.loadObservables(config)
@@ -163,7 +164,7 @@ def main(config):
 
     # apply patches as given by the config
     common.patchSampleFolder(config.getTagVStandardString("postPatches"), samples)
-    
+
     # write the sample folder to disk
     if len(analysisError) == 0 or mvaOK:
         common.writeSampleFolder(config, samples)

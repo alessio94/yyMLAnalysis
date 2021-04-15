@@ -1,0 +1,1 @@
+.path = "bkg/$(channel)/$(campaign)/diboson/WW",                   .name = "WW",     .title = "$WW$",        .isBackground = true, histFillColor = 594, histLineColor = kBlack

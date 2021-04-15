@@ -1,0 +1,19 @@
+######################################################
+#
+# List of four vector (p4) variations in v20 PxAODs
+# For a summary and changes w.r.t. 36ifb analysis see:
+# https://docs.google.com/spreadsheets/d/1X4jwoVYBagLt2u_1J11vTMaKnvsJFkx302aLkokNq7c/edit?usp=sharing
+#
+####################################################
+
+EG_RESOLUTION_ALL__1down,EG_RESOLUTION_ALL__1up
+EG_SCALE_ALL__1down,EG_SCALE_ALL__1up
+JET_BJES_Response__1down,JET_BJES_Response__1up
+JET_EffectiveNP_Detector1__1down,JET_EffectiveNP_Detector1__1up
+JET_EffectiveNP_Mixed1__1down,JET_EffectiveNP_Mixed1__1up
+JET_EffectiveNP_Modelling1__1down,JET_EffectiveNP_Modelling1__1up
+JET_EtaIntercalibration_Modelling__1down,JET_EtaIntercalibration_Modelling__1up
+JET_Flavor_Composition__1down,JET_Flavor_Composition__1up
+JET_JER_EffectiveNP_1_PDsmear__1up,JET_JER_EffectiveNP_1_PDsmear__1down
+JET_JER_EffectiveNP_1_MCsmear__1up,JET_JER_EffectiveNP_1_MCsmear__1down
+MET_SoftTrk_ScaleDown,MET_SoftTrk_ScaleUp
