@@ -314,6 +314,11 @@ def prepareSystematics(config, samples):
                                     ###########################
                                     mcasvchannels.add(newname.Data())
 
+                # if no nominal analysis was requested, we can remove the nominal channels
+                if not doNominal:
+                    f.detachFromBase()
+                else:
+                    f.setTagString(".mcasv.channel",f.GetName())
 
 
     # Add some nominal top level tags, even if systematics aren't being added
