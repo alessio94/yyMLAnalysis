@@ -1,0 +1,14 @@
+###---------------------------------------------------------------------###
+###------                    Collapse the plots                     ----###
+###---------------------------------------------------------------------###
+<.aj.pool.histograms=true,.aj.pool.counters=true>@sig/?/?/?/?/?;
+<.aj.pool.histograms=true,.aj.pool.counters=true>@bkg/?/?/diboson/?/?;
+<.aj.pool.histograms=true,.aj.pool.counters=true>@bkg/?/?/triboson/?;
+<.aj.pool.histograms=true,.aj.pool.counters=true>@bkg/?/?/Vgamma;
+<.aj.pool.histograms=true,.aj.pool.counters=true>@bkg/?/?/top/?;
+<.aj.pool.histograms=true,.aj.pool.counters=true>@bkg/?/?/Zjets/?/;
+<.aj.pool.histograms=true,.aj.pool.counters=true>@bkg/?/?/ddFakes/mFakes/mc/,bkg/?/?/ddFakes/eFakes/mc/;
+<.aj.pool.histograms=true,.aj.pool.counters=true>@bkg/?/?/ddFakes/mFakes/data,bkg/?/?/ddFakes/eFakes/data;
+<.aj.pool.histograms=true,.aj.pool.counters=true>@bkg/?/?/ddFakes/doubleFakesCorr/data,bkg/?/?/ddFakes/doubleFakesCorr/mc;
+<.aj.pool.histograms=true,.aj.pool.counters=true>@bkg/?/?/ddFakes/data,bkg/?/?/ddFakes/mc;
+<.aj.pool.histograms=true,.aj.pool.counters=true>@data/?/?;

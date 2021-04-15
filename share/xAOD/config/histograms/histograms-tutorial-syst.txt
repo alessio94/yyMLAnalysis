@@ -1,0 +1,7 @@
+# define histograms
+# this files name is 'histograms.txt'
+
+TH1F('Mll', '', 50,0.,100.) << ( $(Mll)/1000. : 'm_{ll} [GeV]' );
+
+@CutFF:Mll;
+
