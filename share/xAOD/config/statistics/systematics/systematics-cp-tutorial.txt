@@ -1,0 +1,95 @@
+# -*- mode: tqfolder -*-
+
+
++Variations {
+  #-------------------------------------------------------------------------------------------
+  # p4 Systematics
+  +EG_RESOLUTION_ALL__1down {
+    <Variation = "_EG_RESOLUTION_ALL__1down">
+  }
+  +EG_RESOLUTION_ALL__1up {
+    <Variation = "_EG_RESOLUTION_ALL__1up">
+  }
+  +EG_SCALE_ALL__1down {
+    <Variation = "_EG_SCALE_ALL__1down">
+  }
+  +EG_SCALE_ALL__1up {
+    <Variation = "_EG_SCALE_ALL__1up">
+  }
+  +JES_BJES_Response__1down {
+    <Variation = "_JET_BJES_Response__1down">
+  }
+  +JES_BJES_Response__1up {
+    <Variation = "_JET_BJES_Response__1up">
+  }
+  +JES_EffectiveNP_Detector1__1down {
+    <Variation = "_JET_EffectiveNP_Detector1__1down">
+  }
+  +JES_EffectiveNP_Detector1__1up {
+    <Variation = "_JET_EffectiveNP_Detector1__1up">
+  }
+  +JES_EffectiveNP_Mixed1__1down {
+    <Variation = "_JET_EffectiveNP_Mixed1__1down">
+  }
+  +JES_EffectiveNP_Mixed1__1up {
+    <Variation = "_JET_EffectiveNP_Mixed1__1up">
+  }
+  +JES_EffectiveNP_Modelling1__1down {
+    <Variation = "_JET_EffectiveNP_Modelling1__1down">
+  }
+  +JES_EffectiveNP_Modelling1__1up {
+    <Variation = "_JET_EffectiveNP_Modelling1__1up">
+  }
+  +JES_EtaIntercalibration_Modelling__1down {
+    <Variation = "_JET_EtaIntercalibration_Modelling__1down">
+  }
+  +JES_EtaIntercalibration_Modelling__1up {
+    <Variation = "_JET_EtaIntercalibration_Modelling__1up">
+  }
+  +JES_Flavor_Composition__1down {
+    <Variation = "_JET_Flavor_Composition__1down">
+  }
+  +JES_Flavor_Composition__1up {
+    <Variation = "_JET_Flavor_Composition__1up">
+  }
+  +MET_SoftTrk_ScaleDown {
+    <Variation = "_MET_SoftTrk_ScaleDown">
+  }
+  +MET_SoftTrk_ScaleUp {
+    <Variation = "_MET_SoftTrk_ScaleUp">
+  }
+}
+##################################################################################
+##################################################################################
+##################################################################################
++Systematics {
+  +ATLAS_EG_RESOLUTION_ALL {
+    <Down = "EG_RESOLUTION_ALL__1down", Up = "EG_RESOLUTION_ALL__1up", isP4Sys = true, Attributes.0 = "exp", Attributes.1 = "NP", isDetectorSys = true>
+  }
+  +ATLAS_EG_SCALE_ALL {
+    <Down = "EG_SCALE_ALL__1down", Up = "EG_SCALE_ALL__1up", isP4Sys = true, Attributes.0 = "exp", Attributes.1 = "NP", isDetectorSys = true>
+  }
+  +ATLAS_JES_BJES {
+    <Down = "JES_BJES_Response__1down", Up = "JES_BJES_Response__1up", isP4Sys = true, Attributes.0 = "exp", Attributes.1 = "NP", isDetectorSys = true>
+  }
+  +ATLAS_JES_EffectiveNP_Detector1 {
+    <Down = "JES_EffectiveNP_Detector1__1down", Up = "JES_EffectiveNP_Detector1__1up", isP4Sys = true, Attributes.0 = "exp", Attributes.1 = "NP", isDetectorSys = true>
+  }
+  +ATLAS_JES_EffectiveNP_Mixed1 {
+    <Down = "JES_EffectiveNP_Mixed1__1down", Up = "JES_EffectiveNP_Mixed1__1up", isP4Sys = true, Attributes.0 = "exp", Attributes.1 = "NP", isDetectorSys = true>
+  }
+  +ATLAS_JES_EffectiveNP_Modelling1 {
+    <Down = "JES_EffectiveNP_Modelling1__1down", Up = "JES_EffectiveNP_Modelling1__1up", isP4Sys = true, Attributes.0 = "exp", Attributes.1 = "NP", isDetectorSys = true>
+  }
+  +ATLAS_JES_EtaInter_Model {
+    <Down = "JES_EtaIntercalibration_Modelling__1down", Up = "JES_EtaIntercalibration_Modelling__1up", isP4Sys = true, Attributes.0 = "exp", Attributes.1 = "NP", isDetectorSys = true>
+  }
+  +ATLAS_JES_Flavor_Comp {
+    <Down = "JES_Flavor_Composition__1down", Up = "JES_Flavor_Composition__1up", isP4Sys = true, Attributes.0 = "exp", Attributes.1 = "NP", isDetectorSys = true>
+  }
+  +ATLAS_MET_SoftTrk_Scale {
+    <Down = "MET_SoftTrk_ScaleDown", Up = "MET_SoftTrk_ScaleUp", isP4Sys = true, Attributes.0 = "exp", Attributes.1 = "NP", isDetectorSys = true>
+  }
+}
+
+
