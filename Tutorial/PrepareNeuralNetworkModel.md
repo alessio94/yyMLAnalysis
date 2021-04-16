@@ -13,13 +13,13 @@ Consider the following steps (please start a fresh session on an lxplus machine 
 #### Step 0: Train a neural network
 [Keras](https://keras.io/) is recommended, for which there is lots of documentation and support online, no need to elaborate here.
 #### Step 1: Save necessary network outputs
-We need a network architecture json file, a weights HDF5 file (both from keras), and a input variables file (prepared by the user). Example files can be found under `/eos/user/a/atlascaf/tutorial/2020_Feb/Keras-Example-Network/`.
+We need a network architecture json file, a weights HDF5 file (both from keras), and a input variables file (prepared by the user). Example files can be found under `/eos/user/a/atlascaf/tutorial/2021_Apr/Keras-Example-Network/`.
 #### Step 2: Convert outputs to single NN json file
 
 ```
 # go to your favorite working directory
 mkdir $HOME/CAFNNTutorial; cd $HOME/CAFNNTutorial;
-export NNFilesPath=/eos/user/a/atlascaf/tutorial/2020_Feb/Keras-Example-Network/;
+export NNFilesPath=/eos/user/a/atlascaf/tutorial/2021_Apr/Keras-Example-Network/;
 
 # necessary clones and installation of h5py for conversion
 git clone https://github.com/lwtnn/lwtnn.git; cd lwtnn; make; cd ../;# should take less than 1min
