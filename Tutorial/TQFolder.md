@@ -423,7 +423,7 @@ which in this case prints `True`.
 
 
 To modify existing or add new tags, we can use the method `setTag("tagName", "value")`.
-The type of the tags is deduced form the value you give to the method. Assume
+The type of the tags is deduced from the value you give to the method. Assume
 that we have discovered that the mammal-type unicorn has only three legs. The following
 lines fix this issue.
 
@@ -920,6 +920,11 @@ are mandatory.
 | `create` | If `true`, creates the non-existent tags. Existing tags are not touched. |
 | `override` | If `true` and `create=true`, creates non-existent tags, existing tags are overwritten. |
 | `force` | If `true`, allows you to overwrite the type of an existing tag. |
+
+An example is:
+```
+$modify(path="path/to/folder",tag="tagname",operator="=",value=0);
+```
 
 > Task: The definition of *legs* has been changed. The tag `number_of_legs` should be
   the number of legs on one side of the animal. This means a dog has two legs,
