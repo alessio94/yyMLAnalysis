@@ -1,0 +1,22 @@
+# -*- mode: tqfolder -*-
+# to get proper syntax highlighting and indentation when using emacs,
+# add the following line to your .emacs file:
+#   (load-file "$TQPATH/share/tqfolder.el")
+
++ImportResults {
+  +MyAnalysis {
+    <inputFile = "result.root:MyAnalysis">
+  }
+}
+
++PlotLikelihoodScan {
+  +MyAnalysis {
+    <arrangement = "$TQPATH/../SFramework/share/templates/PlotLikelihoodScanSignificance.txt">
+    <outputFile = "likelihood.pdf">
+    +mu_asm {
+      <source = "LikelihoodScans/ScanLikelihood.mu/Scan">
+      <style.lineColor=kRed, style.title="#mu">
+    }
+    <style .title.xAxis = "#mu ( profiled )">
+  }
+}

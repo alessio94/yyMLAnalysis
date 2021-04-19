@@ -1,0 +1,37 @@
+# -*- mode: tqfolder -*-
+# to get proper syntax highlighting and indentation when using emacs,
+# add the following line to your .emacs file:
+#   (load-file "$TQPATH/share/tqfolder.el")
+
++ImportWorkspaces {
+  +MyAnalysis {
+    <inputFile ="workspace.root">
+  }
+}
+
++MakeAsimovDataset {
+  +MyAnalysis;
+}
+
++CalculateSignificance {
+  +MyAnalysis {
+    +asimov {
+      <dataset= "asimovData">
+    }
+  }
+}
+
++ScanLikelihood.mu{
+  +MyAnalysis {
+    <datasetName = "asimovData">
+    +mu {
+      <min=0, max=3.5, nbins=100>
+    }
+  }
+}
+
++ExportResults {
+  +MyAnalysis {
+    <outputFile = "result.root">
+  }
+}

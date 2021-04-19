@@ -1,0 +1,937 @@
+# -*- mode: tqfolder -*-
++Variations {
+  #-----------------------------------------------------------------------------
+  # sfSystematics
+  +EL_EFF_ID_CorrUncertaintyNP0__1down {
+    <Variation = "_EL_EFF_ID_CorrUncertaintyNP0__1down">
+  }
+  +EL_EFF_ID_CorrUncertaintyNP0__1up {
+    <Variation = "_EL_EFF_ID_CorrUncertaintyNP0__1up">
+  }
+  +EL_EFF_ID_CorrUncertaintyNP1__1down {
+    <Variation = "_EL_EFF_ID_CorrUncertaintyNP1__1down">
+  }
+  +EL_EFF_ID_CorrUncertaintyNP1__1up {
+    <Variation = "_EL_EFF_ID_CorrUncertaintyNP1__1up">
+  }
+  +EL_EFF_ID_CorrUncertaintyNP2__1down {
+    <Variation = "_EL_EFF_ID_CorrUncertaintyNP2__1down">
+  }
+  +EL_EFF_ID_CorrUncertaintyNP2__1up {
+    <Variation = "_EL_EFF_ID_CorrUncertaintyNP2__1up">
+  }
+  +EL_EFF_ID_CorrUncertaintyNP3__1down {
+    <Variation = "_EL_EFF_ID_CorrUncertaintyNP3__1down">
+  }
+  +EL_EFF_ID_CorrUncertaintyNP3__1up {
+    <Variation = "_EL_EFF_ID_CorrUncertaintyNP3__1up">
+  }
+  +EL_EFF_ID_CorrUncertaintyNP4__1down {
+    <Variation = "_EL_EFF_ID_CorrUncertaintyNP4__1down">
+  }
+  +EL_EFF_ID_CorrUncertaintyNP4__1up {
+    <Variation = "_EL_EFF_ID_CorrUncertaintyNP4__1up">
+  }
+  +EL_EFF_ID_CorrUncertaintyNP5__1down {
+    <Variation = "_EL_EFF_ID_CorrUncertaintyNP5__1down">
+  }
+  +EL_EFF_ID_CorrUncertaintyNP5__1up {
+    <Variation = "_EL_EFF_ID_CorrUncertaintyNP5__1up">
+  }
+  +EL_EFF_ID_CorrUncertaintyNP6__1down {
+    <Variation = "_EL_EFF_ID_CorrUncertaintyNP6__1down">
+  }
+  +EL_EFF_ID_CorrUncertaintyNP6__1up {
+    <Variation = "_EL_EFF_ID_CorrUncertaintyNP6__1up">
+  }
+  +EL_EFF_ID_CorrUncertaintyNP7__1down {
+    <Variation = "_EL_EFF_ID_CorrUncertaintyNP7__1down">
+  }
+  +EL_EFF_ID_CorrUncertaintyNP7__1up {
+    <Variation = "_EL_EFF_ID_CorrUncertaintyNP7__1up">
+  }
+  +EL_EFF_ID_CorrUncertaintyNP8__1down {
+    <Variation = "_EL_EFF_ID_CorrUncertaintyNP8__1down">
+  }
+  +EL_EFF_ID_CorrUncertaintyNP8__1up {
+    <Variation = "_EL_EFF_ID_CorrUncertaintyNP8__1up">
+  }
+  +EL_EFF_ID_CorrUncertaintyNP9__1down {
+    <Variation = "_EL_EFF_ID_CorrUncertaintyNP9__1down">
+  }
+  +EL_EFF_ID_CorrUncertaintyNP9__1up {
+    <Variation = "_EL_EFF_ID_CorrUncertaintyNP9__1up">
+  }
+  +EL_EFF_ID_CorrUncertaintyNP10__1down {
+    <Variation = "_EL_EFF_ID_CorrUncertaintyNP10__1down">
+  }
+  +EL_EFF_ID_CorrUncertaintyNP10__1up {
+    <Variation = "_EL_EFF_ID_CorrUncertaintyNP10__1up">
+  }
+  +EL_EFF_ID_CorrUncertaintyNP11__1down {
+    <Variation = "_EL_EFF_ID_CorrUncertaintyNP11__1down">
+  }
+  +EL_EFF_ID_CorrUncertaintyNP11__1up {
+    <Variation = "_EL_EFF_ID_CorrUncertaintyNP11__1up">
+  }
+  +EL_EFF_ID_CorrUncertaintyNP12__1down {
+    <Variation = "_EL_EFF_ID_CorrUncertaintyNP12__1down">
+  }
+  +EL_EFF_ID_CorrUncertaintyNP12__1up {
+    <Variation = "_EL_EFF_ID_CorrUncertaintyNP12__1up">
+  }
+  +EL_EFF_ID_CorrUncertaintyNP13__1down {
+    <Variation = "_EL_EFF_ID_CorrUncertaintyNP13__1down">
+  }
+  +EL_EFF_ID_CorrUncertaintyNP13__1up {
+    <Variation = "_EL_EFF_ID_CorrUncertaintyNP13__1up">
+  }
+  +EL_EFF_ID_CorrUncertaintyNP14__1down {
+    <Variation = "_EL_EFF_ID_CorrUncertaintyNP14__1down">
+  }
+  +EL_EFF_ID_CorrUncertaintyNP14__1up {
+    <Variation = "_EL_EFF_ID_CorrUncertaintyNP14__1up">
+  }
+  +EL_EFF_ID_CorrUncertaintyNP15__1down {
+    <Variation = "_EL_EFF_ID_CorrUncertaintyNP15__1down">
+  }
+  +EL_EFF_ID_CorrUncertaintyNP15__1up {
+    <Variation = "_EL_EFF_ID_CorrUncertaintyNP15__1up">
+  }
+  +EL_EFF_ID_SIMPLIFIED_UncorrUncertaintyNP0__1down {
+    <Variation = "_EL_EFF_ID_SIMPLIFIED_UncorrUncertaintyNP0__1down">
+  }
+  +EL_EFF_ID_SIMPLIFIED_UncorrUncertaintyNP0__1up {
+    <Variation = "_EL_EFF_ID_SIMPLIFIED_UncorrUncertaintyNP0__1up">
+  }
+  +EL_EFF_ID_SIMPLIFIED_UncorrUncertaintyNP1__1down {
+    <Variation = "_EL_EFF_ID_SIMPLIFIED_UncorrUncertaintyNP1__1down">
+  }
+  +EL_EFF_ID_SIMPLIFIED_UncorrUncertaintyNP1__1up {
+    <Variation = "_EL_EFF_ID_SIMPLIFIED_UncorrUncertaintyNP1__1up">
+  }
+  +EL_EFF_ID_SIMPLIFIED_UncorrUncertaintyNP2__1down {
+    <Variation = "_EL_EFF_ID_SIMPLIFIED_UncorrUncertaintyNP2__1down">
+  }
+  +EL_EFF_ID_SIMPLIFIED_UncorrUncertaintyNP2__1up {
+    <Variation = "_EL_EFF_ID_SIMPLIFIED_UncorrUncertaintyNP2__1up">
+  }
+  +EL_EFF_ID_SIMPLIFIED_UncorrUncertaintyNP3__1down {
+    <Variation = "_EL_EFF_ID_SIMPLIFIED_UncorrUncertaintyNP3__1down">
+  }
+  +EL_EFF_ID_SIMPLIFIED_UncorrUncertaintyNP3__1up {
+    <Variation = "_EL_EFF_ID_SIMPLIFIED_UncorrUncertaintyNP3__1up">
+  }
+  +EL_EFF_ID_SIMPLIFIED_UncorrUncertaintyNP4__1down {
+    <Variation = "_EL_EFF_ID_SIMPLIFIED_UncorrUncertaintyNP4__1down">
+  }
+  +EL_EFF_ID_SIMPLIFIED_UncorrUncertaintyNP4__1up {
+    <Variation = "_EL_EFF_ID_SIMPLIFIED_UncorrUncertaintyNP4__1up">
+  }
+  +EL_EFF_ID_SIMPLIFIED_UncorrUncertaintyNP5__1down {
+    <Variation = "_EL_EFF_ID_SIMPLIFIED_UncorrUncertaintyNP5__1down">
+  }
+  +EL_EFF_ID_SIMPLIFIED_UncorrUncertaintyNP5__1up {
+    <Variation = "_EL_EFF_ID_SIMPLIFIED_UncorrUncertaintyNP5__1up">
+  }
+  +EL_EFF_ID_SIMPLIFIED_UncorrUncertaintyNP6__1down {
+    <Variation = "_EL_EFF_ID_SIMPLIFIED_UncorrUncertaintyNP6__1down">
+  }
+  +EL_EFF_ID_SIMPLIFIED_UncorrUncertaintyNP6__1up {
+    <Variation = "_EL_EFF_ID_SIMPLIFIED_UncorrUncertaintyNP6__1up">
+  }
+  +EL_EFF_ID_SIMPLIFIED_UncorrUncertaintyNP7__1down {
+    <Variation = "_EL_EFF_ID_SIMPLIFIED_UncorrUncertaintyNP7__1down">
+  }
+  +EL_EFF_ID_SIMPLIFIED_UncorrUncertaintyNP7__1up {
+    <Variation = "_EL_EFF_ID_SIMPLIFIED_UncorrUncertaintyNP7__1up">
+  }
+  +EL_EFF_ID_SIMPLIFIED_UncorrUncertaintyNP8__1down {
+    <Variation = "_EL_EFF_ID_SIMPLIFIED_UncorrUncertaintyNP8__1down">
+  }
+  +EL_EFF_ID_SIMPLIFIED_UncorrUncertaintyNP8__1up {
+    <Variation = "_EL_EFF_ID_SIMPLIFIED_UncorrUncertaintyNP8__1up">
+  }
+  +EL_EFF_ID_SIMPLIFIED_UncorrUncertaintyNP9__1down {
+    <Variation = "_EL_EFF_ID_SIMPLIFIED_UncorrUncertaintyNP9__1down">
+  }
+  +EL_EFF_ID_SIMPLIFIED_UncorrUncertaintyNP9__1up {
+    <Variation = "_EL_EFF_ID_SIMPLIFIED_UncorrUncertaintyNP9__1up">
+  }
+  +EL_EFF_ID_SIMPLIFIED_UncorrUncertaintyNP10__1down {
+    <Variation = "_EL_EFF_ID_SIMPLIFIED_UncorrUncertaintyNP10__1down">
+  }
+  +EL_EFF_ID_SIMPLIFIED_UncorrUncertaintyNP10__1up {
+    <Variation = "_EL_EFF_ID_SIMPLIFIED_UncorrUncertaintyNP10__1up">
+  }
+  +EL_EFF_ID_SIMPLIFIED_UncorrUncertaintyNP11__1down {
+    <Variation = "_EL_EFF_ID_SIMPLIFIED_UncorrUncertaintyNP11__1down">
+  }
+  +EL_EFF_ID_SIMPLIFIED_UncorrUncertaintyNP11__1up {
+    <Variation = "_EL_EFF_ID_SIMPLIFIED_UncorrUncertaintyNP11__1up">
+  }
+  +EL_EFF_ID_SIMPLIFIED_UncorrUncertaintyNP12__1down {
+    <Variation = "_EL_EFF_ID_SIMPLIFIED_UncorrUncertaintyNP12__1down">
+  }
+  +EL_EFF_ID_SIMPLIFIED_UncorrUncertaintyNP12__1up {
+    <Variation = "_EL_EFF_ID_SIMPLIFIED_UncorrUncertaintyNP12__1up">
+  }
+  +EL_EFF_ID_SIMPLIFIED_UncorrUncertaintyNP13__1down {
+    <Variation = "_EL_EFF_ID_SIMPLIFIED_UncorrUncertaintyNP13__1down">
+  }
+  +EL_EFF_ID_SIMPLIFIED_UncorrUncertaintyNP13__1up {
+    <Variation = "_EL_EFF_ID_SIMPLIFIED_UncorrUncertaintyNP13__1up">
+  }
+  +EL_EFF_ID_SIMPLIFIED_UncorrUncertaintyNP14__1down {
+    <Variation = "_EL_EFF_ID_SIMPLIFIED_UncorrUncertaintyNP14__1down">
+  }
+  +EL_EFF_ID_SIMPLIFIED_UncorrUncertaintyNP14__1up {
+    <Variation = "_EL_EFF_ID_SIMPLIFIED_UncorrUncertaintyNP14__1up">
+  }
+  +EL_EFF_ID_SIMPLIFIED_UncorrUncertaintyNP15__1down {
+    <Variation = "_EL_EFF_ID_SIMPLIFIED_UncorrUncertaintyNP15__1down">
+  }
+  +EL_EFF_ID_SIMPLIFIED_UncorrUncertaintyNP15__1up {
+    <Variation = "_EL_EFF_ID_SIMPLIFIED_UncorrUncertaintyNP15__1up">
+  }
+  +EL_EFF_ID_SIMPLIFIED_UncorrUncertaintyNP16__1down {
+    <Variation = "_EL_EFF_ID_SIMPLIFIED_UncorrUncertaintyNP16__1down">
+  }
+  +EL_EFF_ID_SIMPLIFIED_UncorrUncertaintyNP16__1up {
+    <Variation = "_EL_EFF_ID_SIMPLIFIED_UncorrUncertaintyNP16__1up">
+  }
+  +EL_EFF_ID_SIMPLIFIED_UncorrUncertaintyNP17__1down {
+    <Variation = "_EL_EFF_ID_SIMPLIFIED_UncorrUncertaintyNP17__1down">
+  }
+  +EL_EFF_ID_SIMPLIFIED_UncorrUncertaintyNP17__1up {
+    <Variation = "_EL_EFF_ID_SIMPLIFIED_UncorrUncertaintyNP17__1up">
+  }
+  +EL_EFF_Trigger_TOTAL_1NPCOR_PLUS_UNCOR__1down {
+    <Variation = "_EL_EFF_Trigger_TOTAL_1NPCOR_PLUS_UNCOR__1down">
+  }
+  +EL_EFF_Trigger_TOTAL_1NPCOR_PLUS_UNCOR__1up {
+    <Variation = "_EL_EFF_Trigger_TOTAL_1NPCOR_PLUS_UNCOR__1up">
+  }
+  +MUON_EFF_RECO_STAT__1down {
+    <Variation = "_MUON_EFF_RECO_STAT__1down">
+  }
+  +MUON_EFF_RECO_STAT__1up {
+    <Variation = "_MUON_EFF_RECO_STAT__1up">
+  }
+  +MUON_EFF_RECO_STAT_LOWPT__1down {
+    <Variation = "_MUON_EFF_RECO_STAT_LOWPT__1down">
+  }
+  +MUON_EFF_RECO_STAT_LOWPT__1up {
+    <Variation = "_MUON_EFF_RECO_STAT_LOWPT__1up">
+  }
+  +MUON_EFF_RECO_SYS__1down {
+    <Variation = "_MUON_EFF_RECO_SYS__1down">
+  }
+  +MUON_EFF_RECO_SYS__1up {
+    <Variation = "_MUON_EFF_RECO_SYS__1up">
+  }
+  +MUON_EFF_RECO_SYS_LOWPT__1down {
+    <Variation = "_MUON_EFF_RECO_SYS_LOWPT__1down">
+  }
+  +MUON_EFF_RECO_SYS_LOWPT__1up {
+    <Variation = "_MUON_EFF_RECO_SYS_LOWPT__1up">
+  }
+  +MUON_EFF_ISO_STAT__1down {
+    <Variation = "_MUON_EFF_ISO_STAT__1down">
+  }
+  +MUON_EFF_ISO_STAT__1up {
+    <Variation = "_MUON_EFF_ISO_STAT__1up">
+  }
+  +MUON_EFF_ISO_SYS__1down {
+    <Variation = "_MUON_EFF_ISO_SYS__1down">
+  }
+  +MUON_EFF_ISO_SYS__1up {
+    <Variation = "_MUON_EFF_ISO_SYS__1up">
+  }
+  +MUON_EFF_TTVA_SYS__1down {
+    <Variation = "_MUON_EFF_TTVA_SYS__1down">
+  }
+  +MUON_EFF_TTVA_SYS__1up {
+    <Variation = "_MUON_EFF_TTVA_SYS__1up">
+  }
+  +MUON_EFF_TTVA_STAT__1down {
+    <Variation = "_MUON_EFF_TTVA_STAT__1down">
+  }
+  +MUON_EFF_TTVA_STAT__1up {
+    <Variation = "_MUON_EFF_TTVA_STAT__1up">
+  }
+  +MUON_EFF_TrigStatUncertainty__1down {
+    <Variation = "_MUON_EFF_TrigStatUncertainty__1down">
+  }
+  +MUON_EFF_TrigStatUncertainty__1up {
+    <Variation = "_MUON_EFF_TrigStatUncertainty__1up">
+  }
+  +MUON_EFF_TrigSystUncertainty__1down {
+    <Variation = "_MUON_EFF_TrigSystUncertainty__1down">
+  }
+  +MUON_EFF_TrigSystUncertainty__1up {
+    <Variation = "_MUON_EFF_TrigSystUncertainty__1up">
+  }
+  +FT_EFF_extrapolation__1down {
+    <Variation = "_FT_EFF_extrapolation__1down">
+  }
+  +FT_EFF_extrapolation__1up {
+    <Variation = "_FT_EFF_extrapolation__1up">
+  }
+  +JET_JvtEfficiency__1down {
+    <Variation = "_JET_JvtEfficiency__1down">
+  }
+  +JET_JvtEfficiency__1up {
+    <Variation = "_JET_JvtEfficiency__1up">
+  }
+  +JET_fJvtEfficiency__1down {
+    <Variation = "_JET_fJvtEfficiency__1down">
+  }
+  +JET_fJvtEfficiency__1up {
+    <Variation = "_JET_fJvtEfficiency__1up">
+  }
+  +EL_EFF_Reco_TOTAL_1NPCOR_PLUS_UNCOR__1down {
+    <Variation = "_EL_EFF_Reco_TOTAL_1NPCOR_PLUS_UNCOR__1down">
+  }
+  +EL_EFF_Reco_TOTAL_1NPCOR_PLUS_UNCOR__1up {
+    <Variation = "_EL_EFF_Reco_TOTAL_1NPCOR_PLUS_UNCOR__1up">
+  }
+  +EL_EFF_Iso_TOTAL_1NPCOR_PLUS_UNCOR__1down {
+    <Variation = "_EL_EFF_Iso_TOTAL_1NPCOR_PLUS_UNCOR__1down">
+  }
+  +EL_EFF_Iso_TOTAL_1NPCOR_PLUS_UNCOR__1up {
+    <Variation = "_EL_EFF_Iso_TOTAL_1NPCOR_PLUS_UNCOR__1up">
+  }
+  +FT_EFF_Eigen_B_0__1down {
+    <Variation = "_FT_EFF_Eigen_B_0__1down">
+  }
+  +FT_EFF_Eigen_B_0__1up {
+    <Variation = "_FT_EFF_Eigen_B_0__1up">
+  }
+  +FT_EFF_Eigen_B_1__1down {
+    <Variation = "_FT_EFF_Eigen_B_1__1down">
+  }
+  +FT_EFF_Eigen_B_1__1up {
+    <Variation = "_FT_EFF_Eigen_B_1__1up">
+  }
+  +FT_EFF_Eigen_B_2__1down {
+    <Variation = "_FT_EFF_Eigen_B_2__1down">
+  }
+  +FT_EFF_Eigen_B_2__1up {
+    <Variation = "_FT_EFF_Eigen_B_2__1up">
+  }
+  +FT_EFF_Eigen_C_0__1down {
+    <Variation = "_FT_EFF_Eigen_C_0__1down">
+  }
+  +FT_EFF_Eigen_C_0__1up {
+    <Variation = "_FT_EFF_Eigen_C_0__1up">
+  }
+  +FT_EFF_Eigen_C_1__1down {
+    <Variation = "_FT_EFF_Eigen_C_1__1down">
+  }
+  +FT_EFF_Eigen_C_1__1up {
+    <Variation = "_FT_EFF_Eigen_C_1__1up">
+  }
+  +FT_EFF_Eigen_C_2__1down {
+    <Variation = "_FT_EFF_Eigen_C_2__1down">
+  }
+  +FT_EFF_Eigen_C_2__1up {
+    <Variation = "_FT_EFF_Eigen_C_2__1up">
+  }
+  +FT_EFF_Eigen_Light_0__1down {
+    <Variation = "_FT_EFF_Eigen_Light_0__1down">
+  }
+  +FT_EFF_Eigen_Light_0__1up {
+    <Variation = "_FT_EFF_Eigen_Light_0__1up">
+  }
+  +FT_EFF_Eigen_Light_1__1down {
+    <Variation = "_FT_EFF_Eigen_Light_1__1down">
+  }
+  +FT_EFF_Eigen_Light_1__1up {
+    <Variation = "_FT_EFF_Eigen_Light_1__1up">
+  }
+  +FT_EFF_Eigen_Light_2__1down {
+    <Variation = "_FT_EFF_Eigen_Light_2__1down">
+  }
+  +FT_EFF_Eigen_Light_2__1up {
+    <Variation = "_FT_EFF_Eigen_Light_2__1up">
+  }
+  +FT_EFF_Eigen_Light_3__1down {
+    <Variation = "_FT_EFF_Eigen_Light_3__1down">
+  }
+  +FT_EFF_Eigen_Light_3__1up {
+    <Variation = "_FT_EFF_Eigen_Light_3__1up">
+  }
+  +FT_EFF_extrapolation_from_charm__1down {
+    <Variation = "_FT_EFF_extrapolation_from_charm__1down">
+  }
+  +FT_EFF_extrapolation_from_charm__1up {
+    <Variation = "_FT_EFF_extrapolation_from_charm__1up">
+  }
+  +PRW_DATASF__1down {
+    <Variation = "_PRW_DATASF__1down">
+  }
+  +PRW_DATASF__1up {
+    <Variation = "_PRW_DATASF__1up">
+  }
+  
+  #-------------------------------------------------------------------------------------------
+  # p4 Systematics
+  +EG_RESOLUTION_ALL__1down {
+    <Variation = "_EG_RESOLUTION_ALL__1down">
+  }
+  +EG_RESOLUTION_ALL__1up {
+    <Variation = "_EG_RESOLUTION_ALL__1up">
+  }
+  +EG_SCALE_AF2__1down {
+    <Variation = "_EG_SCALE_AF2__1down">
+  }
+  +EG_SCALE_AF2__1up {
+    <Variation = "_EG_SCALE_AF2__1up">
+  }
+  +EG_SCALE_ALL__1down {
+    <Variation = "_EG_SCALE_ALL__1down">
+  }
+  +EG_SCALE_ALL__1up {
+    <Variation = "_EG_SCALE_ALL__1up">
+  }
+  +JES_BJES_Response__1down {
+    <Variation = "_JET_BJES_Response__1down">
+  }
+  +JES_BJES_Response__1up {
+    <Variation = "_JET_BJES_Response__1up">
+  }
+  +JES_EffectiveNP_Detector1__1down {
+    <Variation = "_JET_EffectiveNP_Detector1__1down">
+  }
+  +JES_EffectiveNP_Detector1__1up {
+    <Variation = "_JET_EffectiveNP_Detector1__1up">
+  }
+  +JES_EffectiveNP_Detector2__1down {
+    <Variation = "_JET_EffectiveNP_Detector2__1down">
+  }
+  +JES_EffectiveNP_Detector2__1up {
+    <Variation = "_JET_EffectiveNP_Detector2__1up">
+  }
+  +JES_EffectiveNP_Mixed1__1down {
+    <Variation = "_JET_EffectiveNP_Mixed1__1down">
+  }
+  +JES_EffectiveNP_Mixed1__1up {
+    <Variation = "_JET_EffectiveNP_Mixed1__1up">
+  }
+  +JES_EffectiveNP_Mixed2__1down {
+    <Variation = "_JET_EffectiveNP_Mixed2__1down">
+  }
+  +JES_EffectiveNP_Mixed2__1up {
+    <Variation = "_JET_EffectiveNP_Mixed2__1up">
+  }
+  +JES_EffectiveNP_Mixed3__1down {
+    <Variation = "_JET_EffectiveNP_Mixed3__1down">
+  }
+  +JES_EffectiveNP_Mixed3__1up {
+    <Variation = "_JET_EffectiveNP_Mixed3__1up">
+  }
+  +JES_EffectiveNP_Modelling1__1down {
+    <Variation = "_JET_EffectiveNP_Modelling1__1down">
+  }
+  +JES_EffectiveNP_Modelling1__1up {
+    <Variation = "_JET_EffectiveNP_Modelling1__1up">
+  }
+  +JES_EffectiveNP_Modelling2__1down {
+    <Variation = "_JET_EffectiveNP_Modelling2__1down">
+  }
+  +JES_EffectiveNP_Modelling2__1up {
+    <Variation = "_JET_EffectiveNP_Modelling2__1up">
+  }
+  +JES_EffectiveNP_Modelling3__1down {
+    <Variation = "_JET_EffectiveNP_Modelling3__1down">
+  }
+  +JES_EffectiveNP_Modelling3__1up {
+    <Variation = "_JET_EffectiveNP_Modelling3__1up">
+  }
+  +JES_EffectiveNP_Modelling4__1down {
+    <Variation = "_JET_EffectiveNP_Modelling4__1down">
+  }
+  +JES_EffectiveNP_Modelling4__1up {
+    <Variation = "_JET_EffectiveNP_Modelling4__1up">
+  }
+  +JES_EffectiveNP_Statistical1__1down {
+    <Variation = "_JET_EffectiveNP_Statistical1__1down">
+  }
+  +JES_EffectiveNP_Statistical1__1up {
+    <Variation = "_JET_EffectiveNP_Statistical1__1up">
+  }
+  +JES_EffectiveNP_Statistical2__1down {
+    <Variation = "_JET_EffectiveNP_Statistical2__1down">
+  }
+  +JES_EffectiveNP_Statistical2__1up {
+    <Variation = "_JET_EffectiveNP_Statistical2__1up">
+  }
+  +JES_EffectiveNP_Statistical3__1down {
+    <Variation = "_JET_EffectiveNP_Statistical3__1down">
+  }
+  +JES_EffectiveNP_Statistical3__1up {
+    <Variation = "_JET_EffectiveNP_Statistical3__1up">
+  }
+  +JES_EffectiveNP_Statistical4__1down {
+    <Variation = "_JET_EffectiveNP_Statistical4__1down">
+  }
+  +JES_EffectiveNP_Statistical4__1up {
+    <Variation = "_JET_EffectiveNP_Statistical4__1up">
+  }
+  +JES_EffectiveNP_Statistical5__1down {
+    <Variation = "_JET_EffectiveNP_Statistical5__1down">
+  }
+  +JES_EffectiveNP_Statistical5__1up {
+    <Variation = "_JET_EffectiveNP_Statistical5__1up">
+  }
+  +JES_EffectiveNP_Statistical6__1down {
+    <Variation = "_JET_EffectiveNP_Statistical6__1down">
+  }
+  +JES_EffectiveNP_Statistical6__1up {
+    <Variation = "_JET_EffectiveNP_Statistical6__1up">
+  }
+  +JES_EtaIntercalibration_Modelling__1down {
+    <Variation = "_JET_EtaIntercalibration_Modelling__1down">
+  }
+  +JES_EtaIntercalibration_Modelling__1up {
+    <Variation = "_JET_EtaIntercalibration_Modelling__1up">
+  }
+  +JES_EtaIntercalibration_NonClosure_highE__1down {
+    <Variation = "_JET_EtaIntercalibration_NonClosure_highE__1down">
+  }
+  +JES_EtaIntercalibration_NonClosure_highE__1up {
+    <Variation = "_JET_EtaIntercalibration_NonClosure_highE__1up">
+  }
+  +JES_EtaIntercalibration_NonClosure_negEta__1down {
+    <Variation = "_JET_EtaIntercalibration_NonClosure_negEta__1down">
+  }
+  +JES_EtaIntercalibration_NonClosure_negEta__1up {
+    <Variation = "_JET_EtaIntercalibration_NonClosure_negEta__1up">
+  }
+  +JES_EtaIntercalibration_NonClosure_posEta__1down {
+    <Variation = "_JET_EtaIntercalibration_NonClosure_posEta__1down">
+  }
+  +JES_EtaIntercalibration_NonClosure_posEta__1up {
+    <Variation = "_JET_EtaIntercalibration_NonClosure_posEta__1up">
+  }
+  +JES_EtaIntercalibration_TotalStat__1down {
+    <Variation = "_JET_EtaIntercalibration_TotalStat__1down">
+  }
+  +JES_EtaIntercalibration_TotalStat__1up {
+    <Variation = "_JET_EtaIntercalibration_TotalStat__1up">
+  }
+  +JES_Flavor_Composition__1down {
+    <Variation = "_JET_Flavor_Composition__1down">
+  }
+  +JES_Flavor_Composition__1up {
+    <Variation = "_JET_Flavor_Composition__1up">
+  }
+  +JES_Flavor_Response__1down {
+    <Variation = "_JET_Flavor_Response__1down">
+  }
+  +JES_Flavor_Response__1up {
+    <Variation = "_JET_Flavor_Response__1up">
+  }
+  +JES_Pileup_OffsetMu__1down {
+    <Variation = "_JET_Pileup_OffsetMu__1down">
+  }
+  +JES_Pileup_OffsetMu__1up {
+    <Variation = "_JET_Pileup_OffsetMu__1up">
+  }
+  +JES_Pileup_OffsetNPV__1down {
+    <Variation = "_JET_Pileup_OffsetNPV__1down">
+  }
+  +JES_Pileup_OffsetNPV__1up {
+    <Variation = "_JET_Pileup_OffsetNPV__1up">
+  }
+  +JES_Pileup_PtTerm__1down {
+    <Variation = "_JET_Pileup_PtTerm__1down">
+  }
+  +JES_Pileup_PtTerm__1up {
+    <Variation = "_JET_Pileup_PtTerm__1up">
+  }
+  +JES_Pileup_RhoTopology__1down {
+    <Variation = "_JET_Pileup_RhoTopology__1down">
+  }
+  +JES_Pileup_RhoTopology__1up {
+    <Variation = "_JET_Pileup_RhoTopology__1up">
+  }
+  +JES_PunchThrough_MC16__1down {
+    <Variation = "_JET_PunchThrough_MC16__1down">
+  }
+  +JES_PunchThrough_MC16__1up {
+    <Variation = "_JET_PunchThrough_MC16__1up">
+  }
+  +JES_SingleParticle_HighPt__1down {
+    <Variation = "_JET_SingleParticle_HighPt__1down">
+  }
+  +JES_SingleParticle_HighPt__1up {
+    <Variation = "_JET_SingleParticle_HighPt__1up">
+  }
+  +MET_SoftTrk_ResoPara {
+    <Variation = "_MET_SoftTrk_ResoPara">
+  }
+  +MET_SoftTrk_ResoPerp {
+    <Variation = "_MET_SoftTrk_ResoPerp">
+  }
+  +MET_SoftTrk_ScaleDown {
+    <Variation = "_MET_SoftTrk_ScaleDown">
+  }
+  +MET_SoftTrk_ScaleUp {
+    <Variation = "_MET_SoftTrk_ScaleUp">
+  }
+  +MET_JetTrk_ScaleDown {
+    <Variation = "_MET_JetTrk_ScaleDown">
+  }
+  +MET_JetTrk_ScaleUp {
+    <Variation = "_MET_JetTrk_ScaleUp">
+  }
+  +MUONS_ID__1down {
+    <Variation = "_MUON_ID__1down">
+  }
+  +MUONS_ID__1up {
+    <Variation = "_MUON_ID__1up">
+  }
+  +MUONS_MS__1down {
+    <Variation = "_MUON_MS__1down">
+  }
+  +MUONS_MS__1up {
+    <Variation = "_MUON_MS__1up">
+  }
+  +MUONS_SCALE__1down {
+    <Variation = "_MUON_SCALE__1down">
+  }
+  +MUONS_SCALE__1up {
+    <Variation = "_MUON_SCALE__1up">
+  }
+  +MUONS_SAGITTA_RHO__1down {
+    <Variation = "_MUON_SAGITTA_RHO__1down">
+  }
+  +MUONS_SAGITTA_RHO__1up {
+    <Variation = "_MUON_SAGITTA_RHO__1up">
+  }
+  +MUONS_SAGITTA_RESBIAS__1down {
+    <Variation = "_MUON_SAGITTA_RESBIAS__1down">
+  }
+  +MUONS_SAGITTA_RESBIAS__1up {
+    <Variation = "_MUON_SAGITTA_RESBIAS__1up">
+  }
+}
+
+#  <SampleFolder = "./sampleFolders/analyzed/FinalSamples/Final-P1-ExpSys.root:samples"> @ Variations/EL_EFF_ID_CorrUncertaintyNP0__1down;
+##################################################################################
+##################################################################################
+##################################################################################
++Systematics {
+  +ATLAS_EL_EFF_Reco_TOTAL_1NPCOR_PLUS_UNCOR {
+    <Down = "EL_EFF_Reco_TOTAL_1NPCOR_PLUS_UNCOR__1down", Up = "EL_EFF_Reco_TOTAL_1NPCOR_PLUS_UNCOR__1up", isSFSys = true, Attributes.0 = "exp", Attributes.1 = "NP", isDetectorSys = true>
+  }
+  +ATLAS_EL_EFF_Iso_TOTAL_1NPCOR_PLUS_UNCOR {
+    <Down = "EL_EFF_Iso_TOTAL_1NPCOR_PLUS_UNCOR__1down", Up = "EL_EFF_Iso_TOTAL_1NPCOR_PLUS_UNCOR__1up", isSFSys = true, Attributes.0 = "exp", Attributes.1 = "NP", isDetectorSys = true>
+  }
+  +ATLAS_FT_EFF_Eigen_B_0 {
+    <Down = "FT_EFF_Eigen_B_0__1down", Up = "FT_EFF_Eigen_B_0__1up", isSFSys = true, Attributes.0 = "exp", Attributes.1 = "NP", isDetectorSys = true>
+  }
+  +ATLAS_FT_EFF_Eigen_B_1 {
+    <Down = "FT_EFF_Eigen_B_1__1down", Up = "FT_EFF_Eigen_B_1__1up", isSFSys = true, Attributes.0 = "exp", Attributes.1 = "NP", isDetectorSys = true>
+  }
+  +ATLAS_FT_EFF_Eigen_B_2 {
+    <Down = "FT_EFF_Eigen_B_2__1down", Up = "FT_EFF_Eigen_B_2__1up", isSFSys = true, Attributes.0 = "exp", Attributes.1 = "NP", isDetectorSys = true>
+  }
+  +ATLAS_FT_EFF_Eigen_C_0 {
+    <Down = "FT_EFF_Eigen_C_0__1down", Up = "FT_EFF_Eigen_C_0__1up", isSFSys = true, Attributes.0 = "exp", Attributes.1 = "NP", isDetectorSys = true>
+  }
+  +ATLAS_FT_EFF_Eigen_C_1 {
+    <Down = "FT_EFF_Eigen_C_1__1down", Up = "FT_EFF_Eigen_C_1__1up", isSFSys = true, Attributes.0 = "exp", Attributes.1 = "NP", isDetectorSys = true>
+  }
+  +ATLAS_FT_EFF_Eigen_C_2 {
+    <Down = "FT_EFF_Eigen_C_2__1down", Up = "FT_EFF_Eigen_C_2__1up", isSFSys = true, Attributes.0 = "exp", Attributes.1 = "NP", isDetectorSys = true>
+  }
+  +ATLAS_FT_EFF_Eigen_Light_0 {
+    <Down = "FT_EFF_Eigen_Light_0__1down", Up = "FT_EFF_Eigen_Light_0__1up", isSFSys = true, Attributes.0 = "exp", Attributes.1 = "NP", isDetectorSys = true>
+  }
+  +ATLAS_FT_EFF_Eigen_Light_1 {
+    <Down = "FT_EFF_Eigen_Light_1__1down", Up = "FT_EFF_Eigen_Light_1__1up", isSFSys = true, Attributes.0 = "exp", Attributes.1 = "NP", isDetectorSys = true>
+  }
+  +ATLAS_FT_EFF_Eigen_Light_2 {
+    <Down = "FT_EFF_Eigen_Light_2__1down", Up = "FT_EFF_Eigen_Light_2__1up", isSFSys = true, Attributes.0 = "exp", Attributes.1 = "NP", isDetectorSys = true>
+  }
+  +ATLAS_FT_EFF_Eigen_Light_3 {
+    <Down = "FT_EFF_Eigen_Light_3__1down", Up = "FT_EFF_Eigen_Light_3__1up", isSFSys = true, Attributes.0 = "exp", Attributes.1 = "NP", isDetectorSys = true>
+  }
+  +ATLAS_FT_EFF_extrapolation_from_charm {
+    <Down = "FT_EFF_extrapolation_from_charm__1down", Up = "FT_EFF_extrapolation_from_charm__1up", isSFSys = true, Attributes.0 = "exp", Attributes.1 = "NP", isDetectorSys = true>
+  }
+  +ATLAS_PRW_DATASF {
+    <Down = "PRW_DATASF__1down", Up = "PRW_DATASF__1up", isSFSys = true, isP4Sys = true, Attributes.0 = "exp", Attributes.1 = "NP", isDetectorSys = true>
+  }
+  +ATLAS_EL_EFF_ID_CorrUncertainty_NP0 {
+    <Down = "EL_EFF_ID_CorrUncertaintyNP0__1down", Up = "EL_EFF_ID_CorrUncertaintyNP0__1up", isSFSys = true, Attributes.0 = "exp", Attributes.1 = "NP", isDetectorSys = true>
+  }
+  +ATLAS_EL_EFF_ID_CorrUncertainty_NP1 {
+    <Down = "EL_EFF_ID_CorrUncertaintyNP1__1down", Up = "EL_EFF_ID_CorrUncertaintyNP1__1up", isSFSys = true, Attributes.0 = "exp", Attributes.1 = "NP", isDetectorSys = true>
+  }
+  +ATLAS_EL_EFF_ID_CorrUncertainty_NP2 {
+    <Down = "EL_EFF_ID_CorrUncertaintyNP2__1down", Up = "EL_EFF_ID_CorrUncertaintyNP2__1up", isSFSys = true, Attributes.0 = "exp", Attributes.1 = "NP", isDetectorSys = true>
+  }
+  +ATLAS_EL_EFF_ID_CorrUncertainty_NP3 {
+    <Down = "EL_EFF_ID_CorrUncertaintyNP3__1down", Up = "EL_EFF_ID_CorrUncertaintyNP3__1up", isSFSys = true, Attributes.0 = "exp", Attributes.1 = "NP", isDetectorSys = true>
+  }
+  +ATLAS_EL_EFF_ID_CorrUncertainty_NP4 {
+    <Down = "EL_EFF_ID_CorrUncertaintyNP4__1down", Up = "EL_EFF_ID_CorrUncertaintyNP4__1up", isSFSys = true, Attributes.0 = "exp", Attributes.1 = "NP", isDetectorSys = true>
+  }
+  +ATLAS_EL_EFF_ID_CorrUncertainty_NP5 {
+    <Down = "EL_EFF_ID_CorrUncertaintyNP5__1down", Up = "EL_EFF_ID_CorrUncertaintyNP5__1up", isSFSys = true, Attributes.0 = "exp", Attributes.1 = "NP", isDetectorSys = true>
+  }
+  +ATLAS_EL_EFF_ID_CorrUncertainty_NP6 {
+    <Down = "EL_EFF_ID_CorrUncertaintyNP6__1down", Up = "EL_EFF_ID_CorrUncertaintyNP6__1up", isSFSys = true, Attributes.0 = "exp", Attributes.1 = "NP", isDetectorSys = true>
+  }
+  +ATLAS_EL_EFF_ID_CorrUncertainty_NP7 {
+    <Down = "EL_EFF_ID_CorrUncertaintyNP7__1down", Up = "EL_EFF_ID_CorrUncertaintyNP7__1up", isSFSys = true, Attributes.0 = "exp", Attributes.1 = "NP", isDetectorSys = true>
+  }
+  +ATLAS_EL_EFF_ID_CorrUncertainty_NP8 {
+    <Down = "EL_EFF_ID_CorrUncertaintyNP8__1down", Up = "EL_EFF_ID_CorrUncertaintyNP8__1up", isSFSys = true, Attributes.0 = "exp", Attributes.1 = "NP", isDetectorSys = true>
+  }
+  +ATLAS_EL_EFF_ID_CorrUncertainty_NP9 {
+    <Down = "EL_EFF_ID_CorrUncertaintyNP9__1down", Up = "EL_EFF_ID_CorrUncertaintyNP9__1up", isSFSys = true, Attributes.0 = "exp", Attributes.1 = "NP", isDetectorSys = true>
+  }
+  +ATLAS_EL_EFF_ID_CorrUncertainty_NP10 {
+    <Down = "EL_EFF_ID_CorrUncertaintyNP10__1down", Up = "EL_EFF_ID_CorrUncertaintyNP10__1up", isSFSys = true, Attributes.0 = "exp", Attributes.1 = "NP", isDetectorSys = true>
+  }
+  +ATLAS_EL_EFF_ID_CorrUncertainty_NP11 {
+    <Down = "EL_EFF_ID_CorrUncertaintyNP11__1down", Up = "EL_EFF_ID_CorrUncertaintyNP11__1up", isSFSys = true, Attributes.0 = "exp", Attributes.1 = "NP", isDetectorSys = true>
+  }
+  +ATLAS_EL_EFF_ID_CorrUncertainty_NP12 {
+    <Down = "EL_EFF_ID_CorrUncertaintyNP12__1down", Up = "EL_EFF_ID_CorrUncertaintyNP12__1up", isSFSys = true, Attributes.0 = "exp", Attributes.1 = "NP", isDetectorSys = true>
+  }
+  +ATLAS_EL_EFF_ID_CorrUncertainty_NP13 {
+    <Down = "EL_EFF_ID_CorrUncertaintyNP13__1down", Up = "EL_EFF_ID_CorrUncertaintyNP13__1up", isSFSys = true, Attributes.0 = "exp", Attributes.1 = "NP", isDetectorSys = true>
+  }
+  +ATLAS_EL_EFF_ID_CorrUncertainty_NP14 {
+    <Down = "EL_EFF_ID_CorrUncertaintyNP14__1down", Up = "EL_EFF_ID_CorrUncertaintyNP14__1up", isSFSys = true, Attributes.0 = "exp", Attributes.1 = "NP", isDetectorSys = true>
+  }
+  +ATLAS_EL_EFF_ID_CorrUncertainty_NP15 {
+    <Down = "EL_EFF_ID_CorrUncertaintyNP15__1down", Up = "EL_EFF_ID_CorrUncertaintyNP15__1up", isSFSys = true, Attributes.0 = "exp", Attributes.1 = "NP", isDetectorSys = true>
+  }
+  +ATLAS_EL_EFF_ID_UncorrUncertainty_NP0 {
+    <Down = "EL_EFF_ID_SIMPLIFIED_UncorrUncertaintyNP0__1down", Up = "EL_EFF_ID_SIMPLIFIED_UncorrUncertaintyNP0__1up", isSFSys = true, Attributes.0 = "exp", Attributes.1 = "NP", isDetectorSys = true>
+  }
+  +ATLAS_EL_EFF_ID_UncorrUncertainty_NP1 {
+    <Down = "EL_EFF_ID_SIMPLIFIED_UncorrUncertaintyNP1__1down", Up = "EL_EFF_ID_SIMPLIFIED_UncorrUncertaintyNP1__1up", isSFSys = true, Attributes.0 = "exp", Attributes.1 = "NP", isDetectorSys = true>
+  }
+  +ATLAS_EL_EFF_ID_UncorrUncertainty_NP2 {
+    <Down = "EL_EFF_ID_SIMPLIFIED_UncorrUncertaintyNP2__1down", Up = "EL_EFF_ID_SIMPLIFIED_UncorrUncertaintyNP2__1up", isSFSys = true, Attributes.0 = "exp", Attributes.1 = "NP", isDetectorSys = true>
+  }
+  +ATLAS_EL_EFF_ID_UncorrUncertainty_NP3 {
+    <Down = "EL_EFF_ID_SIMPLIFIED_UncorrUncertaintyNP3__1down", Up = "EL_EFF_ID_SIMPLIFIED_UncorrUncertaintyNP3__1up", isSFSys = true, Attributes.0 = "exp", Attributes.1 = "NP", isDetectorSys = true>
+  }
+  +ATLAS_EL_EFF_ID_UncorrUncertainty_NP4 {
+    <Down = "EL_EFF_ID_SIMPLIFIED_UncorrUncertaintyNP4__1down", Up = "EL_EFF_ID_SIMPLIFIED_UncorrUncertaintyNP4__1up", isSFSys = true, Attributes.0 = "exp", Attributes.1 = "NP", isDetectorSys = true>
+  }
+  +ATLAS_EL_EFF_ID_UncorrUncertainty_NP5 {
+    <Down = "EL_EFF_ID_SIMPLIFIED_UncorrUncertaintyNP5__1down", Up = "EL_EFF_ID_SIMPLIFIED_UncorrUncertaintyNP5__1up", isSFSys = true, Attributes.0 = "exp", Attributes.1 = "NP", isDetectorSys = true>
+  }
+  +ATLAS_EL_EFF_ID_UncorrUncertainty_NP6 {
+    <Down = "EL_EFF_ID_SIMPLIFIED_UncorrUncertaintyNP6__1down", Up = "EL_EFF_ID_SIMPLIFIED_UncorrUncertaintyNP6__1up", isSFSys = true, Attributes.0 = "exp", Attributes.1 = "NP", isDetectorSys = true>
+  }
+  +ATLAS_EL_EFF_ID_UncorrUncertainty_NP7 {
+    <Down = "EL_EFF_ID_SIMPLIFIED_UncorrUncertaintyNP7__1down", Up = "EL_EFF_ID_SIMPLIFIED_UncorrUncertaintyNP7__1up", isSFSys = true, Attributes.0 = "exp", Attributes.1 = "NP", isDetectorSys = true>
+  }
+  +ATLAS_EL_EFF_ID_UncorrUncertainty_NP8 {
+    <Down = "EL_EFF_ID_SIMPLIFIED_UncorrUncertaintyNP8__1down", Up = "EL_EFF_ID_SIMPLIFIED_UncorrUncertaintyNP8__1up", isSFSys = true, Attributes.0 = "exp", Attributes.1 = "NP", isDetectorSys = true>
+  }
+  +ATLAS_EL_EFF_ID_UncorrUncertainty_NP9 {
+    <Down = "EL_EFF_ID_SIMPLIFIED_UncorrUncertaintyNP9__1down", Up = "EL_EFF_ID_SIMPLIFIED_UncorrUncertaintyNP9__1up", isSFSys = true, Attributes.0 = "exp", Attributes.1 = "NP", isDetectorSys = true>
+  }
+  +ATLAS_EL_EFF_ID_UncorrUncertainty_NP10 {
+    <Down = "EL_EFF_ID_SIMPLIFIED_UncorrUncertaintyNP10__1down", Up = "EL_EFF_ID_SIMPLIFIED_UncorrUncertaintyNP10__1up", isSFSys = true, Attributes.0 = "exp", Attributes.1 = "NP", isDetectorSys = true>
+  }
+  +ATLAS_EL_EFF_ID_UncorrUncertainty_NP11 {
+    <Down = "EL_EFF_ID_SIMPLIFIED_UncorrUncertaintyNP11__1down", Up = "EL_EFF_ID_SIMPLIFIED_UncorrUncertaintyNP11__1up", isSFSys = true, Attributes.0 = "exp", Attributes.1 = "NP", isDetectorSys = true>
+  }
+  +ATLAS_EL_EFF_ID_UncorrUncertainty_NP12 {
+    <Down = "EL_EFF_ID_SIMPLIFIED_UncorrUncertaintyNP12__1down", Up = "EL_EFF_ID_SIMPLIFIED_UncorrUncertaintyNP12__1up", isSFSys = true, Attributes.0 = "exp", Attributes.1 = "NP", isDetectorSys = true>
+  }
+  +ATLAS_EL_EFF_ID_UncorrUncertainty_NP13 {
+    <Down = "EL_EFF_ID_SIMPLIFIED_UncorrUncertaintyNP13__1down", Up = "EL_EFF_ID_SIMPLIFIED_UncorrUncertaintyNP13__1up", isSFSys = true, Attributes.0 = "exp", Attributes.1 = "NP", isDetectorSys = true>
+  }
+  +ATLAS_EL_EFF_ID_UncorrUncertainty_NP14 {
+    <Down = "EL_EFF_ID_SIMPLIFIED_UncorrUncertaintyNP14__1down", Up = "EL_EFF_ID_SIMPLIFIED_UncorrUncertaintyNP14__1up", isSFSys = true, Attributes.0 = "exp", Attributes.1 = "NP", isDetectorSys = true>
+  }
+  +ATLAS_EL_EFF_ID_UncorrUncertainty_NP15 {
+    <Down = "EL_EFF_ID_SIMPLIFIED_UncorrUncertaintyNP15__1down", Up = "EL_EFF_ID_SIMPLIFIED_UncorrUncertaintyNP15__1up", isSFSys = true, Attributes.0 = "exp", Attributes.1 = "NP", isDetectorSys = true>
+  }
+  +ATLAS_EL_EFF_ID_UncorrUncertainty_NP16 {
+    <Down = "EL_EFF_ID_SIMPLIFIED_UncorrUncertaintyNP16__1down", Up = "EL_EFF_ID_SIMPLIFIED_UncorrUncertaintyNP16__1up", isSFSys = true, Attributes.0 = "exp", Attributes.1 = "NP", isDetectorSys = true>
+  }
+  +ATLAS_EL_EFF_ID_UncorrUncertainty_NP17 {
+    <Down = "EL_EFF_ID_SIMPLIFIED_UncorrUncertaintyNP17__1down", Up = "EL_EFF_ID_SIMPLIFIED_UncorrUncertaintyNP17__1up", isSFSys = true, Attributes.0 = "exp", Attributes.1 = "NP", isDetectorSys = true>
+  }
+  +ATLAS_EL_EFF_TRIG_TOTAL_1NPCOR_PLUS_UNCOR {
+    <Down = "EL_EFF_Trigger_TOTAL_1NPCOR_PLUS_UNCOR__1down", Up = "EL_EFF_Trigger_TOTAL_1NPCOR_PLUS_UNCOR__1up", isSFSys = true, Attributes.0 = "exp", Attributes.1 = "NP", isDetectorSys = true>
+  }
+  +ATLAS_MUON_EFF_RECO_STAT {
+    <Down = "MUON_EFF_RECO_STAT__1down", Up = "MUON_EFF_RECO_STAT__1up", isSFSys = true, Attributes.0 = "exp", Attributes.1 = "NP", isDetectorSys = true>
+  }
+  +ATLAS_MUON_EFF_RECO_STAT_LOWPT {
+    <Down = "MUON_EFF_RECO_STAT_LOWPT__1down", Up = "MUON_EFF_RECO_STAT_LOWPT__1up", isSFSys = true, Attributes.0 = "exp", Attributes.1 = "NP", isDetectorSys = true>
+  }
+  +ATLAS_MUON_EFF_RECO_SYS {
+    <Down = "MUON_EFF_RECO_SYS__1down", Up = "MUON_EFF_RECO_SYS__1up", isSFSys = true, Attributes.0 = "exp", Attributes.1 = "NP", isDetectorSys = true>
+  }
+  +ATLAS_MUON_EFF_RECO_SYS_LOWPT {
+    <Down = "MUON_EFF_RECO_SYS_LOWPT__1down", Up = "MUON_EFF_RECO_SYS_LOWPT__1up", isSFSys = true, Attributes.0 = "exp", Attributes.1 = "NP", isDetectorSys = true>
+  }
+  +ATLAS_MUON_EFF_ISO_STAT {
+    <Down = "MUON_EFF_ISO_STAT__1down", Up = "MUON_EFF_ISO_STAT__1up", isSFSys = true, Attributes.0 = "exp", Attributes.1 = "NP", isDetectorSys = true>
+  }
+  +ATLAS_MUON_EFF_ISO_SYS {
+    <Down = "MUON_EFF_ISO_SYS__1down", Up = "MUON_EFF_ISO_SYS__1up", isSFSys = true, Attributes.0 = "exp", Attributes.1 = "NP", isDetectorSys = true>
+  }
+  +ATLAS_MUON_EFF_TTVA_STAT {
+    <Down = "MUON_EFF_TTVA_STAT__1down", Up = "MUON_EFF_TTVA_STAT__1up", isSFSys = true, Attributes.0 = "exp", Attributes.1 = "NP", isDetectorSys = true>
+  }
+  +ATLAS_MUON_EFF_TTVA_SYS {
+    <Down = "MUON_EFF_TTVA_SYS__1down", Up = "MUON_EFF_TTVA_SYS__1up", isSFSys = true, Attributes.0 = "exp", Attributes.1 = "NP", isDetectorSys = true>
+  }
+  +ATLAS_MUON_EFF_TrigStatUncertainty {
+    <Down = "MUON_EFF_TrigStatUncertainty__1down", Up = "MUON_EFF_TrigStatUncertainty__1up", isSFSys = true, Attributes.0 = "exp", Attributes.1 = "NP", isDetectorSys = true>
+  }
+  +ATLAS_MUON_EFF_TrigSystUncertainty {
+    <Down = "MUON_EFF_TrigSystUncertainty__1down", Up = "MUON_EFF_TrigSystUncertainty__1up", isSFSys = true, Attributes.0 = "exp", Attributes.1 = "NP", isDetectorSys = true>
+  }
+  +ATLAS_FTAG_EXTRAP {
+    <Down = "FT_EFF_extrapolation__1down", Up = "FT_EFF_extrapolation__1up", isSFSys = true, Attributes.0 = "exp", Attributes.1 = "NP", isDetectorSys = true>
+  }
+  +ATLAS_JVT {
+    <Down = "JET_JvtEfficiency__1down", Up = "JET_JvtEfficiency__1up", isSFSys = true, Attributes.0 = "exp", Attributes.1 = "NP", isDetectorSys = true>
+  }
+  +ATLAS_fJVT {
+    <Down = "JET_fJvtEfficiency__1down", Up = "JET_fJvtEfficiency__1up", isSFSys = true, Attributes.0 = "exp", Attributes.1 = "NP", isDetectorSys = true>
+  }
+  +ATLAS_EG_RESOLUTION_ALL {
+    <Down = "EG_RESOLUTION_ALL__1down", Up = "EG_RESOLUTION_ALL__1up", isP4Sys = true, Attributes.0 = "exp", Attributes.1 = "NP", isDetectorSys = true>
+  }
+  +ATLAS_EG_SCALE_ALL {
+    <Down = "EG_SCALE_ALL__1down", Up = "EG_SCALE_ALL__1up", isP4Sys = true, Attributes.0 = "exp", Attributes.1 = "NP", isDetectorSys = true>
+  }
+  +ATLAS_EG_SCALE_AF2 {
+    <Down = "EG_SCALE_AF2__1down", Up = "EG_SCALE_AF2__1up", isP4Sys = true, Attributes.0 = "exp", Attributes.1 = "NP", isDetectorSys = true>
+  }
+  +ATLAS_JES_BJES {
+    <Down = "JES_BJES_Response__1down", Up = "JES_BJES_Response__1up", isP4Sys = true, Attributes.0 = "exp", Attributes.1 = "NP", isDetectorSys = true>
+  }
+  +ATLAS_JES_EffectiveNP_Detector1 {
+    <Down = "JES_EffectiveNP_Detector1__1down", Up = "JES_EffectiveNP_Detector1__1up", isP4Sys = true, Attributes.0 = "exp", Attributes.1 = "NP", isDetectorSys = true>
+  }
+  +ATLAS_JES_EffectiveNP_Detector2 {
+    <Down = "JES_EffectiveNP_Detector2__1down", Up = "JES_EffectiveNP_Detector2__1up", isP4Sys = true, Attributes.0 = "exp", Attributes.1 = "NP", isDetectorSys = true>
+  }
+  +ATLAS_JES_EffectiveNP_Mixed1 {
+    <Down = "JES_EffectiveNP_Mixed1__1down", Up = "JES_EffectiveNP_Mixed1__1up", isP4Sys = true, Attributes.0 = "exp", Attributes.1 = "NP", isDetectorSys = true>
+  }
+  +ATLAS_JES_EffectiveNP_Mixed2 {
+    <Down = "JES_EffectiveNP_Mixed2__1down", Up = "JES_EffectiveNP_Mixed2__1up", isP4Sys = true, Attributes.0 = "exp", Attributes.1 = "NP", isDetectorSys = true>
+  }
+  +ATLAS_JES_EffectiveNP_Mixed3 {
+    <Down = "JES_EffectiveNP_Mixed3__1down", Up = "JES_EffectiveNP_Mixed3__1up", isP4Sys = true, Attributes.0 = "exp", Attributes.1 = "NP", isDetectorSys = true>
+  }
+  +ATLAS_JES_EffectiveNP_Modelling1 {
+    <Down = "JES_EffectiveNP_Modelling1__1down", Up = "JES_EffectiveNP_Modelling1__1up", isP4Sys = true, Attributes.0 = "exp", Attributes.1 = "NP", isDetectorSys = true>
+  }
+  +ATLAS_JES_EffectiveNP_Modelling2 {
+    <Down = "JES_EffectiveNP_Modelling2__1down", Up = "JES_EffectiveNP_Modelling2__1up", isP4Sys = true, Attributes.0 = "exp", Attributes.1 = "NP", isDetectorSys = true>
+  }
+  +ATLAS_JES_EffectiveNP_Modelling3 {
+    <Down = "JES_EffectiveNP_Modelling3__1down", Up = "JES_EffectiveNP_Modelling3__1up", isP4Sys = true, Attributes.0 = "exp", Attributes.1 = "NP", isDetectorSys = true>
+  }
+  +ATLAS_JES_EffectiveNP_Modelling4 {
+    <Down = "JES_EffectiveNP_Modelling4__1down", Up = "JES_EffectiveNP_Modelling4__1up", isP4Sys = true, Attributes.0 = "exp", Attributes.1 = "NP", isDetectorSys = true>
+  }
+  +ATLAS_JES_EffectiveNP_Statistical1 {
+    <Down = "JES_EffectiveNP_Statistical1__1down", Up = "JES_EffectiveNP_Statistical1__1up", isP4Sys = true, Attributes.0 = "exp", Attributes.1 = "NP", isDetectorSys = true>
+  }
+  +ATLAS_JES_EffectiveNP_Statistical2 {
+    <Down = "JES_EffectiveNP_Statistical2__1down", Up = "JES_EffectiveNP_Statistical2__1up", isP4Sys = true, Attributes.0 = "exp", Attributes.1 = "NP", isDetectorSys = true>
+  }
+  +ATLAS_JES_EffectiveNP_Statistical3 {
+    <Down = "JES_EffectiveNP_Statistical3__1down", Up = "JES_EffectiveNP_Statistical3__1up", isP4Sys = true, Attributes.0 = "exp", Attributes.1 = "NP", isDetectorSys = true>
+  }
+  +ATLAS_JES_EffectiveNP_Statistical4 {
+    <Down = "JES_EffectiveNP_Statistical4__1down", Up = "JES_EffectiveNP_Statistical4__1up", isP4Sys = true, Attributes.0 = "exp", Attributes.1 = "NP", isDetectorSys = true>
+  }
+  +ATLAS_JES_EffectiveNP_Statistical5 {
+    <Down = "JES_EffectiveNP_Statistical5__1down", Up = "JES_EffectiveNP_Statistical5__1up", isP4Sys = true, Attributes.0 = "exp", Attributes.1 = "NP", isDetectorSys = true>
+  }
+  +ATLAS_JES_EffectiveNP_Statistical6 {
+    <Down = "JES_EffectiveNP_Statistical6__1down", Up = "JES_EffectiveNP_Statistical6__1up", isP4Sys = true, Attributes.0 = "exp", Attributes.1 = "NP", isDetectorSys = true>
+  }
+  +ATLAS_JES_EtaInter_Model {
+    <Down = "JES_EtaIntercalibration_Modelling__1down", Up = "JES_EtaIntercalibration_Modelling__1up", isP4Sys = true, Attributes.0 = "exp", Attributes.1 = "NP", isDetectorSys = true>
+  }
+  +ATLAS_JES_EtaInter_NonClosure_highE {
+    <Down = "JES_EtaIntercalibration_NonClosure_highE__1down", Up = "JES_EtaIntercalibration_NonClosure_highE__1up", isP4Sys = true, Attributes.0 = "exp", Attributes.1 = "NP", isDetectorSys = true>
+  }
+  +ATLAS_JES_EtaInter_NonClosure_negEta {
+    <Down = "JES_EtaIntercalibration_NonClosure_negEta__1down", Up = "JES_EtaIntercalibration_NonClosure_negEta__1up", isP4Sys = true, Attributes.0 = "exp", Attributes.1 = "NP", isDetectorSys = true>
+  }
+  +ATLAS_JES_EtaInter_NonClosure_posEta {
+    <Down = "JES_EtaIntercalibration_NonClosure_posEta__1down", Up = "JES_EtaIntercalibration_NonClosure_posEta__1up", isP4Sys = true, Attributes.0 = "exp", Attributes.1 = "NP", isDetectorSys = true>
+  }
+  +ATLAS_JES_EtaInter_Stat {
+    <Down = "JES_EtaIntercalibration_TotalStat__1down", Up = "JES_EtaIntercalibration_TotalStat__1up", isP4Sys = true, Attributes.0 = "exp", Attributes.1 = "NP", isDetectorSys = true>
+  }
+  +ATLAS_JES_Flavor_Comp {
+    <Down = "JES_Flavor_Composition__1down", Up = "JES_Flavor_Composition__1up", isP4Sys = true, Attributes.0 = "exp", Attributes.1 = "NP", isDetectorSys = true>
+  }
+  +ATLAS_JES_Flavor_Resp {
+    <Down = "JES_Flavor_Response__1down", Up = "JES_Flavor_Response__1up", isP4Sys = true, Attributes.0 = "exp", Attributes.1 = "NP", isDetectorSys = true>
+  }
+  +ATLAS_JES_PU_OffsetMu {
+    <Down = "JES_Pileup_OffsetMu__1down", Up = "JES_Pileup_OffsetMu__1up", isP4Sys = true, Attributes.0 = "exp", Attributes.1 = "NP", isDetectorSys = true>
+  }
+  +ATLAS_JES_PU_OffsetNPV {
+    <Down = "JES_Pileup_OffsetNPV__1down", Up = "JES_Pileup_OffsetNPV__1up", isP4Sys = true, Attributes.0 = "exp", Attributes.1 = "NP", isDetectorSys = true>
+  }
+  +ATLAS_JES_PU_PtTerm {
+    <Down = "JES_Pileup_PtTerm__1down", Up = "JES_Pileup_PtTerm__1up", isP4Sys = true, Attributes.0 = "exp", Attributes.1 = "NP", isDetectorSys = true>
+  }
+  +ATLAS_JES_PU_Rho {
+    <Down = "JES_Pileup_RhoTopology__1down", Up = "JES_Pileup_RhoTopology__1up", isP4Sys = true, Attributes.0 = "exp", Attributes.1 = "NP", isDetectorSys = true>
+  }
+  +ATLAS_JES_PunchThrough {
+    <Down = "JES_PunchThrough_MC16__1down", Up = "JES_PunchThrough_MC16__1up", isP4Sys = true, Attributes.0 = "exp", Attributes.1 = "NP", isDetectorSys = true>
+  }
+  +ATLAS_JES_HighPt {
+    <Down = "JES_SingleParticle_HighPt__1down", Up = "JES_SingleParticle_HighPt__1up", isP4Sys = true, Attributes.0 = "exp", Attributes.1 = "NP", isDetectorSys = true>
+  }
+  +ATLAS_MET_SoftTrk_ResoPara {
+    <Up = "MET_SoftTrk_ResoPara", isP4Sys = true, Attributes.0 = "exp", Attributes.1 = "NP", isDetectorSys = true>
+  }
+  +ATLAS_MET_SoftTrk_ResoPerp {
+    <Up = "MET_SoftTrk_ResoPerp", isP4Sys = true, Attributes.0 = "exp", Attributes.1 = "NP", isDetectorSys = true>
+  }
+  +ATLAS_MET_SoftTrk_Scale {
+    <Down = "MET_SoftTrk_ScaleDown", Up = "MET_SoftTrk_ScaleUp", isP4Sys = true, Attributes.0 = "exp", Attributes.1 = "NP", isDetectorSys = true>
+  }
+  +ATLAS_MET_JetTrk_Scale {
+    <Down = "MET_JetTrk_ScaleDown", Up = "MET_JetTrk_ScaleUp", isP4Sys = true, Attributes.0 = "exp", Attributes.1 = "NP", isDetectorSys = true>
+  }
+  +ATLAS_MUONS_ID {
+    <Down = "MUONS_ID__1down", Up = "MUONS_ID__1up", isP4Sys = true, Attributes.0 = "exp", Attributes.1 = "NP", isDetectorSys = true>
+  }
+  +ATLAS_MUONS_MS {
+    <Down = "MUONS_MS__1down", Up = "MUONS_MS__1up", isP4Sys = true, Attributes.0 = "exp", Attributes.1 = "NP", isDetectorSys = true>
+  }
+  +ATLAS_MUONS_SCALE {
+    <Down = "MUONS_SCALE__1down", Up = "MUONS_SCALE__1up", isP4Sys = true, Attributes.0 = "exp", Attributes.1 = "NP", isDetectorSys = true>
+  }
+  +ATLAS_MUONS_SAGITTA_RHO {
+    <Down = "MUONS_SAGITTA_RHO__1down", Up = "MUONS_SAGITTA_RHO__1up", isP4Sys = true, Attributes.0 = "exp", Attributes.1 = "NP", isDetectorSys = true>
+  }
+  +ATLAS_MUONS_SAGITTA_RESBIAS {
+    <Down = "MUONS_SAGITTA_RESBIAS__1down", Up = "MUONS_SAGITTA_RESBIAS__1up", isP4Sys = true, Attributes.0 = "exp", Attributes.1 = "NP", isDetectorSys = true>
+  }
+}
+

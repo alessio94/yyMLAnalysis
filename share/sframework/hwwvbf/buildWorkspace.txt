@@ -1,0 +1,28 @@
+# -*- mode: tqfolder -*-
+
+#instead import a prepared one (faster than rebuilding each time!)
++ImportModels {
+  +HWWVBF {
+    <inputFile = "./workspaces/$(fitIdentifier)/model.root", objectName="HWWVBF">
+  }
+}
+
+# actually create the workspace
+
++CreateWorkspaces {
+  +HWWVBF{
+    <logToFile= "./workspaces/$(fitIdentifier)/createWS.log">
+    <histogramsFile = "./workspaces/$(fitIdentifier)/histograms.root">
+  }
+}
+
+# write the workspace to disk
+
++ExportWorkspaces {
+  +HWWVBF{
+    <outputFile = "./workspaces/$(fitIdentifier)/workspace-preFit.root">
+  }
+}
+
+<saveConfig="workspaces/$(fitIdentifier)/buildWorkspaceConfig.txt">
+#$replace("*:*",fitIdentifier="vbf-tutorial");

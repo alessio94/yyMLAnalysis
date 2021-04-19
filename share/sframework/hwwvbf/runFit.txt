@@ -1,0 +1,202 @@
+# -*- mode: tqfolder -*-
+
+# import the workspace previously built
++ImportWorkspaces {
+  +HWWVBF{
+    <inputFile = "./workspaces/$(fitIdentifier)/workspace-preFit.root:HWWVBF">
+    # uncomment this for stat only
+    #<constPars={"alpha_*","gamma_*"}>
+
+  }
+}
+
+# un-ignore this block to write out the config files for the batch submit of the breakdown
++MakeAsimovDataset {
+  +HWWVBF;
+}
+
+# this is the block for the full uncertainty breakdown.
+# use 'WriteCalculate...' if you only want the configs to be written to submit the fits to a batch system
++WriteCalculateBreakdown {
+  +HWWVBF {
+    <outputPath = "./workspaces/$(fitIdentifier)/Batch/Breakdowns">
+  }
+}
+
+# this is the block for the full uncertainty breakdown.
+# use 'Calculate...' if you want to run the fits on-the-fly (which can take VERY long)
+#+CalculateBreakdown {
+#	+HWWVBF;
+#}
+
+
+@*Calculate*/? {
+  +observed {
+    <datasetName="obsData">
+    <invert=false>
+  }
+  +asimov {
+    <datasetName="asimovData">
+    <invert=false>
+  }
+
+  <fit.initParam.muVBF=0.8> @ ?;
+  <fit.eps = 0.01> @ ?;  # (default 1.0) w/o this the fit does not converge to exactly 1 in asimov
+  <fit.maxCalls = 100000> @ ?;  # (default 10 000) w/o this the fit errors are not evaluated stably
+  <fit.numCPU = 1> @ ?;
+  @ ? {
+    <singles.SYS = "*ATLAS_*">
+    <singles.THEO = "*theo_*">
+    <singles.NORM = "*ATLAS_norm*">
+    <singles.GGF = "muGGF">
+    <singles.FAKE = "*HWW_FakeFactor_*">
+    # <singles.GAMMA = "*gamma*">
+  }
+  <fit.startingStrategy=1,fit.printLevel=1,fit.numRetry=3, fit.numCPU = 8, fit.offset=true, fit.verbose=1> @ ?;
+  <trimResult = true> @ ?;
+}
+
+@*CalculateBreakdown*/? {
+  @observed{
+    <fit.logToFile="./workspaces/$(fitIdentifier)/fit_observed_breakdown_$(id).log">
+  }
+  @asimov{
+    <fit.logToFile="./workspaces/$(fitIdentifier)/fit_asimov_breakdown_$(id).log">
+  }
+  @ ? {
+    <group.MCSTAT = "*gamma_stat_*"> #,"external*">
+    <group.SYS = "*ATLAS_*", config.group.SYS.except = "ATLAS_norm*">
+    <group.STAT = "*", config.group.STAT.invert = true>
+    <group.ALLSYS = "*">
+    <group.NORM = "*ATLAS_norm*">
+    <group.THEO = "*theo_*">
+    <group.FAKE = "*HWW_FakeFactor_*">
+    <group.FAKE_mu_STAT = "*HWW_FakeFactor_mu_STAT_*">
+    <group.FAKE_el_STAT = "*HWW_FakeFactor_el_STAT_*">
+    <group.JES = "*ATLAS_JES*">
+    <group.FT = "*ATLAS_FT*">
+    <group.ELECTRON = "ATLAS_EL_EFF*", "ATLAS_EG_*">
+    <group.MUON = "ATLAS_MUON_*">
+    <group.MET = "ATLAS_MET*">
+  }
+  <trimResult = true> @ ?;
+}
+
+# calculate the significance
++CalculateSignificance {
+  +HWWVBF{
+    +asimov {
+      <dataset="asimovData">
+    }
+    +observed {
+      # you need to do the observed fit in order to obtain the values of the NFs
+      # you can use use blinded=true to suppress the printing of the observed mu value and significance
+      <blinded=false>
+      <dataset="obsData">
+    }
+    <fit.runHesse = true, fit.runMinos = true> @ ?;
+    # running minos on all NPs is required for an accurate pull plot, but takes a while
+    <fit.runMinosVars = {"*theo_*", "*ATLAS_*","*HWW_*","*mu*"}> @ ?;
+    # these are technical options might help you make the fit converge if you have problems
+    <fit.startingStrategy=1,fit.printLevel=1,fit.numRetry=3, fit.numCPU = 8, fit.offset=true, fit.verbose=1> @ ?;
+      <fit.presetParam.muVBF=1.0> @ ?;
+      <fit.initParam.muVBF=0.8> @ ?;
+      # <fit.initParam.muVBF="$(muVBFInitValue)"> @ ?;
+      <fit.eps = 0.01> @ ?;  # (default 1.0) w/o this the fit does not converge to exactly 1 in asimov
+      <fit.maxCalls = 100000> @ ?;  # (default 10 000) w/o this the fit errors are not evaluated stably
+      # (default in RooMinimizer is 500 * #parameters)
+      <fit.logToFile="./workspaces/$(fitIdentifier)/fit_$(id).log"> @ ?;
+  }
+}
+
+# uncomment the following block to run a likelhihood scan - this might take very long, depending on how many points/bin/fits you run
++WriteScanLikelihood.obsVBF/HWWVBF {
+  <outputPath = "./workspaces/$(fitIdentifier)/Batch/Scans/obsVBF">
+}
++WriteScanLikelihood.asmVBF/HWWVBF {
+  <outputPath = "./workspaces/$(fitIdentifier)/Batch/Scans/asmVBF">
+} 
++WriteScanLikelihood.obsVBF.statonly/HWWVBF {
+  <outputPath = "./workspaces/$(fitIdentifier)/Batch/Scans/obsVBF_statonly">
+}
++WriteScanLikelihood.asmVBF.statonly/HWWVBF {
+  <outputPath = "./workspaces/$(fitIdentifier)/Batch/Scans/asmVBF_statonly">
+}
++WriteScanLikelihood.obs2D/HWWVBF {
+  <outputPath = "./workspaces/$(fitIdentifier)/Batch/Scans/obs2D">
+}
++WriteScanLikelihood.asm2D/HWWVBF {
+  <outputPath = "./workspaces/$(fitIdentifier)/Batch/Scans/asm2D">
+} 
++WriteScanLikelihood.obs2D.statonly/HWWVBF {
+  <outputPath = "./workspaces/$(fitIdentifier)/Batch/Scans/obs2D_statonly">
+}
++WriteScanLikelihood.asm2D.statonly/HWWVBF {
+  <outputPath = "./workspaces/$(fitIdentifier)/Batch/Scans/asm2D_statonly">
+}
+
+@WriteScanLikelihood.*VBF*/? {
+  +muVBF {
+    <min=0,max=2.0,nbins=80>
+  }
+}
+
+@WriteScanLikelihood.*2D*/? {
+  +muGGF {
+    <min=-2.5,max=2.5,nbins=20>
+  }
+  +muVBF {
+    <min=0,max=4.0,nbins=20>
+  }
+}
+
+# disable all nuisance parameters for the statonly fits
+<fit.constPars={"alpha_*"}> @WriteScanLikelihood.*statonly*/?;
+
+<datasetName="asimovData"> @ WriteScanLikelihood.asm*/?;
+<datasetName="obsData"> @ WriteScanLikelihood.obs*/?;
+
+# export the results and the postfit workspace - very important, otherwise, everything else was futile
++ExportResults {
+  +HWWVBF{
+    <outputFile = "./workspaces/$(fitIdentifier)/result-preliminary.root">
+  }
+}
++ExportWorkspaces {
+  +HWWVBF{
+    <outputFile = "./workspaces/$(fitIdentifier)/workspace-postFit.root">
+  }
+}
+
++PrintResults {
+  +HWWVBF {
+    <writeToFile="workspaces/$(fitIdentifier)/fitresults.tex">
+
+    # expected mu
+    +muVBFexp {
+      <POI="muVBF(exp)">
+      <value="Significance/asimov/FitResults/asimov_muhat/floatParsFinal/muVBF">
+    }
+
+    # observed mu - comment for blinding
+    +muVBFobs {
+      <POI="muVBF(obs)">
+      <value="Significance/observed/FitResults/observed_muhat/floatParsFinal/muVBF">
+    }
+    # observed NFs
+    +observed_NF_Zjets {  <POI="ATLAS_norm_Zjets", value="Significance/observed/FitResults/observed_muhat/floatParsFinal/ATLAS_norm_Zjets">  }
+    +observed_NF_top   {  <POI="ATLAS_norm_top",   value="Significance/observed/FitResults/observed_muhat/floatParsFinal/ATLAS_norm_top">    }
+  }
+}
+
+# delete all the Write* actions for a quick local fit
+# $delete("Write*!");
+
+# running only asimov fit atm
+# uncomment to blind by running only asimov
+# $delete("*/*obs*!");
+
+<saveConfig="workspaces/$(fitIdentifier)/runFitConfig.txt">
+#$replace("*:*",fitIdentifier="vbf-tutorial");
+
+
