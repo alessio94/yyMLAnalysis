@@ -57,13 +57,14 @@ IF(${AnalysisBase_FOUND})
     install( FILES ${CMAKE_BINARY_DIR}/${ATLAS_PLATFORM}/env_setup.sh DESTINATION . )
 
     # Set up the usage of CPack:
-    set(CMAKE_INSTALL_PREFIX /InstallArea/${BINARY_TAG})
+    set(CMAKE_INSTALL_PREFIX /CAFExample/1.0.0/InstallArea/${BINARY_TAG})
     atlas_cpack_setup()
-  ENDIF()
+  ELSE()
+    # Set up the usage of CPack:
+    set(CMAKE_INSTALL_PREFIX /CAFExample/1.0.0/InstallArea/${BINARY_TAG})
+    atlas_cpack_setup()
 
-  # Set up the usage of CPack:
-  set(CMAKE_INSTALL_PREFIX /InstallArea/${BINARY_TAG})
-  atlas_cpack_setup()
+  ENDIF()
 else()
   # this is standalone compilation, we need to stitch together the project
   message( "compiling CAFExample in standalone mode" )
