@@ -596,5 +596,5 @@ def addObservables():
   return False
 
 if __name__ == "__main__":
-  print "Inside main of HWWLeptonIDHelper snippet"
+  print("Inside main of HWWLeptonIDHelper snippet")
   foo = getLepIDHelper()

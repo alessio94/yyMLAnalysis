@@ -205,5 +205,5 @@ def getTrigConfigsPrescale():
   return getTrigPrescaleConfigList()
 
 if __name__ == "__main__":
-  print "Inside main of HWWTrigConfig snippet"
+  print("Inside main of HWWTrigConfig snippet")
   #getTrigConfigListDilep1()
