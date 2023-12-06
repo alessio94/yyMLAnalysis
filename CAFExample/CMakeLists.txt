@@ -19,7 +19,7 @@ IF(${AnalysisBase_FOUND})
     PRIVATE_INCLUDE_DIRS ${ROOT_INCLUDE_DIRS}
     LINK_LIBRARIES QFramework CAFxAODUtils
     PileupReweightingLib MCTruthClassifierLib GoodRunsListsLib MuonEfficiencyCorrectionsLib
-    TriggerAnalysisInterfacesLib FourMomUtils xAODBTaggingEfficiencyLib AsgAnalysisInterfaces FTagAnalysisInterfacesLib TrigGlobalEfficiencyCorrectionLib
+    FourMomUtils xAODBTaggingEfficiencyLib AsgAnalysisInterfaces FTagAnalysisInterfacesLib TrigGlobalEfficiencyCorrectionLib
     # here go all the libraries corresonding to the packages that you depend on
     PRIVATE_LINK_LIBRARIES ${ROOT_LIBRARIES}
     )
