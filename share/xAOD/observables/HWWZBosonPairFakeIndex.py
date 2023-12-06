@@ -44,10 +44,10 @@ def addObservables(config):
   return True
 
 if __name__ == "__main__":
-  print "inside main of HWWZBosonPairFakeIndex python snippet, will try to add observable"
+  print("inside main of HWWZBosonPairFakeIndex python snippet, will try to add observable")
 
   tags = TQTaggable()
   if not addObservables(tags):
-    print "failed to add observable(s)!"
+    print("failed to add observable(s)!")
   else:
-    print "Successfully added observable(s)!"
+    print("Successfully added observable(s)!")
