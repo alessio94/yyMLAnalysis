@@ -11,7 +11,7 @@
 #include "xAODEventInfo/EventInfo.h"
 #include "xAODEgamma/ElectronContainer.h"
 #include "xAODMuon/MuonContainer.h"
-#include "ElectronEfficiencyCorrection/IAsgElectronEfficiencyCorrectionTool.h"
+#include "EgammaAnalysisInterfaces/IAsgElectronEfficiencyCorrectionTool.h"
 #include "PATCore/PATCoreEnums.h"
 #include "MuonEfficiencyCorrections/MuonTriggerScaleFactors.h"
 #include "AsgTools/AnaToolHandle.h"

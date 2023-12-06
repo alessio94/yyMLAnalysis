@@ -6,6 +6,7 @@
 // EDM includes:
 #include "xAODEventInfo/EventInfo.h"
 
+#include "PATInterfaces/SystematicRegistry.h"
 #include "PATInterfaces/SystematicVariation.h"
 #include "PATInterfaces/SystematicSet.h"
 
@@ -128,7 +129,7 @@ template<class T> bool HWWTriggerWeight::varyTools(ToolHandleArray<T>& tools){
   bool atLeastOneToolWasVaried = false;
   const CP::SystematicSet& systematicSet = CP::SystematicSet(m_variationName.Data());
   for (ToolHandle<T>& t: tools){
-    if (t->applySystematicVariation(systematicSet) == CP::SystematicCode::Ok)
+    if (t->applySystematicVariation(systematicSet) == StatusCode::SUCCESS)
       atLeastOneToolWasVaried = true;
     else
       WARNclass("The tool %s does not like the systematic variation %s. Continue processing without this variation.", t.name(), m_variationName.Data());

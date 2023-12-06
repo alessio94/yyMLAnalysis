@@ -65,6 +65,10 @@ IF(${AnalysisBase_FOUND})
     atlas_cpack_setup()
 
   ENDIF()
+
+  # Add preprocesser defines for library compilation
+  target_compile_definitions(CAFExample PUBLIC HAS_XAOD)
+
 else()
   # this is standalone compilation, we need to stitch together the project
   message( "compiling CAFExample in standalone mode" )
