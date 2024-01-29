@@ -1,237 +1,236 @@
-# ##########################################################################
-# # preamble
-# ##########################################################################
-# 
-# stages:
-#   - build
-#   - run
-#   - docker
-# 
-# variables:
-#   GIT_SUBMODULE_STRATEGY: recursive
-#   GIT_SSL_NO_VERIFY: "true"
-# 
-# ##########################################################################
-# # job defaults
-# 
-# .asg: &asg
-#   image: atlas/analysisbase:24.2.27
-#   tags:
-#     - cvmfs
-# 
-# .standalone: &standalone
-#   image: gitlab-registry.cern.ch/atlas-caf/cafcore/standalone-base:root6.22.06-python3.8
-#   tags:
-#     - cvmfs
-#   before_script:
-#     - sed -i 's|CAFANALYSISBASE/../output|CAFANALYSISBASE/run|' setup/setupLocal.sh
-# 
-# .asg_setup: &asg_setup
-#   before_script:
-#     - if [ -z "$KRB_USERNAME" ]; then exit 0; fi
-#     - source /home/atlas/release_setup.sh
-#     - pwd
-#     - mkdir -p ~/.ssh
-#     - source ~/.bashrc || echo ignore alrb
-#     - echo "${KRB_PASSWORD}" | kinit ${KRB_USERNAME}@CERN.CH
-#     - klist
-#     - echo -e "Host svn.cern.ch lxplus.cern.ch\n\tUser ${CERN_USER}\n\tStrictHostKeyChecking no\n\tGSSAPIAuthentication yes\n\tGSSAPIDelegateCredentials yes\n\tProtocol 2\n\tForwardX11 no\n\tIdentityFile ~/.ssh/id_rsa" >> ~/.ssh/config
-#     - cat ~/.ssh/config
-#     - sed -i 's|CAFANALYSISBASE/../output|CAFANALYSISBASE/run|' setup/setupLocal.sh
-# 
-# .minimal_script: &minimal_script
-#   script:
-#     - source build/setupAnalysis.sh
-#     - mkdir run
-#     - cd run
-#     - prepare.py minimal/config/master/prepare-Minimal-Example.cfg --snowflakeThresh 0
-#     - initialize.py minimal/config/master/initialize-Minimal-Example.cfg --snowflakeThresh 1 --options lineUpdates=false consoleWidth=160
-#     - analyze.py minimal/config/master/analyze-Minimal-Example.cfg --snowflakeThresh 2 --options lineUpdates=false consoleWidth=160
-#     - visualize.py minimal/config/master/visualize-Minimal-Example.cfg --snowflakeThresh 0
-# 
-# .flatNTuple_script: &flatNTuple_script
-#   script:
-#     - source build/setupAnalysis.sh
-#     - mkdir run
-#     - cd run
-#     - prepare.py flatNTuple/config/master/prepare-flatNTuple-Example.cfg --snowflakeThresh 0
-#     - initialize.py flatNTuple/config/master/initialize-flatNTuple-Example.cfg --snowflakeThresh 0 --options lineUpdates=false consoleWidth=160
-#     - analyze.py flatNTuple/config/master/analyze-flatNTuple-Example.cfg --snowflakeThresh 2 --options lineUpdates=false consoleWidth=160
-#     - visualize.py flatNTuple/config/master/visualize-flatNTuple-Example.cfg --snowflakeThresh 0
-# 
-# .xAOD_script: &xAOD_script
-#   script:
-#     - source build/setupAnalysis.sh
-#     - mkdir run
-#     - cd run
-#     - prepare.py xAOD/config/master/prepare-xAOD-Example.cfg --snowflakeThresh 0
-#     - initialize.py xAOD/config/master/initialize-xAOD-Example.cfg --snowflakeThresh 0 --options lineUpdates=false consoleWidth=160
-#     - analyze.py xAOD/config/master/analyze-xAOD-Example.cfg --snowflakeThresh 3 --options lineUpdates=false consoleWidth=160 maxEvents=100
-#     - visualize.py xAOD/config/master/visualize-xAOD-Example.cfg --snowflakeThresh 0
-# 
-# .statistics_minimal_script: &statistics_minimal_script
-#   script:
-#     - source build/setupAnalysis.sh
-#     - mkdir run
-#     - cd run
-#     - statistics.py sframework/minimal/build.txt
-#     - statistics.py sframework/minimal/run.txt
-#     - statistics.py sframework/minimal/plot.txt
-# 
-# .statistics_hwwvbf_script: &statistics_hwwvbf_script
-#   script:
-#     - source build/setupAnalysis.sh
-#     - mkdir run
-#     - cd run
-#     - statistics.py sframework/hwwvbf/buildModel.txt     --change '$replace("*:*",fitIdentifier="hwwvbf");'
-#     - statistics.py sframework/hwwvbf/editModel.txt      --change '$replace("*:*",fitIdentifier="hwwvbf");'
-#     - statistics.py sframework/hwwvbf/buildWorkspace.txt --change '$replace("*:*",fitIdentifier="hwwvbf");'
-#     - statistics.py sframework/hwwvbf/runFit.txt         --change '$replace("*:*",fitIdentifier="hwwvbf");'
-#     - cp workspaces/hwwvbf/result-preliminary.root workspaces/hwwvbf/result.root
-#     - statistics.py sframework/hwwvbf/plotResults.txt    --change '$replace("*:*",fitIdentifier="hwwvbf");'
-# 
-# ##########################################################################
-# # job definitions
-# ##########################################################################
-# # stage: build
-# 
-# asg_compile:
-#   <<: *asg
-#   stage: build
-#   script:
-#     - source /home/atlas/release_setup.sh
-#     - mkdir build
-#     - cd build
-#     - cmake ..
-#     - make -j4
-#   artifacts:
-#     expire_in: 3d
-#     untracked: true
-#     paths:
-#       - build
-#       - CAFCore/cafsetup.sh
-# 
-# standalone_compile:
+##########################################################################
+# preamble
+##########################################################################
+
+stages:
+  - build
+  - run
+  - docker
+
+variables:
+  GIT_SUBMODULE_STRATEGY: recursive
+  GIT_SSL_NO_VERIFY: "true"
+
+##########################################################################
+# job defaults
+
+.asg: &asg
+  image: atlas/analysisbase:24.2.27
+  tags:
+    - cvmfs
+
+.standalone: &standalone
+  image: gitlab-registry.cern.ch/atlas-caf/cafcore/standalone-base:root6.22.06-python3.8
+  tags:
+    - cvmfs
+  before_script:
+    - sed -i 's|CAFANALYSISBASE/../output|CAFANALYSISBASE/run|' setup/setupLocal.sh
+
+.asg_setup: &asg_setup
+  before_script:
+    - if [ -z "$KRB_USERNAME" ]; then exit 0; fi
+    - source /home/atlas/release_setup.sh
+    - pwd
+    - mkdir -p ~/.ssh
+    - source ~/.bashrc || echo ignore alrb
+    - echo "${KRB_PASSWORD}" | kinit ${KRB_USERNAME}@CERN.CH
+    - klist
+    - echo -e "Host svn.cern.ch lxplus.cern.ch\n\tUser ${CERN_USER}\n\tStrictHostKeyChecking no\n\tGSSAPIAuthentication yes\n\tGSSAPIDelegateCredentials yes\n\tProtocol 2\n\tForwardX11 no\n\tIdentityFile ~/.ssh/id_rsa" >> ~/.ssh/config
+    - cat ~/.ssh/config
+    - sed -i 's|CAFANALYSISBASE/../output|CAFANALYSISBASE/run|' setup/setupLocal.sh
+
+.minimal_script: &minimal_script
+  script:
+    - source build/setupAnalysis.sh
+    - mkdir run
+    - cd run
+    - prepare.py minimal/config/master/prepare-Minimal-Example.cfg --snowflakeThresh 0
+    - initialize.py minimal/config/master/initialize-Minimal-Example.cfg --snowflakeThresh 1 --options lineUpdates=false consoleWidth=160
+    - analyze.py minimal/config/master/analyze-Minimal-Example.cfg --snowflakeThresh 2 --options lineUpdates=false consoleWidth=160
+    - visualize.py minimal/config/master/visualize-Minimal-Example.cfg --snowflakeThresh 0
+
+.flatNTuple_script: &flatNTuple_script
+  script:
+    - source build/setupAnalysis.sh
+    - mkdir run
+    - cd run
+    - prepare.py flatNTuple/config/master/prepare-flatNTuple-Example.cfg --snowflakeThresh 0
+    - initialize.py flatNTuple/config/master/initialize-flatNTuple-Example.cfg --snowflakeThresh 0 --options lineUpdates=false consoleWidth=160
+    - analyze.py flatNTuple/config/master/analyze-flatNTuple-Example.cfg --snowflakeThresh 2 --options lineUpdates=false consoleWidth=160
+    - visualize.py flatNTuple/config/master/visualize-flatNTuple-Example.cfg --snowflakeThresh 0
+
+.xAOD_script: &xAOD_script
+  script:
+    - source build/setupAnalysis.sh
+    - mkdir run
+    - cd run
+    - prepare.py xAOD/config/master/prepare-xAOD-Example.cfg --snowflakeThresh 0
+    - initialize.py xAOD/config/master/initialize-xAOD-Example.cfg --snowflakeThresh 0 --options lineUpdates=false consoleWidth=160
+    - analyze.py xAOD/config/master/analyze-xAOD-Example.cfg --snowflakeThresh 3 --options lineUpdates=false consoleWidth=160 maxEvents=100
+    - visualize.py xAOD/config/master/visualize-xAOD-Example.cfg --snowflakeThresh 0
+
+.statistics_minimal_script: &statistics_minimal_script
+  script:
+    - source build/setupAnalysis.sh
+    - mkdir run
+    - cd run
+    - statistics.py sframework/minimal/build.txt
+    - statistics.py sframework/minimal/run.txt
+    - statistics.py sframework/minimal/plot.txt
+
+.statistics_hwwvbf_script: &statistics_hwwvbf_script
+  script:
+    - source build/setupAnalysis.sh
+    - mkdir run
+    - cd run
+    - statistics.py sframework/hwwvbf/buildModel.txt     --change '$replace("*:*",fitIdentifier="hwwvbf");'
+    - statistics.py sframework/hwwvbf/editModel.txt      --change '$replace("*:*",fitIdentifier="hwwvbf");'
+    - statistics.py sframework/hwwvbf/buildWorkspace.txt --change '$replace("*:*",fitIdentifier="hwwvbf");'
+    - statistics.py sframework/hwwvbf/runFit.txt         --change '$replace("*:*",fitIdentifier="hwwvbf");'
+    - cp workspaces/hwwvbf/result-preliminary.root workspaces/hwwvbf/result.root
+    - statistics.py sframework/hwwvbf/plotResults.txt    --change '$replace("*:*",fitIdentifier="hwwvbf");'
+
+##########################################################################
+# job definitions
+##########################################################################
+# stage: build
+
+asg_compile:
+  <<: *asg
+  stage: build
+  script:
+    - source /home/atlas/release_setup.sh
+    - mkdir build
+    - cd build
+    - cmake ..
+    - make -j4
+  artifacts:
+    expire_in: 3d
+    untracked: true
+    paths:
+      - build
+      - CAFCore/cafsetup.sh
+
+standalone_compile:
+  <<: *standalone
+  stage: build
+  script:
+    - mkdir build
+    - cd build
+    - cmake ..
+    - make -j4
+  artifacts:
+    expire_in: 3d
+    untracked: true
+    paths:
+      - build
+      - CAFCore/cafsetup.sh
+      - CAFCore/*/python/__init__.py
+
+##########################################################################
+# stage: run
+
+run_minimal:
+  <<: *asg
+  <<: *asg_setup
+  <<: *minimal_script
+  stage: run
+  dependencies:
+    - asg_compile
+  artifacts:
+    paths:
+      - run/sampleFolders
+      - run/results
+    name: "${CI_JOB_NAME}"
+    expire_in: 3 mos
+
+run_flatNTuple:
+  <<: *asg
+  <<: *asg_setup
+  <<: *flatNTuple_script
+  stage: run
+  dependencies:
+    - asg_compile
+  artifacts:
+    paths:
+      - run/sampleFolders
+      - run/results
+    name: "${CI_JOB_NAME}"
+    expire_in: 3 mos
+
+run_xAOD:
+  <<: *asg
+  <<: *asg_setup
+  <<: *xAOD_script
+  stage: run
+  dependencies:
+    - asg_compile
+  artifacts:
+    paths:
+      - run/sampleFolders
+      - run/results
+    name: "${CI_JOB_NAME}"
+    expire_in: 3 mos
+
+run_statistics_minimal:
+  <<: *asg
+  <<: *asg_setup
+  <<: *statistics_minimal_script  
+  stage: run
+  dependencies:
+    - asg_compile
+  artifacts:
+    paths:
+      - run
+    name: "${CI_JOB_NAME}"
+    expire_in: 3 mos
+
+run_statistics_hwwvbf:
+  <<: *asg
+  <<: *asg_setup
+  <<: *statistics_hwwvbf_script    
+  stage: run
+  dependencies:
+    - asg_compile
+  artifacts:
+    paths:
+      - run
+    name: "${CI_JOB_NAME}"
+    expire_in: 3 mos    
+    
+
+run_checks:
+  <<: *asg
+  <<: *asg_setup
+  stage: run
+  script:
+    - source tools/CI_checks.sh
+    - set +e
+    - HWWAnalysis_checkMapFiles
+
+
+##########################################################################
+# stage: test
+
+
+# test_tutorial:
 #   <<: *standalone
-#   stage: build
+#   stage: test
+#   dependencies:
+#     - standalone_compile
 #   script:
-#     - mkdir build
-#     - cd build
-#     - cmake ..
-#     - make -j4
-#   artifacts:
-#     expire_in: 3d
-#     untracked: true
-#     paths:
-#       - build
-#       - CAFCore/cafsetup.sh
-#       - CAFCore/*/python/__init__.py
-# 
-# ##########################################################################
-# # stage: run
-# 
-# run_minimal:
-#   <<: *asg
-#   <<: *asg_setup
-#   <<: *minimal_script
-#   stage: run
-#   dependencies:
-#     - asg_compile
-#   artifacts:
-#     paths:
-#       - run/sampleFolders
-#       - run/results
-#     name: "${CI_JOB_NAME}"
-#     expire_in: 3 mos
-# 
-# run_flatNTuple:
-#   <<: *asg
-#   <<: *asg_setup
-#   <<: *flatNTuple_script
-#   stage: run
-#   dependencies:
-#     - asg_compile
-#   artifacts:
-#     paths:
-#       - run/sampleFolders
-#       - run/results
-#     name: "${CI_JOB_NAME}"
-#     expire_in: 3 mos
-# 
-# run_xAOD:
-#   <<: *asg
-#   <<: *asg_setup
-#   <<: *xAOD_script
-#   stage: run
-#   dependencies:
-#     - asg_compile
-#   artifacts:
-#     paths:
-#       - run/sampleFolders
-#       - run/results
-#     name: "${CI_JOB_NAME}"
-#     expire_in: 3 mos
-# 
-# run_statistics_minimal:
-#   <<: *asg
-#   <<: *asg_setup
-#   <<: *statistics_minimal_script  
-#   stage: run
-#   dependencies:
-#     - asg_compile
-#   artifacts:
-#     paths:
-#       - run
-#     name: "${CI_JOB_NAME}"
-#     expire_in: 3 mos
-# 
-# run_statistics_hwwvbf:
-#   <<: *asg
-#   <<: *asg_setup
-#   <<: *statistics_hwwvbf_script    
-#   stage: run
-#   dependencies:
-#     - asg_compile
-#   artifacts:
-#     paths:
-#       - run
-#     name: "${CI_JOB_NAME}"
-#     expire_in: 3 mos    
-#     
-# 
-# run_checks:
-#   <<: *asg
-#   <<: *asg_setup
-#   stage: run
-#   script:
-#     - source tools/CI_checks.sh
-#     - set +e
-#     - HWWAnalysis_checkMapFiles
-# 
-# 
-# ##########################################################################
-# # stage: test
-# 
-# 
-# # test_tutorial:
-# #   <<: *standalone
-# #   stage: test
-# #   dependencies:
-# #     - standalone_compile
-# #   script:
-# #     - source build/setupAnalysis.sh
-# #     - curl -o get-pip.py https://bootstrap.pypa.io/get-pip.py
-# #     - sudo python3 ./get-pip.py
-# #     - sudo pip3 install doxec
-# #     - doxec Tutorial/*.md
-# 
-# ##########################################################################
-# # stage: docker
-# 
-# build_image:
-#   stage: docker
-#   tags:
-#     - docker-image-build
-#   script:
-#     - ignore
-# 
+#     - source build/setupAnalysis.sh
+#     - curl -o get-pip.py https://bootstrap.pypa.io/get-pip.py
+#     - sudo python3 ./get-pip.py
+#     - sudo pip3 install doxec
+#     - doxec Tutorial/*.md
+
+##########################################################################
+# stage: docker
+
+build_image:
+  stage: docker
+  tags:
+    - docker-image-build
+  script:
+    - ignore
