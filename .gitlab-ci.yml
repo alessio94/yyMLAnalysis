@@ -15,7 +15,7 @@ variables:
 # job defaults
 
 .asg: &asg
-  image: atlas/analysisbase:24.2.27
+  image: gitlab-registry.cern.ch/atlas/athena/analysisbase:24.2.38
   tags:
     - cvmfs
 
