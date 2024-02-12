@@ -23,8 +23,6 @@ variables:
   image: gitlab-registry.cern.ch/atlas-caf/cafcore/standalone-base:root6.22.06-python3.8
   tags:
     - cvmfs
-  before_script:
-    - sed -i 's|CAFANALYSISBASE/../output|CAFANALYSISBASE/run|' setup/setupLocal.sh
 
 .asg_setup: &asg_setup
   before_script:
