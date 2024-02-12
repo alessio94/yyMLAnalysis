@@ -224,13 +224,20 @@ bool HWWLeptonIDObservable::initializeSelf(){
   return true;
 }
 //______________________________________________________________________________________________
+
+/*
+ * Initialized via python observable snippets.
+ * We use new for HWW::HWWLeptonIDHelper because although it is passed as a pointer,
+ * this object goes out of scope when the python observable file concludes.
+ * To keep the object in memory, we allocate space for it explictly. 
+ */
 HWWLeptonIDObservable::HWWLeptonIDObservable(const TString& name, const HWW::HWWLeptonIDHelper* lepIDHelper,
                                     const int mode_of_running, const int analysis_type,
                                     const unsigned int indexLeadLep, const unsigned int indexSubleadLep,
                                     const unsigned int indexThirdLep, const unsigned int indexFourthLep,
                                     const unsigned int indexOtherLep):
   TQEventObservable(name),
-  fLeptonIDHelper(lepIDHelper),
+  fLeptonIDHelper(new HWW::HWWLeptonIDHelper(*lepIDHelper)),
   fIndexLeadLep(indexLeadLep),
   fIndexSubleadLep(indexSubleadLep),
   fIndexThirdLep(indexThirdLep),

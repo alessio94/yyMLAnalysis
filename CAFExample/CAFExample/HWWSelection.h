@@ -125,7 +125,7 @@ class AuxDataSelection : public Selection {
     }
     virtual ~AuxDataSelection() {
       if (m_var_array) {
-        delete m_var_array;
+        delete[] m_var_array;
         m_var_array=nullptr;
       }
     }
