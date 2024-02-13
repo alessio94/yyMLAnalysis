@@ -1,5 +1,6 @@
 #include "CAFExample/HWWLeptonIDObservable.h"
 #include <limits>
+#include <memory>
 // uncomment the following line to enable debug printouts
 // #define _DEBUG_
 // you can perform debug printouts with statements like this
@@ -25,7 +26,7 @@ fIndexOtherLep(0)
 HWWLeptonIDObservable::HWWLeptonIDObservable(const HWWLeptonIDObservable& obs) :
 // LeptonIDHelper for anti-id and id selections
   TQEventObservable(obs),
-  fLeptonIDHelper(new HWW::HWWLeptonIDHelper(*obs.fLeptonIDHelper)),
+  fLeptonIDHelper(std::make_shared<HWW::HWWLeptonIDHelper>(*obs.fLeptonIDHelper)),
   fHWWLepIDModeOfRunning(obs.fHWWLepIDModeOfRunning),
   fHWWAnalysisType(obs.fHWWAnalysisType),
   fIndexLeadLep(obs.fIndexLeadLep),
@@ -227,7 +228,7 @@ bool HWWLeptonIDObservable::initializeSelf(){
 
 /*
  * Initialized via python observable snippets.
- * We use new for HWW::HWWLeptonIDHelper because although it is passed as a pointer,
+ * We use make_shared for HWW::HWWLeptonIDHelper because although it is passed as a pointer,
  * this object goes out of scope when the python observable file concludes.
  * To keep the object in memory, we allocate space for it explictly. 
  */
@@ -237,7 +238,7 @@ HWWLeptonIDObservable::HWWLeptonIDObservable(const TString& name, const HWW::HWW
                                     const unsigned int indexThirdLep, const unsigned int indexFourthLep,
                                     const unsigned int indexOtherLep):
   TQEventObservable(name),
-  fLeptonIDHelper(new HWW::HWWLeptonIDHelper(*lepIDHelper)),
+  fLeptonIDHelper(std::make_shared<HWW::HWWLeptonIDHelper>(*lepIDHelper)),
   fIndexLeadLep(indexLeadLep),
   fIndexSubleadLep(indexSubleadLep),
   fIndexThirdLep(indexThirdLep),

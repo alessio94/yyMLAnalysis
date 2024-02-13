@@ -4,6 +4,7 @@
 #include "CAFxAODUtils/TQEventObservable.h"
 #include "CAFExample/HWWLeptonIDHelper.h"
 #include "xAODParticleEvent/CompositeParticleContainer.h"
+#include <memory>
 
 // which lepton to check and what to check for
 enum HWWLepIDModeOfRunning {
@@ -31,7 +32,7 @@ class HWWLeptonIDObservable : public TQEventObservable {
 private:
 
   // LeptonIDHelper for anti-id and id selections
-  const HWW::HWWLeptonIDHelper* fLeptonIDHelper = nullptr;
+  const std::shared_ptr<HWW::HWWLeptonIDHelper> fLeptonIDHelper;
 
   /** mode of running, which lepton to check on **/
   HWWLepIDModeOfRunning fHWWLepIDModeOfRunning;
