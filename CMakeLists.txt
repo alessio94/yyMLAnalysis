@@ -122,7 +122,7 @@ else()
   include(${ROOT_USE_FILE})
 
   # enabling python test cases
-  find_package(PythonInterp REQUIRED)
+  find_package(Python REQUIRED)
   include(CTest)
   enable_testing()
 
