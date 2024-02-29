@@ -5,92 +5,75 @@
 #include "TString.h"
 #include <vector>
 
-// #include "CAFxAODUtils/TQEventObservable.h"
-// #include "xAODParticleEvent/CompositeParticleContainer.h"
-// #include "xAODParticleEvent/ParticleContainer.h"
-
 /*** This class holds some variables which are settings
      for HWW triggers, like trigger names and corresponding data periods.
      An object of this class can then be bassed to constructors
      of trigger-related observables, such that these settings can
-     easily be shared among observables.
+     easily be shared among observables. 
      ***/
 
-class HWWTrigConfig  {
+class HWWTrigConfig {
 public:
   unsigned int runNumberLow = 0;
   unsigned int runNumberUp = 0;
 
-  std::vector<TString> trigSingleEl_Data;
-  std::vector<TString> trigSingleMu_Data;
-  std::vector<TString> trigDilep_Data;
+  std::vector<TString> elecTrigsData;
+  std::vector<TString> muonTrigsData;
+  std::vector<TString> dilepTrigsData;
 
-  std::vector<TString> trigSingleEl_MC;
-  std::vector<TString> trigSingleMu_MC;
-  std::vector<TString> trigDilep_MC;
+  std::vector<TString> elecTrigsMC;
+  std::vector<TString> muonTrigsMC;
+  std::vector<TString> dilepTrigsMC;
 
-  TString period_name;
-  // const TString trig_prefix;
-  bool m_useDilepTriggers;
+  double elecPtCut;
+  double muonPtCut;
+  double dilepElLegPtCut;
+  double dilepMuLegPtCut;
 
-  double ptcut_singleel;
-  double ptcut_singlemu;
-  double ptcut_dilep_elleg;
-  double ptcut_dilep_muleg;
+  TString periodName;
+  bool useDilepTrigs;
 
 public:
-  // virtual double getValue() const override;
-  // virtual bool initializeSelf() override;
-  // TString m_candName = "";
-public:
-  HWWTrigConfig(TString periodName);
+  HWWTrigConfig(const TString& periodName);
   HWWTrigConfig() {} // seems a default argument-less constructor is needed by ROOT?
-  // HWWTrigConfig(const TString& name, const unsigned int which_lepton,
-  //                         const unsigned int indexLeadLep = 0, const unsigned int indexSubleadLep = 1,
-  //                          const unsigned int indexOtherLepton = 0);
   virtual ~HWWTrigConfig();
-  // ClassDefOverride(HWWTrigConfig, 1);
 
-  void setRunNumbers(unsigned int low, unsigned int up) { runNumberLow = low; runNumberUp = up; }
+  void setRunNumbers(const unsigned int low, const unsigned int up) { runNumberLow = low; runNumberUp = up; }
 
-  // set trigger
+  // set triggers
   // data
-  void setTriggersSingleEl_Data(const std::vector<TString>& triggers, double ptcut = 0.);
-  void setTriggersSingleMu_Data(const std::vector<TString>& triggers, double ptcut = 0.);
-  void setTriggersDilep_Data(const std::vector<TString>& triggers, double ptcut_ele = 0., double ptcut_mu = 0.);
-
+  void setElectronTriggersData(const std::vector<TString>& triggers);
+  void setMuonTriggersData(const std::vector<TString>& triggers);
+  void setDileptonTriggersData(const std::vector<TString>& triggers);
   // mc
-  void setTriggersSingleEl_MC(const std::vector<TString>& triggers, double ptcut = 0.);
-  void setTriggersSingleMu_MC(const std::vector<TString>& triggers, double ptcut = 0.);
-  void setTriggersDilep_MC(const std::vector<TString>& triggers, double ptcut_ele = 0., double ptcut_mu = 0.);
-
+  void setElectronTriggersMC(const std::vector<TString>& triggers);
+  void setMuonTriggersMC(const std::vector<TString>& triggers);
+  void setDileptonTriggersMC(const std::vector<TString>& triggers);
   // set both MC and data (if MC and data triggers are the same)
-  void setTriggersSingleEl(const std::vector<TString>& triggers, double ptcut = 0.);
-  void setTriggersSingleMu(const std::vector<TString>& triggers, double ptcut = 0.);
-  void setTriggersDilep(const std::vector<TString>& triggers, double ptcut_ele = 0., double ptcut_mu = 0.);
+  void setElectronTriggers(const std::vector<TString>& triggers);
+  void setMuonTriggers(const std::vector<TString>& triggers);
+  void setDileptonTriggers(const std::vector<TString>& triggers);
 
-
-  // set both MC and data (if MC and data triggers are the same)
-  void setTriggersSingleEl(double ptcut = 0.);
-  void setTriggersSingleMu(double ptcut = 0.);
-  void setTriggersDilep(double ptcut_ele = 0., double ptcut_mu = 0.);
-
+  // set pT cuts
+  void setElectronPtCut(double ptCut);
+  void setMuonPtCut(double ptCut);
+  void setDileptonPtCut(double elPtCut, double muPtCut);
 
   // add trigger lists
   // data
-  void addTriggerSingleEl_Data(const TString& trigger);
-  void addTriggerSingleMu_Data(const TString& trigger);
-  void addTriggerDilep_Data(const TString& trigger);
-
+  void addElectronTriggerData(const TString& trigger);
+  void addMuonTriggerData(const TString& trigger);
+  void addDileptonTriggerData(const TString& trigger);
+  
   // mc
-  void addTriggerSingleEl_MC(const TString& trigger);
-  void addTriggerSingleMu_MC(const TString& trigger);
-  void addTriggerDilep_MC(const TString& trigger);
+  void addElectronTriggerMC(const TString& trigger);
+  void addMuonTriggerMC(const TString& trigger);
+  void addDileptonTriggerMC(const TString& trigger);
 
   // add both MC and data (if MC and data triggers are the same)
-  void addTriggerSingleEl(const TString& trigger);
-  void addTriggerSingleMu(const TString& trigger);
-  void addTriggerDilep(const TString& trigger);
+  void addElectronTrigger(const TString& trigger);
+  void addMuonTrigger(const TString& trigger);
+  void addDileptonTrigger(const TString& trigger);
 
 };
 #endif

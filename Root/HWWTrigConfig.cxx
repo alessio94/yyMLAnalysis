@@ -1,110 +1,96 @@
 #include "CAFExample/HWWTrigConfig.h"
 
 // constructor
-HWWTrigConfig::HWWTrigConfig(TString periodName) :
-  period_name(periodName),
-  // trig_prefix("pass_"),
-  m_useDilepTriggers(false)
+HWWTrigConfig::HWWTrigConfig(const TString& periodName) :
+  periodName(periodName),
+  useDilepTrigs(false)
 {
-
 }
 
-// destructor
+// destructor 
 HWWTrigConfig::~HWWTrigConfig() {
-
 }
-
 
 // set trigger lists
 // data
-void HWWTrigConfig::setTriggersSingleEl_Data(const std::vector<TString>& triggers, double ptcut) {
-  for (auto& trigname : triggers) addTriggerSingleEl_Data(trigname);
-  setTriggersSingleEl(ptcut);
+void HWWTrigConfig::setElectronTriggersData(const std::vector<TString>& triggers) {
+  for (const auto& trigname : triggers) { addElectronTriggerData(trigname); }
 }
-void HWWTrigConfig::setTriggersSingleMu_Data(const std::vector<TString>& triggers, double ptcut) {
-  for (auto& trigname : triggers) addTriggerSingleMu_Data(trigname);
-  setTriggersSingleMu(ptcut);
-} //trigSingleMu_Data = triggers; }
-void HWWTrigConfig::setTriggersDilep_Data(const std::vector<TString>& triggers, double ptcut_ele, double ptcut_mu)    {
-  for (auto& trigname : triggers) addTriggerDilep_Data(trigname);
-  setTriggersDilep(ptcut_ele,ptcut_mu);
+void HWWTrigConfig::setMuonTriggersData(const std::vector<TString>& triggers) {
+  for (const auto& trigname : triggers) { addMuonTriggerData(trigname); }
+}
+void HWWTrigConfig::setDileptonTriggersData(const std::vector<TString>& triggers) {
+  for (const auto& trigname : triggers) { addDileptonTriggerData(trigname); }
 }
 
 // mc
-void HWWTrigConfig::setTriggersSingleEl_MC(const std::vector<TString>& triggers, double ptcut) {
-  for (auto& trigname : triggers) addTriggerSingleEl_MC(trigname);
-  setTriggersSingleEl(ptcut);
+void HWWTrigConfig::setElectronTriggersMC(const std::vector<TString>& triggers) {
+  for (const auto& trigname : triggers) { addElectronTriggerMC(trigname); }
 }
-void HWWTrigConfig::setTriggersSingleMu_MC(const std::vector<TString>& triggers, double ptcut) {
-  for (auto& trigname : triggers) addTriggerSingleMu_MC(trigname);
-  setTriggersSingleMu(ptcut);
+void HWWTrigConfig::setMuonTriggersMC(const std::vector<TString>& triggers) {
+  for (const auto& trigname : triggers) { addMuonTriggerMC(trigname); }
 }
-void HWWTrigConfig::setTriggersDilep_MC(const std::vector<TString>& triggers, double ptcut_ele, double ptcut_mu)    {
-  for (auto& trigname : triggers) addTriggerDilep_MC(trigname);
-  setTriggersDilep(ptcut_ele,ptcut_mu);
+void HWWTrigConfig::setDileptonTriggersMC(const std::vector<TString>& triggers) {
+  for (const auto& trigname : triggers) { addDileptonTriggerMC(trigname); }
 }
 
 // set both MC and data (if MC and data triggers are the same)
-void HWWTrigConfig::setTriggersSingleEl(const std::vector<TString>& triggers, double ptcut) {
-  for (auto& trigname : triggers) { addTriggerSingleEl(trigname); }
-  setTriggersSingleEl(ptcut);
+void HWWTrigConfig::setElectronTriggers(const std::vector<TString>& triggers) {
+  for (const auto& trigname : triggers) { addElectronTrigger(trigname); }
 }
-void HWWTrigConfig::setTriggersSingleMu(const std::vector<TString>& triggers, double ptcut) {
-  for (auto& trigname : triggers) { addTriggerSingleMu(trigname); }
-  setTriggersSingleMu(ptcut);
+void HWWTrigConfig::setMuonTriggers(const std::vector<TString>& triggers) {
+  for (const auto& trigname : triggers) { addMuonTrigger(trigname); }
 }
-void HWWTrigConfig::setTriggersDilep(const std::vector<TString>& triggers, double ptcut_ele, double ptcut_mu)    {
-  for (auto& trigname : triggers) { addTriggerDilep(trigname); }
-  setTriggersDilep(ptcut_ele,ptcut_mu);
+void HWWTrigConfig::setDileptonTriggers(const std::vector<TString>& triggers) {
+  for (const auto& trigname : triggers) { addDileptonTrigger(trigname); }
 }
 
 // add trigger lists
 // data
-void HWWTrigConfig::addTriggerSingleEl_Data(const TString& trigName) {
-  trigSingleEl_Data.push_back(trigName);
+void HWWTrigConfig::addElectronTriggerData(const TString& trigName) {
+  elecTrigsData.push_back(trigName);
 }
-void HWWTrigConfig::addTriggerSingleMu_Data(const TString& trigName) {
-  trigSingleMu_Data.push_back(trigName);
-} //trigSingleMu_Data = triggers; }
-void HWWTrigConfig::addTriggerDilep_Data(const TString& trigName)    {
-  trigDilep_Data.push_back(trigName);
+void HWWTrigConfig::addMuonTriggerData(const TString& trigName) {
+  muonTrigsData.push_back(trigName);
+}
+void HWWTrigConfig::addDileptonTriggerData(const TString& trigName) {
+  dilepTrigsData.push_back(trigName);
 }
 
 // mc
-void HWWTrigConfig::addTriggerSingleEl_MC(const TString& trigName) {
-  trigSingleEl_MC.push_back(trigName);
+void HWWTrigConfig::addElectronTriggerMC(const TString& trigName) {
+  elecTrigsMC.push_back(trigName);
 }
-void HWWTrigConfig::addTriggerSingleMu_MC(const TString& trigName) {
-  trigSingleMu_MC.push_back(trigName);
+void HWWTrigConfig::addMuonTriggerMC(const TString& trigName) {
+  muonTrigsMC.push_back(trigName);
 }
-void HWWTrigConfig::addTriggerDilep_MC(const TString& trigName)    {
-  trigDilep_MC.push_back(trigName);
+void HWWTrigConfig::addDileptonTriggerMC(const TString& trigName) {
+  dilepTrigsMC.push_back(trigName);
 }
 
 // add both MC and data (if MC and data triggers are the same)
-void HWWTrigConfig::addTriggerSingleEl(const TString& trigName) {
-  trigSingleEl_Data.push_back(trigName);
-  trigSingleEl_MC.push_back(trigName);
+void HWWTrigConfig::addElectronTrigger(const TString& trigName) {
+  elecTrigsData.push_back(trigName);
+  elecTrigsMC.push_back(trigName);
 }
-void HWWTrigConfig::addTriggerSingleMu(const TString& trigName) {
-  trigSingleMu_Data.push_back(trigName);
-  trigSingleMu_MC.push_back(trigName);
+void HWWTrigConfig::addMuonTrigger(const TString& trigName) {
+  muonTrigsData.push_back(trigName);
+  muonTrigsMC.push_back(trigName);
 }
-void HWWTrigConfig::addTriggerDilep(const TString& trigName)    {
-  trigDilep_Data.push_back(trigName);
-  trigDilep_MC.push_back(trigName);
+void HWWTrigConfig::addDileptonTrigger(const TString& trigName) {
+  dilepTrigsData.push_back(trigName);
+  dilepTrigsMC.push_back(trigName);
 }
-
 
 // set both MC and data (if MC and data triggers are the same)
-void HWWTrigConfig::setTriggersSingleEl(double ptcut) {
-  ptcut_singleel = ptcut;
+void HWWTrigConfig::setElectronPtCut(double ptCut) {
+  elecPtCut = ptCut;
 }
-void HWWTrigConfig::setTriggersSingleMu(double ptcut) {
-  ptcut_singlemu = ptcut;
+void HWWTrigConfig::setMuonPtCut(double ptCut) {
+  muonPtCut = ptCut;
 }
-void HWWTrigConfig::setTriggersDilep(double ptcut_ele, double ptcut_mu)    {
-  m_useDilepTriggers = true;
-  ptcut_dilep_elleg = ptcut_ele;
-  ptcut_dilep_muleg = ptcut_mu;
+void HWWTrigConfig::setDileptonPtCut(double elPtCut, double muPtCut) {
+  useDilepTrigs = true;
+  dilepElLegPtCut = elPtCut;
+  dilepMuLegPtCut = muPtCut;
 }
