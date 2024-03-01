@@ -3,7 +3,7 @@
 
 
 // uncomment the following line to enable debug printouts
-#define _DEBUG_
+// #define _DEBUG_
 // you can perform debug printouts with statements like this
 // DEBUG("error number %d occurred",someInteger);
 
@@ -282,18 +282,15 @@ double HWWZBosonPairFakeIndex::getValue() const {
   #warning "using plain ROOT compilation scheme - please add an ASG Analysis Release in order to use this feature!"
   return std::numeric_limits<double>::quiet_NaN();
   #else
-  DEBUGclass("L285");
   if(this->getCurrentEntry() == this->fCachedEntry) {
     DEBUGclass("skipping reevalution for event %d, returning %f", this->getCurrentEntry(), this->fCachedValue);
     return this->fCachedValue;
   }
-  DEBUGclass("L290");
 
   if (!this->fEvent->retrieve(this->mCand,this->fCandName.Data()).isSuccess()){
     DEBUGclass("Failed to retrieve event candidate!");//" %s", this->fCandName.Data()).Data());
     return 0.;
   }
-  DEBUGclass("L295");
   // get the event candidate
   const xAOD::CompositeParticle *Evt = this->mCand->at(0);
 
@@ -302,17 +299,14 @@ double HWWZBosonPairFakeIndex::getValue() const {
     throw std::runtime_error("HWWZBosonPairFakeIndex :: Failed to retrieve event info!");
   }
 
-  DEBUGclass("L304");
   // get the combinations which fulfil the Zboson requirements
   // map with the pair enum as key, |mll-mZ|  as value
   std::map< zBosonPairIdentifier, float > zPairCands;
-  DEBUGclass("L308");
 
   // get the otherLep0, if it exists (if we find a muon or electron)
   const xAOD::IParticle* otherPart0 = Evt->otherPart(0);
   const xAOD::IParticle* otherLep0 = nullptr;
   if (otherPart0) { // otherPart0 exists...
-    DEBUGclass("otherPart0 exists");
     if (otherPart0->type() == xAOD::Type::Electron || otherPart0->type() == xAOD::Type::Muon) { // ... and is muon or electron
       otherLep0 = otherPart0;
       if (!otherLep0){
