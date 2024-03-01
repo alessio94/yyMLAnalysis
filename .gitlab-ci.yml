@@ -227,7 +227,17 @@ run_checks:
 
 build_image:
   stage: docker
-  tags:
-    - docker-image-build
+  variables:
+    IMAGE_DESTINATION: ${CI_REGISTRY_IMAGE}:latest
+    DOCKER_FILE: Dockerfile
+    GIT_STRATEGY: fetch
+  image:
+    name: gitlab-registry.cern.ch/ci-tools/docker-image-builder
+    entrypoint: [""]
+  before_script:
+    # Prepare Kaniko configuration file
+    - echo "{\"auths\":{\"$CI_REGISTRY\":{\"username\":\"$CI_REGISTRY_USER\",\"password\":\"$CI_REGISTRY_PASSWORD\"}}}" > /kaniko/.docker/config.json
   script:
-    - ignore
+    # Build and push the image from the Dockerfile at the root of the project.
+    - export IFS=''
+    - /kaniko/executor --context $CI_PROJECT_DIR --dockerfile $DOCKER_FILE --destination $IMAGE_DESTINATION
