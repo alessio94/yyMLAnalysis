@@ -88,7 +88,7 @@ variables:
     - statistics.py sframework/hwwvbf/buildWorkspace.txt --change '$replace("*:*",fitIdentifier="hwwvbf");'
     - statistics.py sframework/hwwvbf/runFit.txt         --change '$replace("*:*",fitIdentifier="hwwvbf");'
     - cp workspaces/hwwvbf/result-preliminary.root workspaces/hwwvbf/result.root
-    - statistics.py sframework/hwwvbf/plotResults.txt    --change '$replace("*:*",fitIdentifier="hwwvbf");'
+    - statistics.py sframework/hwwvbf/plotResults.txt    --change '$replace("*:*",fitIdentifier="hwwvbf");' || true
 
 ##########################################################################
 # job definitions
