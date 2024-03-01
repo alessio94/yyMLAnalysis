@@ -33,7 +33,7 @@ Building the project
 ```bash
 mkdir build
 cd build
-asetup AnalysisBase,21.2.102
+asetup AnalysisBase,21.2.271
 cmake ../CAFExample
 asetup source setupAnalysis.sh # this configures asetup to automatically call setupAnalysis.sh next time
 cafbuild # build the code (check details by typing "type cafbuild")
