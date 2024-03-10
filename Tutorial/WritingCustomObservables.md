@@ -169,7 +169,7 @@ The second line books the histogram at the cut `CutChannels` and all subsequent 
 If the analysis is executed (you only have to perform the analyze step) and everything was correctly implemented, the new histogram should appear in the output sample folder.
 <!-- It is assumed that you have already learned how to run a complete analysis.-->
 You can check this by opening the respective sample folder with `tqroot -sfr sampleFolders/analyzed/samples-analyzed-xAOD-Example.root` and draw one of the histograms with
-```
+```c++
 r_samples->getHistogram("bkg/[ee+mm]/[c16a+c16d+c16e]/top/ttbar", "CutChannels/hist_MjjMax")->Draw("")
 ```
 If you see a reasonable distribution: Congratulations! You just successfully created your own observable.
