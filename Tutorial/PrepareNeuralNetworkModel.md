@@ -16,7 +16,7 @@ Consider the following steps (please start a fresh session on an lxplus machine 
 We need a network architecture json file, a weights HDF5 file (both from keras), and a input variables file (prepared by the user). Example files can be found under `/eos/user/a/atlascaf/tutorial/2021_Apr/Keras-Example-Network/`.
 #### Step 2: Convert outputs to single NN json file
 
-```
+```bash
 # go to your favorite working directory
 mkdir $HOME/CAFNNTutorial; cd $HOME/CAFNNTutorial;
 export NNFilesPath=/eos/user/a/atlascaf/tutorial/2021_Apr/Keras-Example-Network/;
@@ -67,7 +67,7 @@ model.save_weights('weights.h5')
 
 The input variable file needs to be prepared by the user. The file has the following format for the sequential API (See [Keras-Converter](https://github.com/lwtnn/lwtnn/wiki/Keras-Converter) for the variables file layout of the function API):
 
-```
+```json
 {
  "inputs": [
         {
@@ -96,7 +96,7 @@ with open(variablesFileOutputPath, "w") as jsonfile:
 
 The only other thing that remains to be done is to manipulate the "name" entry in the variable json file. We need to make our analysis aware of the (CAF) expression that is to be used for the different variables.
 We simply add this information to our variable json file with 
-```
+```json
 ...
   "name": "DPhill=$(DPhill)",
 ...
@@ -119,17 +119,17 @@ Note, this script can also be run on the final neural network json file, after t
 
 To convert the three files to a single json file that can be used in the analysis, one needs to clone the lwtnn repository
 
-```
+```bash
 git clone https://github.com/lwtnn/lwtnn.git; cd lwtnn; make; # should take less than 1min
 ```
 
 and use
 
-```
+```bash
 lwtnn/converters/keras2json.py architecture.json variables-modified.json weights.h5 > neural_net.json
 ```
 Note, that this requires python3 and the h5py module to be installed. If you are working on lxplus, python3 will be available, but h5py needs to be installed. The python virtualenv package can be used, e.g., and the above conversion command should succeed.
-```
+```bash
 virtualenv -p python3 ./venv
 source venv/bin/activate
 pip3 install h5py
