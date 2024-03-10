@@ -22,8 +22,12 @@ mkdir $HOME/CAFNNTutorial; cd $HOME/CAFNNTutorial;
 export NNFilesPath=/eos/user/a/atlascaf/tutorial/2021_Apr/Keras-Example-Network/;
 
 # necessary clones and installation of h5py for conversion
-git clone https://github.com/lwtnn/lwtnn.git; cd lwtnn; make; cd ../;# should take less than 1min
-virtualenv -p python3 venv; 
+git clone https://github.com/lwtnn/lwtnn.git; cd lwtnn
+mkdir build; cd build
+cmake -DBUILTIN_BOOST=true -DBUILTIN_EIGEN=true ..
+make -j4 # should take a few minutes
+cd ../..
+python3 -m venv venv
 source venv/bin/activate # now source it
 pip3 install h5py
 
@@ -120,7 +124,11 @@ Note, this script can also be run on the final neural network json file, after t
 To convert the three files to a single json file that can be used in the analysis, one needs to clone the lwtnn repository
 
 ```bash
-git clone https://github.com/lwtnn/lwtnn.git; cd lwtnn; make; # should take less than 1min
+git clone https://github.com/lwtnn/lwtnn.git; cd lwtnn
+mkdir build; cd build
+cmake -DBUILTIN_BOOST=true -DBUILTIN_EIGEN=true ..
+make -j4 # should take a few minutes
+cd ../..
 ```
 
 and use
@@ -130,10 +138,11 @@ lwtnn/converters/keras2json.py architecture.json variables-modified.json weights
 ```
 Note, that this requires python3 and the h5py module to be installed. If you are working on lxplus, python3 will be available, but h5py needs to be installed. The python virtualenv package can be used, e.g., and the above conversion command should succeed.
 ```bash
-virtualenv -p python3 ./venv
-source venv/bin/activate
+python3 -m venv venv
+source venv/bin/activate # now source it
 pip3 install h5py
 ```
+N.B. in an AnalyisBase release using python2, calling python3 may cause issues. In that case, it is better to run python3 from a clean term after setting up using e.g. `lsetup "python centos7-3.9"` and then return to your AnalysisBase release.
 
 ### Make it an observable in CAF
 
