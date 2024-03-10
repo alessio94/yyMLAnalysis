@@ -67,7 +67,7 @@ model.save_weights('weights.h5')
 
 The input variable file needs to be prepared by the user. The file has the following format for the sequential API (See [Keras-Converter](https://github.com/lwtnn/lwtnn/wiki/Keras-Converter) for the variables file layout of the function API):
 
-```json
+```
 {
  "inputs": [
         {
@@ -96,7 +96,7 @@ with open(variablesFileOutputPath, "w") as jsonfile:
 
 The only other thing that remains to be done is to manipulate the "name" entry in the variable json file. We need to make our analysis aware of the (CAF) expression that is to be used for the different variables.
 We simply add this information to our variable json file with 
-```json
+```
 ...
   "name": "DPhill=$(DPhill)",
 ...
