@@ -90,10 +90,10 @@ e.g.
 
 ```bash
 cd any/location/
-prepare.py flatNTuple/config/master/prepare-ZjetsFF-Example.cfg
-initialize.py flatNTuple/config/master/initialize-ZjetsFF-Example.cfg
-analyze.py flatNTuple/config/master/analyze-ZjetsFF-Example.cfg
-visualize.py flatNTuple/config/master/visualize-ZjetsFF-Example.cfg
+./prepare.py flatNTuple/config/master/prepare-flatNTuple-Example.cfg
+./initialize.py flatNTuple/config/master/initialize-flatNTuple-Example.cfg
+./analyze.py flatNTuple/config/master/analyze-flatNTuple-Example.cfg
+./visualize.py flatNTuple/config/master/visualize-flatNTuple-Example.cfg
 ```
 
 On Every Login
