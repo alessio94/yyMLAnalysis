@@ -36,14 +36,16 @@ lwtnn/converters/keras2json.py $NNFilesPath/architecture.json $NNFilesPath/varia
 deactivate # deactivate python virtualenv
 
 # modify network to assign expressions to variable names
-cafsetup; cd $HOME/CAFNNTutorial; # source your analysis setup script to use the following
+# first, perform the standard CAFExample setup: cd build, asetup --restore, etc.
+# then, adapt the JSON to CAFCore:
+cd $HOME/CAFNNTutorial; # source your analysis setup script to use the following
 adaptDNNJSONFileToCAFCore.py --networkInputFile neural_net.json --networkOutputFile neural_net_modified.json --nTupleDefinitionFile $NNFilesPath/ntuple-definition.txt;
 ```
 
 #### Step 3: Use NN
 Now you can use the network in CAF with the expression
 ```
-lwtnnSeq(path/to/neural_net.json, {dense_8})
+lwtnnSeq(path/to/neural_net_modified.json, {dense_8})
 ```
 Note, that this uses the "Sequential API" of lwtnn.
 
