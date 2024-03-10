@@ -1,0 +1,12 @@
+.path = "||"
+.path = "sig/$(channel)/$(campaign)/ggf/PowPy8/", .name = "ggF", .isSignal = true
+.path = "|"
+.path = "sig/$(channel)/$(campaign)/ggf/PowPy8/STXS_GG2H_0J_PTH_0_10", .name = "STXS_GG2H_0J_PTH_0_10", .isSignal = true
+.path = "sig/$(channel)/$(campaign)/ggf/PowPy8/STXS_GG2H_0J_PTH_GT10", .name = "STXS_GG2H_0J_PTH_GT10", .isSignal = true
+.path = "sig/$(channel)/$(campaign)/ggf/PowPy8/STXS_GG2H_1J_PTH_0_60", .name = "STXS_GG2H_1J_PTH_0_60", .isSignal = true
+.path = "sig/$(channel)/$(campaign)/ggf/PowPy8/STXS_GG2H_1J_PTH_60_120", .name = "SSTXS_GG2H_1J_PTH_60_120", .isSignal = true
+.path = "sig/$(channel)/$(campaign)/ggf/PowPy8/STXS_GG2H_1J_PTH_120_200", .name = "STXS_GG2H_1J_PTH_120_200", .isSignal = true
+.path = "sig/$(channel)/$(campaign)/ggf/PowPy8/STXS_GG2H_FWDH", .name = "STXS_GG2H_FWDH", .isSignal = true
+.path = "sig/$(channel)/$(campaign)/ggf/PowPy8/STXS_GG2H_GE2J_PTH_0_200", .name = "STXS_GG2H_GE2J_PTH_0_2000", .isSignal = true
+.path = "sig/$(channel)/$(campaign)/ggf/PowPy8/STXS_GG2H_PTH_200_300", .name = "STXS_GG2H_PTH_200_3000", .isSignal = true
+.path = "sig/$(channel)/$(campaign)/ggf/PowPy8/STXS_GG2H_PTH_GT300", .name = "STXS_GG2H_PTH_GT300", .isSignal = true
