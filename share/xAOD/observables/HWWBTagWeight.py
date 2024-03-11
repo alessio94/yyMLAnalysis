@@ -5,9 +5,10 @@ from CommonAnalysisHelpers import common
 
 def addObservables(config):
 
+    useOtherJets = config.getTagBoolDefault("useSubThresholdBTagWeights",True)
     mcWeightsOnly = config.getTagBoolDefault("UseMCWeightsOnly", False)
 
-    bTagWeight = HWWBTagWeight("bTagWeight", "effiSF", 20000.)
+    bTagWeight = HWWBTagWeight("bTagWeight", "effiSF", useOtherJets)
 
     variationType = "xAODsfSystematics"
     variationNameMatch = "FT_EFF_"
