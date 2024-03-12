@@ -9,7 +9,8 @@ Cloning the project
 --------------------
 
 ```bash
-setupATLAS
+# Use -c centos7+batch if you're not on a centos7 machine (Such as lxplus9**). Otherwise, you may use setupATLAS as normal.
+setupATLAS -c centos7+batch
 lsetup git
 mkdir AnalysisExample
 cd AnalysisExample
