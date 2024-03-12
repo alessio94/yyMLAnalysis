@@ -9,7 +9,8 @@ Cloning the project
 --------------------
 
 ```bash
-setupATLAS
+# Use -c centos7+batch if you're not on a centos7 machine (Such as lxplus9**). Otherwise, you may use setupATLAS as normal.
+setupATLAS -c centos7+batch
 lsetup git
 mkdir AnalysisExample
 cd AnalysisExample
@@ -20,12 +21,12 @@ cd AnalysisExample
 # ssh acts similarly, but requires a password and a bit of initial setup
 # https is usually the most robust, but always requres a username and password
 
-# Kerberos
-git clone --recursive https://:@gitlab.cern.ch:8443/atlas-caf/CAFExample.git
 # ssh
-#git clone --recursive ssh://git@gitlab.cern.ch:7999/atlas-caf/CAFExample.git
+git clone --recursive ssh://git@gitlab.cern.ch:7999/atlas-caf/CAFExample.git
+# Kerberos
+# git clone --recursive https://:@gitlab.cern.ch:8443/atlas-caf/CAFExample.git
 # https
-#git clone --recursive https://gitlab.cern.ch/atlas-caf/CAFExample.git
+# git clone --recursive https://gitlab.cern.ch/atlas-caf/CAFExample.git
 ```
 
 Building the project
