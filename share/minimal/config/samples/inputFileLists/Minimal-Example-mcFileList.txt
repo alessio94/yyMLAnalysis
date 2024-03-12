@@ -1,1 +1,1 @@
-root://eosuser.cern.ch//eos/user/a/atlascaf/tutorial/2021_Apr/Minimal_Example/vbf_nominal_345323_s.root
+root://eosuser.cern.ch//eos/user/a/atlascaf/tutorial/latest/Minimal_Example/vbf_nominal_345323_s.root
