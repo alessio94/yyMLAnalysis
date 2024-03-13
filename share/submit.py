@@ -1,6 +1,7 @@
 #!/bin/env python
 
 from CommonAnalysisHelpers import common
+from CommonAnalysisHelpers.submit import makeTaskList, makeSmartTaskList
 from SubmissionHelpers import submit
 import os
 
@@ -17,23 +18,28 @@ def main(args):
 
     pathManager = QFramework.TQPathManager.getPathManager()
     outputFileNameTemplate=pathManager.getTargetPath("{output}/unmerged_{globalIdentifier}/unmerged_{{identifier}}.root".format(output=args.output, globalIdentifier=args.identifier))
-
+    
     templateCommand="{executable} {config} --restrict {{restrict}} --jobID {{identifier}} --options outputFile={outFileTemplate} {{options}}".format(executable=args.executable, config=",".join(args.config), outFileTemplate=outputFileNameTemplate)
-
+    
     if args.options:
         templateCommand += " " + " ".join(args.options) #forward options from command line to individual jobs
-
+    
     #convenience method to make a somewhat smart splitting of jobs (the maxSampleCount and maxSampleSize arguments allow to control the splitting into sub-jobs. This can yield a significant improvement in turn-over time!):
     #note: this method is somewhat targeted at the analyze.py step/ written with that one in mind
     if executable_name == "initialize":
-        taskList = submit.makeTaskList(args, args.jobs, config, templateCommand, setup=setup, inputs=[], outputs=[outputFileNameTemplate])
+        taskList = makeTaskList(args, args.jobs, config, templateCommand, setup=setup, inputs=[], outputs=[outputFileNameTemplate])
     else:
-        taskList = submit.makeSmartTaskList(args, args.jobs, config, templateCommand, maxSampleCount=args.maxSampleCount, maxSampleSize=args.maxSampleSize, setup=setup, inputs=[], outputs=[outputFileNameTemplate])
+        taskList = makeSmartTaskList(args, args.jobs, config, templateCommand, maxSampleCount=args.maxSampleCount, maxSampleSize=args.maxSampleSize, maxEventCount=args.maxEventCount, setup=setup, inputs=[], outputs=[outputFileNameTemplate])
     ctrl = submit.guessSubmissionController(args)
-    allDone = ctrl.submitTasks(args,taskList)
-    if allDone: common.mergeFilesQuery(args, config)
+    if args.dummy_submit:
+        for task in taskList:
+            print(task)
+        print("total number of tasks NOT submitted (dummy-mode): {:d}".format(len(taskList)))
+    else:
+        allDone = ctrl.submitTasks(args,taskList)
+        if allDone: common.mergeFilesQuery(args, config)
     print("Done")
-
+    
 
 if __name__ == "__main__":
 
@@ -41,14 +47,18 @@ if __name__ == "__main__":
     parser = submit.MinimalArgumentParser()
     #add a few more specific arguments to the argparser:
     parser.add_argument("config",type=str,nargs="+",metavar="config.cfg",help="config to be submitted",default=[])
-    parser.add_argument('--jobs', default='flatNTuple/config/jobLists/jobs_ZjetsFF_analyze.txt', help='name of the queue to submit to',required=True)
+    parser.add_argument('--jobs', help='name of the queue to submit to',required=False)
     parser.add_argument('-o','--options',dest='options',type=str,nargs="+",default=[],metavar="key=value",help="changes to be made to the configuration")
     parser.add_argument('--maxSampleSize', default=-1, type=float, help='split jobs such that each job processes only so many input files that their cummulative size is below this value (in MB)')
-    parser.add_argument('--maxSampleCount', default=-1, type=float, help='split jobs such that each job processes only up to this many input files')
+    parser.add_argument('--maxEventCount', default=-1, type=int, help='split jobs such that each job processes only so many events. imples maxSampleSize=1.')    
+    parser.add_argument('--maxSampleCount', default=-1, type=int, help='split jobs such that each job processes only up to this many input files')
     parser.add_argument("--executable",type=str,metavar="executable.py",help="executable to be submitted (default = analyze.py)", default="analyze.py")
-    parser.add_argument('--mergeConfig', default="common/submission/merge.cfg", type=str, help='merge file to be read to build merge command string')
+    parser.add_argument('--mergeConfig', default="config/submission/merge.cfg", type=str, help='merge file to be read to build merge command string')
     parser.add_argument('--merge', action="store_const", default=False, const=True, help='merge files when they have succeeded automatically')
-
+    parser.add_argument('--submit-merge', action="store_const", default=False, const=True, help='merge files when they have succeeded automatically')    
+    parser.add_argument('--yes', '-y', action="store_const", default=False, const=True, help='automatically reply "yes" to all questions')
+    parser.add_argument('--dummy-submit',action="store_true",default=False,help="don't actually submit the jobs, just pretend.")
+    
     import QFramework
     import ROOT
     # ignore command line arguments since ROOT is very greedy here (and tends to choke from it!)
@@ -60,3 +70,4 @@ if __name__ == "__main__":
 
     # call the main function
     main(args)
+
