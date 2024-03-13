@@ -2,10 +2,9 @@
 !memory=1000.
 !time=5
 !queue=express
-bkg/?/diboson
-bkg/?/top
-bkg/?/Zjets_Powheg
-bkg/?/Zjets_Alpgen
-bkg/?/Vgamma
-bkg/?/triboson
-data/?/
+bkg/?/?/diboson
+bkg/?/?/top
+bkg/?/?/Zjets_Powheg
+bkg/?/?/Vgamma
+bkg/?/?/triboson
+data/?/?/
