@@ -78,18 +78,6 @@ variables:
     - statistics.py sframework/minimal/run.txt
     - statistics.py sframework/minimal/plot.txt
 
-.statistics_hwwvbf_script: &statistics_hwwvbf_script
-  script:
-    - source build/setupAnalysis.sh
-    - mkdir run
-    - cd run
-    - statistics.py sframework/hwwvbf/buildModel.txt     --change '$replace("*:*",fitIdentifier="hwwvbf");'
-    - statistics.py sframework/hwwvbf/editModel.txt      --change '$replace("*:*",fitIdentifier="hwwvbf");'
-    - statistics.py sframework/hwwvbf/buildWorkspace.txt --change '$replace("*:*",fitIdentifier="hwwvbf");'
-    - statistics.py sframework/hwwvbf/runFit.txt         --change '$replace("*:*",fitIdentifier="hwwvbf");'
-    - cp $CAFOUTPUTDIR/workspaces/hwwvbf/result-preliminary.root $CAFOUTPUTDIR/workspaces/hwwvbf/result.root
-    - statistics.py sframework/hwwvbf/plotResults.txt    --change '$replace("*:*",fitIdentifier="hwwvbf");' || true
-
 ##########################################################################
 # job definitions
 ##########################################################################
@@ -176,19 +164,6 @@ run_statistics_minimal:
   <<: *asg
   <<: *asg_setup
   <<: *statistics_minimal_script
-  stage: run
-  dependencies:
-    - asg_compile
-  artifacts:
-    paths:
-      - run
-    name: "${CI_JOB_NAME}"
-    expire_in: 3 mos
-
-run_statistics_hwwvbf:
-  <<: *asg
-  <<: *asg_setup
-  <<: *statistics_hwwvbf_script
   stage: run
   dependencies:
     - asg_compile
