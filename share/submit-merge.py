@@ -9,83 +9,9 @@ from datetime import datetime
 # set via the maxFiles variable. In the second stage the premerged files are
 # merged to the final output
 
-def makePreMergeTaskList(args_, preMergeDir, setup):
-
-    inputFiles = []
-    for thisInput in args.inputs:
-        if os.path.isfile(thisInput):
-            inputFiles.append(os.path.abspath(thisInput))
-        elif os.path.isdir(thisInput):
-            for r, d, f in os.walk(thisInput):
-                for thisFile in f:
-                    inputFiles.append(os.path.join(os.path.abspath(thisInput), thisFile))
-        else:
-            print "Ignoring input ", thisInput, ", which appears to be neither a file nor a directory"
-
-    # Set number of files per premerge job to sqrt(total nFiles) if not user configured
-    if args.maxFiles == -1: args.maxFiles = int(math.ceil(math.sqrt(len(inputFiles))))
-
-    # Assign input files to pre-merge jobs
-    jobFilesDict = {}
-    assignedFiles = 0
-    nParts=int(math.ceil(float(len(inputFiles))/args.maxFiles))
-    for thisFile in inputFiles:
-        nPart = int(assignedFiles)%nParts
-        partLabel = args.identifier+".part"+str(nPart)
-        if not partLabel in jobFilesDict.keys(): jobFilesDict[partLabel]=[]
-        jobFilesDict[partLabel].append(thisFile)
-        assignedFiles+=1
-
-    # Configure premerge jobs and add them to list
-    retList = []
-
-    for key in jobFilesDict.keys():
-        preMergedName = preMergeDir+'/'+key+'.root'
-        payload = 'tqmerge '
-        for thisFile in jobFilesDict[key]: payload=payload+thisFile+" "
-        payload = payload+ '--output '+ preMergedName
-        if(args.name):
-            payload = payload+ ' -n ' + args.name
-        if (args.traceid):
-            payload = payload+ ' -t ' + args.traceid
-        if(args.downmerge): 
-            payload = payload+ ' -m ' + args.downmerge
-        if (len(args.patch) > 0):
-            payload = payload+ ' -p '+' -p '.join(args.patch)
-        if(args.sfname): 
-            payload = payload+ ' -s ' + args.sfname
-        if(args.depth):
-            payload = payload+ ' -d ' + str(args.depth)
-        if(args.sum):
-            payload = payload+ ' -Sum '
-        if(args.quiet):
-            payload = payload+ ' -q '
-        if(args.verbose):
-            payload = payload+ ' -v '
-
-        logFile = os.path.join(args.logpath,key+".log")
-        thisTask = submit.task(key,payload, setup=setup, memory=args.memory, queue=args.queue, args=args, time=args.time, inputs=[], outputs=[preMergedName], logFile=logFile, errFile=logFile)
-        retList.append(thisTask)
-
-    return retList
-
-def makeFinalMergeTask(args_, retList, setup):
-
-    # Then config final job, which combines the premerged files, and add it to the list
-    preMergedNames = []
-    for thisTask in retList: 
-        preMergedNames.append(thisTask.output[0])
-    payload = 'tqmerge '
-    for thisPreMergedName in preMergedNames: payload=payload+thisPreMergedName+" "
-    payload = payload+ '--output '+ os.path.realpath(args.output) + ' '
-    if (args.traceid): payload = payload+ ' -t ' + args.traceid
-    logFile = os.path.join(args.logpath,args.identifier+".final.log")
-    finalTask = submit.task(args.identifier+".final",payload, setup=setup, args=args, memory=args.memoryFinal, time=args.time, queue=args.queue, inputs=preMergedNames, outputs=[os.path.realpath(args.output)], dependencies=retList, logFile=logFile, errFile=logFile)
-
-    return finalTask
-
-
 def main(args):
+    from CommonAnalysisHelpers.submit import makePreMergeTaskList,makeFinalMergeTask
+    
     ctrl = submit.guessSubmissionController(args)
 
     # Create directory for temporary (premerged) output
@@ -103,7 +29,12 @@ def main(args):
     finalTask = makeFinalMergeTask(args, retList, setup)
 
     # Submit tasks and remove temporary directory when it's no longer needed
-    allDone = ctrl.submitTasks(args,[finalTask])
+    if args.final_local:
+        from SubmissionHelpers.submissionControllers.local import LocalController
+        local_ctrl = LocalController()
+        allDone = local_ctrl.submitTasks(args,[finalTask])
+    else:
+        allDone = ctrl.submitTasks(args,[finalTask])
     if allDone: print "All jobs are done. You may wish to delete the temporary output by calling 'rm -r ", preMergeDir, "'"
 
     print("Done")
@@ -118,10 +49,11 @@ if __name__ == "__main__":
     parser.add_argument('--output', default='', type=str, help='output file',required=True)
     parser.add_argument('--maxFiles', default='-1', type=int, help='number of files per pre-merge job',required=False)
     parser.add_argument('--memory', default='4000', type=float, help='memory requested per premerge job',required=False)
+    parser.add_argument('--vmemorypernode', default=-1, type=float, help='memory to be requested per node in the job (in MB)')
     parser.add_argument('--memoryFinal', default='8000', type=float, help='memory requested for final job',required=False)
     parser.add_argument('--time', default='60', type=float, help='time requested per job',required=False)
     parser.add_argument('--queue', default='', type=str, help='name of queue',required=False)
-
+    parser.add_argument('--final-local', action="store_true",help="run the final merge locally", default=False)
     parser.add_argument('-n', '--name', metavar='NAME', type=str, dest="name", help='output folder name')
     parser.add_argument('-t', '--traceid', metavar='TRACEID', type=str, dest="traceid", default="analyze", help='trace ID of the analysis sample visitor')
     parser.add_argument('-m', '--downmerge', metavar='DOWNMERGE', type=str, dest="downmerge", default=None, help='tag prefix to trigger downmerging')
@@ -134,14 +66,14 @@ if __name__ == "__main__":
     parser.add_argument('-q', '--quiet', dest='quiet', action='store_true')
     parser.add_argument('-v', '--verbose', dest='verbose', action='store_true',default=False)
 
+    # use the argument parser to read the command line arguments and config options from the config file
+    #from os.path import splitext
+    args = parser.parse_args()
+    
     import QFramework
     import ROOT
     # ignore command line arguments since ROOT is very greedy here (and tends to choke from it!)
     ROOT.PyConfig.IgnoreCommandLineOptions = True
-
-    # use the argument parser to read the command line arguments and config options from the config file
-    #from os.path import splitext
-    args = parser.parse_args()
 
     # call the main function
     main(args)
