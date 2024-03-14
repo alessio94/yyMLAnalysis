@@ -28,7 +28,7 @@
         <Histogram = "CutSR/MyVar">
       }
       +CR {
-        <Counter = "CutCR ">
+        <Counter = "CutCR">
       }
     }
     +Variations {

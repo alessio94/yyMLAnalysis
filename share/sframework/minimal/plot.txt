@@ -9,6 +9,12 @@
   }
 }
 
++ImportWorkspaces {
+  +MyAnalysis {
+    <inputFile = "workspace-postFit.root:MyAnalysis">
+  }
+}
+
 +PlotLikelihoodScan {
   +MyAnalysis {
     <arrangement = "$TQPATH/../SFramework/share/templates/PlotLikelihoodScanSignificance.txt">

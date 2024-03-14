@@ -13,11 +13,9 @@
   +MyAnalysis;
 }
 
-+CalculateSignificance {
-  +MyAnalysis {
-    +asimov {
-      <dataset= "asimovData">
-    }
++Fit {
+  +MyAnalysis{
+    <dataset="asimovData">
   }
 }
 
@@ -33,5 +31,11 @@
 +ExportResults {
   +MyAnalysis {
     <outputFile = "result.root">
+  }
+}
+
++ExportWorkspaces {
+  +MyAnalysis{
+    <outputFile = "workspace-postFit.root">
   }
 }
