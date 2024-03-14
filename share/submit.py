@@ -53,7 +53,7 @@ if __name__ == "__main__":
     parser.add_argument('--maxEventCount', default=-1, type=int, help='split jobs such that each job processes only so many events. imples maxSampleSize=1.')    
     parser.add_argument('--maxSampleCount', default=-1, type=int, help='split jobs such that each job processes only up to this many input files')
     parser.add_argument("--executable",type=str,metavar="executable.py",help="executable to be submitted (default = analyze.py)", default="analyze.py")
-    parser.add_argument('--mergeConfig', default="config/submission/merge.cfg", type=str, help='merge file to be read to build merge command string')
+    parser.add_argument('--mergeConfig', default="common/config/submission/merge.cfg", type=str, help='merge file to be read to build merge command string')
     parser.add_argument('--merge', action="store_const", default=False, const=True, help='merge files when they have succeeded automatically')
     parser.add_argument('--submit-merge', action="store_const", default=False, const=True, help='merge files when they have succeeded automatically')    
     parser.add_argument('--yes', '-y', action="store_const", default=False, const=True, help='automatically reply "yes" to all questions')
