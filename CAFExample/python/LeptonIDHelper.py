@@ -136,7 +136,49 @@ selections_2L_allAuthor.muon_antiid = {
 #========= END 2L selections
 
 
+#=========================================
+#========== 2L_Tight selections
+#=========================================
+selections_2L_Tight = Selections("2L_Tight")
 
+# electron id
+selections_2L_Tight.electron_id = {
+               #"overlaps"                : ["char", "overlaps", 0, "FALSE"],
+               "author"                  : ["unsigned short", "author", 1, "=="],
+               "d0"                      : ["float", "|d0sig|", 5., "<"],
+               "z0"                      : ["float", "|z0*sinTheta|", 0.5, "<"],
+               "likelihoodLowPt"         : ["char",  "isLHTight", 1, "TRUE", True, 0., 25000.],
+               "likelihoodHighPt"        : ["char",  "isLHTight", 1, "TRUE", True, 25000., 1e9],
+               #"chargeIDSelection"       : ["char", "DFCommonElectronsECIDS", 1, "TRUE"]
+               #"chargeIDSelection"       : ["double", "DFCommonElectronsECIDSResult", 0.7, ">"]
+               }
+
+
+# electron anti-id
+selections_2L_Tight.electron_antiid = {
+                   #"overlaps"   : ["char", "overlaps", 0, "FALSE"],
+                   "author"     : ["unsigned short", "author", 1, "=="],
+                   "d0"         : ["float", "|d0sig|", 5., "<"],
+                   "z0"         : ["float", "|z0*sinTheta|", 0.5, "<"],
+                   "likelihood" : ["char",  "isLHLoose", 1, "TRUE"]
+                   }
+
+# muon id
+selections_2L_Tight.muon_id = {
+           #"overlaps"                : ["char", "overlaps", 0, "FALSE"],
+           "qualityLowPt"            : ["int",   "Quality", 0, "=", True, 0., 1e9],
+           "d0"                      : ["float", "|d0sig|",   3., "<"],
+           "z0"                      : ["float", "|z0*sinTheta|", 0.5, "<"],
+           }
+
+selections_2L_Tight.muon_antiid = {
+           #"overlaps"      : ["char", "overlaps", 0, "FALSE"],
+           "quality"       : ["int",   "Quality", 1, "<=", True, 0., 1e9],
+           "d0"            : ["float", "|d0sig|",   15., "<"],
+           "z0"            : ["float", "|z0*sinTheta|", 0.5, "<"]
+           }
+
+#========= END 2L_Tight selections
 
 #=========================================
 #========== 2L selections with anti-id electron LHVeryLoose+BLayer
@@ -454,6 +496,7 @@ all_selections = {}
 # add selections to the dictionary
 all_selections[selections_2L.name] = selections_2L # 2L
 all_selections[selections_2L_allAuthor.name] = selections_2L_allAuthor # 2L without author requirement
+all_selections[selections_2L_Tight.name] = selections_2L_Tight # 2L with tight electron ID
 all_selections[selections_WH.name] = selections_WH # WH
 all_selections[selections_ZH.name] = selections_ZH # ZH
 all_selections[selections_ZCand.name] = selections_ZCand # ZCand

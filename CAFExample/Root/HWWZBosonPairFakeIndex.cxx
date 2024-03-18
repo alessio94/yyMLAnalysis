@@ -10,6 +10,7 @@
 // be careful to not move the _DEBUG_ flag behind the following line
 // otherwise, it will show no effect
 #include "QFramework/TQLibrary.h"
+#include "QFramework/TQSample.h"
 
 // #include "xAODParticleEvent/CompositeParticleContainer.h"
 #include "xAODEventInfo/EventInfo.h"
@@ -30,7 +31,6 @@ HWWZBosonPairFakeIndex::HWWZBosonPairFakeIndex(const HWWZBosonPairFakeIndex& obs
   mCand(obs.mCand),
   fLeptonIDHelper(obs.fLeptonIDHelper),
   fCandName(obs.fCandName)
-
   {}
 
 
@@ -87,7 +87,7 @@ bool HWWZBosonPairFakeIndex::isID(const std::pair< const xAOD::IParticle*, const
 }
 
 bool HWWZBosonPairFakeIndex::isTriggerMatched(const std::pair< const xAOD::IParticle*, const xAOD::IParticle* >& zPair, const xAOD::EventInfo* evtInfo) const {
-  if (  HWWTrigBase::isMatchedParticle( zPair.first, evtInfo) || HWWTrigBase::isMatchedParticle(zPair.second, evtInfo )) return true;
+  if (  HWWTrigBase::isMatchedAnyParticle( zPair.first, evtInfo) || HWWTrigBase::isMatchedAnyParticle(zPair.second, evtInfo )) return true;
   DEBUGclass("[HWWZBosonPairFakeIndex] isTriggerMatched() :: returning false");
   return false;
 }
@@ -117,8 +117,8 @@ bool HWWZBosonPairFakeIndex::isGoodZCand(const std::pair< const xAOD::IParticle*
   // debugging
   if (debugMissingEvts && evtNrUnique(evtInfo)) {
     if (!isSFOS(zPair)) std::cout<<"evtNr unique --> zPair is not SFOS!" << std::endl;
-    if (!isID(zPair))  std::cout << "evtNr unique --> zPair is not ID!" << std::endl;
-    if (!isTriggerMatched(zPair, evtInfo))  std::cout << "evtNr unique --> zPair is not trigger matched!" << std::endl;
+    if (!(isID(zPair)))  std::cout << "evtNr unique --> zPair is not ID!" << std::endl;
+    if (!(isTriggerMatched(zPair, evtInfo)))  std::cout << "evtNr unique --> zPair is not trigger matched!" << std::endl;
     if (!isWithinZWindow(zPair, fakeType))  std::cout << "evtNr unique --> zPair is not within Zmass window!" << std::endl;
 
   }
@@ -126,17 +126,18 @@ bool HWWZBosonPairFakeIndex::isGoodZCand(const std::pair< const xAOD::IParticle*
   // check that this pair is SFOS, has both leptons ID, at least one lepton trigger matched and
   // mll within Z window
   return  (
-          isSFOS(zPair)
-      &&  isID(zPair)
-      &&  isTriggerMatched(zPair, evtInfo)
-      &&  isWithinZWindow(zPair, fakeType)
+           isSFOS(zPair)
+           &&  ( isID(zPair) )
+           &&  ( isTriggerMatched(zPair, evtInfo) )
+           &&  isWithinZWindow(zPair, fakeType)
     );
 }
 
+
 //______________________________________________________________________________________________
 void HWWZBosonPairFakeIndex::makeZBosonCandPairs(std::map< zBosonPairIdentifier, float>& zPairCands,
-                                        const xAOD::CompositeParticle* Evt,
-                                        const xAOD::IParticle* otherLep0, const xAOD::EventInfo* evtInfo) const {
+                                                 const xAOD::CompositeParticle* Evt,
+                                                 const xAOD::IParticle* otherLep0, const xAOD::EventInfo* evtInfo) const {
 
   // make the lep0+lep1 pair
   std::pair< const xAOD::IParticle*, const xAOD::IParticle* > zPair = { Evt->part(0), Evt->part(1) } ;
@@ -205,7 +206,70 @@ bool HWWZBosonPairFakeIndex::evtNrUnique(const xAOD::EventInfo* evtInfo) const {
 
   return ( evtNumbers.end() != std::find(evtNumbers.begin(), evtNumbers.end(), evtNr) );
 }
+
 //______________________________________________________________________________________________
+// Implementation for truth particles
+
+bool HWWZBosonPairFakeIndex::isTruthSFOS(const std::pair< const xAOD::TruthParticle*, const xAOD::TruthParticle* >& zPair) const {
+  if (zPair.first->absPdgId() == 11 && zPair.second->absPdgId() == 11) { // both electrons
+    return zPair.first->charge() + zPair.second->charge() == 0;
+  } else if (zPair.first->absPdgId() == 13 && zPair.second->absPdgId() == 13) { // both muons
+    return zPair.first->charge() + zPair.second->charge() == 0;
+  }
+  DEBUGclass("isTruthSFOS() :: returning false");
+  return false; // not SF, return false
+}
+
+//______________________________________________________________________________________________
+bool HWWZBosonPairFakeIndex::isGoodTruthZCand(const std::pair< const xAOD::TruthParticle*, const xAOD::TruthParticle* >& zPair, const xAOD::Type::ObjectType fakeType) const {
+  // check that this pair is SFOS, has both leptons ID, at least one lepton trigger matched and
+  // mll within Z window
+  return  ( isTruthSFOS(zPair) && isWithinZWindow(zPair, fakeType) );
+}
+
+xAOD::Type::ObjectType HWWZBosonPairFakeIndex::getTypeOfTruthParticle(const xAOD::TruthParticle* truthParticle) const {
+  xAOD::Type::ObjectType type = xAOD::Type::Other;
+  //todo: replace by PDG::...whatever
+  if (truthParticle->absPdgId() == 11){
+    type = xAOD::Type::Electron;
+  }
+  else if (truthParticle->absPdgId() == 13){
+    type = xAOD::Type::Muon;
+  }
+  else{
+    WARNclass("Truth particle is neither electron nor muon. Returning xAOD::Type::Other.");
+  }
+  return type;
+}
+
+//______________________________________________________________________________________________
+void HWWZBosonPairFakeIndex::makeTruthZBosonCandPairs(std::map< zBosonPairIdentifier, float>& zPairCands,
+                                                      const xAOD::TruthParticle* lep0, const xAOD::TruthParticle* lep1,
+                                                      const xAOD::TruthParticle* otherLep0) const {
+
+  // make the lep0+lep1 pair
+  std::pair< const xAOD::TruthParticle*, const xAOD::TruthParticle* > zPair = { lep0, lep1 };
+  xAOD::Type::ObjectType fakeType = getTypeOfTruthParticle(otherLep0);
+
+  // if this pair fulfils Z candidate requirements, add to map
+  if (isGoodTruthZCand(zPair, fakeType)) zPairCands[ zBosonPairIdentifier::LEP0_AND_LEP1 ] = getAbsMllMZDiff(zPair);
+
+  // make the lep0+otherLep0 pair
+  zPair = { lep0, otherLep0 } ;
+  fakeType = getTypeOfTruthParticle(lep1);
+  // if this pair fulfils Z candidate requirements, add to map
+  if (isGoodTruthZCand(zPair, fakeType)) zPairCands[ zBosonPairIdentifier::LEP0_AND_OTHERLEP0 ] = getAbsMllMZDiff(zPair);
+
+  // make the lep1+otherLep0 pair
+  zPair = { lep1, otherLep0 } ;
+  fakeType = getTypeOfTruthParticle(lep0);
+  // if this pair fulfils Z candidate requirements, add to map
+  if (isGoodTruthZCand(zPair, fakeType)) zPairCands[ zBosonPairIdentifier::LEP1_AND_OTHERLEP0 ] = getAbsMllMZDiff(zPair);
+
+}
+//______________________________________________________________________________________________
+
+
 
 
 double HWWZBosonPairFakeIndex::getValue() const {
@@ -218,7 +282,6 @@ double HWWZBosonPairFakeIndex::getValue() const {
   #warning "using plain ROOT compilation scheme - please add an ASG Analysis Release in order to use this feature!"
   return std::numeric_limits<double>::quiet_NaN();
   #else
-
   if(this->getCurrentEntry() == this->fCachedEntry) {
     DEBUGclass("skipping reevalution for event %d, returning %f", this->getCurrentEntry(), this->fCachedValue);
     return this->fCachedValue;
@@ -236,13 +299,44 @@ double HWWZBosonPairFakeIndex::getValue() const {
     throw std::runtime_error("HWWZBosonPairFakeIndex :: Failed to retrieve event info!");
   }
 
+  // get the combinations which fulfil the Zboson requirements
+  // map with the pair enum as key, |mll-mZ|  as value
+  std::map< zBosonPairIdentifier, float > zPairCands;
+
   // get the otherLep0, if it exists (if we find a muon or electron)
   const xAOD::IParticle* otherPart0 = Evt->otherPart(0);
   const xAOD::IParticle* otherLep0 = nullptr;
   if (otherPart0) { // otherPart0 exists...
     if (otherPart0->type() == xAOD::Type::Electron || otherPart0->type() == xAOD::Type::Muon) { // ... and is muon or electron
       otherLep0 = otherPart0;
-    } else {
+      if (!otherLep0){
+        if (evtNrUnique(evtInfo))
+          std::cout << "evt nr unique --> otherLep0 invalid ptr!" << std::endl;
+        DEBUGclass("otherLep0 not found! Returning 0.");
+        return static_cast<double>(fakeIndex::NO_FAKE_FOUND);
+      }
+      makeZBosonCandPairs(zPairCands, Evt, otherLep0, evtInfo);
+      if (debugMissingEvts && evtNrUnique(evtInfo)) {
+        if (zPairCands.size() == 0) {
+          std::cout << "evtNr unique --> didn't find any Zcand! " << std::endl;
+        }
+      }
+    }
+    else if (otherPart0->type() == xAOD::Type::TruthParticle){ // ... and is truth particle
+      const xAOD::TruthParticle* otherTruthLep0 = dynamic_cast<const xAOD::TruthParticle*>(otherPart0);
+      const xAOD::TruthParticle* truthLep0 = dynamic_cast<const xAOD::TruthParticle*>(Evt->part(0));
+      const xAOD::TruthParticle* truthLep1 = dynamic_cast<const xAOD::TruthParticle*>(Evt->part(1));
+
+      if (!otherTruthLep0 || !truthLep0 || !truthLep1){
+        if (!otherTruthLep0) { ERRORclass("Got zero pointer for otherTruthLep0."); }
+        if (!truthLep0) { ERRORclass("Got zero pointer for truthLep0."); }
+        if (!truthLep1) { ERRORclass("Got zero pointer for truthLep1."); }
+        return static_cast<double>(fakeIndex::NO_FAKE_FOUND);
+      }
+      makeTruthZBosonCandPairs(zPairCands, truthLep0, truthLep1, otherTruthLep0);
+
+    }
+    else {
       DEBUGclass(Form("[HWWZBosonPairFakeIndex] otherPart0 found, but is not electron or muon. Type = %d", otherPart0->type()));
       DEBUGclass(Form("[HWWZBosonPairFakeIndex] lep0 type =  %d", Evt->part(0)->type()));
       if (Evt->part(0)->isAvailable<int>("hwwTruthType")) {
@@ -253,26 +347,6 @@ double HWWZBosonPairFakeIndex::getValue() const {
       }
     }
   }
-
-  // if no otherLep is found, we return 0 (no fake found)
-  if (!otherLep0) {
-    if (evtNrUnique(evtInfo))
-      std::cout << "evt nr unique --> otherLep0 invalid ptr!" << std::endl;
-    DEBUGclass("[HWWZBosonPairFakeIndex] otherLep0 not found! Returning 0.");
-    return static_cast<double>(fakeIndex::NO_FAKE_FOUND);
-  }
-
-  // get the combinations which fulfil the Zboson requirements
-  // map with the pair enum as key, |mll-mZ|  as value
-  std::map< zBosonPairIdentifier, float > zPairCands;
-  makeZBosonCandPairs(zPairCands, Evt, otherLep0, evtInfo);
-
-  if (debugMissingEvts && evtNrUnique(evtInfo)) {
-    if (zPairCands.size() == 0) {
-      std::cout << "evtNr unique --> didn't find any Zcand! " << std::endl;
-    }
-  }
-
 
   // step through map (which could be empty) and find the pair closest to the z mass
   zBosonPairIdentifier bestZPair = zBosonPairIdentifier::NO_PAIR_FOUND; // default: no candidate found
@@ -289,6 +363,7 @@ double HWWZBosonPairFakeIndex::getValue() const {
   fakeIndex theFakeIndex = fakeIndex::NO_FAKE_FOUND;
   switch (bestZPair) {
     case zBosonPairIdentifier::NO_PAIR_FOUND:
+      DEBUGclass("no pair found");
       break;
     case zBosonPairIdentifier::LEP0_AND_LEP1:
       theFakeIndex = fakeIndex::OTHERLEP0;
@@ -327,7 +402,6 @@ TQObservable* HWWZBosonPairFakeIndex::getClone() const  {
   if(obs->isInitialized()) obs->finalize();
   return obs;
 }
-
 
 
 //______________________________________________________________________________________________

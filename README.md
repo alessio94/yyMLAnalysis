@@ -9,22 +9,24 @@ Cloning the project
 --------------------
 
 ```bash
-setupATLAS
+# Use -c centos7+batch if you're not on a centos7 machine (Such as lxplus9**). Otherwise, you may use setupATLAS as normal.
+setupATLAS -c centos7+batch
 lsetup git
 mkdir AnalysisExample
 cd AnalysisExample
 
+# Note that you should `setupATLAS` in a container that allows AnalysisBase access, thus `setupATLAS -c centos7` on lxplus.
 # There are a few different protocol options for cloning the project, which are all provided at the top of the main page of the repository.
 # Kerberos is typically recommended if it is available (e.g. lxplus) since it does not require a username or password when interacting with remote repositories.
 # ssh acts similarly, but requires a password and a bit of initial setup
 # https is usually the most robust, but always requres a username and password
 
-# Kerberos
-git clone --recursive https://:@gitlab.cern.ch:8443/atlas-caf/CAFExample.git
 # ssh
-#git clone --recursive ssh://git@gitlab.cern.ch:7999/atlas-caf/CAFExample.git
+git clone --recursive ssh://git@gitlab.cern.ch:7999/atlas-caf/CAFExample.git
+# Kerberos
+# git clone --recursive https://:@gitlab.cern.ch:8443/atlas-caf/CAFExample.git
 # https
-#git clone --recursive https://gitlab.cern.ch/atlas-caf/CAFExample.git
+# git clone --recursive https://gitlab.cern.ch/atlas-caf/CAFExample.git
 ```
 
 Building the project
@@ -33,7 +35,7 @@ Building the project
 ```bash
 mkdir build
 cd build
-asetup AnalysisBase,21.2.102
+asetup AnalysisBase,21.2.271
 cmake ../CAFExample
 asetup source setupAnalysis.sh # this configures asetup to automatically call setupAnalysis.sh next time
 cafbuild # build the code (check details by typing "type cafbuild")
@@ -89,10 +91,10 @@ e.g.
 
 ```bash
 cd any/location/
-prepare.py flatNTuple/config/master/prepare-ZjetsFF-Example.cfg
-initialize.py flatNTuple/config/master/initialize-ZjetsFF-Example.cfg
-analyze.py flatNTuple/config/master/analyze-ZjetsFF-Example.cfg
-visualize.py flatNTuple/config/master/visualize-ZjetsFF-Example.cfg
+./prepare.py flatNTuple/config/master/prepare-flatNTuple-Example.cfg
+./initialize.py flatNTuple/config/master/initialize-flatNTuple-Example.cfg
+./analyze.py flatNTuple/config/master/analyze-flatNTuple-Example.cfg
+./visualize.py flatNTuple/config/master/visualize-flatNTuple-Example.cfg
 ```
 
 On Every Login

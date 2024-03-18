@@ -16,14 +16,18 @@ Consider the following steps (please start a fresh session on an lxplus machine 
 We need a network architecture json file, a weights HDF5 file (both from keras), and a input variables file (prepared by the user). Example files can be found under `/eos/user/a/atlascaf/tutorial/2021_Apr/Keras-Example-Network/`.
 #### Step 2: Convert outputs to single NN json file
 
-```
+```bash
 # go to your favorite working directory
 mkdir $HOME/CAFNNTutorial; cd $HOME/CAFNNTutorial;
 export NNFilesPath=/eos/user/a/atlascaf/tutorial/2021_Apr/Keras-Example-Network/;
 
 # necessary clones and installation of h5py for conversion
-git clone https://github.com/lwtnn/lwtnn.git; cd lwtnn; make; cd ../;# should take less than 1min
-virtualenv -p python3 venv; 
+git clone https://github.com/lwtnn/lwtnn.git; cd lwtnn
+mkdir build; cd build
+cmake -DBUILTIN_BOOST=true -DBUILTIN_EIGEN=true ..
+make -j4 # should take a few minutes
+cd ../..
+python3 -m venv venv
 source venv/bin/activate # now source it
 pip3 install h5py
 
@@ -32,14 +36,16 @@ lwtnn/converters/keras2json.py $NNFilesPath/architecture.json $NNFilesPath/varia
 deactivate # deactivate python virtualenv
 
 # modify network to assign expressions to variable names
-cafsetup; cd $HOME/CAFNNTutorial; # source your analysis setup script to use the following
+# first, perform the standard CAFExample setup: cd build, asetup --restore, etc.
+# then, adapt the JSON to CAFCore:
+cd $HOME/CAFNNTutorial; # source your analysis setup script to use the following
 adaptDNNJSONFileToCAFCore.py --networkInputFile neural_net.json --networkOutputFile neural_net_modified.json --nTupleDefinitionFile $NNFilesPath/ntuple-definition.txt;
 ```
 
 #### Step 3: Use NN
 Now you can use the network in CAF with the expression
 ```
-lwtnnSeq(path/to/neural_net.json, {dense_8})
+lwtnnSeq(path/to/neural_net_modified.json, {dense_8})
 ```
 Note, that this uses the "Sequential API" of lwtnn.
 
@@ -119,21 +125,26 @@ Note, this script can also be run on the final neural network json file, after t
 
 To convert the three files to a single json file that can be used in the analysis, one needs to clone the lwtnn repository
 
-```
-git clone https://github.com/lwtnn/lwtnn.git; cd lwtnn; make; # should take less than 1min
+```bash
+git clone https://github.com/lwtnn/lwtnn.git; cd lwtnn
+mkdir build; cd build
+cmake -DBUILTIN_BOOST=true -DBUILTIN_EIGEN=true ..
+make -j4 # should take a few minutes
+cd ../..
 ```
 
 and use
 
-```
+```bash
 lwtnn/converters/keras2json.py architecture.json variables-modified.json weights.h5 > neural_net.json
 ```
 Note, that this requires python3 and the h5py module to be installed. If you are working on lxplus, python3 will be available, but h5py needs to be installed. The python virtualenv package can be used, e.g., and the above conversion command should succeed.
-```
-virtualenv -p python3 ./venv
-source venv/bin/activate
+```bash
+python3 -m venv venv
+source venv/bin/activate # now source it
 pip3 install h5py
 ```
+N.B. in an AnalyisBase release using python2, calling python3 may cause issues. In that case, it is better to run python3 from a clean term after setting up using e.g. `lsetup "python centos7-3.9"` and then return to your AnalysisBase release.
 
 ### Make it an observable in CAF
 

@@ -41,6 +41,7 @@ def addObservables(config):
     INFO("failed to add Zboson-pair fake index observable")
     return False
 
+
   return True
 
 if __name__ == "__main__":

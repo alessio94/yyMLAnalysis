@@ -45,7 +45,7 @@ enum fakeIndex{NO_FAKE_FOUND=0, LEADLEP=1, SUBLEADLEP=2, OTHERLEP0=3};
 
 
 class HWWZBosonPairFakeIndex : public TQEventObservable, public HWWTrigBase {
-  // inherits from HWWTrigBase to access isMatchedParticle() function
+  // inherits from HWWTrigBase to access isMatchedAnyParticle() function
 
 protected:
   // put here data members you wish to retrieve
@@ -84,6 +84,14 @@ protected:
                                           const xAOD::IParticle* otherLep0, const xAOD::EventInfo* evtInfo) const;
 
 
+  /*** same as above, but for truth leptons ***/
+  bool isGoodTruthZCand(const std::pair< const xAOD::TruthParticle*, const xAOD::TruthParticle* >& zPair, const xAOD::Type::ObjectType fakeType) const;
+  bool isTruthSFOS(const std::pair< const xAOD::TruthParticle*, const xAOD::TruthParticle* >& zPair) const;
+  xAOD::Type::ObjectType getTypeOfTruthParticle(const xAOD::TruthParticle* truthParticle) const;
+  void makeTruthZBosonCandPairs(std::map< zBosonPairIdentifier, float>& zPairCands,
+                                const xAOD::TruthParticle* lep0, const xAOD::TruthParticle* lep1,
+                                const xAOD::TruthParticle* otherLep0) const;
+
 
 
 public:
@@ -91,6 +99,7 @@ public:
   virtual double getValue() const override;
   // getClone override (so we don't have to rely on root streamer)
   TQObservable* getClone() const  override;
+
 
 public:
 

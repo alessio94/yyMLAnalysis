@@ -1,20 +1,22 @@
 #!/bin/env python
 
+from CommonAnalysisHelpers import common
 from SubmissionHelpers import submit
 from SubmissionHelpers.task import task,taskStatus
 
 import QFramework
 
-
 def makeChunks(configs,n):
     import random
-    rng = random.Random(42) # set a fixed random seed to get the same shufflings everytime
+    # set a fixed random seed to get the same shufflings everytime    
+    rng = random.Random(42) 
     rng.shuffle(configs)
+    # some python2/python3 headache
     try:
-        rng = xrange
+        return [configs[i:i + n] for i in xrange(0, len(configs), n)]
     except:
-        rng = range
-    return [configs[i:i + n] for i in rng(0, len(configs), n)]
+        return [configs[i:i + n] for i in  range(0, len(configs), n)]    
+    
 
 
 def makeID(identifiers):
@@ -41,16 +43,19 @@ def makeID(identifiers):
     else:
         return ident
 
+def flatten(l):
+    return [item for sublist in l for item in sublist]
+    
 def main(args):
     """submit your statistics analysis to a batch system"""
     from os import listdir
     from os import environ
     from os.path import isfile,splitext
     from os.path import join as pjoin
-    configdirs = [ pjoin(d,"configs") for d in args.directory ]
-    from CommonAnalysisHelpers.common import mkdir
-    for configdir in configdirs:
-        mkdir(args.logpath)
+    from glob import glob
+    configdirs = flatten([glob(d) if "*" in d else [d] for d in args.directory])
+    configs = [pjoin(configdir,"configs",f) for configdir in configdirs for f in listdir(pjoin(configdir,"configs")) if isfile(pjoin(configdir, "configs", f))]
+    common.mkdir(args.logpath)
 
     #the lazy way to get all the needed instructions to ensure the environment on the batch node behaves like your current analysis setup:
     setup = submit.getSetupCommand(args)
@@ -59,42 +64,39 @@ def main(args):
     if len(setupPath)>0: setup.append("source "+setupPath)
 
     tasks = []
-    for configdir in configdirs:
-        configs = [pjoin(configdir,f) for f in listdir(configdir) if isfile(pjoin(configdir, f))]
-        chunks = makeChunks(configs,args.chunk)
-        for chunk in chunks:
-            inputs = []
-            outputs = []
-            commands = []
-            identifiers = []
-            for config in chunk:
-                thiscfg = QFramework.TQFolder("config")
-                thiscfg.importFromTextFile(config)
-                identifier = thiscfg.getTagStandardStringDefault("identifier",splitext(config)[0])
-                addoutput = thiscfg.getTagVStandardString("expectedOutput")
-                addinput = thiscfg.getTagVStandardString("expectedInput")        
-                if len(addoutput)==0 or len(addinput)==0:
-                    print("faulty config file "+config+" does not have <expectedInput>/<expectedOutput> tag")
-                    continue
-                inputs.extend(addinput)
-                outputs.extend(addoutput)
-                identifiers.append(identifier)
-                commands.append("statistics.py "+config)
-            t = task(identifier=args.identifier+"_"+makeID(identifiers),args=args,setup=setup,outputs=outputs,inputs=inputs,payload=commands)
-            tasks.append(t)
+    chunks = makeChunks(configs,args.chunk)
+    for chunk in chunks:
+        inputs = []
+        outputs = []
+        commands = []
+        identifiers = []
+        for config in chunk:
+            thiscfg = QFramework.TQFolder("config")
+            thiscfg.importFromTextFile(config)
+            identifier = thiscfg.getTagStandardStringDefault("identifier",splitext(config)[0])
+            addoutput = list(thiscfg.getTagVStandardString("expectedOutput"))
+            addinput  = list(thiscfg.getTagVStandardString("expectedInput"))
+            if len(addoutput)==0 or len(addinput)==0:
+                print("faulty config file "+config+" does not have <expectedInput>/<expectedOutput> tag")
+                continue
+            inputs.extend(addinput)
+            outputs.extend(addoutput)
+            identifiers.append(identifier)
+            commands.append("statistics.py "+config)
+        t = task(identifier=args.identifier+"_"+makeID(identifiers),args=args,setup=setup,outputs=outputs,inputs=inputs,payload=commands)
+        tasks.append(t)
 
     ctrl = submit.guessSubmissionController(args)
-    print("preparing to submit {:d} tasks".format(len(tasks)))
     ctrl.submitTasks(args,tasks)
     print("Done")
-    
+
 
 if __name__ == "__main__":
 
     # create a pre-configured argument parser (some parts of the backend code rely on certain arguments being available, this does *NOT* mean that you need to specify each argument explicitly though)
     parser = submit.MinimalArgumentParser(executable="statistics.py")
     #add a few more specific arguments to the argparser:
-    parser.add_argument("directory",type=str,metavar="/path/to/jobs",nargs="+",help="directory of configs be submitted")
+    parser.add_argument("directory",type=str,nargs="+",metavar="/path/to/jobs",help="directory of configs be submitted")
     parser.add_argument("--chunk",type=int,metavar="N",help="number of configs to be grouped into a single chunk and submitted as a job",default=1)
     parser.add_argument('--queue', default='', type=str, help='name of queue',required=False)
     import QFramework
@@ -105,7 +107,6 @@ if __name__ == "__main__":
     # use the argument parser to read the command line arguments and config options from the config file
     #from os.path import splitext
     args = parser.parse_args()
-    
+
     # call the main function
     main(args)
-

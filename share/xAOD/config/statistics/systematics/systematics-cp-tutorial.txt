@@ -52,6 +52,18 @@
   +JES_Flavor_Composition__1up {
     <Variation = "_JET_Flavor_Composition__1up">
   }
+  +JER_EffectiveNP_1_PDsmear__1up {
+    <Variation = "_JET_JER_EffectiveNP_1_PDsmear__1up">
+  }
+  +JER_EffectiveNP_1_PDsmear__1down {
+    <Variation = "_JET_JER_EffectiveNP_1_PDsmear__1down">
+  }
+  +JER_EffectiveNP_1_MCsmear__1down {
+    <Variation = "_JET_JER_EffectiveNP_1_MCsmear__1down">
+  }
+  +JER_EffectiveNP_1_MCsmear__1up {
+    <Variation = "_JET_JER_EffectiveNP_1_MCsmear__1up">
+  }
   +MET_SoftTrk_ScaleDown {
     <Variation = "_MET_SoftTrk_ScaleDown">
   }
@@ -83,6 +95,18 @@
   }
   +ATLAS_JES_EtaInter_Model {
     <Down = "JES_EtaIntercalibration_Modelling__1down", Up = "JES_EtaIntercalibration_Modelling__1up", isP4Sys = true, Attributes.0 = "exp", Attributes.1 = "NP", isDetectorSys = true>
+  }
+  +ATLAS_JER_EffectiveNP_1 {
+    <Down = "JER_EffectiveNP_1__1down", Up = "JER_EffectiveNP_1__1up", isP4Sys = true, Attributes.0 = "exp", Attributes.1 = "NP", isDetectorSys = true>
+    +Compute/Down{
+      <Mode="Difference",
+      Variations={"JER_EffectiveNP_1_MCsmear__1down","JER_EffectiveNP_1_PDsmear__1down"}>
+    }
+    +Compute/Up{
+      <Mode="Difference",
+      Variations={"JER_EffectiveNP_1_MCsmear__1up","JER_EffectiveNP_1_PDsmear__1up"}>
+    } 
+    <StatError="Nominal", TransferRelative=true> @ Compute/?;
   }
   +ATLAS_JES_Flavor_Comp {
     <Down = "JES_Flavor_Composition__1down", Up = "JES_Flavor_Composition__1up", isP4Sys = true, Attributes.0 = "exp", Attributes.1 = "NP", isDetectorSys = true>

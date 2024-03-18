@@ -28,6 +28,8 @@ set(CAF_PRELOAD_LIBRARIES libCAFlwtnn)
 
 IF(${AnalysisBase_FOUND})
   # this is ASG compilation, we don't need to do anything
+  message( "compiling using ASG enviroment, assuming we have xAOD tools" )
+  add_definitions(-DHAS_XAOD)
   file(GLOB CAFExampleSources CAFExample/Root/*.cxx)
   file(GLOB CAFExampleHeaders CAFExample/CAFExample/*.h)
 

@@ -1,4 +1,4 @@
-This document is intended to provide hands-on instructions on how to write a custom observable for the [CAF tutorial](https://indico.cern.ch/event/875315/). General reading on observables can be found in the tutorial and also in the observable [README](https://gitlab.cern.ch/atlas-caf/CAFExample/blob/master/share/common/observables).
+This document is intended to provide hands-on instructions on how to write a custom observable for the [CAF tutorial](https://indico.cern.ch/event/1380637/). General reading on observables can be found in the tutorial and also in the observable [README](https://gitlab.cern.ch/atlas-caf/CAFExample/blob/master/share/common/observables).
 
 Prerequesite for the tutorial is a working [CAF](https://gitlab.cern.ch/atlas-caf/CAFCore) installation. You can check this
 by running
@@ -117,7 +117,7 @@ Now we have to implement the actual calculation of the desired quantity. This ha
   return retval;
 ```
 After implementing the above, the observable should be ready to be compiled - almost. We use a CompositeParticleContainer, but your c++ doesn't know what this is. So let's include the corresponding header file
-```
+```c++
 #include "xAODParticleEvent/CompositeParticleContainer.h"
 ```
 in the beginning of the file. Now, we are ready to execute `cafcompile`  which will automatically run cmake for you, find the new class and compile it.
@@ -125,12 +125,12 @@ Once your class compiles fine along with the other observable classes we can mov
 
 Two small remarks:
 
-*  The line at the top of `MjjMaxObservable.cxx` saying `// #define _DEBUG__` can be uncommented to enable printouts from the DEBUGclass(...) function. This might be useful for initial tests and checks of the new observable.
+*  The line at the top of `MjjMaxObservable.cxx` saying `// #define _DEBUG__` can be uncommented to enable printouts from the `DEBUGclass(...)` function. This might be useful for initial tests and checks of the new observable.
 *  CAF provides the small functions `cafcompile` and `cafbuild`. The latter only compiles your code with `make`, while the former calls `cmake` and then compiles. To see what exactly these functions do, type `type cafcompile` in your shell.
 
 ## 2. Creating a python observable snippet
 A small python snippet needs to be added for the new observable to the designated observable/ folder of the analysis.
-In the xAOD Example analysis, the observable snippets are located [here](https://gitlab.cern.ch/atlas-caf/CAFExample/tree/master/share/xAOD/observables) (If you write an observable that is used by multiple analyses, you should think of creating the observable snippet in [common/](https://gitlab.cern.ch/atlas-caf/CAFExample/tree/master/share/common/observables)).
+In the xAOD Example analysis, the observable snippets are located [here](https://gitlab.cern.ch/atlas-caf/CAFExample/tree/master/share/xAOD/observables). (If you write an observable that is used by multiple analyses, you should think of creating the observable snippet in [common/](https://gitlab.cern.ch/atlas-caf/CAFExample/tree/master/share/common/observables).)
 The snippet will instantiate the observable class and adds it to the observable database. The python script should have the same name as the observable itself (in our case MjjMaxObservable.py) and can look like this:
 
 ```python
@@ -169,7 +169,7 @@ The second line books the histogram at the cut `CutChannels` and all subsequent 
 If the analysis is executed (you only have to perform the analyze step) and everything was correctly implemented, the new histogram should appear in the output sample folder.
 <!-- It is assumed that you have already learned how to run a complete analysis.-->
 You can check this by opening the respective sample folder with `tqroot -sfr sampleFolders/analyzed/samples-analyzed-xAOD-Example.root` and draw one of the histograms with
-```
+```c++
 r_samples->getHistogram("bkg/[ee+mm]/[c16a+c16d+c16e]/top/ttbar", "CutChannels/hist_MjjMax")->Draw("")
 ```
 If you see a reasonable distribution: Congratulations! You just successfully created your own observable.
