@@ -36,8 +36,8 @@ namespace xAOD {
 class HWWBTagWeightNoDeco : public HWWSFBase {
 protected:
 
-  ToolHandle<IBTaggingEfficiencyTool> m_btagtool;      //!
-  ToolHandle<IBTaggingSelectionTool> m_btagselecttool; //!
+  mutable ToolHandle<IBTaggingEfficiencyTool> m_btagtool;      //!
+  mutable ToolHandle<IBTaggingSelectionTool> m_btagselecttool; //!
 
   float getBTagWeight(const xAOD::Jet* jet) const;
   std::string getTtbarDSID(const uint32_t mcChannelNumber) const;
@@ -74,7 +74,7 @@ private:
   std::string m_jetAuthor      = "";
 
   // These are hardcoded and are not intended to be set in the python snippet
-  std::string m_CDI            = "xAODBTaggingEfficiency/13TeV/2020-21-13TeV-MC16-CDI-2020-03-11_v1.root";
+  std::string m_CDI            = "xAODBTaggingEfficiency/13p6TeV/2023-22-13p6TeV-MC21-CDI_Test_2023-08-1_v1.root";
   std::string m_systStrat      = "SFEigen";
   std::string m_systRed        = "Medium";
   int m_outputLvl              = MSG::WARNING;

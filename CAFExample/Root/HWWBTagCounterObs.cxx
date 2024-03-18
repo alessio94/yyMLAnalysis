@@ -1,3 +1,5 @@
+#include "xAODBTagging/BTagging.h"
+#include "xAODBTagging/BTaggingUtilities.h"
 #include "CAFExample/HWWBTagCounterObs.h"
 #include "QFramework/TQSample.h"
 #include <limits>
@@ -15,16 +17,32 @@ ClassImp(HWWBTagCounterObs)
 //______________________________________________________________________________________________
 
 HWWBTagCounterObs::HWWBTagCounterObs(){
-  // default constructor
-  DEBUGclass("default constructor called");
+  DEBUGclass("Default constructor called");
 }
 
-//______________________________________________________________________________________________
+HWWBTagCounterObs::HWWBTagCounterObs(const TString& name,
+                                     std::string bTagName,
+                                     std::string bTagWP,
+                                     std::string jetAuthor,
+                                     bool useOtherJets,
+                                     bool useHardCuts,
+                                     float ptCut,
+                                     float bTagCut ) : TQEventObservable(name),
+                                                        m_bTagVarName(bTagName),
+                                                        m_operatingPoint(bTagWP),
+                                                        m_jetAuthor(jetAuthor),
+                                                        m_useOtherJets(useOtherJets),
+                                                        m_useHardCuts(useHardCuts),
+                                                        m_ptCut(ptCut),
+                                                        m_bTagCut(bTagCut) {
+  DEBUGclass("Constructor called with '%s'", name.Data());
+}
 
 HWWBTagCounterObs::~HWWBTagCounterObs(){
-  // default destructor
-  DEBUGclass("destructor called");
+  DEBUGclass("Destructor called");
 } 
+
+//______________________________________________________________________________________________
 
 #define XAOD_STANDALONE 1
 // put here any EDM includes you might need, e.g.
@@ -35,61 +53,14 @@ HWWBTagCounterObs::~HWWBTagCounterObs(){
 
 //______________________________________________________________________________________________
 
-std::string HWWBTagCounterObs::getBTagName() {
-  return m_bTagVarName;
-}
-
-std::string HWWBTagCounterObs::getBTagWP() {
-  return m_OperatingPoint;
-}
-
-float HWWBTagCounterObs::getPtCut() {
-  return m_ptCut;
-}
-
-bool HWWBTagCounterObs::getUseOtherJets() {
-  return m_useOtherJets;
-}
-
-bool HWWBTagCounterObs::getUseHardCuts() {
-  return m_useHardCuts;
-}
-
-float HWWBTagCounterObs::getBTagCut() {
-  return m_bTagCut;
-}
-
-std::string HWWBTagCounterObs::getJetAuthor() {
-  return m_jetAuthor;
-}
-
-//______________________________________________________________________________________________
-
 void HWWBTagCounterObs::setBTagName(std::string BTagName, std::string BTagWP) {
   m_bTagVarName = BTagName;
-  m_OperatingPoint = BTagWP;
-}
-
-
-void HWWBTagCounterObs::setPtCut(float PtCut) {
-  m_ptCut = PtCut;
-}
-
-/*void HWWBTagCounterObs::setUseOtherJets(bool UseOtherJets) {
-  m_useOtherJets = UseOtherJets;
-}*/
-
-void HWWBTagCounterObs::setUseHardCuts(bool UseHardCuts) {
-  m_useHardCuts = UseHardCuts;
+  m_operatingPoint = BTagWP;
 }
 
 void HWWBTagCounterObs::setBTagCut(float BTagCut) {
   m_bTagCut = BTagCut;
   m_useHardCuts = true;
-}
-
-void HWWBTagCounterObs::setJetAuthor(std::string JetAuthor) {
-  m_jetAuthor = JetAuthor;
 }
 
 //______________________________________________________________________________________________
@@ -135,143 +106,125 @@ double HWWBTagCounterObs::getValue() const {
   */
 
   // Retrieve CompositeParticle container
-  const xAOD::CompositeParticleContainer *cand = 0;
-  if(!this->fEvent->retrieve(cand, this->mContName.Data()).isSuccess()){
+  const xAOD::CompositeParticleContainer* cand = 0;
+  if (!this->fEvent->retrieve(cand, this->mContName.Data()).isSuccess()) {
     DEBUGclass("failed to retrieve candidates!");
     return false;
   }
 
   // Get the event candidate from the container
-  const xAOD::CompositeParticle *Evt = cand->at(0);
-
-
-
+  const xAOD::CompositeParticle* Evt = cand->at(0);
 
   // Get the number of b-tags from the nominally-selected jets
-  int nPassBTag=0;
-  for ( size_t i=0; i<Evt->nParts(); ++i ){
-    const xAOD::IParticle* part = Evt->part(i);
-    if ( part->type() != xAOD::Type::Jet ) continue;
-    const xAOD::Jet* jet = static_cast<const xAOD::Jet*>(part);
-    if ( std::abs( jet->eta() ) > 2.5 ) continue;
-    if ( jet->pt() < m_ptCut ) continue;
-    if ( not jet->btagging() ) {
-      DEBUGclass("No btagging information available for this jet (large-R jet?). Skipping");
-      continue;
-    }
-
-    if (m_useHardCuts) { 
-      const float tagWeight = jet->btagging()->auxdata<double>(m_bTagVarName);
-      DEBUGclass("Got other jet tagWeight of %f", tagWeight );
-      if ( tagWeight > m_bTagCut ) nPassBTag += 1;
-      
-	  } else{
-      bool isBtagged = m_btagtool->accept(*jet);
-      if ( isBtagged ) {
-        nPassBTag += 1;
-      }
-    }
-  
+  int nPassBTag = 0;
+  for (size_t i = 0; i < Evt->nParts(); i ++) {
+    const xAOD::IParticle* particle = Evt->part(i);
+    if (particle->type() != xAOD::Type::Jet) { continue; }
+    const xAOD::Jet* jet = static_cast<const xAOD::Jet*>(particle);
+    if (!PassBTagCuts(jet)) { continue; }
+    nPassBTag++;
   }
-  // Also use the sub-threshold other jets to also account for jets below the threshold (25GeV) for jets in the PAOD selection
-  //if (m_useOtherJets) {
-    for ( size_t i=0; i<Evt->nOtherParts(); ++i ){
-      const xAOD::IParticle* part = Evt->otherPart(i);
-      if ( part->type() != xAOD::Type::Jet ) continue;
-      const xAOD::Jet* jet = static_cast<const xAOD::Jet*>(part);
-      if ( std::abs( jet->eta() ) > 2.5 ) continue;
-      if ( jet->pt() < m_ptCut ) continue;
-      if ( not jet->btagging() ) {
-        DEBUGclass("No btagging information available for this jet (large-R jet?). Skipping");
-        continue;
-      }
 
-
-      if (m_useHardCuts){
-        const float tagWeight = jet->btagging()->auxdata<double>(m_bTagVarName);
-        DEBUGclass("Got other jet tagWeight of %f", tagWeight );
-        if ( tagWeight > m_bTagCut ) nPassBTag += 1;
-	    
-	    } else {
-        bool isOtherBtagged = m_btagtool->accept(*jet);
-        if ( isOtherBtagged ) {
-          nPassBTag += 1;
-        }
-      }
+  // Use the sub-threshold container OtherParts to account for jets below the pT threshold
+  if (m_useOtherJets) {
+    for (size_t i = 0; i < Evt->nOtherParts(); i ++) {
+      const xAOD::IParticle* particle = Evt->otherPart(i);
+      if (particle->type() != xAOD::Type::Jet) { continue; }
+      const xAOD::Jet* jet = static_cast<const xAOD::Jet*>(particle);
+      if (!PassBTagCuts(jet)) { continue; }
+      nPassBTag++;
     }
-  
+  }
+
   //}
-  DEBUGclass("Got %d b-tags",nPassBTag);
+  DEBUGclass("Got %d b-tags this event", nPassBTag);
   return static_cast<double>(nPassBTag);
-  #endif
+#endif
 }
+
+bool HWWBTagCounterObs::PassBTagCuts(const xAOD::Jet* jet) const {
+  // Simple Kinematic Cuts
+  if (std::abs(jet->eta()) > 2.5) { return false; }
+  if (jet->pt() < m_ptCut) { return false; }
+
+  // Obtain btagging information for this jet
+  const xAOD::BTagging* bTagging = xAOD::BTaggingUtilities::getBTagging(*jet);
+  if (!bTagging) {
+    DEBUGclass("No btagging information available for this jet. Skipping");
+    return false;
+  }
+
+  if (m_useHardCuts) {
+    const float tagWeight = bTagging->auxdata<double>(m_bTagVarName);
+    DEBUGclass("Got other jet tagWeight of %f", tagWeight);
+    if (tagWeight <= m_bTagCut) { return false; }
+  } else {
+    bool isBtagged = static_cast<bool>(m_btagtool->accept(*jet));
+    DEBUGclass("Jet is b-tagged: %d", isBtagged);
+    if (!isBtagged) { return false; }
+  }
+
+  return true;
+}
+
 //______________________________________________________________________________________________
 
 bool HWWBTagCounterObs::initializeSelf(){
   // initialize this observable
   // called once per sample (input file) so that the observable knows the name of the event candidate
   // will be EventEM or EventME in the case of DF analysis (depending on the current channel)
-  TString ContName = "";
-  if(!this->fSample->getTagString("~cand",ContName)) return false;
-  this->mContName = "Event"+ContName;
+ 
+  if (m_wasInitialized) { 
+    DEBUGclass("Was already initialized. Skipping initializaiton.");
+    return true;
+  }
+  DEBUGclass("Initializing");
 
+  // Obtain the container name for the CompositeParticleContainer
+  TString ContName = "";
+  if (!this->fSample->getTagString("~cand", ContName)) {
+    ERRORclass("Could not get tag string ~cand.");
+    return false;
+  }
+  this->mContName = "Event" + ContName;
+
+  // Namespace is required to prevent errors within ANA_CHECK_THROW
   using namespace asg::msgUserCode;
 
-  if( m_wasInitialized || m_useHardCuts ) return true;
-
   // Initialize BTaggingSelectionTool
-  if( m_btagtool.empty() ) {
-    TString toolName = TString("HWWBTagTool_") + this->GetName(); // use a unique name for each observable instance
-    if( asg::ToolStore::contains<BTaggingSelectionTool>(toolName.Data()) ) {
+  if (m_btagtool.empty()) {
+    TString toolName = TString("HWWBTagTool_") + this->GetName();  // use a unique name for each observable instance
+    if (asg::ToolStore::contains<BTaggingSelectionTool>(toolName.Data())) {
+      DEBUGclass("Found tool %s", toolName.Data());
       m_btagtool = dynamic_cast<IBTaggingSelectionTool*>(asg::ToolStore::get(toolName.Data()));
-    }
-    else {
+    } else {
+      DEBUGclass("Creating new tool '%s'", toolName.Data());
       IBTaggingSelectionTool* tool = new BTaggingSelectionTool(toolName.Data());
-      DEBUGclass("created new tool '%s'",tool->name().c_str());
-      m_btagtool = tool;
-      ANA_CHECK_THROW(asg::setProperty( tool, "MaxEta", 2.5 ));
-      ANA_CHECK_THROW(asg::setProperty( tool, "MinPt", m_ptCut ));
-      ANA_CHECK_THROW(asg::setProperty( tool, "JetAuthor", m_jetAuthor ));
-      ANA_CHECK_THROW(asg::setProperty( tool, "TaggerName", m_bTagVarName ));
-      ANA_CHECK_THROW(asg::setProperty( tool, "FlvTagCutDefinitionsFileName", "xAODBTaggingEfficiency/13TeV/2020-21-13TeV-MC16-CDI-2020-03-11_v1.root" ));
-      ANA_CHECK_THROW(asg::setProperty( tool, "OperatingPoint", m_OperatingPoint ));
-
-      //if( !m_btagtool->initialize() ) throw std::runtime_error("Failed to initialise BTaggingSelectionTool");
+      m_btagtool = ToolHandle<IBTaggingSelectionTool>(tool);
+      ANA_CHECK_THROW(asg::setProperty(tool, "MaxEta", 2.5));
+      ANA_CHECK_THROW(asg::setProperty(tool, "MinPt", m_ptCut));
+      ANA_CHECK_THROW(asg::setProperty(tool, "JetAuthor", m_jetAuthor));
+      ANA_CHECK_THROW(asg::setProperty(tool, "TaggerName", m_bTagVarName));
+      ANA_CHECK_THROW(asg::setProperty(tool, "FlvTagCutDefinitionsFileName", "xAODBTaggingEfficiency/13p6TeV/2023-22-13p6TeV-MC21-CDI_Test_2023-08-1_v1.root"));
+      ANA_CHECK_THROW(asg::setProperty(tool, "OperatingPoint", m_operatingPoint));
       ANA_CHECK_THROW(m_btagtool->initialize());
     }
-  }
-  else {
+  } else {
     throw std::runtime_error("Encountered non-empty BTag tool handle. Most likely this was already set, otherwise something went horribly wrong...");
   }
-  m_wasInitialized = true;  
 
-  DEBUGclass("initializing");
+  m_wasInitialized = true;
+  DEBUGclass("Initialization Complete");
   return true;
 }
+
 
 //______________________________________________________________________________________________
 
 bool HWWBTagCounterObs::finalizeSelf(){
-  // finalize this observable
-  // remember to undo anything you did in initializeSelf() !
-  
-  DEBUGclass("finalizing");
+  DEBUGclass("Finalizing");
   return true;
 }
 //______________________________________________________________________________________________
 
-HWWBTagCounterObs::HWWBTagCounterObs(const TString& name,
-				     std::string BTagName, std::string BTagWP, float PtCut, /*bool UseOtherJets,*/ bool UseHardCuts, float BTagCut, std::string jetAuthor):
-TQEventObservable(name),
-m_bTagVarName(BTagName),
-m_OperatingPoint(BTagWP),
-m_ptCut(PtCut),
-//m_useOtherJets(UseOtherJets),
-m_useHardCuts(UseHardCuts),
-m_bTagCut(BTagCut),
-m_jetAuthor(jetAuthor)
-{
 
-  // nominal constructor
-  DEBUGclass("constructor called with '%s'",name.Data());
-}

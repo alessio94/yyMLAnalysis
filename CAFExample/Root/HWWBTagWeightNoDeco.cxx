@@ -12,13 +12,16 @@
 
 // EDM includes:
 #include "xAODEventInfo/EventInfo.h"
+#include "xAODBTagging/BTagging.h"
+#include "xAODBTagging/BTaggingUtilities.h"
 
 // Tool includes:
 #include "xAODBTaggingEfficiency/BTaggingEfficiencyTool.h"
 #include "xAODBTaggingEfficiency/BTaggingSelectionTool.h"
 
 // Systematics includes:
-#include "PATInterfaces/SystematicCode.h"
+//#include "PATInterfaces/SystematicCode.h"
+#include <AsgMessaging/StatusCode.h>
 #include "PATInterfaces/SystematicSet.h"
 #include "PATInterfaces/SystematicVariation.h"
 #include "PATInterfaces/CorrectionCode.h"
@@ -168,7 +171,7 @@ bool HWWBTagWeightNoDeco::initializeSF() {
           ERRORclass("BTaggingEfficiencyTool is NOT affected by systematic variation %s.", m_variationName.Data());
           return StatusCode::FAILURE;
         }
-        if (m_btagtool->applySystematicVariation(sysSet) != CP::SystematicCode::Ok) {
+        if (m_btagtool->applySystematicVariation(sysSet) != StatusCode::SUCCESS) {
           ERRORclass("Cannot configure BTaggingEfficiencyTool for systematic variation %s.", m_variationName.Data());
           return StatusCode::FAILURE;
         }
@@ -223,7 +226,7 @@ bool HWWBTagWeightNoDeco::finalizeSF() {
 
 //______________________________________________________________________________________________
 
-float HWWBTagWeightNoDeco::getBTagWeight(const xAOD::Jet* jet) const {
+float HWWBTagWeightNoDeco::getBTagWeight(const xAOD::Jet* jet) const{
   DEBUGclass("Retrieving bTag weight for jet %p.", jet);
   float retval = 1.0;
   // The selection tool will apply our minimum pt and maximum eta cuts on the jets, so don't have to (in theory...?)
@@ -277,7 +280,7 @@ double HWWBTagWeightNoDeco::getValue() const {
       continue;
     }
     const xAOD::Jet* jet = static_cast<const xAOD::Jet*>(part);
-    if (!jet->btagging()) {
+    if (!xAOD::BTaggingUtilities::getBTagging(*jet)) {
         DEBUGclass("No bTagging information available for this jet (large-R jet?). Skipping.");
         continue;
     }
@@ -291,7 +294,7 @@ double HWWBTagWeightNoDeco::getValue() const {
       continue;
     }
     const xAOD::Jet* otherjet = static_cast<const xAOD::Jet*>(otherpart);
-    if (!otherjet->btagging()) {
+    if (!xAOD::BTaggingUtilities::getBTagging(*otherjet)) {
       DEBUGclass("No bTagging information available for this jet (large-R jet?). Skipping.");
       continue;
     }
