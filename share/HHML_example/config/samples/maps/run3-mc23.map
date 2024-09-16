@@ -1,0 +1,124 @@
+###############
+### Diboson ###
+###############
+
+## qq->ZZ/Zgamma*->4l Sherpa 2.2.14
+# Nominal (qqZZ ?)
+701040 /bkg/$(channel)/$(campaign)/prompt/diboson/ZZ/llll/
+
+# Low mll, pt complement
+701070 /bkg/$(channel)/$(campaign)/NonWW/diboson/ZZ/qqZZ/4l_lowmll/
+
+## qq->ZZ->lllljj Sherpa 2.2.14 (6EW coupling)
+701000 /bkg/$(channel)/$(campaign)/NonWW/diboson/ZZ/qqZZ/4l2j/
+
+## gg->ZZ->llll Sherpa 2.2.14
+# NOTHING YET? /bkg/$(channel)/$(campaign)/NonWW/diboson/ZZ/ggZZ/4l/
+
+## WZ/Wgamma*->lllv Sherpa 2.2.14
+# Nominal
+701045 /bkg/$(channel)/$(campaign)/prompt/diboson/WZ/lvll/
+#701045 /bkg/$(channel)/$(campaign)/NonWW/diboson/WZ/3l1v/
+# Low mll, pt complement
+# NOTHING YET /bkg/$(channel)/$(campaign)/NonWW/diboson/WZ/3l1v_lowmll/
+
+## WZ->lllvjj Sherpa 2.2.14 (6EW coupling)
+#701005 /bkg/$(channel)/$(campaign)/NonWW/diboson/WZ/3l1v2j/
+701005 /bkg/$(channel)/$(campaign)/prompt/diboson/WZ/lvll_jj/
+
+## WZ->lllvjj Sherpa 2.2.14 lowMllPtMassComp
+701075 /bkg/$(channel)/$(campaign)/prompt/diboson/WZ/lvll_lowMll/
+
+###########
+### Top ###
+###########
+
+## tZ tchan trilepton MG5_aMC@NLO+Pythia8
+# NOTHING YET? /bkg/$(channel)/$(campaign)/NonWW/top/tZ/3l/
+
+## tWZ Z->ll MG5_aMC@NLO+Pythia8
+#525955 /bkg/$(channel)/$(campaign)/NonWW/top/tWZ/Zll/
+525955 /bkg/$(channel)/$(campaign)/prompt/top/tWZ/Zll/
+
+## ttW MG5_aMC@NLO+Pythia8
+# NOTHING YET? /bkg/$(channel)/$(campaign)/NonWW/top/ttW/
+
+## ttZ MG5_aMC@NLO+Pythia8
+# NOTHING YET? /bkg/$(channel)/$(campaign)/NonWW/top/ttZ/
+
+################
+### Triboson ###
+################
+
+## WWW Sherpa 2.2.14
+# 3l3v
+700866 /bkg/$(channel)/$(campaign)/NonWW/triboson/WWW/3l3v/
+
+## WWZ Sherpa 2.2.14
+# 4l2v
+# NOTHING YET? /bkg/$(channel)/$(campaign)/NonWW/triboson/WWZ/4l2v/
+
+## WZZ Sherpa 2.2.14
+# 3l3v
+700867 /bkg/$(channel)/$(campaign)/NonWW/triboson/WZZ/3l3v/
+# 5l1v
+# NOTHING YET? /bkg/$(channel)/$(campaign)/NonWW/triboson/WZZ/5l1v/
+
+## ZZZ Sherpa 2.2.14
+# 4l2v
+# NOTHING YET? /bkg/$(channel)/$(campaign)/NonWW/triboson/ZZZ/4l2v/
+# 6l0v
+# NOTHING YET? /bkg/$(channel)/$(campaign)/NonWW/triboson/ZZZ/6l0v/
+
+#############
+### Higgs ###
+#############
+
+## WH
+# (W->inc)(H->WW->lvlv)
+602523 /sig/$(channel)/$(campaign)/vh/wh/qq/hlvlv/winc/
+602525 /sig/$(channel)/$(campaign)/vh/wh/gg/hlvlv/winc/
+
+# (W->inc)(H->WW->lvqq)
+602524 /sig/$(channel)/$(campaign)/vh/wh/qq/hlvqq/winc/
+602526 /sig/$(channel)/$(campaign)/vh/wh/gg/hlvqq/winc/
+
+## qq->ZH
+# (Z->inc)(H->WW->lvlv)
+602527 /sig/$(channel)/$(campaign)/vh/zh/qq/hlvlv/zinc/
+# (Z->inc)(H->WW->lvqq)
+602528 /sig/$(channel)/$(campaign)/vh/zh/qq/hlvqq/zinc/
+
+## gg->ZH
+# (Z->inc)(H->WW->lvlv)
+602521 /sig/$(channel)/$(campaign)/vh/zh/gg/hlvlv/zinc/
+# (Z->inc)(H->WW->lvqq)
+602522 /sig/$(channel)/$(campaign)/vh/zh/gg/hlvqq/zinc/
+
+## H->tautau
+# W(->inc)H(->tautau)
+# W+
+601473 /bkg/$(channel)/$(campaign)/NonWW/Htautau/WH/winc/
+# W-
+601474 /bkg/$(channel)/$(campaign)/NonWW/Htautau/WH/winc/
+# Z(->inc)H(->tautau)
+601402 /bkg/$(channel)/$(campaign)/NonWW/Htautau/ZH/zinc/
+
+## ttH
+# Dilepton
+# NOTHING YET? /bkg/$(channel)/$(campaign)/NonWW/ttH/2l/
+
+
+# ttbar dilep
+601230 /bkg/$(channel)/$(campaign)/non_prompt/top/ttbar/dilep/
+
+
+# tW incl. antitop
+601352 /bkg/$(channel)/$(campaign)/non_prompt/top/tW/antitop/
+
+
+# tW incl. top
+601355 /bkg/$(channel)/$(campaign)/non_prompt/top/tW/top/
+
+
+

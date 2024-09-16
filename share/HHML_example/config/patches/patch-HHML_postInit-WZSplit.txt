@@ -1,0 +1,21 @@
+# -*- mode: tqfolder -*-
+
+# For nominal analysis:
+<isWZgammaStar_0j = false, isWZgammaStar_1j = false> @/.;
+@bkg/?/?/diboson/NonWW/qq {
+    $copy("WZgammaStar >> ::WZgammaStar_0j");
+    $move("WZgammaStar >> ::WZgammaStar_1j");
+    <isWZgammaStar_0j = true> @WZgammaStar_0j;
+    <isWZgammaStar_1j = true> @WZgammaStar_1j;
+}
+
+# For theory uncertainty estimation:
+<isWZgammaStar_0j = false, isWZgammaStar_1j = false> @/.;
+@bkg/?/?/diboson {
+    $copy("WZ >> ::WZ_0j");
+    $move("WZ >> ::WZ_1j");
+    <isWZgammaStar_0j = true> @WZ_0j;
+    <isWZgammaStar_1j = true> @WZ_1j;
+}
+
+

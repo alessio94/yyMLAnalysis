@@ -1,0 +1,11 @@
+!time=180
+!memory=4000
+
+!maxSampleCount=2
+
+
+/data/?/?/
+/bkg/?/?/prompt/diboson/WZ/
+/bkg/?/?/prompt/diboson/ZZ/
+/bkg/?/?/non_prompt/top/ttbar/
+/bkg/?/?/non_prompt/top/tW/
