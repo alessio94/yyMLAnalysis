@@ -86,7 +86,7 @@ def addObservables(config):
   return True
 
 if __name__ == "__main__":
-  print "Inside main of HWWLeptonIDObservable python snippet"
+  print("Inside main of HWWLeptonIDObservable python snippet")
   if not addObservables():
     print("Couldn't add HWWLeptonIDObservables!")
   else:

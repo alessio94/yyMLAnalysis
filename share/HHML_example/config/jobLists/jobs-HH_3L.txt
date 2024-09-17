@@ -6,6 +6,6 @@
 
 /data/?/?/
 /bkg/?/?/prompt/diboson/WZ/
-/bkg/?/?/prompt/diboson/ZZ/
-/bkg/?/?/non_prompt/top/ttbar/
-/bkg/?/?/non_prompt/top/tW/
+#/bkg/?/?/prompt/diboson/ZZ/
+#/bkg/?/?/non_prompt/top/ttbar/
+#/bkg/?/?/non_prompt/top/tW/

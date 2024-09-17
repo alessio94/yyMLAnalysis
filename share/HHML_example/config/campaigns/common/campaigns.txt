@@ -1,0 +1,16 @@
+name    path    latex   datapath
+c16a    c16a    2015+2016   c16a
+c16d    c16d    2017    c16d
+c16e    c16e    2018    c16e
+c16ad   [c16a+c16d] 2015-2017   [c16a+c16d]
+c16ae   [c16a+c16e] 2015+2016+2018  [c16a+c16e]
+c16de   [c16d+c16e] 2017+2018   [c16d+c16e]
+mc16	mc16	mc16	mc16
+run2,?,all   [c16a+c16d+c16e]    Full~Run~2  [c16a+c16d+c16e]
+#bbmm    bbmm    300    bbmm
+c21     c21     mc21    c21
+c23a    c23a    2022   c23a
+c23c    c23c    2023   c23c
+c23d    c23d    2023   c23d
+c23ad   [c23a+c23d] 2022+2023   [c23a+c23d]
+

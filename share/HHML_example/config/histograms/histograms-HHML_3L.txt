@@ -179,7 +179,7 @@ TH1F('tau0_pt', '', 100, 0., 300.) << ( $(tau0_pt)/1000 : 'p_{t}^{tau0} [GeV]' )
 @CutLeptons: Lep0_quality_mu, Lep1_quality_mu, Lep2_quality_mu;
 @CutLeptons: Lep0_ECIDS_e, Lep1_ECIDS_e, Lep2_ECIDS_e;
 @CutLeptons: nTaus, tau0_pt;
-@CutLeptons: nBJets85, nBJets70;
+#@CutLeptons: nBJets85, nBJets70;
 #####################################################################
 
 
@@ -195,7 +195,7 @@ TH1F('tau0_pt', '', 100, 0., 300.) << ( $(tau0_pt)/1000 : 'p_{t}^{tau0} [GeV]' )
 @AfterWZCRCuts/*: Lep0_ECIDS_e, Lep1_ECIDS_e, Lep2_ECIDS_e;
 @AfterWZCRCuts/*: Lep0Eta_zoom2, Lep1Eta_zoom2, Lep2Eta_zoom2;
 @AfterWZCRCuts/*: nTaus, tau0_pt;
-@AfterWZCRCuts/*: nBJets85, nBJets70;
+#@AfterWZCRCuts/*: nBJets85, nBJets70;
 
 
 

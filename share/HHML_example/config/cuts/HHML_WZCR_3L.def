@@ -93,8 +93,8 @@
                         <.cutExpression = "[$(lep2_passIsoTight_VarRad)]", .title="Lepton 2 VarRad_Tight">
                     +LepCutLepTight { 
                         <.cutExpression = "1.", .title="Lepton Tight quality">
-                    +JetCutBVeto85 {
-                        <.cutExpression = "$(nBJetsSubDL1dv01) == 0", .title="nBjets == 0 (b-jet veto)">
+                    #+JetCutBVeto85 {
+                    #    <.cutExpression = "$(nBJetsSubDL1dv01) == 0", .title="nBjets == 0 (b-jet veto)">
                     +MetCutMET {
                         <.cutExpression = "$(MET)/1000. > 30.", .title = "MET > 30 GeV">
                     +AfterWZCRCuts {
@@ -113,7 +113,7 @@
                     }
                 }                                          # after all cuts
                 }                                          # end Met Cuts
-                }                                          # end bJet Cut
+                #}                                          # end bJet Cut
                 }}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}         # end Lep Cuts
                 }                                          # end CutChannels
 }
