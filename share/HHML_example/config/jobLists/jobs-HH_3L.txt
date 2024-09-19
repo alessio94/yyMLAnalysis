@@ -1,10 +1,11 @@
-!time=180
-!memory=4000
+!time=10
+!memory=1000
+!queue=express
 
 !maxSampleCount=2
 
 
-/data/?/?/
+#/data/?/?/
 /bkg/?/?/prompt/diboson/WZ/
 #/bkg/?/?/prompt/diboson/ZZ/
 #/bkg/?/?/non_prompt/top/ttbar/

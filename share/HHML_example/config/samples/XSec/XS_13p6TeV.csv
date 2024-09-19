@@ -1,5 +1,4 @@
 # This file was generated on Wed Apr  3 23:49:48 2024
-
 SampleID , xsection, kfactor , filtereff , uncertainty , mh , generator , process , simulation
 
 701040, 1.1526E-03, 1, 1, --, mHIGGS, Sherpa(v.2.2.14), Sh_2214_llll, OFLCOND-MC23-SDR-RUN3-02
@@ -54,17 +53,3 @@ SampleID , xsection, kfactor , filtereff , uncertainty , mh , generator , proces
 522024, 3.6864E-05, 1.12E+00  , 1.0000E+00, --, 125, MGPy8EG, aMcAtNloPythia8EvtGen_MEN30NLO_A14N23LO_ttee, OFLCOND-MC15c-SDR-09
 522028, 3.6865E-05, 1.12E+00  , 1.0000E+00, --, 125, MGPy8EG, aMcAtNloPythia8EvtGen_MEN30NLO_A14N23LO_ttmumu, OFLCOND-MC15c-SDR-09
 522032, 3.6555E-05, 1.12E+00  , 1.0000E+00, --, 125, MGPy8EG, aMcAtNloPythia8EvtGen_MEN30NLO_A14N23LO_tttautau, OFLCOND-MC15c-SDR-09700789, 2.3360E+00, 1, 0.02502561, --, mHIGGS, Sherpa, Sh_2214_Zmumu_maxHTpTV2_BFilter, OFLCOND-MC23-SDR-RUN3-02
-700790, 2.3359E+00, 1, 0.1304359, --, mHIGGS, Sherpa, Sh_2214_Zmumu_maxHTpTV2_CFilterBVeto, OFLCOND-MC23-SDR-RUN3-02
-700791, 2.3359E+00, 1, 0.8444979, --, mHIGGS, Sherpa, Sh_2214_Zmumu_maxHTpTV2_CVetoBVeto, OFLCOND-MC23-SDR-RUN3-02
-700792, 2.3372E+00, 1, 0.0254845, --, mHIGGS, Sherpa, Sh_2214_Ztautau_maxHTpTV2_BFilter, OFLCOND-MC23-SDR-RUN3-02
-700793, 2.3371E+00, 1, 0.130384, --, mHIGGS, Sherpa, Sh_2214_Ztautau_maxHTpTV2_CFilterBVeto, OFLCOND-MC23-SDR-RUN3-02
-700794, 2.3371E+00, 1, 0.8441407, --, mHIGGS, Sherpa, Sh_2214_Ztautau_maxHTpTV2_CVetoBVeto, OFLCOND-MC23-SDR-RUN3-02
-601230, 8.5482E-02, 1, 1, --, mHIGGS, Powheg(v.2_r3631)+Pythia8(v.308)+EvtGen(v.2.1.1), PhPy8EG_A14_ttbar_hdamp258p75_dil, OFLCOND-MC23-SDR-RUN3-02
-601352, 3.9835E-02, 1, 1, --, mHIGGS, Powheg(v.2_r3960)+Pythia8(v.308)+EvtGen(v.2.1.1), PhPy8EG_tW_dyn_DR_incl_antitop, OFLCOND-MC23-SDR-RUN3-02
-601355, 3.9869E-02, 1, 1, --, mHIGGS, Powheg(v.2_r3960)+Pythia8(v.308)+EvtGen(v.2.1.1), PhPy8EG_tW_dyn_DR_incl_top, OFLCOND-MC23-SDR-RUN3-02
-700770, 1.0259E-01, 1, 1, --, mHIGGS, Sherpa(v.2.2.14), Sh_2214_eegamma, OFLCOND-MC23-SDR-RUN3-02
-700771, 1.0258E-01, 1, 1, --, mHIGGS, Sherpa(v.2.2.14), Sh_2214_mumugamma, OFLCOND-MC23-SDR-RUN3-02
-700772, 1.0262E-01, 1, 1, --, mHIGGS, Sherpa(v.2.2.14), Sh_2214_tautaugamma, OFLCOND-MC23-SDR-RUN3-02
-700773, 3.8621E-01, 1, 1, --, mHIGGS, Sherpa(v.2.2.14), Sh_2214_enugamma, OFLCOND-MC23-SDR-RUN3-02
-700774, 3.8600E-01, 1, 1, --, mHIGGS, Sherpa(v.2.2.14), Sh_2214_munugamma, OFLCOND-MC23-SDR-RUN3-02
-700775, 3.8576E-01, 1, 1, --, mHIGGS, Sherpa(v.2.2.14), Sh_2214_taunugamma, OFLCOND-MC23-SDR-RUN3-02
