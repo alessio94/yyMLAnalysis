@@ -168,7 +168,7 @@ run_flatNTuple:
 #    name: "${CI_JOB_NAME}"
 #    expire_in: 3 mos
 
-run_HHMLexample
+run_HHMLexample:
   <<: *asg
   <<: *asg_setup
   <<: *xAOD_script
