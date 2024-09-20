@@ -46,7 +46,7 @@ public:
   virtual bool initializeSF() override;
 
   HWWBTagWeight();
-  HWWBTagWeight(const TString& expression, const std::string& bTagSFName, const float minPt=20000./*bool useOtherJets*/);
+  HWWBTagWeight(const TString& expression, const std::string& bTagSFName, const float minPt=20000.);
   virtual ~HWWBTagWeight();
 
   ClassDefOverride(HWWBTagWeight,1);

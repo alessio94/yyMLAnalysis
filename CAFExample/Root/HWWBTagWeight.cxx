@@ -24,16 +24,15 @@ HWWBTagWeight::HWWBTagWeight(){
 
 //______________________________________________________________________________________________
 
-HWWBTagWeight::HWWBTagWeight(const TString& expression, const std::string& bTagSFName, const float minPtCut /*, bool useOtherJets*/):
+HWWBTagWeight::HWWBTagWeight(const TString& expression, const std::string& bTagSFName, const float minPtCut):
   HWWSFBase(expression)
 {
   // constructor with expression argument
-  DEBUGclass("constructor called with '%s'",expression.Data());
+  DEBUGclass("constructor called with '%s'",expression.Data(), minPtCut);
 
   this->setExpression(expression);
   this->m_bTagSFName = bTagSFName;
   this->m_minPtCut = minPtCut;
-  //this->m_useOtherJets = useOtherJets;
 }
 
 //______________________________________________________________________________________________

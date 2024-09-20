@@ -5,10 +5,9 @@ from CommonAnalysisHelpers import common
 
 def addObservables(config):
 
-    useOtherJets = config.getTagBoolDefault("useSubThresholdBTagWeights",True)
     mcWeightsOnly = config.getTagBoolDefault("UseMCWeightsOnly", False)
 
-    bTagWeight = HWWBTagWeight("bTagWeight", "effiSF", useOtherJets)
+    bTagWeight = HWWBTagWeight("bTagWeight", "effiSF")
 
     variationType = "xAODsfSystematics"
     variationNameMatch = "FT_EFF_"
@@ -19,7 +18,7 @@ def addObservables(config):
         bTagWeight.setUseWeight(False)
 
     if not TQObservable.addObservable(bTagWeight, "bTagWeight"):
-        WARN("failed to add observable '{:s}'".format(bTagWeight.getExpression().Data()))
+        WARN(f"failed to add observable '{bTagWeight.getExpression().Data()}'")
         return False
 
     return True

@@ -1,5 +1,5 @@
-from QFramework import *
-from ROOT import *
+import QFramework
+import ROOT
 import sys
 import array
 ''' initialize and configure HWWLeptonIDHelper,
@@ -14,7 +14,7 @@ def getListOfTStrings(list_of_python_strings):
 
 def vectorize(type, python_list):
   # make an std::vector out of a python list, return it. needed to call c++ functions taking vectors as arguments
-  vec = vector(type)()
+  vec = ROOT.vector(type)()
   if type == "TString*":
     for el in getListOfTStrings(python_list): vec.push_back(el)
   else:
@@ -521,12 +521,12 @@ def setElectronID(lepIDHelper, selection_key):
     operator_str = list_of_req[3]
     if len(list_of_req) == 4:
       # valid-everywhere cut
-      lepIDHelper.addCut_ElectronID(TString(var), TString(type_str), TString(auxvar), cutvalue, TString(operator_str))
+      lepIDHelper.addCut_ElectronID(ROOT.TString(var), ROOT.TString(type_str), ROOT.TString(auxvar), cutvalue, ROOT.TString(operator_str))
     elif len(list_of_req) == 7:
       # pt-dependent cut
       ptcut_low = list_of_req[5]
       ptcut_up = list_of_req[6]
-      lepIDHelper.addCut_ElectronID(TString(var), TString(type_str), TString(auxvar), cutvalue, TString(operator_str), True, ptcut_low, ptcut_up)
+      lepIDHelper.addCut_ElectronID(ROOT.TString(var), ROOT.TString(type_str), ROOT.TString(auxvar), cutvalue, ROOT.TString(operator_str), True, ptcut_low, ptcut_up)
     else:
       BREAK("ERROR in HWWLepIDHelper :: requirement list should be either of length 4 or length 7. Check your id-electron selection lists")
 
@@ -543,12 +543,12 @@ def setElectronAntiID(lepIDHelper, selection_key):
     operator_str = list_of_req[3]
     if len(list_of_req) == 4:
       # valid-everywhere cut
-      lepIDHelper.addCut_ElectronAntiID(TString(var), TString(type_str), TString(auxvar), cutvalue, TString(operator_str))
+      lepIDHelper.addCut_ElectronAntiID(ROOT.TString(var), ROOT.TString(type_str), ROOT.TString(auxvar), cutvalue, ROOT.TString(operator_str))
     elif len(list_of_req) == 7:
       # pt-dependent cut
       ptcut_low = list_of_req[5]
       ptcut_up = list_of_req[6]
-      lepIDHelper.addCut_ElectronAntiID(TString(var), TString(type_str), TString(auxvar), cutvalue, TString(operator_str), True, ptcut_low, ptcut_up)
+      lepIDHelper.addCut_ElectronAntiID(ROOT.TString(var), ROOT.TString(type_str), ROOT.TString(auxvar), cutvalue, ROOT.TString(operator_str), True, ptcut_low, ptcut_up)
     else:
       BREAK("ERROR in HWWLepIDHelper :: requirement list should be either of length 4 or length 7. Check your antiid-electron selection lists")
 
@@ -565,12 +565,12 @@ def setMuonID(lepIDHelper, selection_key):
     operator_str = list_of_req[3]
     if len(list_of_req) == 4:
       # valid-everywhere cut
-      lepIDHelper.addCut_MuonID(TString(var), TString(type_str), TString(auxvar), cutvalue, TString(operator_str))
+      lepIDHelper.addCut_MuonID(ROOT.TString(var), ROOT.TString(type_str), ROOT.TString(auxvar), cutvalue, ROOT.TString(operator_str))
     elif len(list_of_req) == 7:
       # pt-dependent cut
       ptcut_low = list_of_req[5]
       ptcut_up = list_of_req[6]
-      lepIDHelper.addCut_MuonID(TString(var), TString(type_str), TString(auxvar), cutvalue, TString(operator_str), True, ptcut_low, ptcut_up)
+      lepIDHelper.addCut_MuonID(ROOT.TString(var), ROOT.TString(type_str), ROOT.TString(auxvar), cutvalue, ROOT.TString(operator_str), True, ptcut_low, ptcut_up)
     else:
       BREAK("ERROR in HWWLepIDHelper :: requirement list should be either of length 4 or length 7. Check your id-muon selection lists")
 
@@ -587,12 +587,12 @@ def setMuonAntiID(lepIDHelper, selection_key):
     operator_str = list_of_req[3]
     if len(list_of_req) == 4:
       # valid-everywhere cut
-      lepIDHelper.addCut_MuonAntiID(TString(var), TString(type_str), TString(auxvar), cutvalue, TString(operator_str))
+      lepIDHelper.addCut_MuonAntiID(ROOT.TString(var), ROOT.TString(type_str), ROOT.TString(auxvar), cutvalue, ROOT.TString(operator_str))
     elif len(list_of_req) == 7:
       # pt-dependent cut
       ptcut_low = list_of_req[5]
       ptcut_up = list_of_req[6]
-      lepIDHelper.addCut_MuonAntiID(TString(var), TString(type_str), TString(auxvar), cutvalue, TString(operator_str), True, ptcut_low, ptcut_up)
+      lepIDHelper.addCut_MuonAntiID(ROOT.TString(var), ROOT.TString(type_str), ROOT.TString(auxvar), cutvalue, ROOT.TString(operator_str), True, ptcut_low, ptcut_up)
     else:
       BREAK("ERROR in HWWLepIDHelper :: requirement list should be either of length 4 or length 7. Check your antiid-muon selection lists")
 
