@@ -9,7 +9,3 @@
 #.path = "bkg/$(channel)/$(campaign)/", .name = "total bkg", .title = "$total bkg$", .isBackground = true
 .path = "|"
 .path = "data/$(channel)/$(campaign)", .name = "data", .title = "$data$", .isData = true
-
-
-
-
