@@ -1,0 +1,268 @@
+# -*- mode: tqfolder -*-
+
+# # Copy our Z+jets folder (i.e., fakes) mufake and efake subfolders
+# # c16a:
+# $copy("bkg/trilep/c16a/Zjets        >> bkg/trilep/c16a/Zjets/::mufake");
+# $copy("bkg/trilep/c16a/Zjets/mufake >> bkg/trilep/c16a/Zjets/::efake");
+# # c16d:
+# $copy("bkg/trilep/c16d/Zjets        >> bkg/trilep/c16d/Zjets/::mufake");
+# $copy("bkg/trilep/c16d/Zjets/mufake >> bkg/trilep/c16d/Zjets/::efake");
+# # c16e:
+# $copy("bkg/trilep/c16e/Zjets        >> bkg/trilep/c16e/Zjets/::mufake");
+# $copy("bkg/trilep/c16e/Zjets/mufake >> bkg/trilep/c16e/Zjets/::efake");
+
+# # Delete the remaining Z+jets folders
+# # c16a:
+# $delete("bkg/trilep/c16a/Zjets!");
+# # c16d:
+# $delete("bkg/trilep/c16d/Zjets!");
+# # c16e:
+# $delete("bkg/trilep/c16e/Zjets!");
+
+# ========================================================================================================================================================================== #
+# NOTE (2020/10/22): the following *SHOULD NOT BE USED* if running the V22 fakes implementation at the same time
+# Instead, it should be used as validation against the new implementation
+
+# # Same as above, but for mFakes
+# # c16a:
+# $copy(  "bkg/trilep/c16a/ddFakes/mFakes/mc/Zjets        >> bkg/trilep/c16a/ddFakes/mFakes/mc/Zjets::mufake");
+# $copy(  "bkg/trilep/c16a/ddFakes/mFakes/mc/Zjets/mufake >> bkg/trilep/c16a/ddFakes/mFakes/mc/Zjets::efake");
+# $delete("bkg/trilep/c16a/ddFakes/mFakes/mc/Zjets!");
+# # c16d:
+# $copy(  "bkg/trilep/c16d/ddFakes/mFakes/mc/Zjets        >> bkg/trilep/c16d/ddFakes/mFakes/mc/Zjets::mufake");
+# $copy(  "bkg/trilep/c16d/ddFakes/mFakes/mc/Zjets/mufake >> bkg/trilep/c16d/ddFakes/mFakes/mc/Zjets::efake");
+# $delete("bkg/trilep/c16d/ddFakes/mFakes/mc/Zjets!");
+# # c16e:
+# $copy(  "bkg/trilep/c16e/ddFakes/mFakes/mc/Zjets        >> bkg/trilep/c16e/ddFakes/mFakes/mc/Zjets::mufake");
+# $copy(  "bkg/trilep/c16e/ddFakes/mFakes/mc/Zjets/mufake >> bkg/trilep/c16e/ddFakes/mFakes/mc/Zjets::efake");
+# $delete("bkg/trilep/c16e/ddFakes/mFakes/mc/Zjets!");
+
+# # Same as above, but for eFakes
+# # c16a:
+# $copy(  "bkg/trilep/c16a/ddFakes/eFakes/mc/Zjets        >> bkg/trilep/c16a/ddFakes/eFakes/mc/Zjets::mufake");
+# $copy(  "bkg/trilep/c16a/ddFakes/eFakes/mc/Zjets/mufake >> bkg/trilep/c16a/ddFakes/eFakes/mc/Zjets::efake");
+# $delete("bkg/trilep/c16a/ddFakes/eFakes/mc/Zjets!");
+# # c16d:
+# $copy(  "bkg/trilep/c16d/ddFakes/eFakes/mc/Zjets        >> bkg/trilep/c16d/ddFakes/eFakes/mc/Zjets::mufake");
+# $copy(  "bkg/trilep/c16d/ddFakes/eFakes/mc/Zjets/mufake >> bkg/trilep/c16d/ddFakes/eFakes/mc/Zjets::efake");
+# $delete("bkg/trilep/c16d/ddFakes/eFakes/mc/Zjets!");
+# # c16e:
+# $copy(  "bkg/trilep/c16e/ddFakes/eFakes/mc/Zjets        >> bkg/trilep/c16e/ddFakes/eFakes/mc/Zjets::mufake");
+# $copy(  "bkg/trilep/c16e/ddFakes/eFakes/mc/Zjets/mufake >> bkg/trilep/c16e/ddFakes/eFakes/mc/Zjets::efake");
+# $delete("bkg/trilep/c16e/ddFakes/eFakes/mc/Zjets!");
+
+# # Same as above, but for top (zenri and zdefi)
+# # c16a:
+# $copy(  "bkg/trilep/c16a/top       >> bkg/trilep/c16a/top::zenri");
+# $copy(  "bkg/trilep/c16a/top/zenri >> bkg/trilep/c16a/top::zdefi");
+# $delete("bkg/trilep/c16a/top/singletop/Wt!");
+# $delete("bkg/trilep/c16a/top/ttbar!");
+# $delete("bkg/trilep/c16a/top/zenri/ttV!");
+# $delete("bkg/trilep/c16a/top/zdefi/ttV!");
+# # c16d:
+# $copy(  "bkg/trilep/c16d/top       >> bkg/trilep/c16d/top::zenri");
+# $copy(  "bkg/trilep/c16d/top/zenri >> bkg/trilep/c16d/top::zdefi");
+# $delete("bkg/trilep/c16d/top/singletop/Wt!");
+# $delete("bkg/trilep/c16d/top/ttbar!");
+# $delete("bkg/trilep/c16d/top/zenri/ttV!");
+# $delete("bkg/trilep/c16d/top/zdefi/ttV!");
+# # c16e:
+# $copy(  "bkg/trilep/c16e/top       >> bkg/trilep/c16e/top::zenri");
+# $copy(  "bkg/trilep/c16e/top/zenri >> bkg/trilep/c16e/top::zdefi");
+# $delete("bkg/trilep/c16e/top/singletop/Wt!");
+# $delete("bkg/trilep/c16e/top/ttbar!");
+# $delete("bkg/trilep/c16e/top/zenri/ttV!");
+# $delete("bkg/trilep/c16e/top/zdefi/ttV!");
+
+# ========================================================================================================================================================================== #
+
+# Default everything to not be V+jets, V+gamma, Z+jets, Z+gamma
+<isVjets = false, isZjets = false, isVgamma = false, isZgamma = false> @ sig,bkg,data;
+# Then set these tags on specific subfolders
+<isVjets = true>  @ /bkg/?/?/Zjets,/bkg/?/?/Wjets;
+<isZjets = true>  @ /bkg/?/?/Zjets;
+<isVgamma = true> @ /bkg/?/?/Vgamma;
+<isZgamma = true> @ /bkg/?/?/Vgamma/Zgamma;
+
+# As ddFakes/mFakes (and previously ddFakes/eFakes) has a data subfolder, let's explicitly re-set these tags
+<isVjets = true>  @ /bkg/?/?/ddFakes/?/Zjets,/bkg/?/?/ddFakes/?/Wjets;
+<isZjets = true>  @ /bkg/?/?/ddFakes/?/Zjets;
+<isVgamma = true> @ /bkg/?/?/ddFakes/?/Vgamma;
+<isZgamma = true> @ /bkg/?/?/ddFakes/?/Vgamma/Zgamma;
+
+# ========================================================================================================================================================================== #
+# Set our channel and candidate here
+<channel = "trilep", efake  = false, mufake = false, fakelep = -1, topfakelep = -1, isZjets = false, isZgamma = false, isTopFake = false, cand = "HH3L"> @ ?/trilep;
+
+#<channel = "trilep", efake = true,  mufake = false, fakelep = 6, cand = "EE"> @ bkg/?/?/non_prompt/top/ttbar/;  # my line
+#<channel = "trilep", efake = false, mufake = true,  fakelep = 8, cand = "MM"> @ bkg/?/?/non_prompt/top/ttbar/;  # my line
+
+<channel = "trilep", efake = true,  mufake = false, fakelep = 6, cand = "WH"> @ bkg/?/?/ddFakes/eFakes;
+<channel = "trilep", efake = false, mufake = true,  fakelep = 8, cand = "WH"> @ bkg/?/?/ddFakes/mFakes;
+<channel = "trilep", efake  = true, fakelep = 6, cand = "WH"> @ bkg/?/?/ddFakes/eFakes/mc/Zjets/efake;
+<channel = "trilep", mufake = true, fakelep = 8, cand = "WH"> @ bkg/?/?/ddFakes/eFakes/mc/Zjets/mufake;
+<channel = "trilep", mufake = true, fakelep = 8, cand = "WH"> @ bkg/?/?/ddFakes/mFakes/mc/Zjets/mufake;
+<channel = "trilep", efake  = true, fakelep = 6, cand = "WH"> @ bkg/?/?/ddFakes/mFakes/mc/Zjets/efake;
+# ========================================================================================================================================================================== #
+
+<matchesSTXSbin = true> @ /.;
+
+#### Use PDF4LHC for all Higgs samples possible (not currently supported for MadGraph) ####
+# ggF signal samples: for Powheg, use PDF4LHC-NNLO weight (name "nnlops-nominal-pdflhc")
+<weightIndex = 151> @ /sig/?/?/ggf/PowPy8,/sig/?/?/ggF/PoPy8;
+<weightIndex = 179> @ /sig/?/?/ggf/PowH7,/sig/?/?/ggF/PoHw7;
+<weightIndex = 151> @ /sig/?/?/htt/ggf;
+<xAODCutBookKeeperContainer="StreamAOD", xAODCutBookKeeperName="AllExecutedEvents_NonNominalMCWeight_151"> @ /sig/?/?/ggf/PowPy8,/sig/?/?/ggF/PoPy8;
+<xAODCutBookKeeperContainer="StreamAOD", xAODCutBookKeeperName="AllExecutedEvents_NonNominalMCWeight_179"> @ /sig/?/?/ggf/PowH7,/sig/?/?/ggF/PoHw7;
+<xAODCutBookKeeperContainer="StreamAOD", xAODCutBookKeeperName="AllExecutedEvents_NonNominalMCWeight_151"> @ /sig/?/?/htt/ggf;
+# VBF samples
+<weightIndex = 109> @ /sig/?/?/vbf/PowPy8;
+<weightIndex = 104> @ /sig/?/?/vbf/PowH7;
+<weightIndex = 109> @ /sig/?/?/htt/vbf;
+<xAODCutBookKeeperContainer="StreamAOD", xAODCutBookKeeperName="AllExecutedEvents_NonNominalMCWeight_109"> @ /sig/?/?/vbf/PowPy8;
+<xAODCutBookKeeperContainer="StreamAOD", xAODCutBookKeeperName="AllExecutedEvents_NonNominalMCWeight_104"> @ /sig/?/?/vbf/PowH7;
+<xAODCutBookKeeperContainer="StreamAOD", xAODCutBookKeeperName="AllExecutedEvents_NonNominalMCWeight_109"> @ /sig/?/?/htt/vbf;
+# VH samples
+<weightIndex = 109> @ /sig/?/?/vh/*/345*_s,/sig/?/?/VH/*/345*_s;
+<weightIndex = 109> @ /sig/?/?/vh/*/346*_s,/sig/?/?/VH/*/346*_s;
+<weightIndex = 109> @ /sig/?/?/htt/vh;
+<xAODCutBookKeeperContainer="StreamAOD", xAODCutBookKeeperName="AllExecutedEvents_NonNominalMCWeight_109"> @ /sig/?/?/vh/*/345*_s,/sig/?/?/VH/*/345*_s;
+<xAODCutBookKeeperContainer="StreamAOD", xAODCutBookKeeperName="AllExecutedEvents_NonNominalMCWeight_109"> @ /sig/?/?/vh/*/346*_s,/sig/?/?/VH/*/346*_s;
+<xAODCutBookKeeperContainer="StreamAOD", xAODCutBookKeeperName="AllExecutedEvents_NonNominalMCWeight_109"> @ /sig/?/?/htt/vh;
+# ttH samples
+<weightIndex = 109> @ /sig/?/?/ttH;
+<xAODCutBookKeeperContainer="StreamAOD", xAODCutBookKeeperName="AllExecutedEvents_NonNominalMCWeight_109"> @ /sig/?/?/ttH;
+
+# EW WW MadGraph sample, use NNPDF nominal weight
+<weightIndex = 136> @ /bkg/?/?/EWWW_MadPy8;
+<weightIndex = 136> @ /bkg/?/?/diboson/WW/qq/VBS/EW/MadGraph;
+<xAODCutBookKeeperContainer="StreamAOD", xAODCutBookKeeperName="AllExecutedEvents_NonNominalMCWeight_136"> @ /sig/?/?/EWWW_MadPy8;
+<xAODCutBookKeeperContainer="StreamAOD", xAODCutBookKeeperName="AllExecutedEvents_NonNominalMCWeight_136"> @ /sig/?/?/diboson/WW/qq/VBS/EW/MadGraph;
+
+<isTopZenri = false> @ /.;
+<isTopZenri = true>  @ /bkg/?/?/top/zenri;
+<isTopZdefi = false> @ /.;
+<isTopZdefi = true>  @ /bkg/?/?/top/zdefi;
+
+<wildcarded = true> @ ?/?;   # we usually don't care about the channel-part of the path
+<wildcarded = true> @ ?/?/?; # we usually don't care about the campaign-parts of the path
+
+<isData = false, isMC = true>  @ bkg,sig; # for data,revert the data/MC tags
+<isData = true,  isMC = false> @ data;    # for data,revert the data/MC tags
+<isData = true,  isMC = false> @ /bkg/?/?/ddFakes/mFakes/data; # for data,revert the data/MC tags
+<isData = true,  isMC = false> @ /bkg/?/?/ddFakes/eFakes/data; # for data,revert the data/MC tags
+
+# ========================================================================================================================================================================== #
+# Indicate whether to apply mc weights here
+<usemcweights = true>  @ sig,bkg; # we want to apply mc event weights on MC samples
+<usemcweights = false> @ data;    # we don't want to apply any weights on data samples
+<usemcweight = false>  @ /bkg/?/?/ddFakes/?/data; # for data, revert the data/MC tags
+# ========================================================================================================================================================================== #
+
+<isDataDriven = false> @ sig,bkg,data;
+<isDataDriven = true, p4suffix = ""> @ /bkg/?/?/ddFakes;
+
+<isMuFake = false> @ /.;
+<isElFake = false> @ /.;
+<isMuFake = true>  @ /bkg/?/?/ddFakes/mFakes/;
+<isElFake = true>  @ /bkg/?/?/ddFakes/eFakes/;
+
+<isZjets = true> @ /bkg/?/?/ddFakes/eFakes/mc/Zjets;
+<isZjets = true> @ /bkg/?/?/ddFakes/mFakes/mc/Zjets;
+<isVjets = true> @ /bkg/?/?/ddFakes/mFakes/mc/Zjets;
+<isVjets = true> @ /bkg/?/?/ddFakes/eFakes/mc/Zjets;
+
+<proctype = "sig"> @ /sig/?/?/vh/wh;
+<proctype = "othersig"> @ /sig/?/?/vh/zh;
+<proctype = "othersig"> @ /sig/?/?/vh/tautau;
+<proctype = "othersig"> @ /sig/?/?/htt;
+<proctype = "othersig"> @ /sig/?/?/ttH;
+<proctype = "othersig"> @ /sig/?/?/ggf;
+<proctype = "othersig"> @ /sig/?/?/vbf;
+# <proctype = "top"> @ /bkg/?/?/top/zenri/singletop/Wt;
+<proctype = "topzdom"> @ /bkg/?/?/top/zenri;
+<proctype = "topzdep"> @ /bkg/?/?/top/zdefi;
+# <proctype = "topprompt"> @ bkg/?/?/top/zenri/ttV;
+# <proctype = "topprompt"> @ bkg/?/?/top/zenri/singletop/Zt;
+# <proctype = "topprompt"> @ bkg/?/?/top/zenri/singletop/schan;
+# <proctype = "topprompt"> @ bkg/?/?/top/zenri/singletop/tchan;
+# <proctype = "topmufake"> @ /bkg/?/?/top/zenri/ttbarMufake;
+# <proctype = "topmufake"> @ /bkg/?/?/top/zenri/singletop/WtMufake;
+# <proctype = "topefake"> @ /bkg/?/?/top/zenri/ttbarEfake;
+# <proctype = "topefake"> @ /bkg/?/?/top/zenri/singletop/WtEfake;
+<proctype = "ttbar"> @ /bkg/?/?/top/ttbar/PoPy8;
+<proctype = "ttbar_highstat"> @ /bkg/?/c16a/top/ttbar/ttbar_highstat;
+<proctype = "singletop"> @ /bkg/?/?/top/singletop;
+<proctype = "ttV"> @ /bkg/?/?/top/ttV;
+<proctype = "WZ"> @ /bkg/?/?/diboson/NonWW/qq/WZgammaStar;
+<proctype = "WZ_highstat"> @ /bkg/?/?/diboson/NonWW/qq/WZgammaStar/WZ_highstat;
+<proctype = "ZZ"> @ /bkg/?/?/diboson/NonWW/qq/ZZ;
+<proctype = "WW"> @ /bkg/?/?/diboson/WW;
+<proctype = "VVV"> @ /bkg/?/?/triboson;
+<proctype = "Zjets_efakes"> @ /bkg/?/?/Zjets/efake;
+<proctype = "Zjets_mufakes"> @ /bkg/?/?/Zjets/mufake;
+<proctype = "Zgamma"> @ /bkg/?/?/Vgamma/Zgamma;
+<proctype = "Wgamma"> @ /bkg/?/?/Vgamma/Wgamma;
+<proctype = "Wjets"> @ /bkg/?/?/Wjets;
+<proctype = "MuFakesMC"> @ /bkg/?/?/ddFakes/mFakes/mc;
+# <proctype = "MuFakes_WZ"> @ /bkg/?/?/ddFakes/mFakes/mc/diboson/NonWW/WZgammaStar;
+# <proctype = "MuFakes_ZZ"> @ /bkg/?/?/ddFakes/mFakes/mc/diboson/NonWW/ZZ;
+# <proctype = "MuFakes_VVV"> @ /bkg/?/?/ddFakes/mFakes/mc/triboson;
+# <proctype = "MuFakes_top"> @ /bkg/?/?/ddFakes/mFakes/mc/top;
+# <proctype = "MuFakes_Zgamma"> @ /bkg/?/?/ddFakes/mFakes/mc/Zgamma;
+# <proctype = "MuFakes_Wgamma"> @ /bkg/?/?/ddFakes/mFakes/mc/Wgamma;
+# <proctype = "MuFakes_Zjets"> @ /bkg/?/?/ddFakes/mFakes/mc/Zjets;
+# <proctype = "MuFakes_Wjets"> @ /bkg/?/?/ddFakes/mFakes/mc/Wjets;
+<proctype = "ElFakesMC"> @ /bkg/?/?/ddFakes/eFakes/mc;
+# <proctype = "ElFakes_WZ"> @ /bkg/?/?/ddFakes/eFakes/mc/diboson/NonWW/WZgammaStar;
+# <proctype = "ElFakes_ZZ"> @ /bkg/?/?/ddFakes/eFakes/mc/diboson/NonWW/ZZ;
+# <proctype = "ElFakes_VVV"> @ /bkg/?/?/ddFakes/eFakes/mc/triboson;
+# <proctype = "ElFakes_top"> @ /bkg/?/?/ddFakes/eFakes/mc/top;
+# <proctype = "ElFakes_Zjets"> @ /bkg/?/?/ddFakes/eFakes/mc/Zjets;
+# <proctype = "ElFakes_Wjets"> @ /bkg/?/?/ddFakes/eFakes/mc/Wjets;
+# <proctype = "ElFakes_Zgamma"> @ /bkg/?/?/ddFakes/eFakes/mc/Zgamma;
+# <proctype = "ElFakes_Wgamma"> @ /bkg/?/?/ddFakes/eFakes/mc/Wgamma;
+<proctype = "MuFakesData"> @ /bkg/?/?/ddFakes/mFakes/data;
+<proctype = "ElFakesData"> @ /bkg/?/?/ddFakes/eFakes/data;
+
+<proctype = "data"> @ /data/trilep;
+<name = "data"> @ /bkg/?/?/ddFakes/mFakes/data;
+<name = "data"> @ /bkg/?/?/ddFakes/eFakes/data;
+<name = "data"> @ /data/trilep;
+
+# proctype not found, try with label
+
+<label = "sig"> @ /sig/?/?/vh/wh;
+<label = "othersig"> @ /sig/?/?/vh/zh;
+<label = "othersig"> @ /sig/?/?/vh/tautau;
+<label = "othersig"> @ /sig/?/?/ggf;
+<label = "othersig"> @ /sig/?/?/vbf;
+<label = "othersig"> @ /sig/?/?/htt;
+<label = "othersig"> @ /sig/?/?/ttH;
+
+<label = "ttbar"> @ /bkg/?/?/top/ttbar/PoPy8;
+<label = "ttbar_highstat"> @ /bkg/?/c16a/top/ttbar/ttbar_highstat;
+<label = "singletop"> @ /bkg/?/?/top/singletop;
+<label = "ttV"> @ /bkg/?/?/top/ttV;
+<label = "WZ"> @ /bkg/?/?/diboson/NonWW/qq/WZgammaStar/WZ;
+<label = "WZ_highstat"> @ /bkg/?/?/diboson/NonWW/qq/WZgammaStar/WZ_highstat;
+<label = "ZZ"> @ /bkg/?/?/diboson/NonWW/?/ZZ;
+<label = "WW"> @  /bkg/?/?/diboson/WW;
+<label = "VVV"> @ /bkg/?/?/triboson;
+<label = "Zjets_efakes"> @ /bkg/?/?/ddFakes/eFakes/mc/Zjets;
+<label = "Zjets_mufakes"> @ /bkg/?/?/Zjets/mufake;
+<label = "Zgamma"> @ /bkg/?/?/Vgamma/Zgamma;
+<label = "Wgamma"> @ /bkg/?/?/Vgamma/Wgamma;
+<label = "Wjets"> @ /bkg/?/?/Wjets;
+<label = "dd_mufakes"> @ /bkg/?/?/ddFakes/mFakes/data;
+
+<label = "data"> @ /data/trilep;
+
+# Add tags to separate campaigns
+<isc16a = false> @/?/?/?/;
+<isc16d = false> @/?/?/?/;
+<isc16e = false> @/?/?/?/;
+<isc16a = true>  @/?/?/c16a/;
+<isc16d = true>  @/?/?/c16d/;
+<isc16e = true>  @/?/?/c16e/;
+

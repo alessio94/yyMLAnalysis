@@ -15,7 +15,7 @@ variables:
 # job defaults
 
 .asg: &asg
-  image: gitlab-registry.cern.ch/atlas/athena/analysisbase:21.2.271
+  image: gitlab-registry.cern.ch/atlas/athena/analysisbase:25.2.27
   tags:
     - cvmfs
 
@@ -23,8 +23,6 @@ variables:
   image: gitlab-registry.cern.ch/atlas-caf/cafcore/standalone-base:root6.22.06-python3.8
   tags:
     - cvmfs
-  before_script:
-    - sed -i 's|CAFANALYSISBASE/../output|CAFANALYSISBASE/run|' setup/setupLocal.sh
 
 .asg_setup: &asg_setup
   before_script:
@@ -59,15 +57,25 @@ variables:
     - analyze.py flatNTuple/config/master/analyze-flatNTuple-Example.cfg --snowflakeThresh 2 --options lineUpdates=false consoleWidth=160
     - visualize.py flatNTuple/config/master/visualize-flatNTuple-Example.cfg --snowflakeThresh 0
 
-.xAOD_script: &xAOD_script
+#.xAOD_script: &xAOD_script
+#  script:
+#    - source build/setupAnalysis.sh
+#    - mkdir run
+#    - cd run
+#    - prepare.py xAOD/config/master/prepare-xAOD-Example.cfg --snowflakeThresh 0
+#    - initialize.py xAOD/config/master/initialize-xAOD-Example.cfg --snowflakeThresh 0 --options lineUpdates=false consoleWidth=160
+#    - analyze.py xAOD/config/master/analyze-xAOD-Example.cfg --snowflakeThresh 3 --options lineUpdates=false consoleWidth=160 maxEvents=100
+#    - visualize.py xAOD/config/master/visualize-xAOD-Example.cfg --snowflakeThresh 0
+
+.HHMLexample_script: &HHMLexample_script
   script:
     - source build/setupAnalysis.sh
     - mkdir run
     - cd run
-    - prepare.py xAOD/config/master/prepare-xAOD-Example.cfg --snowflakeThresh 0
-    - initialize.py xAOD/config/master/initialize-xAOD-Example.cfg --snowflakeThresh 0 --options lineUpdates=false consoleWidth=160
-    - analyze.py xAOD/config/master/analyze-xAOD-Example.cfg --snowflakeThresh 3 --options lineUpdates=false consoleWidth=160 maxEvents=100
-    - visualize.py xAOD/config/master/visualize-xAOD-Example.cfg --snowflakeThresh 0
+    - prepare.py HHML_example/config/master/prepare-HHML_3L.cfg --snowflakeThresh 0
+    - initialize.py HHML_example/config/master/initialize-HHML_3L.cfg --snowflakeThresh 0 --options lineUpdates=false consoleWidth=160
+    - analyze.py HHML_example/config/master/analyze-HHML_3L.cfg --snowflakeThresh 3 --options lineUpdates=false consoleWidth=160 maxEvents=100
+    - visualize.py HHML_example/config/master/visualize-HHML_3L.cfg --snowflakeThresh 0
 
 .statistics_minimal_script: &statistics_minimal_script
   script:
@@ -146,10 +154,24 @@ run_flatNTuple:
     name: "${CI_JOB_NAME}"
     expire_in: 3 mos
 
-run_xAOD:
+#run_xAOD:
+#  <<: *asg
+#  <<: *asg_setup
+#  <<: *xAOD_script
+#  stage: run
+#  dependencies:
+#    - asg_compile
+#  artifacts:
+#    paths:
+#      - run/sampleFolders
+#      - run/results
+#    name: "${CI_JOB_NAME}"
+#    expire_in: 3 mos
+
+run_HHMLexample:
   <<: *asg
   <<: *asg_setup
-  <<: *xAOD_script
+  <<: *HHMLexample_script
   stage: run
   dependencies:
     - asg_compile

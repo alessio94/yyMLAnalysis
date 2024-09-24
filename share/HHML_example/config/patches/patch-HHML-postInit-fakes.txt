@@ -1,0 +1,24 @@
+# -*- mode: tqfolder -*-
+
+# Some miscellaneous tags for fakes
+<isDataDrivenFakes = false>               @ sig,bkg,data;
+<isDataDrivenFakes = true>                @ /bkg/?/?/ddFakes;
+<isMuFake = false>                        @ sig,bkg,data;
+<isElFake = false>                        @ sig,bkg,data;
+<isMuFake = true, p4suffix = "">          @ /bkg/?/?/ddFakes/mFakes/;
+<isElFake = true>                         @ /bkg/?/?/ddFakes/eFakes/;
+
+# As mFakes has a data subfolder, let's explicitly re-set these tags
+<isData = true, isMC = false> @ /bkg/?/?/ddFakes/mFakes/data; # for data, revert the data/MC tags
+<usemcweight = false> @ /bkg/?/?/ddFakes/mFakes/data; # Also don't want to apply any weights on data samples
+<isVjets = true>  @ /bkg/?/?/ddFakes/eFakes/Zjets,/bkg/?/?/ddFakes/eFakes/Wjets;
+<isZjets = true>  @ /bkg/?/?/ddFakes/eFakes/Zjets;
+<isVgamma = true> @ /bkg/?/?/ddFakes/eFakes/Vgamma;
+<isZgamma = true> @ /bkg/?/?/ddFakes/eFakes/Vgamma/Zgamma;
+
+# Candidate-related tags
+#ATTENTION: the following line effectively prevents 4-vector systematics to be evaluated for eFakes which is not clear (yet) if they should be neglected! (hence, commented out for now in favor of the reduced variant just below. For mFakes this should be fine as it's mainly data events, so effects of systematic variations on the EW subtraction (from MC) will be inherently small
+#<channel = "trilep", efake = true,  mufake = false, fakelep = 6, cand = "HH3L">     @ ?/trilep/?/ddFakes/eFakes;
+<efake = true,  mufake = false, fakelep = 6>     @ ?/trilep/?/ddFakes/eFakes;
+<channel = "trilep", efake = false, mufake = true,  fakelep = 8, cand = "CorrHH3L"> @ ?/trilep/?/ddFakes/mFakes;
+

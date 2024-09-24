@@ -1,0 +1,37 @@
+
+#--------------------------------
+# signal samples
+
+#--------------------------------
+# background samples
+
+## WZ/Wgamma*->lllv Sherpa 2.2.14
+701045 $*_s*
+
+## WZ->lllvjj Sherpa 2.2.14 (6EW coupling)
+#701005 $*_s*
+
+## WZ lowMllPtComp
+#701075 $*_s*
+
+## ttbar dilep
+601230 $*_s*
+
+# ZZ
+701040 $*_s*
+
+## tW incl. antitop
+#601352 $*_s*
+
+## tW incl. top
+#601355 $*_s*
+
+
+
+
+
+
+
+## tWZ Z->ll MG5_aMC@NLO+Pythia8
+#525955 $*_s*
+
