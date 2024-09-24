@@ -34,7 +34,7 @@ What is the name of the observable you would like to create? MjjMaxObservable
 Please specify the type of observable, choose  from {Event,Tree,<empty>}: Event
 Do you want to create a vector observable that can return multiple values? (y/N) N
 Should your class have an 'expression' member variable? (y/N) N
-Are you planning to provide a factory for your observable class? (y/N)N
+Are you planning to provide a factory for your observable class? (y/N) N
 
 ```
 After providing the answers the wizard will summarize the made choices and asks for confirmation to build the observable:
