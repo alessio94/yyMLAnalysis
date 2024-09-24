@@ -1,29 +1,11 @@
 .path = "||"
-#.path = "sig/$(channel)/$(campaign)/vh/wh/", .name = "WH", .title="Signal (WH)" , .isSignal = true
-#.path = "|"
 .path = "bkg/$(channel)/$(campaign)/prompt/diboson/WZ/", .name = "WZ_lllv", .title = "$WZ\rightarrow lllv$", .isBackground = true
 .path = "|"
-#.path = "bkg/$(channel)/$(campaign)/non_prompt/top/ttbar/", .name = "ttbar", .title = "$t\bar{t}$", .isBackground = true
-#.path = "|"
-#.path = "bkg/$(channel)/$(campaign)/prompt/diboson/ZZ/", .name = "ZZ_llll", .title = "$ZZ\rightarrow llll$", .isBackground = true
-#.path = "|"
-#.path = "bkg/$(channel)/$(campaign)/prompt/diboson/WZ/3l1v2j/", .name = "WZ_lllvjj", .title = "$WZ_lllvjj$", .isBackground = true
-#.path = "|"
-#.path = "bkg/$(channel)/$(campaign)/prompt/top/tWZ/", .name = "tWZ", .title = "$tWZ$", .isBackground = true
-#.path = "|"
-#.path = "bkg/$(channel)/c23d/prompt/top/tWZ/", .name = "tWZ", .title = "$tWZ$", .isBackground = true
-#.path = "bkg/$(channel)/$(campaign)/prompt/top/tWZ/", .name = "tWZ", .title = "$tWZ$", .isBackground = true
-#.path = "|"
-#.path = "bkg/$(channel)/$(campaign)/non_prompt/top/tW/", .name = "tW", .title = "$tW$", .isBackground = true
-#.path = "|"
-#.path = "bkg/$(channel)/$(campaign)/non_prompt/Vjets/Zjets/Zee/", .name = "Zee", .title = "$Zee$", .isBackground = true
-#.path = "|"
-#.path = "bkg/$(channel)/$(campaign)/non_prompt/Vjets/Zjets/Zmumu/", .name = "Zmumu", .title = "$Zmumu$", .isBackground = true
+.path = "bkg/$(channel)/$(campaign)/non_prompt/top/ttbar/", .name = "ttbar", .title = "$t\bar{t}$", .isBackground = true
+.path = "|"
+.path = "bkg/$(channel)/$(campaign)/prompt/diboson/ZZ/", .name = "ZZ_llll", .title = "$ZZ\rightarrow llll$", .isBackground = true
+.path = "|"
 #.path = "|"
 #.path = "bkg/$(channel)/$(campaign)/", .name = "total bkg", .title = "$total bkg$", .isBackground = true
 .path = "|"
 .path = "data/$(channel)/$(campaign)", .name = "data", .title = "$data$", .isData = true
-
-
-
-

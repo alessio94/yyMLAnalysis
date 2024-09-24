@@ -92,7 +92,6 @@ TH1F('DRll01', '', 30, 0., 4.) << ( $(DRll01)  : '\#Delta R^{l0l1}' );
 TH1F('DRll02', '', 30, 0., 4.) << ( $(DRll02)  : '\#Delta R^{l0l2}' );
 TH1F('DRll12', '', 30, 0., 4.) << ( $(DRll12)  : '\#Delta R^{l1l2}' );
 
-
 TH1F('minDRl0j', '', 30, 0., 6.) << ( $(minDRl0j)  : 'min \#Delta R^{l0j}' );
 TH1F('minDRl1j', '', 30, 0., 6.) << ( $(minDRl1j)  : 'min \#Delta R^{l1j}' );
 TH1F('minDRl2j', '', 30, 0., 6.) << ( $(minDRl2j)  : 'min \#Delta R^{l2j}' );
@@ -119,10 +118,8 @@ TH1F('Lep_q1xq2', '', 3, -1.5, 1.5) << ( $(lep_q1xq2) : 'q^{l1} x q^{l2}' );
 
 TH1F('sumOfCharges', '', 7, -3.5, 3.5) << ( $(sumOfCharges) : 'charge^{l0+l1+l2}' );
 
-
 # Kinematic/topological Jet plots
 #____________________________________________________
-
 TH1F('leadJetPt',    '', 100, 0., 300.) << ( $(j0).pt()/1000. : 'p_{t}^{j0} [GeV]' );
 TH1F('subLeadJetPt', '',100, 0., 300.) << ( $(j1).pt()/1000. : 'p_{t}^{j1} [GeV]' );
 TH1F('subsubLeadJetPt', '',100, 0., 300.) << ( $(j2).pt()/1000. : 'p_{t}^{j2} [GeV]' );
@@ -153,20 +150,18 @@ TH1F('nBJets70_sub', '', 10, -0.5, 9.5) << ( $(nBJetsSubDL1dv01_WP70) : 'n_{Bjet
 
 TH1F('leadJet_DL1dv01_pb', '', 100, -30.5, 30.5) << ( $(jet0_DL1dv01_pb) : 'DL1d_pb^{j0}' );
 
-################## Taus
-
+# Taus
+#____________________________________________________
 TH1F('nTaus', '', 10, -0.5, 9.5) << ( $(nTaus) : 'n_{Taus}' );
 TH1F('tau0_pt', '', 100, 0., 300.) << ( $(tau0_pt)/1000 : 'p_{t}^{tau0} [GeV]' );
-
-
-
 
 # Other plots
 #____________________________________________________
 
+##########################################################################################################
 
 #____________________________________________________
-# Plots before any cuts
+# Book plots before any cuts
 @CutLeptons: Lep0Pt, Lep1Pt, Lep2Pt, Lep0Pt_zoom, Lep1Pt_zoom, Lep2Pt_zoom, Lep0Eta, Lep1Eta, Lep2Eta, Lep0Phi, Lep1Phi, Lep2Phi, Mll01, Mll02, Mll12, Mlll, Ptlll, DRll01, DRll02, DRll12, Lep0Is_e, Lep0Is_m, Lep1Is_e, Lep1Is_m, Lep2Is_e, Lep2Is_m, Lep0_d0sig, Lep1_d0sig, Lep2_d0sig, Lep0_z0st, Lep1_z0st, Lep2_z0st, Lep0_charge, Lep1_charge, Lep2_charge,sumOfCharges, Lep_q0xq1, Lep_q0xq2, Lep_q1xq2, nLeps, Lep0_passIsoLoose_VarRad, Lep1_passIsoLoose_VarRad, Lep2_passIsoLoose_VarRad, Lep0_passIsoTight_VarRad, Lep1_passIsoTight_VarRad, Lep2_passIsoTight_VarRad, Ptlll_flat;
 @CutLeptons: Mu, MET, Mll01_rebin;
 @CutLeptons: DPhiMETl0, DPhiMETl1, DPhiMETl2, minDPhiMETl;
@@ -180,22 +175,22 @@ TH1F('tau0_pt', '', 100, 0., 300.) << ( $(tau0_pt)/1000 : 'p_{t}^{tau0} [GeV]' )
 @CutLeptons: Lep0_ECIDS_e, Lep1_ECIDS_e, Lep2_ECIDS_e;
 @CutLeptons: nTaus, tau0_pt;
 #@CutLeptons: nBJets85, nBJets70;
-#####################################################################
 
-
-@AfterWZCRCuts/*: Lep0Pt, Lep1Pt, Lep2Pt, Lep0Pt_zoom, Lep1Pt_zoom, Lep2Pt_zoom, Lep0Eta, Lep1Eta, Lep2Eta, Lep0Phi, Lep1Phi, Lep2Phi, Mll01, Mll02, Mll12, Mlll, Ptlll, DRll01, DRll02, DRll12, Lep0Is_e, Lep0Is_m, Lep1Is_e, Lep1Is_m, Lep2Is_e, Lep2Is_m, Lep0_d0sig, Lep1_d0sig, Lep2_d0sig, Lep0_z0st, Lep1_z0st, Lep2_z0st, Lep0_charge, Lep1_charge, Lep2_charge,sumOfCharges, Lep_q0xq1, Lep_q0xq2, Lep_q1xq2, nLeps, Lep0_passIsoLoose_VarRad, Lep1_passIsoLoose_VarRad, Lep2_passIsoLoose_VarRad, Lep0_passIsoTight_VarRad, Lep1_passIsoTight_VarRad, Lep2_passIsoTight_VarRad;
-@AfterWZCRCuts/*: Mu, MET, Mll01_rebin;
-@AfterWZCRCuts/*: DPhiMETl0, DPhiMETl1, DPhiMETl2, minDPhiMETl;
-@AfterWZCRCuts/*: nJets; 
-@AfterWZCRCuts/*: Lep0Author, Lep1Author, Lep2Author;
-@AfterWZCRCuts/*: Lep0Eta_zoom, Lep1Eta_zoom, Lep2Eta_zoom;
-@AfterWZCRCuts/*: Lep0_isLHLoose_e, Lep1_isLHLoose_e, Lep2_isLHLoose_e;
-@AfterWZCRCuts/*: Lep0_isLHTight_e, Lep1_isLHTight_e, Lep2_isLHTight_e;
-@AfterWZCRCuts/*: Lep0_quality_mu, Lep1_quality_mu, Lep2_quality_mu;
-@AfterWZCRCuts/*: Lep0_ECIDS_e, Lep1_ECIDS_e, Lep2_ECIDS_e;
-@AfterWZCRCuts/*: Lep0Eta_zoom2, Lep1Eta_zoom2, Lep2Eta_zoom2;
-@AfterWZCRCuts/*: nTaus, tau0_pt;
-#@AfterWZCRCuts/*: nBJets85, nBJets70;
+#____________________________________________________
+# Book plots after cuts
+@AfterWZCRCuts: Lep0Pt, Lep1Pt, Lep2Pt, Lep0Pt_zoom, Lep1Pt_zoom, Lep2Pt_zoom, Lep0Eta, Lep1Eta, Lep2Eta, Lep0Phi, Lep1Phi, Lep2Phi, Mll01, Mll02, Mll12, Mlll, Ptlll, DRll01, DRll02, DRll12, Lep0Is_e, Lep0Is_m, Lep1Is_e, Lep1Is_m, Lep2Is_e, Lep2Is_m, Lep0_d0sig, Lep1_d0sig, Lep2_d0sig, Lep0_z0st, Lep1_z0st, Lep2_z0st, Lep0_charge, Lep1_charge, Lep2_charge,sumOfCharges, Lep_q0xq1, Lep_q0xq2, Lep_q1xq2, nLeps, Lep0_passIsoLoose_VarRad, Lep1_passIsoLoose_VarRad, Lep2_passIsoLoose_VarRad, Lep0_passIsoTight_VarRad, Lep1_passIsoTight_VarRad, Lep2_passIsoTight_VarRad;
+@AfterWZCRCuts: Mu, MET, Mll01_rebin;
+@AfterWZCRCuts: DPhiMETl0, DPhiMETl1, DPhiMETl2, minDPhiMETl;
+@AfterWZCRCuts: nJets; 
+@AfterWZCRCuts: Lep0Author, Lep1Author, Lep2Author;
+@AfterWZCRCuts: Lep0Eta_zoom, Lep1Eta_zoom, Lep2Eta_zoom;
+@AfterWZCRCuts: Lep0_isLHLoose_e, Lep1_isLHLoose_e, Lep2_isLHLoose_e;
+@AfterWZCRCuts: Lep0_isLHTight_e, Lep1_isLHTight_e, Lep2_isLHTight_e;
+@AfterWZCRCuts: Lep0_quality_mu, Lep1_quality_mu, Lep2_quality_mu;
+@AfterWZCRCuts: Lep0_ECIDS_e, Lep1_ECIDS_e, Lep2_ECIDS_e;
+@AfterWZCRCuts: Lep0Eta_zoom2, Lep1Eta_zoom2, Lep2Eta_zoom2;
+@AfterWZCRCuts: nTaus, tau0_pt;
+#@AfterWZCRCuts: nBJets85, nBJets70;
 
 
 
