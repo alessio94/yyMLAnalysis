@@ -26,3 +26,19 @@
     <style .title.xAxis = "#mu ( profiled )">
   }
 }
+
++ExportHistograms{
+  +MyAnalysis {
+    +postfit {
+      <snapshot="SnSh_AllVars_Unconditional_asimovData">
+      <outputFile="histograms-postFit.root">
+      <dataName="asimovData">
+      <fitResult="Fit/Fit">
+    }
+    +prefit {
+      <snapshot="SnSh_AllVars_Nominal">
+      <outputFile="histograms-preFit.root">
+      <dataName="asimovData">
+    }
+  }
+}
