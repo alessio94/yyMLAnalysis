@@ -8,7 +8,7 @@ def addObservables(config):
     useOtherJets = config.getTagBoolDefault("useSubThresholdBTagWeights",True)
     mcWeightsOnly = config.getTagBoolDefault("UseMCWeightsOnly", False)
 
-    bTagWeight = HWWBTagWeight("bTagWeight", "effiSF", useOtherJets)
+    bTagWeight = HWWBTagWeight("bTagWeight", "effiSF")
 
     variationType = "xAODsfSystematics"
     variationNameMatch = "FT_EFF_"
