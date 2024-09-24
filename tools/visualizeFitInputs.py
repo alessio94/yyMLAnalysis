@@ -138,7 +138,7 @@ def main(args):
         histcontents.setEntry(nrows + ibin, 0, "{} bin={}".format(region.GetName(), ibin))
 #         print "{} bin={}".format(region.GetName(), ibin),nrows + ibin,0
         if not "Data" in pname or unblinded:
-          histcontents.setEntry(nrows + ibin, iValidHist, "{:.2f} $\pm$ {:.2f}".format(bincontent, error))
+          histcontents.setEntry(nrows + ibin, iValidHist, "{:.2f} $\\pm$ {:.2f}".format(bincontent, error))
           bincontents[ibin-1] = bincontent
           bincontents_err[ibin-1] = error
       if t.getTagBoolDefault(".isBackground", False):
@@ -189,7 +189,7 @@ def main(args):
     if ibin >= 0:
         histcontents.setEntry(0, iValidHist+1, "Total Bkg")
         for i in range(len(totalBkg)):
-          histcontents.setEntry(nrows+i+1, iValidHist + 1, "{:.2f} $\pm$ {:.2f}".format(totalBkg[i], totalBkgErr[i]))
+          histcontents.setEntry(nrows+i+1, iValidHist + 1, "{:.2f} $\\pm$ {:.2f}".format(totalBkg[i], totalBkgErr[i]))
         nrows = nrows + ibin # for filling of table with hist content
       
   if not samples.getListOfFolders("?"):
