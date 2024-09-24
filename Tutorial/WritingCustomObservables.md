@@ -357,7 +357,7 @@ customObservables.directories: easyjet_example/observables/
 customObservables.snippets: PtLep1SquaredObs
 ```
 
-And it can then be used! An example of a "sanity check" comparing the observable's output to the same quantity calculated obtained using aliases (in fact, the operations we perform using aliases rely on similar machinery, but this occurs behind the scenes in this case) can be found in the corresponding [cuts file](https://gitlab.cern.ch/atlas-caf/CAFExample/-/blob/master/share/easyjet_example/config/cuts/cuts-2LSC.def) at `+CutSanityCheck`. While we can use aliases to the same thing (and much more simply), observables excel at encapsulating more complicated operations.
+And it can then be used! An example of a "sanity check" comparing the observable's output to the same quantity obtained using aliases (in fact, the operations we perform using aliases rely on similar machinery, but this occurs behind-the-scenes in this case) can be found in the corresponding [cuts file](https://gitlab.cern.ch/atlas-caf/CAFExample/-/blob/master/share/easyjet_example/config/cuts/cuts-2LSC.def) at `+CutSanityCheck`. While we can use aliases to do the same thing (and much more simply), observables excel at encapsulating more complicated operations.
 
 # More wizard options (Advanced)
 
