@@ -68,18 +68,20 @@ cd ../CAFExample/share
 ./visualize.py flatNTuple/config/master/visualize-flatNTuple-Example.cfg
 ```
 
-#Running an example analysis on xAOD inputs
-#------------------------------------------
-#
-#The following commands will (on order of hours) run over a selection of xAOD inputs to reproduce the same Zjets Fake Factor analysis as in the flat nTuple example above. A few important differences exist between the two variants. First, while the xAODs have been skimmed to cut down on runtime, their events haven't been removed quite as aggressively as in the flat nTuple case - there are still about an order of magnitude more. Secondly, the xAOD example runs over the data years 2015-2018 instead of only 2015-2016 to show how different campaigns with their own luminosity and samples are treated. Lastly, the xAOD analysis showcases in addition the use of a number of custom observables to calculate quantities for on-the-fly use. All of these three changes cause the significantly longer runtime.
-#
-#```bash
-#cd ../CAFExample/share
-#./prepare.py xAOD/config/master/prepare-xAOD-Example.cfg
-#./initialize.py xAOD/config/master/initialize-xAOD-Example.cfg
-#./analyze.py xAOD/config/master/analyze-xAOD-Example.cfg
-#./visualize.py xAOD/config/master/visualize-xAOD-Example.cfg
-#```
+<!---
+Running an example analysis on xAOD inputs
+------------------------------------------
+
+The following commands will (on order of hours) run over a selection of xAOD inputs to reproduce the same Zjets Fake Factor analysis as in the flat nTuple example above. A few important differences exist between the two variants. First, while the xAODs have been skimmed to cut down on runtime, their events haven't been removed quite as aggressively as in the flat nTuple case - there are still about an order of magnitude more. Secondly, the xAOD example runs over the data years 2015-2018 instead of only 2015-2016 to show how different campaigns with their own luminosity and samples are treated. Lastly, the xAOD analysis showcases in addition the use of a number of custom observables to calculate quantities for on-the-fly use. All of these three changes cause the significantly longer untime.
+
+```bash
+cd ../CAFExample/share
+./prepare.py xAOD/config/master/prepare-xAOD-Example.cfg
+./initialize.py xAOD/config/master/initialize-xAOD-Example.cfg
+./analyze.py xAOD/config/master/analyze-xAOD-Example.cfg
+./visualize.py xAOD/config/master/visualize-xAOD-Example.cfg
+```
+--->
 
 Running an example analysis on HHML PxAOD inputs
 ------------------------------------------
