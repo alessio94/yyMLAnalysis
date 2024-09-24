@@ -23,6 +23,5 @@ public:
   virtual ~PtLep1SquaredObs();
   ClassDefOverride(PtLep1SquaredObs, 1);
 
-
 };
 #endif

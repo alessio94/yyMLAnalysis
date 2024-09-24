@@ -35,7 +35,6 @@ Please specify the type of observable, choose  from {Event,Tree,<empty>}: Event
 Do you want to create a vector observable that can return multiple values? (y/N) N
 Should your class have an 'expression' member variable? (y/N) N
 Are you planning to provide a factory for your observable class? (y/N) N
-
 ```
 After providing the answers the wizard will summarize the made choices and asks for confirmation to build the observable:
 
@@ -174,6 +173,191 @@ r_samples->getHistogram("bkg/[ee+mm]/[c16a+c16d+c16e]/top/ttbar", "CutChannels/h
 ```
 If you see a reasonable distribution: Congratulations! You just successfully created your own observable.
 Now, you can do with it what ever you want (define cuts/cutflows, event lists, etc.) and/or create more awesome observable!
+
+# Creating the PtLep1SquaredObs
+We want to create a new observable which calculates the square of the leading electron's pT.
+The new observable class is implemented in the existing [Easyjet Example analysis](https://gitlab.cern.ch/atlas-caf/CAFExample/tree/master/share/easyjet_example).
+For brevity, we will skip some of the details from the xAOD example above.
+
+## 1. Write c++ code with the magic wizard.py script
+Call the script using:
+```bash
+./CAFCore/QFramework/share/TQObservable/wizard.py
+```
+
+Answer its questions like:
+```
+Should the observable wizard put the files into your current working directory (leave empty) or into some package (type package name)?
+Type your choice: CAFExample
+What is the name of the observable you would like to create? PtLep1SquaredObs
+What type of observable would you like to create?
+If you want to read xAODs using the xAOD::TEvent mechanism, please type 'Event'
+If you want to access the TTree pointer and use TTreeFormula, please type 'Tree'
+If your new observable does not need direct data access but uses some custom mechanism to work, please leave empty.
+Please specify the type of observable, choose  from {Event,Tree,<empty>}: Tree
+Do you want to create a vector observable that can return multiple values? (y/N) N
+Some observable classes have an 'expression' member variable that allows to alter the configuration based on sample tags, but complicates identifying the right observable.
+Should your class have an 'expression' member variable? (y/N) N
+Are you planning to provide a factory for your observable class? (y/N) N
+Your choices:
+- Class name: PtLep1SquaredObs
+- Inherits from: TQTreeObservable
+- In package: CAFExample
+- Write to directory: ./CAFExample/CAFExample
+- Not including expression member
+- Not configured for factory use
+Build this observable now? (y/N) y
+Wrote './CAFExample/CAFExample/PtLep1SquaredObs.h'!
+Wrote './CAFExample/Root/PtLep1SquaredObs.cxx'!
+```
+
+Notably, we are creating a TTree observable now, for ntuples.
+
+Modify the header file, `CAFExample/CAFExample/PtLep1SquaredObs.h`, like:
+
+```c++
+//this file looks like plain C, but it's actually -*- c++ -*-
+#ifndef __PTLEP1SQUAREDOBS__
+#define __PTLEP1SQUAREDOBS__
+#include "QFramework/TQTreeObservable.h"
+#include "TTreeFormula.h"
+#include "TString.h"
+
+class PtLep1SquaredObs : public TQTreeObservable {
+protected:
+  // Put here any data members your class might need and don't forget potential includes.
+  TTreeFormula *fFormula = 0;
+  TString mVariation = "";
+ 
+public:
+  virtual double getValue() const override;
+  virtual TObjArray* getBranchNames() const override;
+protected:
+  virtual bool initializeSelf() override;
+  virtual bool finalizeSelf() override;
+public:
+  PtLep1SquaredObs();
+  PtLep1SquaredObs(const TString& name);
+  virtual ~PtLep1SquaredObs();
+  ClassDefOverride(PtLep1SquaredObs, 1);
+
+};
+#endif
+```
+
+`fForumla` stores a `TTreeForumla` for evaluating an expression based on input branches, and `mVariation` stores a `TString` indicating the variation (nominally: `"NOSYS"`).
+
+Also modify the source code, `CAFExample/Root/PtLep1SquaredObs.cxx`. Firstly, `initializeSelf()` should be updated like:
+```c++
+bool PtLep1SquaredObs::initializeSelf(){
+  // initialize this observable
+  // called once per sample (input file) so that the observable knows the name of the variation
+  DEBUGclass("initializing");
+
+  // Obtain the variation name
+  TString variation = "";
+  if (!this->fSample->getTagString("~Variation", variation)) {
+    ERRORclass("Could not get tag string ~Variation.");
+    return false;
+  }
+  this->mVariation = variation;
+
+  // since this function is only called once per sample, we can
+  // perform any checks that seem necessary
+  if (!this->fTree){
+    DEBUGclass("no tree, terminating");
+    return false;
+  }
+
+  // create string expression that calculates pTlep1^2
+  TString PtLep1Squared = "pow(el_pt_" + mVariation + "[0], 2)";
+  DEBUGclass("Configured expression: %s", PtLep1Squared.Data());
+
+  this->fFormula = new TTreeFormula("PtLep1Squared", PtLep1Squared.Data(), this->fTree);
+
+  return true;
+}
+```
+
+This extracts the variation using a tag set on the inputs and then builds an expression which squares the leading (i.e., index 0) electron from the branch, e.g., `"el_pt_NOSYS"`. We also load this branch in `getBranches()`:
+```c++
+TObjArray* PtLep1SquaredObs::getBranchNames() const {
+  // retrieve the list of branch names 
+  // ownership of the list belongs to the caller of the function
+  DEBUGclass("retrieving branch names");
+  TObjArray* bnames = new TObjArray();
+  bnames->SetOwner(false);
+
+  // add the branch names needed by your observable here, e.g.
+  bnames->Add(new TObjString("el_pt_" + mVariation));
+  
+  return bnames;
+}
+```
+
+Evaluate the expression in `getValue()`:
+```c++
+double PtLep1SquaredObs::getValue() const {
+  // in the rest of this function, you should retrieve the data and calculate your return value
+  // here is the place where most of your custom code should go
+  // a couple of comments should guide you through the process
+  // when writing your code, please keep in mind that this code can be executed several times on every event
+  // make your code efficient. catch all possible problems. when in doubt, contact experts!
+  
+  // here, you should calculate your return value
+  // of course, you can use other data members of your observable at any time
+  const double retval = this->fFormula->EvalInstance();
+
+  DEBUGclass("returning");
+  return retval;
+}
+```
+
+Finally, clean up `fFormula` in `finalizeSelf()`:
+```c++
+bool PtLep1SquaredObs::finalizeSelf(){
+  // finalize this observable
+  // remember to undo anything you did in initializeSelf() !
+  
+  DEBUGclass("finalizing");
+
+  delete this->fFormula;
+  this->fFormula = 0;
+
+  return true;
+}
+```
+
+## 2. Creating a python observable snippet
+
+Create a python snippet for the observable, `share/easyjet_example/observables/PtLep1SquaredObs.py`:
+```python
+import QFramework
+
+from CAFExample import PtLep1SquaredObs
+
+def addObservables():
+
+  myObs = PtLep1SquaredObs("PtLep1Squared")
+  if not QFramework.TQTreeObservable.addObservable(myObs):
+    return False
+
+  return True
+
+if __name__ == "__main__":
+  print("Inside main of PtLep1SquaredObs snippet, will now call addObservables")
+  addObservables()
+```
+
+## 3. Tell analysis about the python snippet
+
+We update [analyze-2LSC.cfg](hhttps://gitlab.cern.ch/atlas-caf/CAFExample/-/blob/master/share/easyjet_example/config/master/analyze-2LSC.cfg) like:
+```
+customObservables.directories: easyjet_example/observables/
+customObservables.snippets: PtLep1SquaredObs
+```
+
+And it can then be used! An example of a "sanity check" comparing the observable's output to the same quantity calculated obtained using aliases (in fact, the operations we perform using aliases rely on similar machinery, but this occurs behind the scenes in this case) can be found in the corresponding [cuts file](https://gitlab.cern.ch/atlas-caf/CAFExample/-/blob/master/share/easyjet_example/config/cuts/cuts-2LSC.def) at `+CutSanityCheck`. While we can use aliases to the same thing (and much more simply), observables excel at encapsulating more complicated operations.
 
 # More wizard options (Advanced)
 
