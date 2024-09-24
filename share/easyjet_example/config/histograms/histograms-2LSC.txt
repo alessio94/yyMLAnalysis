@@ -1,0 +1,8 @@
+#TH1F('nLep', '', 8, -0.5, 7.5) << ( $(nLep) : 'nLep' );
+TH1F('leadLepPt', '', 40, 0, 200) << ( $(lep1pt)/1000. : 'leading lepton p_T' );
+#TH1F('subleadLepPt', '', 9, 10, 100) << ( $(lep2pt) : 'subleading lepton p_T' );
+
+
+#@CutWeights/*: nLep, leadLepPt, subleadLepPt;
+@CutSubChannel2LSC :leadLepPt; 
+@CutWeights :leadLepPt;

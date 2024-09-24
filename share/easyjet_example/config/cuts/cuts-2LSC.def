@@ -1,0 +1,11 @@
+# -*- mode: tqfolder -*-
+# to get proper syntax highlighting and indentation when using emacs,
+# add the following line to your .emacs file:
+#   (load-file "$TQPATH/share/tqfolder.el")
+
++CutWeights {
+  <.cutExpression = "1.">#, .weightExpression = "generatorWeight_$(Variation)[0]">
+  + CutSubChannel2LSC {
+    <.cutExpression = "[hhml_subChannelID_$(Variation)] == 8 && ([hhml_subChannelFlavor_$(Variation)] == 1 || [hhml_subChannelFlavor_$(Variation)] == 2)">
+  }
+}

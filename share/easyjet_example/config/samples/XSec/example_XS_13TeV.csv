@@ -1,0 +1,2 @@
+SampleID, xsection, kfactor, filtereff, generator, process, path
+  502959,        1,     1.0,         1,   unknown,    2l0t, /sig/$(channel)/mysample

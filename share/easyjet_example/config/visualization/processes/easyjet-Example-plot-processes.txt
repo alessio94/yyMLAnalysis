@@ -1,0 +1,2 @@
+.path = "sig/$(channel)/mysample",      .name = "2LSC",   .title = "2LSC signal",   .isSignal = true, histLineColor = kGreen,  histLineWidth = 3, histLineStyle = 1, histFillStyle = 0
+

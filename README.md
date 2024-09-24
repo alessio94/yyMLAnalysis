@@ -35,9 +35,8 @@ Building the project
 ```bash
 mkdir build
 cd build
-asetup AnalysisBase,21.2.271
+asetup AnalysisBase,25.2.27
 cmake ../CAFExample
-asetup source setupAnalysis.sh # this configures asetup to automatically call setupAnalysis.sh next time
 cafbuild # build the code (check details by typing "type cafbuild")
 ```
 
@@ -69,19 +68,41 @@ cd ../CAFExample/share
 ./visualize.py flatNTuple/config/master/visualize-flatNTuple-Example.cfg
 ```
 
-Running an example analysis on xAOD inputs
+#Running an example analysis on xAOD inputs
+#------------------------------------------
+#
+#The following commands will (on order of hours) run over a selection of xAOD inputs to reproduce the same Zjets Fake Factor analysis as in the flat nTuple example above. A few important differences exist between the two variants. First, while the xAODs have been skimmed to cut down on runtime, their events haven't been removed quite as aggressively as in the flat nTuple case - there are still about an order of magnitude more. Secondly, the xAOD example runs over the data years 2015-2018 instead of only 2015-2016 to show how different campaigns with their own luminosity and samples are treated. Lastly, the xAOD analysis showcases in addition the use of a number of custom observables to calculate quantities for on-the-fly use. All of these three changes cause the significantly longer runtime.
+#
+#```bash
+#cd ../CAFExample/share
+#./prepare.py xAOD/config/master/prepare-xAOD-Example.cfg
+#./initialize.py xAOD/config/master/initialize-xAOD-Example.cfg
+#./analyze.py xAOD/config/master/analyze-xAOD-Example.cfg
+#./visualize.py xAOD/config/master/visualize-xAOD-Example.cfg
+#```
+
+Running an example analysis on HHML PxAOD inputs
 ------------------------------------------
 
-The following commands will (on order of hours) run over a selection of xAOD inputs to reproduce the same Zjets Fake Factor analysis as in the flat nTuple example above. A few important differences exist between the two variants. First, while the xAODs have been skimmed to cut down on runtime, their events haven't been removed quite as aggressively as in the flat nTuple case - there are still about an order of magnitude more. Secondly, the xAOD example runs over the data years 2015-2018 instead of only 2015-2016 to show how different campaigns with their own luminosity and samples are treated. Lastly, the xAOD analysis showcases in addition the use of a number of custom observables to calculate quantities for on-the-fly use. All of these three changes cause the significantly longer runtime.
+The following commands will run over a selection of PxAOD inputs (mc23a and data 2022) to produce different kinematic distributions in WZ CR for 3L channel.
 
 ```bash
 cd ../CAFExample/share
-./prepare.py xAOD/config/master/prepare-xAOD-Example.cfg
-./initialize.py xAOD/config/master/initialize-xAOD-Example.cfg
-./analyze.py xAOD/config/master/analyze-xAOD-Example.cfg
-./visualize.py xAOD/config/master/visualize-xAOD-Example.cfg
+./prepare.py HHML_example/config/master/prepare-HHML_3L.cfg
+./initialize.py HHML_example/config/master/initialize-HHML_3L.cfg
+./analyze.py HHML_example/config/master/analyze-HHML_3L.cfg
+./visualize.py HHML_example/config/master/visualize-HHML_3L.cfg
 ```
 
+Running an example analysis using easyjet ntuple output
+------------------------------------------
+The following commands will run over a test ntuple and produce the leading electron pt in 2LSC channel
+
+```bash
+./prepare.py easyjet/config/master/prepare-2LSS.cfg 
+./initialize.py easyjet_example/config/master/initialize-2LSC.cfg
+./analyze.py easyjet_example/config/master/analyze-2LSC.cfg
+```
 Running from an arbitrary location
 ----------------------------------
 
@@ -107,4 +128,5 @@ setupATLAS
 lsetup git
 cd build
 asetup
+source setupAnalysis.sh
 ```
