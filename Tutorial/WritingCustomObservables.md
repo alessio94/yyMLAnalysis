@@ -211,7 +211,7 @@ Wrote './CAFExample/CAFExample/PtLep1SquaredObs.h'!
 Wrote './CAFExample/Root/PtLep1SquaredObs.cxx'!
 ```
 
-Notably, we are creating a TTree observable now, for ntuples.
+Notably, we are creating a TTree observable now, for ntuples. Hence, we specified `Tree` for the type of observable.
 
 Modify the header file, `CAFExample/CAFExample/PtLep1SquaredObs.h`, like:
 
@@ -279,7 +279,7 @@ bool PtLep1SquaredObs::initializeSelf(){
 }
 ```
 
-This extracts the variation using a tag set on the inputs and then builds an expression which squares the leading (i.e., index 0) electron from the branch, e.g., `"el_pt_NOSYS"`. We also load this branch in `getBranches()`:
+This extracts the variation using a tag set on the inputs and then builds an expression which squares the leading (i.e., index 0) electron from the branch `"el_pt_NOSYS"`. If you were processing systematics, the variation tag could be used to point to a different electron container (e.g., one with 4-momentum smearing applied, `"el_pt_EG_SMEAR__1up"`, `"el_pt_EG_SMEAR__1down"`, etc.). We also load this branch in `getBranches()`:
 ```c++
 TObjArray* PtLep1SquaredObs::getBranchNames() const {
   // retrieve the list of branch names 
@@ -351,13 +351,13 @@ if __name__ == "__main__":
 
 ## 3. Tell analysis about the python snippet
 
-We update [analyze-2LSC.cfg](hhttps://gitlab.cern.ch/atlas-caf/CAFExample/-/blob/master/share/easyjet_example/config/master/analyze-2LSC.cfg) like:
+We update [analyze-2LSC.cfg](https://gitlab.cern.ch/atlas-caf/CAFExample/-/blob/master/share/easyjet_example/config/master/analyze-2LSC.cfg) like:
 ```
 customObservables.directories: easyjet_example/observables/
 customObservables.snippets: PtLep1SquaredObs
 ```
 
-And it can then be used! An example of a "sanity check" comparing the observable's output to the same quantity obtained using aliases (in fact, the operations we perform using aliases rely on similar machinery, but this occurs behind-the-scenes in this case) can be found in the corresponding [cuts file](https://gitlab.cern.ch/atlas-caf/CAFExample/-/blob/master/share/easyjet_example/config/cuts/cuts-2LSC.def) at `+CutSanityCheck`. While we can use aliases to do the same thing (and much more simply), observables excel at encapsulating more complicated operations.
+And it can then be used! An example of a "sanity check" comparing the observable's output to the same quantity obtained using aliases (in fact, the operations we perform using aliases rely on similar machinery, but this occurs behind-the-scenes, in this case) can be found in the corresponding [cuts file](https://gitlab.cern.ch/atlas-caf/CAFExample/-/blob/master/share/easyjet_example/config/cuts/cuts-2LSC.def) at `+CutSanityCheck`. While we can use aliases to do the same thing (and much more simply), observables excel at encapsulating more complicated operations. For example, in HWW analyses, we have fake factor weight observables which store multiple `TH2F` histograms and retrieve elements from those histograms based on run number and/or lepton pT/eta, something which is difficult to do in one line!
 
 # More wizard options (Advanced)
 
