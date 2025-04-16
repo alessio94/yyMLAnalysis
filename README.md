@@ -9,13 +9,13 @@ Cloning the project
 --------------------
 
 ```bash
-# Use -c centos7+batch if you're not on a centos7 machine (Such as lxplus9**). Otherwise, you may use setupATLAS as normal.
-setupATLAS -c centos7+batch
+# Use -c el9+batch if you're not on a el9 machine. Otherwise, you may use setupATLAS as normal.
+setupATLAS -c el9+batch
 lsetup git
 mkdir AnalysisExample
 cd AnalysisExample
 
-# Note that you should `setupATLAS` in a container that allows AnalysisBase access, thus `setupATLAS -c centos7` on lxplus.
+# Note that you should `setupATLAS` in a container that allows AnalysisBase access.
 # There are a few different protocol options for cloning the project, which are all provided at the top of the main page of the repository.
 # Kerberos is typically recommended if it is available (e.g. lxplus) since it does not require a username or password when interacting with remote repositories.
 # ssh acts similarly, but requires a password and a bit of initial setup
@@ -37,6 +37,7 @@ mkdir build
 cd build
 asetup AnalysisBase,25.2.27
 cmake ../CAFExample
+source setupAnalysis.sh
 cafbuild # build the code (check details by typing "type cafbuild")
 ```
 
@@ -129,6 +130,6 @@ Navigate to the working directory and
 setupATLAS
 lsetup git
 cd build
-asetup
+asetup --restore
 source setupAnalysis.sh
 ```

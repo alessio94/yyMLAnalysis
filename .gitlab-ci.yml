@@ -229,7 +229,7 @@ build_image:
     DOCKER_FILE: Dockerfile
     GIT_STRATEGY: fetch
   image:
-    name: gitlab-registry.cern.ch/ci-tools/docker-image-builder
+    name: gcr.io/kaniko-project/executor:debug
     entrypoint: [""]
   before_script:
     # Prepare Kaniko configuration file
