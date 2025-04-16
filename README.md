@@ -37,6 +37,7 @@ mkdir build
 cd build
 asetup AnalysisBase,25.2.27
 cmake ../CAFExample
+source setupAnalysis.sh
 cafbuild # build the code (check details by typing "type cafbuild")
 ```
 
@@ -129,6 +130,6 @@ Navigate to the working directory and
 setupATLAS
 lsetup git
 cd build
-asetup
+asetup --restore
 source setupAnalysis.sh
 ```
