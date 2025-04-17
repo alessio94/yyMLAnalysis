@@ -1,0 +1,6 @@
+# -*- mode: tqfolder -*-
+
++SR_0j_DF_DNN_ptH_gt0_x{ # signal region name in the model
+  <Histogram = "[CutGGF_SR_DNN_0jet_PTH_0_10+CutGGF_SR_DNN_0jet_PTH_GT10]/DNNoutput_0jet"> # signal region histogram name in samplefolder in the corresponding cut
+  <Title     = "0j SR"> # signal region title in TH1 class
+}

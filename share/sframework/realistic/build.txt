@@ -1,0 +1,71 @@
+# -*- mode: tqfolder -*-
+# to get proper syntax highlighting and indentation when using emacs,
+# add the following line to your .emacs file:
+#   (load-file "$TQPATH/share/tqfolder.el")
+
+
++CreateModels {  
+  +HWW_ggFVBF_01jDF { #model name
+    +Parameters {
+      <Title = "H->WW ggF+VBF 0jet DF">
+    }
+
+    # background samples definitions
+    $include("sframework/realistic/snippets/samples-bkg.txt");
+
+    # signal samples definitions
+    $include("sframework/realistic/snippets/samples-signal.txt");
+
+    # data sample definitions
+    $include("sframework/realistic/snippets/samples-data.txt");
+    
+    
+    +Channels {
+      # define signal regions
+      $include("sframework/realistic/snippets/channels-CRs.txt");
+
+      # define control regions
+      $include("sframework/realistic/snippets/channels-SRs.txt");
+
+      # STXS acceptance
+      +STXS_Acceptance{
+	<Counter = "CutSTXS">
+      }
+      <StatRelErrorThreshold=0.> @ ?;
+    }
+    
+    # list the variations
+    +Variations {
+      <SampleFolder = "/afs/cern.ch/user/a/ahmarkho/AnalysisExample/realistic-example.root:samples">
+      
+      # define no channel variations
+      +Nominal {
+        <channelVar="">
+      }
+    }
+
+    # The following two lines exp uncertainties
+    $include("sframework/realistic/snippets/systematics.txt");
+
+    # everything else should be a normalization systematic with a gaussian constraint
+    <IsOverallSys=true, ConstraintType = "Gaussian"> @ Systematics/?;
+    <IsHistoSys=true> @ Systematics/ATLAS_*, Systematics/HWW_FakeFactor_*;
+    
+    # notice that this affects the systematics.txt file behavior
+    # by correcting the path to the variation
+    @Variations {
+      <channelSys = "[em$(channelVar)+me$(channelVar) $(addChannel1) $(addChannel2)]"> @ ?;     
+      <addChannel1 = "", addChannel2 = ""> @ ?;
+    }
+  }
+}
+
+
+# save the model
++ExportModels.simple {
+  +HWW_ggFVBF_01jDF {
+    <outputFile = "./workspaces/realistic/model.root">
+  }
+}
+
+<saveConfig="./workspaces/realistic/buildModelConfig.txt"> # the config can be saved as well for future reference
