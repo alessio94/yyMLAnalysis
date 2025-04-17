@@ -21,6 +21,10 @@
     <Type = B, Path = "bkg/$(channelSys)/[c16a+c16d+c16e]/diboson/NonWW">
   }
 
+  +ddFakes {
+    <Type = B, Path = "bkg/$(channelSys)/[c16a+c16d+c16e]/ddFakes">
+  }
+
   +otherBackgrounds {
     <Type = B, Path = "bkg/$(channelSys)/[c16a+c16d+c16e]/[triboson+Vgamma+Zjets+ddFakes]">
   }

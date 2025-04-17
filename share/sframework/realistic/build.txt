@@ -5,9 +5,20 @@
 
 
 +CreateModels {  
-  +HWW_ggFVBF_01jDF { #model name
+  +ggF_0jet { #model name
     +Parameters {
-      <Title = "H->WW ggF+VBF 0jet DF">
+      <Title = "H->WW ggF 0jet DF">
+      <Title = "Test Model">
+      <POI = "mu_ggF_gg2H_0J">
+      # The luminosity scale factor (here, it is one because input
+      # histograms already have been scaled to correct luminosity)
+      <Lumi = 1.0>
+      # The relative uncertainty on the luminosity (scale factor). We don't want
+      # to consider systematic uncertainties for now, so set this parameter to a
+      # very small value (the fit will fail if it is too small)
+      <LumiRelErr = 0.0001>
+      # The minimum bin content for each histogram bin
+      <MinBinContent = 1E-12>
     }
 
     # background samples definitions
@@ -27,10 +38,6 @@
       # define control regions
       $include("sframework/realistic/snippets/channels-SRs.txt");
 
-      # STXS acceptance
-      +STXS_Acceptance{
-	<Counter = "CutSTXS">
-      }
       <StatRelErrorThreshold=0.> @ ?;
     }
     
@@ -61,11 +68,18 @@
 }
 
 
-# save the model
-+ExportModels.simple {
-  +HWW_ggFVBF_01jDF {
-    <outputFile = "./workspaces/realistic/model.root">
+# Here, we create then save the workspace directly
+# in even more realistic cases, you would probably want to
+# modify the model with different steps.
+# in such case, you can save the model using: +ExportModels{ +ModelName{ ... }}
++CreateWorkspaces {
+  +ggF_0jet;
+}
+
++ExportWorkspaces {
+  +ggF_0jet { # workspace name
+    <outputFile = "workspaces/realistic/workspace.root">
   }
 }
 
-<saveConfig="./workspaces/realistic/buildModelConfig.txt"> # the config can be saved as well for future reference
+<saveConfig="workspaces/realistic/build.txt"> # the config can be saved as well for future reference
