@@ -1,0 +1,58 @@
+# -*- mode: tqfolder -*-
+# to get proper syntax highlighting and indentation when using emacs,
+# add the following line to your .emacs file:
+#   (load-file "$TQPATH/share/tqfolder.el")
+
++ImportWorkspaces {
+  +ggF_0jet {
+    <inputFile ="workspaces/realistic/workspace.root">
+  }
+}
+
++MakeAsimovDataset {
+  +ggF_0jet;
+}
+
++Fit.asimov {
+  +ggF_0jet {
+    <dataset="asimovData">
+    <fit.logToFile="workspaces/realistic/fit_asimov.log">
+  }
+}
+
+#+Fit.observed {
+#  +ggF_0jet {
+#    <dataset="obsData">
+#    <fit.logToFile="workspaces/realistic/fit_observed.log">
+#  }
+#}
+
+#+ScanLikelihood.mu_ggF_gg2H_0J_asimov{
+#  +ggF_0jet {
+#    <datasetName = "asimovData">
+#    +mu_ggF_gg2H_0J {
+#      <min=0, max=3.5, nbins=100>
+#    }
+#  }
+#}
+#
+#+ScanLikelihood.mu_ggF_gg2H_0J_observed{
+#  +ggF_0jet {
+#    <datasetName = "asimovData">
+#    +mu_ggF_gg2H_0J {
+#      <min=0, max=3.5, nbins=100>
+#    }
+#  }
+#}
+
++ExportResults {
+  +ggF_0jet {
+    <outputFile = "workspaces/realistic/result.root">
+  }
+}
+
++ExportWorkspaces {
+  +ggF_0jet{
+    <outputFile = "workspaces/realistic/workspace-postFit.root">
+  }
+}
