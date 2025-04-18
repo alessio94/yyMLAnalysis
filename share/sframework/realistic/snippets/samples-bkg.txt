@@ -29,7 +29,7 @@
     <Type = B, Path = "bkg/$(channelSys)/[c16a+c16d+c16e]/[triboson+Vgamma+Zjets]">
   }
 
-  <scaleScheme = ".none"> @?;
-  <ActivateStatError=true> @qqWW,top,nonWW,otherBackgrounds;
+  <scaleScheme = ".none"> @nonWW,otherBackgrounds;
+  <ActivateStatError=true> @?;
 
 }
