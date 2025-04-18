@@ -1,5 +1,10 @@
-+Samples{
+# -*- mode: tqfolder -*-
+
+# Sample definition
++Samples {
+
   +Data {
     <Type = D, Path = "data/">
   }
+
 }

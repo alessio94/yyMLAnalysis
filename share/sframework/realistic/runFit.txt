@@ -5,7 +5,7 @@
 
 +ImportWorkspaces {
   +ggF_0jet {
-    <inputFile ="workspaces/realistic/workspace.root">
+    <inputFile="workspaces/realistic/workspace.root">
   }
 }
 
@@ -16,7 +16,7 @@
 +Fit.asimov {
   +ggF_0jet {
     <dataset="asimovData">
-    <fit.logToFile="workspaces/realistic/fit_asimov.log">
+    <fit.eps=0.01, fit.printLevel=1, fit.numRetry=3, fit.offset=true, fit.verbose=1>
   }
 }
 

@@ -9,14 +9,14 @@
       <Val = 1., Low = 0., High = 50., Const = false>
     }
   }
-  
+
   +top {
     <Type = B, Path = "bkg/$(channelSys)/[c16a+c16d+c16e]/top">
     +NormFactor.ATLAS_norm_top {
       <Val = 1., Low = 0., High = 50., Const = false>
     }
   }
-  
+
   +nonWW {
     <Type = B, Path = "bkg/$(channelSys)/[c16a+c16d+c16e]/diboson/NonWW">
   }
@@ -26,8 +26,10 @@
   }
 
   +otherBackgrounds {
-    <Type = B, Path = "bkg/$(channelSys)/[c16a+c16d+c16e]/[triboson+Vgamma+Zjets+ddFakes]">
+    <Type = B, Path = "bkg/$(channelSys)/[c16a+c16d+c16e]/[triboson+Vgamma+Zjets]">
   }
-  
+
   <scaleScheme = ".none"> @?;
+  <ActivateStatError=true> @qqWW,top,nonWW,otherBackgrounds;
+
 }
