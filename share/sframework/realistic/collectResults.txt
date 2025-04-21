@@ -22,7 +22,7 @@
   }
 }
 
-+CollectScanResults.ggf_0J {
++CollectScanResults.ggF_0J_asimov {
   +ggF_0jet {
     <inputPath = "workspaces/realistic/Batch/Scans/ggf_0J">
   }

@@ -68,5 +68,19 @@
   <master=true>
 }
 
+# plot NLL scan
++PlotLikelihoodScan.ggF_0jet {
+  +ggF_0jet {
+    <arrangement="$TQPATH/../../share/sframework/realistic/snippets/PlotLikelihoodScan1D.txt">
+    <outputFile="workspaces/realistic/results/asimov_ggF_0jet.pdf">
+    +asimov {
+      <yTag="y">
+      <source = "LikelihoodScans/ScanLikelihood.ggF_0J_asimov/Scan">
+      <style.lineColor=kRed, style.title="Asimov #mu_{ggF, 0J}">
+    }
+    <style.title.xAxis = "#mu_{ggF, 0J} (profiled)">
+    <style.showLegend = true>
+  }
+}
 
 <saveConfig="workspaces/realistic/plotResultsConfig.txt">
