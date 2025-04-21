@@ -76,7 +76,7 @@
 
 +ExportResults {
   +ggF_0jet {
-    <outputFile = "workspaces/realistic/result.root">
+    <outputFile = "workspaces/realistic/result-preliminary.root">
   }
 }
 

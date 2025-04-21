@@ -1,0 +1,35 @@
+# -*- mode: tqfolder -*-
+
++ImportResults {
+  +ggF_0jet{
+    <inputFile = "workspaces/realistic/result-preliminary.root:ggF_0jet">
+  }
+}
+
++CollectBreakdown {
+  +ggF_0jet {
+    +asimov {
+      <inputPath = "workspaces/realistic/Batch/Breakdowns/asimov">
+    }
+  }
+}
+
++CollectImpacts {
+  +ggF_0jet {
+    +asimov {
+      <inputPath = "workspaces/realistic/Batch/Impacts/asimov">
+    }
+  }
+}
+
++CollectScanResults.ggf_0J {
+  +ggF_0jet {
+    <inputPath = "workspaces/realistic/Batch/Scans/ggf_0J">
+  }
+}
+
++ExportResults {
+  +ggF_0jet {
+    <outputFile = "workspaces/realistic/result.root">
+  }
+}

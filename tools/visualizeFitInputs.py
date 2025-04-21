@@ -51,25 +51,57 @@ def main(args):
   
   if args.verbose:
     plotter.setTagBool("verbose",True)
+
   plotter.setTagBool("ensureDirectory",True)
-  plotter.setTagBool("style.showKS",False)
-  plotter.setTagBool("style.showSub",True)
-  plotter.setTagString("style.subPlot","ratio")
-  plotter.setTagString("style.ratio.denominator","totalStack")    
-  plotter.setTagInteger("style.nLegendCols",args.ncols)
   plotter.setTagBool("style.stackSignal",True)
-  # for plots that mimic postfit style
-  plotter.setTagBool("style.manualStacking", True)
-  plotter.setTagBool("style.reverseStacking", False)  
-  #plotter.setTagBool("style.showMissing", False) 
-  #plotter.setTagBool("labels.info", False)   
-  plotter.setTagBool("style.unsorted", False) 
-  plotter.setTagBool("style.listDataFirst", True) 
-  plotter.setTagDouble("style.legend.textSize", 0.02)
-  plotter.setTagBool("style.listSignalFirst", True)
-  # # to fix the y-limits of the main plot
-  plotter.setTagDouble("style.min", 0.1)
-  # plotter.setTagDouble("style.max", 1e4)
+  
+  plotter.setTagString("style.subPlot","ratio")
+  plotter.setTagDouble("style.ratio.max",1.2)
+  plotter.setTagDouble("style.ratio.min",0.8)
+  plotter.setTagDouble("style.logMinMin",0.5)
+
+  #ATLAS Work in Progress settings
+  #plotter.setTagDouble("labels.atlas.scale",.9)
+  #plotter.setTagString("labels.atlas","Work in Progress")
+  #plotter.setTagDouble("labels.atlas.xPos",0.09)
+  
+  plotter.setTagDouble("labels.atlas.scale",1.0)
+  plotter.setTagString("labels.atlas","Internal")
+  plotter.setTagDouble("labels.atlas.xPos",0.11)
+  
+  plotter.setTagDouble("geometry.labels.textSize",0.001)
+  plotter.setTagDouble("geometry.labels.xPos",0.185)
+  plotter.setTagDouble("geometry.labels.yPos",0.88)
+  plotter.setTagDouble("geometry.legends.xMin",0.48)
+  plotter.setTagDouble("geometry.legends.xMax",0.925)
+  plotter.setTagDouble("geometry.labels.scale",0.7)
+  plotter.setTagDouble("style.nLegendCols",2)
+  plotter.setTagDouble("style.legend.textSize",0.0215)
+  plotter.setTagDouble("style.labels.marginstep",0.05)
+  
+  plotter.setTagDouble("blocks.x.0",1.)
+  plotter.setTagDouble("blocks.y.0",0.65)
+  plotter.setTagDouble("geometry.sub.height",0.3)
+  plotter.setTagDouble("geometry.main.yAxis.titleOffset",1.6)
+  plotter.setTagDouble("geometry.main.xAxis.titleOffset",1.6)
+  
+  plotter.setTagDouble("geometry.sub.yAxis.titleOffset",1.1)
+  plotter.setTagDouble("geometry.sub.xAxis.titleOffset",5.8)
+  
+  plotter.setTagDouble("geometry.sub.xAxis.labelSize",0.02)
+  plotter.setTagDouble("geometry.sub.xAxis.titleSize",0.02)
+  plotter.setTagDouble("geometry.sub.yAxis.labelSize",0.04)
+  plotter.setTagDouble("geometry.sub.yAxis.titleSize",0.05)
+  
+  plotter.setTagDouble("geometry.main.xAxis.labelSize",0.035)
+  plotter.setTagDouble("geometry.main.xAxis.titleSize",0.035)
+  plotter.setTagDouble("geometry.main.yAxis.labelSize",0.035)
+  plotter.setTagDouble("geometry.main.yAxis.titleSize",0.035)
+
+  plotter.setTagDouble("geometry.sub.margins.top",0.1)
+  plotter.setTagDouble("geometry.sub.margins.bottom",0.35)
+  plotter.setTagDouble("geometry.main.margins.left",0.122)
+  plotter.setTagDouble("geometry.sub.margins.left",0.122)
 
   if args.postfit:
     plotter.setTagBool("errors.showStat",False)  
@@ -89,7 +121,10 @@ def main(args):
         if not pname.endswith("_count") and not pname == "total":
           processes.add(pname)
     for p in sorted(list(processes)):
-      plotter.addBackground(p)        
+      if "sig" in p or "sr" in p or "2H" in p or "tH" in p:
+        plotter.addSignal(p)
+      else:
+        plotter.addBackground(p)        
       
   systematics = QFramework.TQFolder("total")
   protect(systematics)
@@ -100,8 +135,7 @@ def main(args):
   printer.importProcesses(plotter)
   print("================ Processes considered for plots ===============")
   plotter.printProcesses()
-
-  plotter.setTagString("labels.atlas","Internal")
+  
 
   plist = []
 
@@ -115,32 +149,33 @@ def main(args):
     histograms = indir.Get(region.GetName())
     totalBkg = []
     totalBkgErr = []
-    iValidHist = 0
+    nbins = 0
+    iPlottedHist = 0
     for ihist, histname in enumerate(sorted(histograms.GetListOfKeys(),key=lambda k:k.GetName())):
       pname = str(histname.GetName())
-      if isNameBlacklisted(pname, args.blacklistSamples.split(",")): continue
+      if isNameBlacklisted(pname, args.blacklistSamples.split(",")):
+        continue
       hist = histograms.Get(pname)
-      if hist: iValidHist = iValidHist + 1
-      else: continue
-      bincontents = [0 for i in range(hist.GetXaxis().GetNbins())]
-      bincontents_err = [0 for i in range(hist.GetXaxis().GetNbins())]
+      if not hist:
+        continue
+
       t = QFramework.TQTaggable(plotter.getProcessTags(pname.replace("*", "")))
-      histcontents.setEntry(0, iValidHist, t.getTagStringDefault(".title", pname))
-      for ibin in range(1, hist.GetXaxis().GetNbins()+1): # ignore over/underflow bins
-#         print "ibin ",ibin,pname 
-        bincontent = hist.GetBinContent(ibin)
-        error = hist.GetBinError(ibin)
-        bincontent = hist.GetBinContent(ibin)
-        if bincontent < 1e-10: bincontent = 0
-        if error < 1e-10: error = 0
-          
-          
-        histcontents.setEntry(nrows + ibin, 0, "{} bin={}".format(region.GetName(), ibin))
-#         print "{} bin={}".format(region.GetName(), ibin),nrows + ibin,0
-        if not "Data" in pname or unblinded:
-          histcontents.setEntry(nrows + ibin, iValidHist, "{:.2f} $\\pm$ {:.2f}".format(bincontent, error))
-          bincontents[ibin-1] = bincontent
-          bincontents_err[ibin-1] = error
+      if not pname.endswith("_count"):
+        iPlottedHist = iPlottedHist+1
+        bincontents = [0 for i in range(hist.GetXaxis().GetNbins())]
+        bincontents_err = [0 for i in range(hist.GetXaxis().GetNbins())]
+        histcontents.setEntry(0, iPlottedHist, t.getTagStringDefault(".title", pname))
+        for ibin in range(1, hist.GetXaxis().GetNbins()+1): # ignore over/underflow bins
+          nbins = max(nbins,ibin)
+          bincontent = hist.GetBinContent(ibin)
+          error = hist.GetBinError(ibin)
+          if bincontent < 1e-10: bincontent = 0
+          if error < 1e-10: error = 0
+          histcontents.setEntry(nrows + ibin, 0, "{} bin={}".format(region.GetName(), ibin))
+          if unblinded or not "Data" in pname:
+            histcontents.setEntry(nrows + ibin, iPlottedHist, "{:.2f} $\pm$ {:.2f}".format(bincontent, error))
+            bincontents[ibin-1] = bincontent
+            bincontents_err[ibin-1] = error
       if t.getTagBoolDefault(".isBackground", False):
         i = 0
         for cont,err in zip(bincontents, bincontents_err):
@@ -151,6 +186,7 @@ def main(args):
             totalBkg.append(cont)
             totalBkgErr.append(err)
           i = i+1
+          
       if pname == "total":
         syshist = QFramework.TQHistogramUtils.getUncertaintyHistogram(hist)
         syshist.Divide(hist)
@@ -167,7 +203,6 @@ def main(args):
           continue
         if args.xlabel:
           hist.GetXaxis().SetTitle(args.xlabel)
-#         hist.GetXaxis().SetTitle( (hist.GetXaxis().GetTitle()).replace("obs_x_","Remapped discriminant variable of ") )
         hist.GetXaxis().SetTitle( (hist.GetXaxis().GetTitle()).replace("obs_x_","Remapped discriminant variable of ") )
         isBkg = False
         histf = samples.getSampleFolder(pname+"+").getFolder(".histograms/"+region.GetName()+"+")
@@ -179,18 +214,9 @@ def main(args):
         cnt.SetName(region.GetName())
         cnt.SetTitle(region.GetName())
         cntf.addObject(cnt)
-#        for p in processes:
-#          name = p.getTagStringDefault(".path","")
-#          if QFramework.TQStringUtils.matches(pname,name):
-#            QFramework.TQHistogramUtils.extractStyle(hist,p)
-#            isBkg = p.getTagBoolDefault(".isBackground",False)
-#            hist.SetTitle(p.getTagStringDefault(".title",hist.GetTitle()).Data())
+    nrows = nrows + nbins
 
-    if ibin >= 0:
-        histcontents.setEntry(0, iValidHist+1, "Total Bkg")
-        for i in range(len(totalBkg)):
-          histcontents.setEntry(nrows+i+1, iValidHist + 1, "{:.2f} $\\pm$ {:.2f}".format(totalBkg[i], totalBkgErr[i]))
-        nrows = nrows + ibin # for filling of table with hist content
+
       
   if not samples.getListOfFolders("?"):
     print("no samples found, please check path given!")
@@ -203,9 +229,6 @@ def main(args):
     for i in range(len(args.xbins)-1):
       label = "{:g}-{:g} {:s}".format(args.xbins[i],args.xbins[i+1],args.xunit)
       options.setTagString("relabelX."+str(i),label)
-
-  if args.verbose:
-    options.printTags()
       
   if args.postfit:
     plotter.loadSystematics(systematics)
