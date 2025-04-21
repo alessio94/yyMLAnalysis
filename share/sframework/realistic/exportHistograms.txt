@@ -1,0 +1,31 @@
+# -*- mode: tqfolder -*-
+
++ImportResults {
+ +ggF_0jet {
+   <inputFile = "workspaces/realistic/result-preliminary.root:ggF_0jet">
+ }
+}
+
++ImportWorkspaces {
+  +ggF_0jet {
+    <inputFile = "workspaces/realistic/workspace-postFit.root:ggF_0jet">
+  }
+}
+
++ExportHistograms{
+  +ggF_0jet {
+    +prefit.asm {
+      <snapshot="SnSh_AllVars_Nominal">
+      <outputFile="workspaces/realistic/histograms-preFit-asimov.root">
+      <data="asimovData">
+    }
+    +postfit.asm {
+      <snapshot="SnSh_AllVars_Unconditional_asimov">
+      <outputFile="workspaces/realistic/histograms-postFit-asimov.root">
+      <data="asimovData">
+      <fitResult="Fit/asimov">
+    }
+  }
+}
+<saveConfig="workspaces/realistic/exportHistogramConfig.txt">
+
