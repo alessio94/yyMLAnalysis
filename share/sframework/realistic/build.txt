@@ -72,6 +72,13 @@
   +ggF_0jet;
 }
 
+# export our model, both as a TQFolder and as a set of HistFactory XMLs
++ExportModels.ggF_0jet {
+  +ggF_0jet {
+    <outputFile = "workspaces/realistic/model.root", writeXML="workspaces/realistic/xml">
+  }
+}
+
 +ExportWorkspaces {
   +ggF_0jet { # workspace name
     <outputFile = "workspaces/realistic/workspace.root">
