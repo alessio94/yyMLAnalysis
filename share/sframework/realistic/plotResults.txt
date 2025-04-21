@@ -1,0 +1,72 @@
+# -*- mode: tqfolder -*-
+
++ImportResults {
+  +ggF_0jet {
+    <inputFile = "./workspaces/realistic/result.root:ggF_0jet">
+  }
+}
+
+# plot parameter correlation
++PlotCorrelations.tikz.asimov {
+  +ggF_0jet {
+    <fitresult="Fit/asimov">
+    <outputFile="workspaces/realistic/results/correlations-asimov.tex">
+    <blacklist={"*gamma*"}>
+  }
+}
+@ PlotCorrelations.*/? {
+  <style.canvasScale=1.>
+  <style.marginScale.left=1.5, style.marginScale.right=1., style.marginScale.bottom=1.5, style.marginScale.top=1.> #can be used to overwrite one side explicitly
+  <style.showNumeric=true>
+}
+
+# plot breakdowns
++PlotResultsTikZ.ranking.breakdown.asimov {
+  <style.POI = "ggF 0j">
+  +ggF_0jet {
+    +BREAKDOWN.asimov {
+      <parameterSet = "Breakdowns/asimov/Breakdown/mu_ggF_gg2H_0J">
+    }
+    <blacklist={"ATLAS_*","*gamma*","mu_*"}>
+    <result="Fit/asimov">	
+    <outputFile="workspaces/realistic/results/ranking-breakdown-asimov-plot.tex">
+    <writeTable="workspaces/realistic/results/ranking-breakdown-asimov-table.tex">                      
+    <writeJSON ="workspaces/realistic/results/ranking-breakdown-asimov.js">
+  }
+}
+
+# plot impacts
++PlotResultsTikZ.ranking.impacts.asimov {
+  <style.POI = "ggF 0j">
+  +ggF_0jet {
+    +IMPACTS.asimov {
+      <parameterSet = "Impacts/asimov/Impacts/mu_ggF_gg2H_0J">
+    }
+    +PULLS.asimov {
+      <parameterSet = "Fit/asimov/floatParsFinal">
+      <style.title = "Expected (Asimov)", style.color = kBlack>
+    }
+    <blacklist = {"*gamma*","mu_*"}>
+    <result="Fit/asimov">	
+    <outputFile="workspaces/realistic/results/ranking-impacts-asimov-plot.tex">
+    <writeTable="workspaces/realistic/results/ranking-impacts-asimov-table.tex">                      
+    <writeJSON ="workspaces/realistic/results/ranking-impacts-asimov.js">
+  }
+}
+
+# general plotting settings for breakdowns and impacts
+@PlotResultsTikZ.*/? {
+  <showIndividualStatUncertainties=true>
+  <style.vertical=true, style.textSize=0.009,style.highlight=kGray, style.breakdown.xMax=3.5>
+  <style.lineWidth=1, style.markerSize=.5>@PULLS*;
+  <breakdown.relative=false>
+  <standalone=true>
+  <ATLAS=true, ATLASlabel="Internal">		
+  <style.yshift=0>
+  <style.fillColor = kOrange-2, style.drawOption = 'E2', style.fillColor.pos="#f6c523",  style.fillColor.neg="#f6c523",   master=true> @ BREAKDOWN.*;
+  <style.fillColor = kOrange-2, style.drawOption = 'E2', style.fillColor.pos=kAzure+7, style.fillColor.neg="#FF8C6E",   master=true> @ IMPACTS.*;
+  <master=true>
+}
+
+
+<saveConfig="workspaces/realistic/plotResultsConfig.txt">
