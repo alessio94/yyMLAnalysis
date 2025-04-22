@@ -19,12 +19,6 @@
       <outputFile="workspaces/realistic/histograms-preFit-asimov.root">
       <data="asimovData">
     }
-    +postfit.asm {
-      <snapshot="SnSh_AllVars_Unconditional_asimov">
-      <outputFile="workspaces/realistic/histograms-postFit-asimov.root">
-      <data="asimovData">
-      <fitResult="Fit/asimov">
-    }
   }
 }
 <saveConfig="workspaces/realistic/exportHistogramConfig.txt">

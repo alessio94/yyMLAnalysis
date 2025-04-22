@@ -13,6 +13,7 @@
 +MakeAsimovDataset {
   +ggF_0jet;
 }
+
 +Fit.asimov {
   +ggF_0jet {
     <dataset="asimovData">
@@ -53,13 +54,15 @@
 @*CalculateBreakdown*/? {
   @ ? {
     <group.MCSTAT = "*gamma*">
+    ## TODO add new group ##
     <group.SYS = "*ATLAS_*", config.group.SYS.except = "ATLAS_norm*">
     <group.ALLSYS = "*">
   }
   <POI={"mu*"}> @ ?;
 }
 @*CalculateImpacts*/?/? {
-  <singles.SYS = "*ATLAS_*">
+  ## TODO add the rest of the systematics##
+  <singles.NORM = "*ATLAS_norm*">
 }
 
 # write down likelihood scan jobs
@@ -69,7 +72,7 @@
     <fit.logToFile="workspaces/realistic/scan_asimov.log">
     <datasetName = "asimovData">
     +mu_ggF_gg2H_0J {
-      <min=0, max=3.5, nbins=100>
+      <min=0, max=1, nbins=100> ## TODO fix the scan range ##
     }
   }
 }

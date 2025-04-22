@@ -24,13 +24,6 @@
     <channelVar = "_FT_EFF_Eigen_B_0__1up">
   }
 
-  +CP_JES_BJES_Response__1down {
-    <channelVar = "_JET_BJES_Response__1down">
-  }
-  +CP_JES_BJES_Response__1up {
-    <channelVar = "_JET_BJES_Response__1up">
-  }
-
   +CP_MUON_EFF_TrigSystUncertainty__1down {
     <channelVar = "_MUON_EFF_TrigSystUncertainty__1down">
   }
@@ -44,6 +37,8 @@
   +CP_EL_EFF_Iso_TOTAL_1NPCOR_PLUS_UNCOR__1up {
     <channelVar = "_EL_EFF_Iso_TOTAL_1NPCOR_PLUS_UNCOR__1up">
   }
+
+  ## TODO Add systematic up and down variations ##
 
   <Exclude="*:*Fake*"> @ CP_*;
 
@@ -65,10 +60,6 @@
     <Down = "CP_FT_EFF_Eigen_B_0__1down", Up = "CP_FT_EFF_Eigen_B_0__1up", isSFSys = true, Attributes.0 = "exp", Attributes.1 = "NP", isDetectorSys = true>
   }
 
-  +ATLAS_JES_BJES {
-    <Down = "CP_JES_BJES_Response__1down", Up = "CP_JES_BJES_Response__1up", isP4Sys = true, Attributes.0 = "exp", Attributes.1 = "NP", isDetectorSys = true>
-  }
-
   +ATLAS_MUON_EFF_TrigSystUncertainty {
     <Down = "CP_MUON_EFF_TrigSystUncertainty__1down", Up = "CP_MUON_EFF_TrigSystUncertainty__1up", isSFSys = true, Attributes.0 = "exp", Attributes.1 = "NP", isDetectorSys = true>
   }
@@ -76,6 +67,8 @@
   +ATLAS_EL_EFF_Iso_TOTAL_1NPCOR_PLUS_UNCOR {
     <Down = "CP_EL_EFF_Iso_TOTAL_1NPCOR_PLUS_UNCOR__1down", Up = "CP_EL_EFF_Iso_TOTAL_1NPCOR_PLUS_UNCOR__1up", isSFSys = true, Attributes.0 = "exp", Attributes.1 = "NP", isDetectorSys = true>
   }
+
+  ## TODO Add the systematic ##
 
   <Exclude="*:*Fake*"> @ ATLAS_*;
 
