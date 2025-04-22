@@ -68,7 +68,7 @@
 # write down likelihood scan jobs
 +WriteScanLikelihood.ggF_0J_asimov {
   +ggF_0jet {
-    <outputPath = "workspaces/realistic/Batch/Scans/ggf_0J">
+    <outputPath = "workspaces/realistic/Batch/Scans/ggf_0J_asimov">
     <fit.logToFile="workspaces/realistic/scan_asimov.log">
     <datasetName = "asimovData">
     +mu_ggF_gg2H_0J {
