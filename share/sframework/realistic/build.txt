@@ -40,7 +40,7 @@
 
     # list the variations
     +Variations {
-      <SampleFolder = "/afs/cern.ch/user/a/ahmarkho/AnalysisExample/realistic-example.root:samples">
+      <SampleFolder = "/eos/atlas/atlascerngroupdisk/phys-higp/NRML/workshops/Apr2025/SFramework/realistic-example.root:samples">
 
       # define no channel variations
       +Nominal {
