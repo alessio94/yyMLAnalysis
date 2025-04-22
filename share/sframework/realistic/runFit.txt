@@ -54,14 +54,14 @@
 @*CalculateBreakdown*/? {
   @ ? {
     <group.MCSTAT = "*gamma*">
-    ## TODO add new group ##
+    ## TODO add new group. Hint, norms? ##
     <group.SYS = "*ATLAS_*", config.group.SYS.except = "ATLAS_norm*">
     <group.ALLSYS = "*">
   }
   <POI={"mu*"}> @ ?;
 }
 @*CalculateImpacts*/?/? {
-  ## TODO add the rest of the systematics##
+  ## TODO add the rest of the systematics. Hint: what other ATLAS NPs are missing?##
   <singles.NORM = "*ATLAS_norm*">
 }
 

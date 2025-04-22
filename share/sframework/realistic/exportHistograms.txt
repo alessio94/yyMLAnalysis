@@ -17,6 +17,7 @@
     +prefit.asm {
       <snapshot="SnSh_AllVars_Nominal">
       <outputFile="workspaces/realistic/histograms-preFit-asimov.root">
+      <constPars={"*ATLAS*","mu*"}>
       <data="asimovData">
     }
   }
