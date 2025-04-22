@@ -1,0 +1,11 @@
+# -*- mode: tqfolder -*-
+
++CR_0j_DF_DNN_ptH_gt0_WW { # control region name in the model
+  <Counter = "[CutGGF_WWControl_0jet_DNN_PTH_0_10+CutGGF_WWControl_0jet_DNN_PTH_GT10]"> # control region counter name in samplefolder
+  <Title   = "WW CR 0j"> # counter title in TH1 class
+}
+
++CR_0j_DF_DNN_ptH_gt0_top {
+  <Counter = "[CutGGF_Top0Control_TopoDPhill_0j1b_0jet_DNN_PTH_0_10+CutGGF_Top0Control_TopoDPhill_0j1b_0jet_DNN_PTH_GT10]">
+  <Title   = "Top CR 0j">
+}

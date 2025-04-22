@@ -1,0 +1,88 @@
+# -*- mode: tqfolder -*-
+# to get proper syntax highlighting and indentation when using emacs,
+# add the following line to your .emacs file:
+#   (load-file "$TQPATH/share/tqfolder.el")
+
++CreateModels {
+  +ggF_0jet { #model name
+    +Parameters {
+      <Title = "H->WW ggF 0jet DF">
+      <POI = "mu_ggF_gg2H_0J">
+      # The luminosity scale factor (here, it is one because input
+      # histograms already have been scaled to correct luminosity)
+      <Lumi = 1.0>
+      # The relative uncertainty on the luminosity (scale factor). We don't want
+      # to consider systematic uncertainties for now, so set this parameter to a
+      # very small value (the fit will fail if it is too small)
+      <LumiRelErr = 0.0001>
+      # The minimum bin content for each histogram bin
+      <MinBinContent = 1E-12>
+    }
+
+    # background samples definitions
+    $include("sframework/realistic/snippets/samples-bkg.txt");
+
+    # signal samples definitions
+    $include("sframework/realistic/snippets/samples-signal.txt");
+
+    # data sample definitions
+    $include("sframework/realistic/snippets/samples-data.txt");
+
+    +Channels {
+      # define signal regions
+      $include("sframework/realistic/snippets/channels-CRs.txt");
+
+      # define control regions
+      $include("sframework/realistic/snippets/channels-SRs.txt");
+
+      <StatRelErrorThreshold=0.> @ ?;
+    }
+
+    # list the variations
+    +Variations {
+      <SampleFolder = "/eos/atlas/atlascerngroupdisk/phys-higp/NRML/workshops/Apr2025/SFramework/realistic-example.root:samples">
+
+      # define no channel variations
+      +Nominal {
+        <channelVar="">
+      }
+    }
+
+    # The following two lines exp uncertainties
+    $include("sframework/realistic/snippets/systematics.txt");
+
+    # everything else should be a normalization systematic with a gaussian constraint
+    <IsOverallSys=true, ConstraintType = "Gaussian"> @ Systematics/?;
+    <IsHistoSys=true> @ Systematics/ATLAS_*, Systematics/HWW_FakeFactor_*;
+
+    # notice that this affects the systematics.txt file behavior
+    # by correcting the path to the variation
+    @Variations {
+      <channelSys = "[em$(channelVar)+me$(channelVar) $(addChannel1) $(addChannel2)]"> @ ?;
+      <addChannel1 = "", addChannel2 = ""> @ ?;
+    }
+  }
+}
+
+# Here, we create then save the workspace directly
+# in even more realistic cases, you would probably want to
+# modify the model with different steps.
+# in such case, you can save the model using: +ExportModels{ +ModelName{ ... }}
++CreateWorkspaces {
+  +ggF_0jet;
+}
+
+# export our model, both as a TQFolder and as a set of HistFactory XMLs
++ExportModels.ggF_0jet {
+  +ggF_0jet {
+    <outputFile = "workspaces/realistic/model.root", writeXML="workspaces/realistic/xml">
+  }
+}
+
++ExportWorkspaces {
+  +ggF_0jet { # workspace name
+    <outputFile = "workspaces/realistic/workspace.root">
+  }
+}
+
+<saveConfig="workspaces/realistic/build.txt"> # the config can be saved as well for future reference
