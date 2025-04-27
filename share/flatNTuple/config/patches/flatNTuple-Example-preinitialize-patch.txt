@@ -1,4 +1,0 @@
-# -*- mode: tqfolder -*-
-
-# Sherpa WZ normalisation = 1.15
-$modify(tag='.xsp.xSecScale',operator='=',value=1.15,path='bkg/?/diboson/NonWW/qq/WZgammaStar/*',filter='s',create=true);

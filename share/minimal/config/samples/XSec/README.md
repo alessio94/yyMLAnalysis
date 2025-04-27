@@ -1,1 +1,0 @@
-../../../../common/config/samples/XSec/README.md

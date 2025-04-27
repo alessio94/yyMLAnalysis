@@ -1,4 +1,0 @@
-.path = "sig",      .name = "signal",   .title = "2LSC signal",   .isSignal = true, histLineColor = kGreen,  histLineWidth = 3, histLineStyle = 1, histFillStyle = 0
-.path = "bkg",      .name = "background",   .title = "2LSC background",   .isBackground = true, histFillColor = kBlue
-.path = "sig",      .name = "data",   .title = "2LSC data",   .isData = true
-

@@ -1,8 +1,0 @@
-###---------------------------------------------------------------------###
-###------                    Collapse the plots                     ----###
-###---------------------------------------------------------------------###
-<.aj.pool.histograms=true,.aj.pool.counters=true>@sig/?/?/sig/?;
-
-<.aj.pool.histograms=true,.aj.pool.counters=true>@bkg/?/?/prompt/diboson/WZ/?;
-<.aj.pool.histograms=true,.aj.pool.counters=true>@bkg/?/?/non_prompt/top/ttbar/?;
-

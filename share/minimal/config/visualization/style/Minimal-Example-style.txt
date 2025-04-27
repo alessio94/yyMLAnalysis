@@ -1,1 +1,0 @@
-<style.default.title = "VBF", style.default.histLineColor = 600, style.default.histFillColor = 600> @ /sig/?/mh125/vbf/;

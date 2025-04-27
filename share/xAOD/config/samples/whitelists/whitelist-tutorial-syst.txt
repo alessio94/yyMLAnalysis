@@ -1,8 +1,0 @@
-# SM ggf  HWW
-#345324 $*_s*
-
-# Diboson llvv Sherpa 2.2.2
-364254 $*_s* 
-
-# Top Powheg diLepton
-#410472 $*_s*

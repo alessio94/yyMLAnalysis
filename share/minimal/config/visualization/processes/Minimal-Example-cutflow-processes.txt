@@ -1,1 +1,0 @@
-.path = "sig/$(channel)/mh125/vbf", .title = "vbf"

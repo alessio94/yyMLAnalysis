@@ -1,2 +1,0 @@
-# pretend like vbf is background for this example to get it filled
-.path = "sig/$(channel)/mh125/vbf", .name = "vbf", .isBackground = true

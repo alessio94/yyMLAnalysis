@@ -1,1 +1,0 @@
-../../../common/config/master/README.md

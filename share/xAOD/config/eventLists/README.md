@@ -1,1 +1,0 @@
-../../../common/config/eventLists/README.md

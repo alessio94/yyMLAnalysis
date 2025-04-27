@@ -1,4 +1,0 @@
-SampleID , xsection , kfactor , filtereff , uncertainty , mh , generator , process , simulation, path
-
-# SM VBF
-345323, 0.00008579, 1.0, 5.0998E-01, --, 125,  Powheg+Pythia8+EvtGen, PowhegPythia8EvtGen_CT10_AZNLOCTEQ6L1_VBFH125_WWlvlv_EF_15_5, OFLCOND-RUN12-SDR-30, /sig/$(channel)/mh125/vbf/

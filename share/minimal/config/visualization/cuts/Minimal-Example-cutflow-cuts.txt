@@ -1,2 +1,0 @@
-.name="CutChannels", .title="Channel Selection"
-.name="CutMjj", .title="m_{jj}"

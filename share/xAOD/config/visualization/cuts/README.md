@@ -1,1 +1,0 @@
-../../../../common/config/visualization/cuts/README.md

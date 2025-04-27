@@ -1,6 +1,0 @@
-# -*- mode: tqfolder -*-
-
-# we want to apply mc event weights on MC samples
-# this tag is used by the sample initializer
-# to determine if it should extract bookkeeping info
-<usemcweights = false> @ sig,bkg; # we currently don't want to apply mc event weights on MC samples

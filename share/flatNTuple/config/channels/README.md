@@ -1,1 +1,0 @@
-../../../common/config/channels/README.md

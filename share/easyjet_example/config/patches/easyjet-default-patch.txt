@@ -1,4 +1,0 @@
-# -*- mode: tqfolder -*-
-
-<usemcweights=true> @ sig, bkg;
-<Variation="NOSYS"> @ .;

@@ -1,9 +1,0 @@
-#####################
-# Define histograms #
-
-TH1F('Mjj','', 25, 0., 5000.) << ( [mjj]/1000. : 'm_{jj} [GeV]' );
-
-#################################################
-# and specify for which cut levels to fill them #
-
-@CutChannels/*: Mjj;

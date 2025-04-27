@@ -1,3 +1,0 @@
-.title = "Data",        .path = "Data", .name = "Data", .isData = true, histMarkerColor=kBlack, histLineColor=kBlack, histMarkerStyle=20
-.title = "Signal",      .path = "Signal", .name = "Signal", .isSignal = true, histFillColor=kRed
-.title = "Background",  .path = "Background", .name = "Background", .isBackground = true, histFillColor=kBlue

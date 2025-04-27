@@ -1,3 +1,0 @@
-# -*- mode: tqfolder -*-
-
-<style.default.title = "2LSC signal", style.default.histFillColor = 210> @ /sig/?/mysample ;
