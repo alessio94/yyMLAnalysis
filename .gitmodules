@@ -1,7 +1,7 @@
 [submodule "CAFCore"]
 	path = CAFCore
-	url = ../../atlas-caf/CAFCore
+	url = ../../../../../atlas-caf/CAFCore
 	branch = master
 [submodule "SubmissionHelpers"]
 	path = SubmissionHelpers
-	url = ../../atlas-caf/SubmissionHelpers.git
+	url = ../../../../../atlas-caf/SubmissionHelpers.git
