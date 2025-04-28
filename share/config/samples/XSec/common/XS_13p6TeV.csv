@@ -1,0 +1,48 @@
+SampleID , xsection , kfactor , filtereff , uncertainty , mh , generator , process , simulation
+# Units on xsection in this file are in nb, not the default pb!  You MUST specify this correctly in your analyze step.
+
+###################################################################################################################################################################
+###################################################################################################################################################################
+# 																		signal 																					  #
+###################################################################################################################################################################
+###################################################################################################################################################################
+
+# To be produced
+
+###################################################################################################################################################################
+###################################################################################################################################################################
+# 																		background 																				  #
+###################################################################################################################################################################
+###################################################################################################################################################################
+
+# Single Higgs
+
+602421, 3.0865E-02, 1.0, 1.0, --, 125, Powheg(v.06-03)+Pythia8(v.310), PhPy8EG_PDF4LHC21_ggH_NNLOPS_gammagamma, DUMMY
+601482, 4.2329E-03, 1.0, 1.0, --, 125, Powheg(v.06-03)+Pythia8(v.310), PhPy8EG_PDF4LHC21_VBFH125_gammagamma, DUMMY
+601484, 9.1576E-04, 1.0, 1.0, --, 125, Powheg(v.06-03)+Pythia8(v.310), PhPy8EG_PDF4LHC21_WpH125J_Wincl_MINLO_gammagamma, DUMMY
+601483, 5.7671E-04, 1.0, 1.0, --, 125, Powheg(v.06-03)+Pythia8(v.310), PhPy8EG_PDF4LHC21_WmH125J_Wincl_MINLO_gammagamma, DUMMY
+601523, 8.3956E-04, 1.0, 1.0, --, 125, Powheg(v.06-03)+Pythia8(v.310), PhPy8EG_PDF4LHC21_ZH125J_Zincl_MINLO_gammagamma, DUMMY
+601522, 5.9851E-05, 1.0, 1.0, --, 125, Powheg(v.06-03)+Pythia8(v.310), PhPy8EG_PDF4LHC21_ggZH125_Zincl_gammagamma, DUMMY
+602422, 5.5901E-04, 1.0, 1.0, --, 125, Powheg(v.06-03)+Pythia8(v.310), PhPy8EG_PDF4LHC21_ttH125_tincl_gammagamma_1file, DUMMY
+601710, 5.1681E-04, 1.0, 1.0, --, 125, Powheg(v.06-03)+Pythia8(v.310), PhPy8EG_PDF4LHC21_4FS_A14NNPDF_bbH_gammagamma, DUMMY
+545636, 7.5487E-05, 1.0, 1.0, --, 125, aMcAtNlo+Pythia8(v.309)+EvtGen(v.2.1.1), aMCPy8EG_tHjb125_4fl_gammagamma, DUMMY
+545639, 2.3626E-05, 1.0, 1.0, --, 125, aMcAtNlo+Pythia8(v.309)+EvtGen(v.2.1.1), aMCPy8EG_tWH125_gammagamma, DUMMY
+
+# Vyy
+
+700870, 2.1119E-03, 1.0, 1.0, --, 125, Sherpa(v.2.2.14), Sh_2214_enugammagamma, DUMMY
+700871, 2.1119E-03, 1.0, 1.0, --, 125, Sherpa(v.2.2.14), Sh_2214_munugammagamma, DUMMY
+700872, 2.1142E-03, 1.0, 1.0, --, 125, Sherpa(v.2.2.14), Sh_2214_taunugammagamma, DUMMY
+700873, 1.373E-03, 1.0, 1.0, --, 125, Sherpa(v.2.2.14), Sh_2214_eegammagamma, DUMMY
+700874, 1.3705E-03, 1.0, 1.0, --, 125, Sherpa(v.2.2.14), Sh_2214_mumugammagamma, DUMMY
+700875, 1.3723E-03, 1.0, 1.0, --, 125, Sherpa(v.2.2.14), Sh_2214_tautaugammagamma, DUMMY
+700876, 2.471E-04, 1.0, 1.0, --, 125, Sherpa(v.2.2.14), Sh_2214_nunugammagamma, DUMMY
+
+# ttyy
+
+542859, 4.0288E-06, 1.0, 1.0, --, 125, MadGraph(v.3.5.1.atlas2)+Pythia8(v.308)+EvtGen(v.2.1.1), MGPy8EG_ttgammagamma_allhad_LO, DUMMY
+542860, 6.4689E-06, 1.0, 1.0, --, 125, MadGraph(v.3.5.1.atlas2)+Pythia8(v.308)+EvtGen(v.2.1.1), MGPy8EG_ttgammagamma_nonallhad_LO, DUMMY
+
+# yy+jets
+
+700980, 4.8089E-02, 1.0, 1.0, --, 125, Sherpa(v.2.2.14), Sh_2214_Diphoton_myy_90_175, DUMMY
