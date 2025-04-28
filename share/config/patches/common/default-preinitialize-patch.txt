@@ -1,0 +1,23 @@
+# -*- mode: tqfolder -*-
+
+<usemcweights=true> @ sig, bkg;
+<Variation="NOSYS"> @ .;
+
+<isSig = false, isBkg = false>  @ /data;
+<isSig = false, isBkg = true>  @ /bkg;
+<isSig = true, isBkg = false>  @ /sig;
+<isData = false, isMC = true>  @ /bkg, /sig;
+<isData = true,  isMC = false> @ /data;    # for data,revert the data/MC tags
+
+# Get sum of weights
+# TODO: add campaign levels (and separate countHistogram.names) when introducing campaigns split - currently only c23a (2022+2023)
+# TODO: *really* hacky atm because each DSID has a separate name for the countHistogram
+#       (to be fixed in next Easyjet production, issue already encountered and fixed by HH->ML analysis team now that I recall)
+<.init.countHistogram.name = "CutBookkeeper_602421_410000_NOSYS"> @ /bkg/?/singleH/ggFH/ ;
+<.init.countHistogram.name = "CutBookkeeper_601484_410000_NOSYS"> @ /bkg/?/singleH/WpH/ ;
+<.init.countHistogram.name = "CutBookkeeper_601523_410000_NOSYS"> @ /bkg/?/singleH/qqZH/ ;
+<.init.countHistogram.name = "CutBookkeeper_602422_410000_NOSYS"> @ /bkg/?/singleH/ttH/ ;
+<.init.countHistogram.name = "CutBookkeeper_700870_410000_NOSYS"> @ /bkg/?/Vyy/enugammagamma/ ;
+<.init.countHistogram.name = "CutBookkeeper_700980_410000_NOSYS"> @ /bkg/?/yyjets/ ;
+# TODO: change to /bkg/?/?/, /sig/?/?/ when introducing campaigns split
+<.init.countHistogram.bin = 2> @ /bkg/?/, /sig/?/ ;
