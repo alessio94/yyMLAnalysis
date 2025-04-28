@@ -1,0 +1,38 @@
+#--------------------------------
+# signal
+
+#--------------------------------
+# Single Higgs
+
+602421 /bkg/$(channel)/singleH/ggFH
+601482 /bkg/$(channel)/singleH/VBFH
+601484 /bkg/$(channel)/singleH/WpH
+601483 /bkg/$(channel)/singleH/WmH
+601523 /bkg/$(channel)/singleH/qqZH
+601522 /bkg/$(channel)/singleH/ggZH
+602422 /bkg/$(channel)/singleH/ttH
+601710 /bkg/$(channel)/singleH/bbH
+545636 /bkg/$(channel)/singleH/tHbj
+545639 /bkg/$(channel)/singleH/tHW
+
+#--------------------------------
+# Vyy
+
+700870 /bkg/$(channel)/Vyy/enugammagamma
+700871 /bkg/$(channel)/Vyy/munugammagamma
+700872 /bkg/$(channel)/Vyy/taunugammagamma
+700873 /bkg/$(channel)/Vyy/eegammagamma
+700874 /bkg/$(channel)/Vyy/mumugammagamma
+700875 /bkg/$(channel)/Vyy/tautaugammagamma
+700876 /bkg/$(channel)/Vyy/nunugammagamma
+
+#--------------------------------
+# ttyy
+
+542859 /bkg/$(channel)/ttyy/allhad
+542860 /bkg/$(channel)/ttyy/nonallhad
+
+#--------------------------------
+# yy+jets
+
+700980 /bkg/$(channel)/yyjets
