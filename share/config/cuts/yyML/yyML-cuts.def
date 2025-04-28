@@ -1,0 +1,8 @@
+# -*- mode: tqfolder -*-
+# to get proper syntax highlighting and indentation when using emacs,
+# add the following line to your .emacs file:
+#   (load-file "$TQPATH/share/tqfolder.el")
+
++CutWeights {
+    <.cutExpression = 1, .weightExpression = "$(weights)", .title="Apply weights">
+} #End: CutWeights
