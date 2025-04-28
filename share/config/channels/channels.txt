@@ -1,0 +1,9 @@
+name path latex datapath
+1l0tau   1l0tau$(variation)   1\ell 0\tau   1l0tau
+0l1tau   0l1tau$(variation)   0\ell 1\tau   0l1tau
+2l0tau   2l0tau$(variation)   2\ell 0\tau   2l0tau
+1l1tau   1l1tau$(variation)   1\ell 1\tau   1l1tau
+0l2tau   0l2tau$(variation)   0\ell 2\tau   0l2tau
+2L       [2l0tau$(variation)+1l1tau$(variation)+0l2tau$(variation)]   2\text{L}   2L
+yyML     yyML$(variation)     /gamma /gamma \text{ML}    yyML
+
