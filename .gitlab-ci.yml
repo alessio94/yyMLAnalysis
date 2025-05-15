@@ -87,8 +87,6 @@ standalone_compile:
 ##########################################################################
 # stage: run
 
-yyML-nom_script
-
 run_yyML-nom:
  <<: *asg
  <<: *asg_setup
