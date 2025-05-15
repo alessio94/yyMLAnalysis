@@ -12,7 +12,7 @@ def main(args):
     config = common.getConfigOptions(args, executable_name)
     #the lazy way to get all the needed instructions to ensure the environment on the batch node behaves like your current analysis setup:
     setup = submit.getSetupCommand(args)
-    #run the setup script for our analysis (CAFExample), should this be moved to submit.getSetupCommand ?
+    #run the setup script for our analysis (yyMLAnalysisCode), should this be moved to submit.getSetupCommand ?
     setupPath = os.environ['CAFANALYSISSETUP']
     if len(setupPath)>0: setup.append("source "+setupPath)
 

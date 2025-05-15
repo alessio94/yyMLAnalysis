@@ -1,4 +1,4 @@
-[![pipeline status](https://gitlab.cern.ch/atlas-caf/CAFExample/badges/master/pipeline.svg)](https://gitlab.cern.ch/atlas-caf/CAFExample/commits/master)
+[![pipeline status](https://gitlab.cern.ch/atlas-physics/higp/photons/run3_hhyyml/yyMLAnalysisCode/badges/master/pipeline.svg)](https://gitlab.cern.ch/atlas-physics/higp/photons/run3_hhyyml/yyMLAnalysisCode/commits/master)
 
 Example CAFCore Analysis
 =========================
@@ -22,11 +22,11 @@ cd AnalysisExample
 # https is usually the most robust, but always requres a username and password
 
 # ssh
-git clone --recursive ssh://git@gitlab.cern.ch:7999/atlas-caf/CAFExample.git
+git clone --recursive ssh://git@gitlab.cern.ch:7999/atlas-physics/higp/photons/run3_hhyyml/yyMLAnalysisCode.git
 # Kerberos
-# git clone --recursive https://:@gitlab.cern.ch:8443/atlas-caf/CAFExample.git
+# git clone --recursive https://:@gitlab.cern.ch:8443/atlas-physics/higp/photons/run3_hhyyml/yyMLAnalysisCode.git
 # https
-# git clone --recursive https://gitlab.cern.ch/atlas-caf/CAFExample.git
+# git clone --recursive https://gitlab.cern.ch/atlas-physics/higp/photons/run3_hhyyml/yyMLAnalysisCode.git
 ```
 
 Building the project
@@ -36,7 +36,7 @@ Building the project
 mkdir build
 cd build
 asetup AnalysisBase,25.2.27
-cmake ../CAFExample
+cmake ../yyMLAnalysisCode
 source setupAnalysis.sh
 cafbuild # build the code (check details by typing "type cafbuild")
 ```
@@ -47,7 +47,7 @@ Running a minimal example
 The following commands will reproduce (in seconds) a minimal example, showcasing the least amount of configuration necessary to produce results by taking a VBF signal MC sample and passing it through a single cut on Mjj while producing one histogram.
 
 ```bash
-cd ../CAFExample/share
+cd ../yyMLAnalysisCode/share
 ./prepare.py minimal/config/master/prepare-Minimal-Example.cfg
 ./initialize.py minimal/config/master/initialize-Minimal-Example.cfg
 ./analyze.py minimal/config/master/analyze-Minimal-Example.cfg
@@ -62,7 +62,7 @@ Similarly, a full-blown analysis is likely to include a host of custom observabl
 Rather, it is simply meant to showcase how fast results can be obtained once the uninteresting events have been skimmed away and the necessary quantities are already available directly in the TTree.
 
 ```bash
-cd ../CAFExample/share
+cd ../yyMLAnalysisCode/share
 ./prepare.py flatNTuple/config/master/prepare-flatNTuple-Example.cfg
 ./initialize.py flatNTuple/config/master/initialize-flatNTuple-Example.cfg
 ./analyze.py flatNTuple/config/master/analyze-flatNTuple-Example.cfg
@@ -76,7 +76,7 @@ Running an example analysis on xAOD inputs
 The following commands will (on order of hours) run over a selection of xAOD inputs to reproduce the same Zjets Fake Factor analysis as in the flat nTuple example above. A few important differences exist between the two variants. First, while the xAODs have been skimmed to cut down on runtime, their events haven't been removed quite as aggressively as in the flat nTuple case - there are still about an order of magnitude more. Secondly, the xAOD example runs over the data years 2015-2018 instead of only 2015-2016 to show how different campaigns with their own luminosity and samples are treated. Lastly, the xAOD analysis showcases in addition the use of a number of custom observables to calculate quantities for on-the-fly use. All of these three changes cause the significantly longer untime.
 
 ```bash
-cd ../CAFExample/share
+cd ../yyMLAnalysisCode/share
 ./prepare.py xAOD/config/master/prepare-xAOD-Example.cfg
 ./initialize.py xAOD/config/master/initialize-xAOD-Example.cfg
 ./analyze.py xAOD/config/master/analyze-xAOD-Example.cfg
@@ -90,7 +90,7 @@ Running an example analysis on HHML PxAOD inputs
 The following commands will run over a selection of PxAOD inputs (mc23a and data 2022) to produce different kinematic distributions in WZ CR for 3L channel.
 
 ```bash
-cd ../CAFExample/share
+cd ../yyMLAnalysisCode/share
 ./prepare.py HHML_example/config/master/prepare-HHML_3L.cfg
 ./initialize.py HHML_example/config/master/initialize-HHML_3L.cfg
 ./analyze.py HHML_example/config/master/analyze-HHML_3L.cfg

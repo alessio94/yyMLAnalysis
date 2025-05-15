@@ -199,7 +199,7 @@ database. This can look like this:
 ```python
     from QFramework import TQObservable, INFO
     import ROOT
-    from CAFExample import MyNewFancyObservableClass
+    from yyMLAnalysisCode import MyNewFancyObservableClass
     
     def addObservables():
       myObs = MyNewFancyObservableClass ( ... )
