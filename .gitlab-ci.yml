@@ -38,14 +38,14 @@ variables:
     - sed -i 's|CAFANALYSISBASE/../output|CAFANALYSISBASE/run|' setup/setupLocal.sh
 
 .yyML-nom_script: &yyML-nom_script
- script:
-   - source build/setupAnalysis.sh
-   - mkdir run
-   - cd run
-   - prepare.py config/master/yyML/prepare-yyML-nom.cfg --snowflakeThresh 0
-   - initialize.py config/master/yyML/initialize-yyML-nom.cfg --snowflakeThresh 0 --options lineUpdates=false consoleWidth=160
-   - analyze.py config/master/yyML/analyze-yyML-nom.cfg --snowflakeThresh 3 --options lineUpdates=false consoleWidth=160 maxEvents=100
-   - visualize.py config/master/yyML/visualize-yyML-nom.cfg --snowflakeThresh 0
+  script:
+    - source build/setupAnalysis.sh
+    - mkdir run
+    - cd run
+    - prepare.py config/master/yyML/prepare-yyML-nom.cfg --snowflakeThresh 0
+    - initialize.py config/master/yyML/initialize-yyML-nom.cfg --snowflakeThresh 0 --options lineUpdates=false consoleWidth=160
+    - analyze.py config/master/yyML/analyze-yyML-nom.cfg --snowflakeThresh 3 --options lineUpdates=false consoleWidth=160 maxEvents=100
+    - visualize.py config/master/yyML/visualize-yyML-nom.cfg --snowflakeThresh 0
 
 ##########################################################################
 # job definitions
