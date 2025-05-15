@@ -4,11 +4,11 @@
 # and prints a warning if they have overlapping/duplicate DSID mappings
 
 
-HWWAnalysis_checkMapFiles(){
+yyMLAnalysis_checkMapFiles(){
 
     listOfDuplicateDSIDs=""
 
-    mapsPath="share/xAOD/config/samples/maps/xAOD-Example.map"
+    mapsPath="share/config/samples/maps/common"
 
     # CAFANALYSISBASE might not be set in a CI job. In that case, hope that we are in the right location
     for file in `[ -z "$CAFANALYSISBASE" ] && ls $mapsPath || ls $CAFANALYSISBASE/$mapsPath` ; do
