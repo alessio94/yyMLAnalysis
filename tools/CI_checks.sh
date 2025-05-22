@@ -8,7 +8,7 @@ yyMLAnalysis_checkMapFiles(){
 
     listOfDuplicateDSIDs=""
 
-    mapsPath="share/config/samples/maps/common"
+    mapsPath="share/config/samples/maps/*/*.map"
 
     # CAFANALYSISBASE might not be set in a CI job. In that case, hope that we are in the right location
     for file in `[ -z "$CAFANALYSISBASE" ] && ls $mapsPath || ls $CAFANALYSISBASE/$mapsPath` ; do
