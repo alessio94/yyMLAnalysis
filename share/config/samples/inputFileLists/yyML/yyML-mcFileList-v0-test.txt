@@ -4,3 +4,4 @@
 /eos/user/d/dshope/yyML_Run3/Easyjet_production_v0/output_PHYS_yyml_602422_ttH_gammagamma_10000evt_test_bypass.root
 /eos/user/d/dshope/yyML_Run3/Easyjet_production_v0/output_PHYS_yyml_700870_enugammagamma_10000evt_test_bypass.root
 /eos/user/d/dshope/yyML_Run3/Easyjet_production_v0/output_PHYS_yyml_700980_yyjets_10000evt_test_bypass.root
+/eos/user/d/dshope/forCI/output_PHYS_yyml_700980_yyjets_10000evt_test_bypass.root
