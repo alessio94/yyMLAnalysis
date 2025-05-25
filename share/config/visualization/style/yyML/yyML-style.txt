@@ -1,9 +1,9 @@
 <style.default.title = "Signal", style.default.histLineColor = kRed, style.default.histFillColor = kRed> @ /sig/?;
-#<style.default.title = "Single H", style.default.histLineColor = kBlack, style.default.histFillColor = kGreen> @ /bkg/?/singleH;
-<style.default.title = "ggFH", style.default.histLineColor = kBlack, style.default.histFillColor = kRed> @ /bkg/?/singleH/ggFH;
-<style.default.title = "WpH", style.default.histLineColor = kBlack, style.default.histFillColor = kCyan> @ /bkg/?/singleH/WpH;
-<style.default.title = "qqZH", style.default.histLineColor = kBlack, style.default.histFillColor = kGreen-2> @ /bkg/?/singleH/qqZH;
-<style.default.title = "ttH", style.default.histLineColor = kBlack, style.default.histFillColor = kGreen> @ /bkg/?/singleH/ttH;
-<style.default.title = "yy+jets", style.default.histLineColor = kBlack, style.default.histFillColor = kOrange> @ /bkg/?/yyjets;
-<style.default.title = "Vyy", style.default.histLineColor = kBlack, style.default.histFillColor = kAzure-2> @ /bkg/?/Vyy;
+#<style.default.title = "Single H", style.default.histLineColor = kBlack, style.default.histFillColor = kGreen> @ /bkg/?/?/singleH;
+<style.default.title = "ggFH", style.default.histLineColor = kBlack, style.default.histFillColor = kRed> @ /bkg/?/?/singleH/ggFH;
+<style.default.title = "WpH", style.default.histLineColor = kBlack, style.default.histFillColor = kCyan> @ /bkg/?/?/singleH/WpH;
+<style.default.title = "qqZH", style.default.histLineColor = kBlack, style.default.histFillColor = kGreen-2> @ /bkg/?/?/singleH/qqZH;
+<style.default.title = "ttH", style.default.histLineColor = kBlack, style.default.histFillColor = kGreen> @ /bkg/?/?/singleH/ttH;
+<style.default.title = "yy+jets", style.default.histLineColor = kBlack, style.default.histFillColor = kOrange> @ /bkg/?/?/yyjets;
+<style.default.title = "Vyy", style.default.histLineColor = kBlack, style.default.histFillColor = kAzure-2> @ /bkg/?/?/Vyy;
 <style.default.title = "Data", style.default.isHistogram = false, style.default.histLineColor = 1, style.default.histMarkerStyle = 20, style.default.histMarkerSize = 1.2, style.default.showRaw = true> @ /data/;

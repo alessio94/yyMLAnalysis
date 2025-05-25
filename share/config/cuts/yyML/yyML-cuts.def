@@ -3,8 +3,8 @@
 # add the following line to your .emacs file:
 #   (load-file "$TQPATH/share/tqfolder.el")
 
-+CutWeights {
-    <.cutExpression = 1, .weightExpression = "$(weights)", .title="Apply weights">
++CutChannels {
+    <.cutExpression = "$(fitsChannel)", .weightExpression = "$(weights)", .title="Channel Selection">
 
     +CutTrigger {
         <.cutExpression = "$(passTrigger)", .title="Trigger Selection">
@@ -12,26 +12,6 @@
         +CutTriggerMatching {
             <.cutExpression = "$(passTriggerMatching)", .title="Trigger Matching">
 
-            +CutPass1l0tau {
-                <.cutExpression = "$(pass1l0tau)", .title="Pass 1l0tau">
-
-            }
-            +CutPass0l1tau {
-                <.cutExpression = "$(pass0l1tau)", .title="Pass 0l1tau">
-
-            }
-            +CutPass2l0tau {
-                <.cutExpression = "$(pass2l0tau)", .title="Pass 2l0tau">
-
-            }
-            +CutPass1l1tau {
-                <.cutExpression = "$(pass1l1tau)", .title="Pass 1l1tau">
-
-            }
-            +CutPass0l2tau {
-                <.cutExpression = "$(pass0l2tau)", .title="Pass 0l2tau">
-
-            }
         } #End: CutTriggerMatching
     } #End: CutTrigger
-} #End: CutWeights
+} #End: CutChannels

@@ -1,6 +1,6 @@
-.path = "bkg/$(channel)/yyjets", .name = "yy+jets", .isBackground = true
-#.path = "bkg/$(channel)/Vyy", .name = "Vyy", .isBackground = true
-#.path = "bkg/$(channel)/singleH/ggFH", .name = "ggFH", .isBackground = true
-#.path = "bkg/$(channel)/singleH/WpH", .name = "WpH", .isBackground = true
-#.path = "bkg/$(channel)/singleH/qqZH", .name = "qqZH", .isBackground = true
-#.path = "bkg/$(channel)/singleH/ttH", .name = "ttH", .isBackground = true
+.path = "bkg/$(channel)/$(campaign)/yyjets", .name = "yy+jets", .isBackground = true
+#.path = "bkg/$(channel)/$(campaign)/Vyy", .name = "Vyy", .isBackground = true
+#.path = "bkg/$(channel)/$(campaign)/singleH/ggFH", .name = "ggFH", .isBackground = true
+#.path = "bkg/$(channel)/$(campaign)/singleH/WpH", .name = "WpH", .isBackground = true
+#.path = "bkg/$(channel)/$(campaign)/singleH/qqZH", .name = "qqZH", .isBackground = true
+#.path = "bkg/$(channel)/$(campaign)/singleH/ttH", .name = "ttH", .isBackground = true

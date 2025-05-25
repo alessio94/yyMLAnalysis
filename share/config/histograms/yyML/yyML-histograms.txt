@@ -1,4 +1,4 @@
 
 TH1F('nPrimaryVertices', '', 50, 0, 50) << ( [nPrimaryVertices] : 'nPrimaryVertices' );
 
-@CutWeights/*: nPrimaryVertices;
+@CutChannels/*: nPrimaryVertices;

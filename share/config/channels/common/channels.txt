@@ -5,5 +5,4 @@ name path latex datapath
 1l1tau   1l1tau$(variation)   1\ell 1\tau   1l1tau
 0l2tau   0l2tau$(variation)   0\ell 2\tau   0l2tau
 2L       [2l0tau$(variation)+1l1tau$(variation)+0l2tau$(variation)]   2\text{L}   2L
-yyML     yyML$(variation)     /gamma /gamma \text{ML}    yyML
-
+yyML     [1l0tau$(variation)+0l1tau$(variation)+2l0tau$(variation)+1l1tau$(variation)+0l2tau$(variation)]     /gamma /gamma \text{ML}    yyML

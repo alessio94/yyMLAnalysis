@@ -4,35 +4,35 @@
 #--------------------------------
 # Single Higgs
 
-602421 /bkg/$(channel)/singleH/ggFH
-601482 /bkg/$(channel)/singleH/VBFH
-601484 /bkg/$(channel)/singleH/WpH
-601483 /bkg/$(channel)/singleH/WmH
-601523 /bkg/$(channel)/singleH/qqZH
-601522 /bkg/$(channel)/singleH/ggZH
-602422 /bkg/$(channel)/singleH/ttH
-601710 /bkg/$(channel)/singleH/bbH
-545636 /bkg/$(channel)/singleH/tHbj
-545639 /bkg/$(channel)/singleH/tHW
+602421 /bkg/$(channel)/$(campaign)/singleH/ggFH
+601482 /bkg/$(channel)/$(campaign)/singleH/VBFH
+601484 /bkg/$(channel)/$(campaign)/singleH/WpH
+601483 /bkg/$(channel)/$(campaign)/singleH/WmH
+601523 /bkg/$(channel)/$(campaign)/singleH/qqZH
+601522 /bkg/$(channel)/$(campaign)/singleH/ggZH
+602422 /bkg/$(channel)/$(campaign)/singleH/ttH
+601710 /bkg/$(channel)/$(campaign)/singleH/bbH
+545636 /bkg/$(channel)/$(campaign)/singleH/tHbj
+545639 /bkg/$(channel)/$(campaign)/singleH/tHW
 
 #--------------------------------
 # Vyy
 
-700870 /bkg/$(channel)/Vyy/enugammagamma
-700871 /bkg/$(channel)/Vyy/munugammagamma
-700872 /bkg/$(channel)/Vyy/taunugammagamma
-700873 /bkg/$(channel)/Vyy/eegammagamma
-700874 /bkg/$(channel)/Vyy/mumugammagamma
-700875 /bkg/$(channel)/Vyy/tautaugammagamma
-700876 /bkg/$(channel)/Vyy/nunugammagamma
+700870 /bkg/$(channel)/$(campaign)/Vyy/enugammagamma
+700871 /bkg/$(channel)/$(campaign)/Vyy/munugammagamma
+700872 /bkg/$(channel)/$(campaign)/Vyy/taunugammagamma
+700873 /bkg/$(channel)/$(campaign)/Vyy/eegammagamma
+700874 /bkg/$(channel)/$(campaign)/Vyy/mumugammagamma
+700875 /bkg/$(channel)/$(campaign)/Vyy/tautaugammagamma
+700876 /bkg/$(channel)/$(campaign)/Vyy/nunugammagamma
 
 #--------------------------------
 # ttyy
 
-542859 /bkg/$(channel)/ttyy/allhad
-542860 /bkg/$(channel)/ttyy/nonallhad
+542859 /bkg/$(channel)/$(campaign)/ttyy/allhad
+542860 /bkg/$(channel)/$(campaign)/ttyy/nonallhad
 
 #--------------------------------
 # yy+jets
 
-700980 /bkg/$(channel)/yyjets
+700980 /bkg/$(channel)/$(campaign)/yyjets

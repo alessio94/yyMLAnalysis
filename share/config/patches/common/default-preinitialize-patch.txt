@@ -1,5 +1,11 @@
 # -*- mode: tqfolder -*-
 
+<channel = "1l0tau", is1l0tau=true,  is0l1tau=false, is2l0tau=false, is1l1tau=false, is0l2tau=false> @ ?/1l0tau; # 1l0tau channel for data,bkg,sig
+<channel = "0l1tau", is1l0tau=false, is0l1tau=true , is2l0tau=false, is1l1tau=false, is0l2tau=false> @ ?/0l1tau; # 0l1tau channel for data,bkg,sig
+<channel = "2l0tau", is1l0tau=false, is0l1tau=false, is2l0tau=true,  is1l1tau=false, is0l2tau=false> @ ?/2l0tau; # 2l0tau channel for data,bkg,sig
+<channel = "1l1tau", is1l0tau=false, is0l1tau=false, is2l0tau=false, is1l1tau=true,  is0l2tau=false> @ ?/1l1tau; # 1l1tau channel for data,bkg,sig
+<channel = "0l2tau", is1l0tau=false, is0l1tau=false, is2l0tau=false, is1l1tau=false, is0l2tau=true > @ ?/0l2tau; # 0l2tau channel for data,bkg,sig
+
 <usemcweights=true> @ sig, bkg;
 <Variation="NOSYS"> @ .;
 
@@ -7,17 +13,9 @@
 <isSig = false, isBkg = true>  @ /bkg;
 <isSig = true, isBkg = false>  @ /sig;
 <isData = false, isMC = true>  @ /bkg, /sig;
-<isData = true,  isMC = false> @ /data;    # for data,revert the data/MC tags
+<isData = true,  isMC = false> @ /data;    # for data, revert the data/MC tags
 
-# Get sum of weights
-# TODO: add campaign levels (and separate countHistogram.names) when introducing campaigns split - currently only c23a (2022+2023)
-# TODO: *really* hacky atm because each DSID has a separate name for the countHistogram
-#       (to be fixed in next Easyjet production, issue already encountered and fixed by HH->ML analysis team now that I recall)
-<.init.countHistogram.name = "CutBookkeeper_602421_410000_NOSYS"> @ /bkg/?/singleH/ggFH/ ;
-<.init.countHistogram.name = "CutBookkeeper_601484_410000_NOSYS"> @ /bkg/?/singleH/WpH/ ;
-<.init.countHistogram.name = "CutBookkeeper_601523_410000_NOSYS"> @ /bkg/?/singleH/qqZH/ ;
-<.init.countHistogram.name = "CutBookkeeper_602422_410000_NOSYS"> @ /bkg/?/singleH/ttH/ ;
-<.init.countHistogram.name = "CutBookkeeper_700870_410000_NOSYS"> @ /bkg/?/Vyy/enugammagamma/ ;
-<.init.countHistogram.name = "CutBookkeeper_700980_410000_NOSYS"> @ /bkg/?/yyjets/ ;
-# TODO: change to /bkg/?/?/, /sig/?/?/ when introducing campaigns split
-<.init.countHistogram.bin = 2> @ /bkg/?/, /sig/?/ ;
+<.init.countHistogram.name = "CutBookkeeper_410000_NOSYS"> @ /bkg/?/c23a/, /sig/?/c23a/ ;
+#<.init.countHistogram.name = "CutBookkeeper_XXX_NOSYS"> @ /bkg/?/c23d/, /sig/?/c23d/ ;
+#<.init.countHistogram.name = "CutBookkeeper_XXX_NOSYS"> @ /bkg/?/c23e/, /sig/?/c23e/ ;
+<.init.countHistogram.bin = 2> @ /bkg/?/?/, /sig/?/?/ ;
