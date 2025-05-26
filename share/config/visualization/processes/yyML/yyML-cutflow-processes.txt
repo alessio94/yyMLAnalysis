@@ -1,3 +1,5 @@
+.path = "data/$(channel)/$(campaign)", .title = "Data"
+.path = "|"
 .path = "bkg/$(channel)/$(campaign)/yyjets", .title = "yy+jets"
 .path = "bkg/$(channel)/$(campaign)/Vyy", .title = "Vyy"
 .path = "bkg/$(channel)/$(campaign)/singleH/ggFH", .title = "ggFH"
