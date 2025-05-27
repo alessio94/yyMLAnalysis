@@ -45,7 +45,7 @@ variables:
     - prepare.py config/master/yyML/prepare-yyML-nom.cfg --snowflakeThresh 0 --options XsecWhitelist=config/samples/whitelists/common/whitelist-v0.txt outputFile=sampleFolders/prepared/samples-prepared-yyML-nom-test.root
     - initialize.py config/master/yyML/initialize-yyML-nom.cfg --snowflakeThresh 1 --options campaignsConfig=config/master/common/campaigns-yyML-v0-eos.cfg inputFile=sampleFolders/prepared/samples-prepared-yyML-nom-test.root outputFile=sampleFolders/initialized/samples-initialized-yyML-nom-test.root lineUpdates=false consoleWidth=160
     - analyze.py config/master/yyML/analyze-yyML-nom.cfg --snowflakeThresh 3 --options inputFile=sampleFolders/initialized/samples-initialized-yyML-nom-test.root outputFile=sampleFolders/analyzed/samples-analyzed-yyML-nom-test.root lineUpdates=false consoleWidth=160 maxEvents=100
-    - visualize.py config/master/yyML/visualize-yyML-nom.cfg --snowflakeThresh 20 --options inputFile=sampleFolders/analyzed/samples-analyzed-yyML-nom-test.root outputFile=sampleFolders/visualized/samples-visualized-yyML-nom-test.root outputDir=results/yyML-test
+    - visualize.py config/master/yyML/visualize-yyML-nom.cfg --snowflakeThresh 50 --options inputFile=sampleFolders/analyzed/samples-analyzed-yyML-nom-test.root outputFile=sampleFolders/visualized/samples-visualized-yyML-nom-test.root outputDir=results/yyML-test
 
 ##########################################################################
 # job definitions
