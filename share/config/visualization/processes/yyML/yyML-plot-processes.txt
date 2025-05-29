@@ -1,5 +1,6 @@
 .path = "bkg/$(channel)/$(campaign)/yyjets", .name = "yy+jets", .isBackground = true
-#.path = "bkg/$(channel)/$(campaign)/Vyy", .name = "Vyy", .isBackground = true
+.path = "bkg/$(channel)/$(campaign)/Vyy", .name = "Vyy", .isBackground = true
+.path = "bkg/$(channel)/$(campaign)/ttyy", .name = "ttyy", .isBackground = true
 #.path = "bkg/$(channel)/$(campaign)/singleH/ggFH", .name = "ggFH", .isBackground = true
 #.path = "bkg/$(channel)/$(campaign)/singleH/WpH", .name = "WpH", .isBackground = true
 #.path = "bkg/$(channel)/$(campaign)/singleH/qqZH", .name = "qqZH", .isBackground = true

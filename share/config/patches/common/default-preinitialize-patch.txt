@@ -16,6 +16,8 @@
 <isData = true,  isMC = false> @ /data;    # for data, revert the data/MC tags
 
 <.init.countHistogram.name = "CutBookkeeper_410000_NOSYS"> @ /bkg/?/c23a/, /sig/?/c23a/ ;
-#<.init.countHistogram.name = "CutBookkeeper_XXX_NOSYS"> @ /bkg/?/c23d/, /sig/?/c23d/ ;
+<.init.countHistogram.name = "CutBookkeeper_450000_NOSYS"> @ /bkg/?/c23d/, /sig/?/c23d/ ;
 #<.init.countHistogram.name = "CutBookkeeper_XXX_NOSYS"> @ /bkg/?/c23e/, /sig/?/c23e/ ;
+
+# initial sum of weights squared is bin 2 (bin 0 = initial events, bin 1 = initial sum of weights)
 <.init.countHistogram.bin = 2> @ /bkg/?/?/, /sig/?/?/ ;
