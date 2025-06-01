@@ -1,4 +1,3 @@
-/eos/user/d/dshope/yyML_Run3/Easyjet_production/v1/mc_nom/mc23d/SingleHiggs/user.dshope.v1.SingleHiggs_mc23a.545639.e8557_s4162_r15540_p6491_TREE/user.dshope.44928739._000011.output-tree.root
 /eos/user/d/dshope/yyML_Run3/Easyjet_production/v1/mc_nom/mc23d/SingleHiggs/user.dshope.v1.SingleHiggs_mc23d.545636.e8557_s4159_r15530_p6491_TREE/user.dshope.44929022._000001.output-tree.root
 /eos/user/d/dshope/yyML_Run3/Easyjet_production/v1/mc_nom/mc23d/SingleHiggs/user.dshope.v1.SingleHiggs_mc23d.545639.e8557_s4159_r15530_p6491_TREE/user.dshope.44929023._000001.output-tree.root
 /eos/user/d/dshope/yyML_Run3/Easyjet_production/v1/mc_nom/mc23d/SingleHiggs/user.dshope.v1.SingleHiggs_mc23d.601482.e8559_s4159_r15224_p6491_TREE/user.dshope.44929015._000002.output-tree.root
