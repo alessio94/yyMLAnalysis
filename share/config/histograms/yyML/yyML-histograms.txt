@@ -1,4 +1,6 @@
 
 TH1F('nPrimaryVertices', '', 50, 0, 50) << ( [nPrimaryVertices] : 'nPrimaryVertices' );
+TH1F('m_yy', '', 11, 105, 160) << ( $(m_yy) : 'm_{yy} [GeV]' );
+TH1F('l1_d0sig', '', 50, -5, 5) << ( $(l1_d0sig) : 'l1 d0sig' );
 
-@CutChannels/*: nPrimaryVertices;
+@CutChannels/*: m_yy;

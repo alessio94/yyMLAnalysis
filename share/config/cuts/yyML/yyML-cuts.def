@@ -6,12 +6,69 @@
 +CutChannels {
     <.cutExpression = "$(fitsChannel)", .weightExpression = "$(weights)", .title="Channel Selection">
 
-    +CutTrigger {
-        <.cutExpression = "$(passTrigger)", .title="Trigger Selection">
+    #+CutTrigger {
+    #    <.cutExpression = "$(passTrigger)", .title="Trigger Selection">
 
-        +CutTriggerMatching {
-            <.cutExpression = "$(passTriggerMatching)", .title="Trigger Matching">
+    #    +CutTriggerMatching {
+    #        <.cutExpression = "$(passTriggerMatching)", .title="Trigger Matching">
 
-        } #End: CutTriggerMatching
-    } #End: CutTrigger
+    #+CutBlinding {
+    #    <.cutExpression = "<.cutExpression = "(120 > $(m_yy)) || ($(m_yy) > 130)", .title="Blinding criteria">
+
+        +Cut2AnalysisPhotons {
+            <.cutExpression = "$(n_loose_noniso_photons) == 2", .title="2 Loose/NonIso photons">
+
+            +CutIDTightISOLoosePhotons {
+                <.cutExpression = "$(y1_IDTight_ISOLoose) && $(y2_IDTight_ISOLoose)", .title="2 Tight/IsoLoose photons">
+
+                +CutPhotonCrackVeto {
+                    <.cutExpression = "(fabs($(y1_eta)) < 1.37 || fabs($(y1_eta)) > 1.52) && (fabs($(y2_eta)) < 1.37 || fabs($(y2_eta)) > 1.52)", .title="Photon crack region veto">
+
+                    +Cutmyy {
+                        <.cutExpression = "(105 < $(m_yy)) && ($(m_yy) < 160)", .title="2 Tight/IsoLoose photons">
+
+                        +CutETy1 {
+                            <.cutExpression = "$(y1_pt) > 35", .title="E_{T}(y1) > 35 GeV">
+
+                            +Cuty1_pT_to_myy_ratio {
+                                <.cutExpression = "$(y1_pt)/$(m_yy) > 0.35", .title="y1: p_{T}/m_{yy} > 0.35">
+
+                                +Cuty2_pT_to_myy_ratio {
+                                    <.cutExpression = "($(y2_pt)/$(m_yy)) > 0.35", .title="y2: p_{T}/m_{yy} > 0.25">
+
+                                    +CutMET {
+                                        <.cutExpression = "$(met_met) > 35", .title="MET > 35 GeV">
+
+                                        +Cutbveto {
+                                            <.cutExpression = "$(n_b_jet) == 0", .title="b-veto (GN2v1 @ 77%)">
+
+                                            +CutNLep {
+                                                <.cutExpression = "$(n_lep) == 1", .title="Number of leptons">
+
+                                                +CutLepEta {
+                                                    <.cutExpression = "fabs($(l1_pdg)) == 11 ? (fabs($(l1_eta)) < 1.37 || fabs($(l1_eta)) > 1.52) : (fabs($(l1_eta)) < 2.5)", .title="Lepton eta">
+
+                                                    +CutLepd0sig {
+                                                        <.cutExpression = "fabs($(l1_pdg)) == 11 ? (fabs($(l1_d0sig)) < 5) : (fabs($(l1_d0sig)) < 3)", .title="Lepton d0sig">
+
+                                                        +CutLepz0sintheta {
+                                                            <.cutExpression = "fabs($(l1_z0sintheta)) < 0.5", .title="Lepton z0sintheta">
+
+                                                        } #End: CutLepz0sintheta
+                                                    } #End: CutLepd0sig
+                                                } #End: CutLepEta
+                                            } #End: CutNLep
+                                        } #End: Cutbveto
+                                    } #End: CutMET
+                                } #End: Cuty2_pT_to_myy_ratio
+                            } #End: Cuty1_pT_to_myy_ratio
+                        } #End: CutETy1
+                    } #End: Cutmyy
+                } #End: CutPhotonCrackVeto
+            } #End: CutIDTightISOLoosePhotons
+        } #End: Cut2AnalysisPhotons
+    #} #End: CutBlinding
+
+    #    } #End: CutTriggerMatching
+    #} #End: CutTrigger
 } #End: CutChannels
