@@ -68,21 +68,21 @@ asg_compile:
       - build
       - CAFCore/cafsetup.sh
 
-standalone_compile:
-  <<: *standalone
-  stage: build
-  script:
-    - mkdir build
-    - cd build
-    - cmake ..
-    - make -j4
-  artifacts:
-    expire_in: 3d
-    untracked: true
-    paths:
-      - build
-      - CAFCore/cafsetup.sh
-      - CAFCore/*/python/__init__.py
+# standalone_compile:
+#   <<: *standalone
+#   stage: build
+#   script:
+#     - mkdir build
+#     - cd build
+#     - cmake ..
+#     - make -j4
+#   artifacts:
+#     expire_in: 3d
+#     untracked: true
+#     paths:
+#       - build
+#       - CAFCore/cafsetup.sh
+#       - CAFCore/*/python/__init__.py
 
 ##########################################################################
 # stage: run
