@@ -17,7 +17,8 @@ endif()
 find_package( AnalysisBase QUIET)
 
 # define dependencies on other packages
-find_package( ROOT COMPONENTS Core Matrix RooFitCore Minuit2)
+find_package( ROOT COMPONENTS Core Matrix RooFitCore Minuit2 TMVAUtils)
+link_libraries( ROOT::TMVAUtils)
 
 # set some variables for easier handling
 file(GLOB yyMLAnalysisCodePython yyMLAnalysisCode/python/*.py)
