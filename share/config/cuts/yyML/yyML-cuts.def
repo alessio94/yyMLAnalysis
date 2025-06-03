@@ -12,8 +12,8 @@
     #    +CutTriggerMatching {
     #        <.cutExpression = "$(passTriggerMatching)", .title="Trigger Matching">
 
-    #+CutBlinding {
-    #    <.cutExpression = "<.cutExpression = "(120 > $(m_yy)) || ($(m_yy) > 130)", .title="Blinding criteria">
+    +CutDataBlind {
+        <.cutExpression = "$(isData)? ((120 > $(m_yy)) || ($(m_yy) > 130)) : 1", .title="Data blinding">
 
         +Cut2AnalysisPhotons {
             <.cutExpression = "$(n_loose_noniso_photons) == 2", .title="2 Loose/NonIso photons">
@@ -34,7 +34,7 @@
                                 <.cutExpression = "$(y1_pt)/$(m_yy) > 0.35", .title="y1: p_{T}/m_{yy} > 0.35">
 
                                 +Cuty2_pT_to_myy_ratio {
-                                    <.cutExpression = "($(y2_pt)/$(m_yy)) > 0.35", .title="y2: p_{T}/m_{yy} > 0.25">
+                                    <.cutExpression = "($(y2_pt)/$(m_yy)) > 0.25", .title="y2: p_{T}/m_{yy} > 0.25">
 
                                     +CutMET {
                                         <.cutExpression = "$(met_met) > 35", .title="MET > 35 GeV">
@@ -54,6 +54,10 @@
                                                         +CutLepz0sintheta {
                                                             <.cutExpression = "fabs($(l1_z0sintheta)) < 0.5", .title="Lepton z0sintheta">
 
+                                                            +CutMCBlind {
+                                                                <.cutExpression = "$(isMC)? ((120 > $(m_yy)) || ($(m_yy) > 130)) : 1", .title="MC blinding">
+
+                                                            } #End: CutMCBlind
                                                         } #End: CutLepz0sintheta
                                                     } #End: CutLepd0sig
                                                 } #End: CutLepEta
@@ -67,7 +71,7 @@
                 } #End: CutPhotonCrackVeto
             } #End: CutIDTightISOLoosePhotons
         } #End: Cut2AnalysisPhotons
-    #} #End: CutBlinding
+    } #End: CutDataBlind
 
     #    } #End: CutTriggerMatching
     #} #End: CutTrigger
