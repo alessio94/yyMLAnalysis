@@ -8,7 +8,7 @@
 .name="Cutmyy", .title="m_yy window"
 .name="CutETy1", .title="E_{T}(y1) > 35 GeV"
 .name="Cuty1_pT_to_myy_ratio", .title="y1: p_{T}/m_{yy} > 0.35"
-.name="Cuty2_pT_to_myy_ratio", .title="y2: p_{T}/m_{yy} > 0.35"
+.name="Cuty2_pT_to_myy_ratio", .title="y2: p_{T}/m_{yy} > 0.25"
 .name="CutMET", .title="MET > 35 GeV"
 .name="Cutbveto", .title="b-veto (GN2v1 @ 77%)"
 .name="CutNLepTau", .title="Number of leptons/taus"

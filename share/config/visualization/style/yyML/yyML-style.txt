@@ -1,3 +1,6 @@
+<wildcarded = true> @ ?/?;   # we usually don't care about the channel-part of the path
+<wildcarded = true> @ ?/?/?; # we usually don't care about the campaign-parts of the path
+
 <style.default.title = "Signal", style.default.histLineColor = kRed, style.default.histFillColor = kRed> @ /sig/?;
 <style.default.title = "Single H", style.default.histLineColor = kBlack, style.default.histFillColor = kGreen> @ /bkg/?/?/singleH;
 #<style.default.title = "ggFH", style.default.histLineColor = kBlack, style.default.histFillColor = kRed> @ /bkg/?/?/singleH/ggFH;

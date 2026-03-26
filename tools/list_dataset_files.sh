@@ -51,11 +51,17 @@ case "$GROUP" in
   2023)
     SEARCH_DIR="data/2023"
     ;;
+  2024)
+    SEARCH_DIR="data/2024"
+    ;;
   mc23a)
     SEARCH_DIR="mc_nom/mc23a"
     ;;
   mc23d)
     SEARCH_DIR="mc_nom/mc23d"
+    ;;
+  mc23e)
+    SEARCH_DIR="mc_nom/mc23e"
     ;;
   *)
     echo "❌ Unknown group: $GROUP"

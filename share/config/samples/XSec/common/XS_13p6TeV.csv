@@ -1,5 +1,4 @@
 SampleID , xsection , kfactor , filtereff , uncertainty , mh , generator , process , simulation
-# Units on xsection in this file are in nb, not the default pb!  You MUST specify this correctly in your analyze step.
 
 ###################################################################################################################################################################
 ###################################################################################################################################################################

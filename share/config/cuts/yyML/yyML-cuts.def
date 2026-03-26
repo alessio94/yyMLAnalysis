@@ -34,7 +34,7 @@
                                 <.cutExpression = "$(phot1_pt)/$(m_yy) > 0.35", .title="y1: p_{T}/m_{yy} > 0.35">
 
                                 +Cuty2_pT_to_myy_ratio {
-                                    <.cutExpression = "($(phot2_pt)/$(m_yy)) > 0.35", .title="y2: p_{T}/m_{yy} > 0.35">
+                                    <.cutExpression = "($(phot2_pt)/$(m_yy)) > 0.25", .title="y2: p_{T}/m_{yy} > 0.25">
 
                                     +CutMET {
                                         <.cutExpression = "$(met_met) > 35", .title="MET > 35 GeV">

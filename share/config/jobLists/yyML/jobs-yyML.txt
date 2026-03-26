@@ -1,0 +1,33 @@
+# jobs file for yyML analysis
+
+# The following parameter can be optimized in-line for the
+# individual jobs. Make sure you specify the
+# '--allowArgChanges' option when executing submit.py
+
+data/?/c23a/
+
+data/?/c23d/
+
+!maxSampleCount=5
+bkg/?/c23a/singleH
+
+!maxSampleCount=10
+bkg/?/c23a/Vyy
+
+bkg/?/c23a/ttyy
+
+!maxSampleCount=4
+bkg/?/c23a/yyjets
+
+
+
+!maxSampleCount=5
+bkg/?/c23d/singleH
+
+!maxSampleCount=10
+bkg/?/c23d/Vyy
+
+bkg/?/c23d/ttyy
+
+!maxSampleCount=6
+bkg/?/c23d/yyjets
