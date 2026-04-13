@@ -1,10 +1,7 @@
-# ZpMET DSID → SampleFolder path map
-# Replaces the path-mapping half of ZpMET-samples.txt.
-# Referenced from prepare-ZpMET.cfg as `XsecMap`.
-#
+# ZpMET DSID -> SampleFolder path map
+# Referenced from prepare-ZpMET.cfg as XsecMap.
 # Format: DSID /path/in/SampleFolder
 # Placeholders $(channel) and $(campaign) are expanded by CAF.
-#
 # Reference: yyML share/config/samples/maps/common/run3-mc23.map
 
 #--------------------------------

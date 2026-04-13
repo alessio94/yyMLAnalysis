@@ -1,29 +1,23 @@
 SampleID , xsection , kfactor , filtereff , uncertainty , mh , generator , process , simulation
 
-###################################################################################################################################################################
-# Z' SSM signal — ANA-EXOT-2023-28
-# TODO: replace placeholder xsection values (currently 1.0) with real SSM values from Rachid.
-# The CSV format matches the working yyML reference: NO 'path' column.
-# Columns: SampleID , xsection , kfactor , filtereff , uncertainty , mh , generator , process , simulation
-###################################################################################################################################################################
+# Z' SSM signal (ANA-EXOT-2023-28)
+# xsec values are placeholders (1.0 pb) -- replace with real SSM values from Rachid
 
-546587, 1.0, 1.0, 1.0, --, 0, Pythia8, SSM_Zp500_ee,     DUMMY
-546588, 1.0, 1.0, 1.0, --, 0, Pythia8, SSM_Zp500_mumu,   DUMMY
-546597, 1.0, 1.0, 1.0, --, 0, Pythia8, SSM_Zp750_ee,     DUMMY
-546598, 1.0, 1.0, 1.0, --, 0, Pythia8, SSM_Zp750_mumu,   DUMMY
-546605, 1.0, 1.0, 1.0, --, 0, Pythia8, SSM_Zp1000_ee,    DUMMY
-546606, 1.0, 1.0, 1.0, --, 0, Pythia8, SSM_Zp1000_mumu,  DUMMY
-546607, 1.0, 1.0, 1.0, --, 0, Pythia8, SSM_Zp1500_ee,    DUMMY
-546608, 1.0, 1.0, 1.0, --, 0, Pythia8, SSM_Zp1500_mumu,  DUMMY
-546609, 1.0, 1.0, 1.0, --, 0, Pythia8, SSM_Zp2000_ee,    DUMMY
-546610, 1.0, 1.0, 1.0, --, 0, Pythia8, SSM_Zp2000_mumu,  DUMMY
-546611, 1.0, 1.0, 1.0, --, 0, Pythia8, SSM_Zp2500_ee,    DUMMY
-546612, 1.0, 1.0, 1.0, --, 0, Pythia8, SSM_Zp2500_mumu,  DUMMY
-546613, 1.0, 1.0, 1.0, --, 0, Pythia8, SSM_Zp3000_ee,    DUMMY
-546614, 1.0, 1.0, 1.0, --, 0, Pythia8, SSM_Zp3000_mumu,  DUMMY
-546615, 1.0, 1.0, 1.0, --, 0, Pythia8, SSM_Zp4000_ee,    DUMMY
-546616, 1.0, 1.0, 1.0, --, 0, Pythia8, SSM_Zp4000_mumu,  DUMMY
+546587, 1.0, 1.0, 1.0, --, 0, Pythia8, SSM_Zp500_ee, DUMMY
+546588, 1.0, 1.0, 1.0, --, 0, Pythia8, SSM_Zp500_mumu, DUMMY
+546597, 1.0, 1.0, 1.0, --, 0, Pythia8, SSM_Zp750_ee, DUMMY
+546598, 1.0, 1.0, 1.0, --, 0, Pythia8, SSM_Zp750_mumu, DUMMY
+546605, 1.0, 1.0, 1.0, --, 0, Pythia8, SSM_Zp1000_ee, DUMMY
+546606, 1.0, 1.0, 1.0, --, 0, Pythia8, SSM_Zp1000_mumu, DUMMY
+546607, 1.0, 1.0, 1.0, --, 0, Pythia8, SSM_Zp1500_ee, DUMMY
+546608, 1.0, 1.0, 1.0, --, 0, Pythia8, SSM_Zp1500_mumu, DUMMY
+546609, 1.0, 1.0, 1.0, --, 0, Pythia8, SSM_Zp2000_ee, DUMMY
+546610, 1.0, 1.0, 1.0, --, 0, Pythia8, SSM_Zp2000_mumu, DUMMY
+546611, 1.0, 1.0, 1.0, --, 0, Pythia8, SSM_Zp2500_ee, DUMMY
+546612, 1.0, 1.0, 1.0, --, 0, Pythia8, SSM_Zp2500_mumu, DUMMY
+546613, 1.0, 1.0, 1.0, --, 0, Pythia8, SSM_Zp3000_ee, DUMMY
+546614, 1.0, 1.0, 1.0, --, 0, Pythia8, SSM_Zp3000_mumu, DUMMY
+546615, 1.0, 1.0, 1.0, --, 0, Pythia8, SSM_Zp4000_ee, DUMMY
+546616, 1.0, 1.0, 1.0, --, 0, Pythia8, SSM_Zp4000_mumu, DUMMY
 
-###################################################################################################################################################################
-# Backgrounds  (TODO)
-###################################################################################################################################################################
+# Backgrounds (TODO)
