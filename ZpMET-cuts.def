@@ -1,0 +1,74 @@
+# ZpMET cuts definition file
+# Tree-like structure: parent cut → child cuts
+# Syntax: +CutName { <.cutExpression = "expr", .weightExpression = "[weight]", .title="label"> }
+#
+# Variable names must match the branch names in your EasyJet flat ntuples.
+# Check your ntuple content with:
+#   tqroot -sfr <your_ntuple.root>
+#   samples->print(":r1")
+#
+# ── Root cut (always passes, applies event weight) ────────────────────────────
++CutInitial {
+  <.cutExpression = "1", .weightExpression = "[weight_mc]*[weight_pileup]*[weight_leptonSF]", .title="Initial">
+
+  # ── GRL + cleaning cuts ───────────────────────────────────────────────────
+  +CutCleaning {
+    <.cutExpression = "[passGRL] && [passDetectorCleaning]", .title="GRL + Cleaning">
+
+    # ── Trigger ─────────────────────────────────────────────────────────────
+    +CutTrigger {
+      <.cutExpression = "[passTrigger]", .title="Trigger">
+
+      # ── Exactly 2 opposite-sign same-flavour leptons ─────────────────────
+      +CutDilepton {
+        <.cutExpression = "[nLeptons] == 2 && [lepCharge_0] * [lepCharge_1] < 0", .title="OS dilepton">
+
+        # ── Channel split: ee ────────────────────────────────────────────
+        +CutEE {
+          <.cutExpression = "[is_ee] == 1", .title="ee channel">
+
+          # ── Lepton pT cuts ──────────────────────────────────────────
+          +CutLepPt_ee {
+            <.cutExpression = "[lepPt_0] > 30000. && [lepPt_1] > 20000.", .title="Lep pT (ee)">
+
+            # ── Z mass window (mll) ─────────────────────────────────
+            +CutMll_ee {
+              <.cutExpression = "[mll] > 66000. && [mll] < 116000.", .title="Z window (ee)">
+
+                # ── MET cut ──────────────────────────────────────────
+                +CutMET_ee {
+                  <.cutExpression = "[MET_TST_et] > 80000.", .title="MET > 80 GeV (ee)">
+                } #End: CutMET_ee
+
+            } #End: CutMll_ee
+          } #End: CutLepPt_ee
+        } #End: CutEE
+
+        # ── Channel split: mumu ──────────────────────────────────────────
+        +CutMM {
+          <.cutExpression = "[is_mm] == 1", .title="mumu channel">
+
+          # ── Lepton pT cuts ──────────────────────────────────────────
+          +CutLepPt_mm {
+            <.cutExpression = "[lepPt_0] > 30000. && [lepPt_1] > 20000.", .title="Lep pT (mm)">
+
+              # ── Z mass window (mll) ─────────────────────────────────
+              +CutMll_mm {
+                <.cutExpression = "[mll] > 66000. && [mll] < 116000.", .title="Z window (mm)">
+
+                  # ── MET cut ──────────────────────────────────────────
+                  +CutMET_mm {
+                    <.cutExpression = "[MET_TST_et] > 80000.", .title="MET > 80 GeV (mm)">
+                  } #End: CutMET_mm
+
+              } #End: CutMll_mm
+          } #End: CutLepPt_mm
+        } #End: CutMM
+
+      } #End: CutDilepton
+    } #End: CutTrigger
+  } #End: CutCleaning
+} #End: CutInitial
+
+# NOTE: All mass/pT values are in MeV (ATLAS convention).
+# Update branch names to match your actual EasyJet ntuple variables!

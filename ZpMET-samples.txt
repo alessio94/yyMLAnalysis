@@ -1,0 +1,34 @@
+# ZpMET sample list
+# Format: DSID   path/in/SampleFolder
+#
+# ── Signal: Z' -> ee ──────────────────────────────────────────────────────────
+546587  sig/ee/Zp500
+546588  sig/ee/Zp500
+546597  sig/ee/Zp750
+546598  sig/ee/Zp750
+546605  sig/ee/Zp1000
+546606  sig/ee/Zp1000
+546607  sig/ee/Zp1500
+546608  sig/ee/Zp1500
+546609  sig/ee/Zp2000
+546610  sig/ee/Zp2000
+546611  sig/ee/Zp2500
+546612  sig/ee/Zp2500
+546613  sig/ee/Zp3000
+546614  sig/ee/Zp3000
+546615  sig/ee/Zp4000
+546616  sig/ee/Zp4000
+
+# ── Signal: Z' -> mumu ────────────────────────────────────────────────────────
+# (same DSIDs, different channel — adjust if separate DSIDs exist for mumu)
+# TODO: fill in mumu signal DSIDs once confirmed
+
+# ── Backgrounds ───────────────────────────────────────────────────────────────
+# DY (Z/gamma* -> ll) — placeholder DSIDs, update with your actual list
+# 700320  bkg/ee/DY
+# 700321  bkg/mm/DY
+
+# TODO: add full background DSID list (DY, ttbar, diboson, W+jets, ...)
+
+# ── Data ──────────────────────────────────────────────────────────────────────
+# TODO: add data DSIDs / GRLs once available

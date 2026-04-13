@@ -1,135 +1,57 @@
-[![pipeline status](https://gitlab.cern.ch/atlas-physics/higp/photons/run3_hhyyml/yyMLAnalysisCode/badges/master/pipeline.svg)](https://gitlab.cern.ch/atlas-physics/higp/photons/run3_hhyyml/yyMLAnalysisCode/commits/master)
+# ZpMET CAF Analysis Setup
+# ANA-EXOT-2023-28 — Z' + MET, Run 3
 
-Example CAFCore Analysis
-=========================
+## Directory structure
 
-This repository is meant as an example for how to construct an analysis using the [CAFCore](https://gitlab.cern.ch/atlas-caf/CAFCore) framework. In order to begin a new analysis, simply fork this project and modify the scripts and configs which are available here.
+    ZpMET/
+    ├── config/
+    │   ├── master/
+    │   │   ├── prepare-ZpMET.cfg        ← Step 1
+    │   │   ├── initialize-ZpMET.cfg     ← Step 2
+    │   │   ├── analyze-ZpMET.cfg        ← Step 3
+    │   │   └── visualize-ZpMET.cfg      ← Step 4
+    │   ├── samples/
+    │   │   ├── ZpMET-samples.txt        ← DSID → SampleFolder path mapping
+    │   │   ├── XSec/
+    │   │   │   └── ZpMET_XS_13p6TeV.csv ← cross-section table
+    │   │   └── inputFileLists/
+    │   │       └── ZpMET-mcFileList.txt  ← list of input ntuple paths
+    │   ├── cuts/
+    │   │   └── ZpMET-cuts.def           ← event selection tree
+    │   ├── histograms/
+    │   │   └── ZpMET-histograms.txt     ← histogram definitions
+    │   └── visualization/
+    │       ├── style/
+    │       ├── processes/
+    │       └── cuts/
 
-Cloning the project
---------------------
+## Running the workflow
 
-```bash
-# Use -c el9+batch if you're not on a el9 machine. Otherwise, you may use setupATLAS as normal.
-setupATLAS -c el9+batch
-lsetup git
-mkdir AnalysisExample
-cd AnalysisExample
+From inside CAFExample/share/ (after sourcing setupAnalysis.sh):
 
-# Note that you should `setupATLAS` in a container that allows AnalysisBase access.
-# There are a few different protocol options for cloning the project, which are all provided at the top of the main page of the repository.
-# Kerberos is typically recommended if it is available (e.g. lxplus) since it does not require a username or password when interacting with remote repositories.
-# ssh acts similarly, but requires a password and a bit of initial setup
-# https is usually the most robust, but always requres a username and password
+    prepare.py    ZpMET/config/master/prepare-ZpMET.cfg
+    initialize.py ZpMET/config/master/initialize-ZpMET.cfg
+    analyze.py    ZpMET/config/master/analyze-ZpMET.cfg
+    visualize.py  ZpMET/config/master/visualize-ZpMET.cfg
 
-# ssh
-git clone --recursive ssh://git@gitlab.cern.ch:7999/atlas-physics/higp/photons/run3_hhyyml/yyMLAnalysisCode.git
-# Kerberos
-# git clone --recursive https://:@gitlab.cern.ch:8443/atlas-physics/higp/photons/run3_hhyyml/yyMLAnalysisCode.git
-# https
-# git clone --recursive https://gitlab.cern.ch/atlas-physics/higp/photons/run3_hhyyml/yyMLAnalysisCode.git
-```
+## Before running — TODOs
 
-Building the project
----------------------
+1. **Branch names**: verify variable names in ZpMET-cuts.def match your
+   EasyJet ntuple branches. Check with:
+       tqroot -sfr <your_ntuple.root>
+       // in ROOT: t->Print()  or  t->Scan("*",""," ",5)
 
-```bash
-mkdir build
-cd build
-asetup AnalysisBase,25.2.27
-cmake ../yyMLAnalysisCode
-source setupAnalysis.sh
-cafbuild # build the code (check details by typing "type cafbuild")
-```
+2. **TTree name**: confirm the TTree name inside your ntuples
+   (default assumed: "output"). Update mcFileListTreeName in initialize cfg.
 
-Running a minimal example
--------------------------
+3. **XSec file**: create ZpMET_XS_13p6TeV.csv with columns:
+       DSID, xsec[pb], kFactor, filterEfficiency
 
-The following commands will reproduce (in seconds) a minimal example, showcasing the least amount of configuration necessary to produce results by taking a VBF signal MC sample and passing it through a single cut on Mjj while producing one histogram.
+4. **Input file list**: create ZpMET-mcFileList.txt listing your EOS ntuple
+   paths, one per line, e.g.:
+       root://eosatlas.cern.ch//eos/atlas/.../ZpMET/Run3/ntuples/signal_546587.root
 
-```bash
-cd ../yyMLAnalysisCode/share
-./prepare.py minimal/config/master/prepare-Minimal-Example.cfg
-./initialize.py minimal/config/master/initialize-Minimal-Example.cfg
-./analyze.py minimal/config/master/analyze-Minimal-Example.cfg
-./visualize.py minimal/config/master/visualize-Minimal-Example.cfg
-```
+5. **Background DSIDs**: fill in bkg entries in ZpMET-samples.txt
 
-Running an example analysis on flat nTuples
--------------------------------------------
-
-The following commands will (very quickly) run over a selection of flat nTuples to reproduce the cutflow and some visualized results for a Zjets Fake Factor analysis. It is not meant to describe the bare minimum configuration needed for producing results (that's what the minimal example above is for).
-Similarly, a full-blown analysis is likely to include a host of custom observables which are calculated on-the-fly during runtime and for many more events (all quantities in this case have been pre-computed).
-Rather, it is simply meant to showcase how fast results can be obtained once the uninteresting events have been skimmed away and the necessary quantities are already available directly in the TTree.
-
-```bash
-cd ../yyMLAnalysisCode/share
-./prepare.py flatNTuple/config/master/prepare-flatNTuple-Example.cfg
-./initialize.py flatNTuple/config/master/initialize-flatNTuple-Example.cfg
-./analyze.py flatNTuple/config/master/analyze-flatNTuple-Example.cfg
-./visualize.py flatNTuple/config/master/visualize-flatNTuple-Example.cfg
-```
-
-<!---
-Running an example analysis on xAOD inputs
-------------------------------------------
-
-The following commands will (on order of hours) run over a selection of xAOD inputs to reproduce the same Zjets Fake Factor analysis as in the flat nTuple example above. A few important differences exist between the two variants. First, while the xAODs have been skimmed to cut down on runtime, their events haven't been removed quite as aggressively as in the flat nTuple case - there are still about an order of magnitude more. Secondly, the xAOD example runs over the data years 2015-2018 instead of only 2015-2016 to show how different campaigns with their own luminosity and samples are treated. Lastly, the xAOD analysis showcases in addition the use of a number of custom observables to calculate quantities for on-the-fly use. All of these three changes cause the significantly longer untime.
-
-```bash
-cd ../yyMLAnalysisCode/share
-./prepare.py xAOD/config/master/prepare-xAOD-Example.cfg
-./initialize.py xAOD/config/master/initialize-xAOD-Example.cfg
-./analyze.py xAOD/config/master/analyze-xAOD-Example.cfg
-./visualize.py xAOD/config/master/visualize-xAOD-Example.cfg
-```
---->
-
-Running an example analysis on HHML PxAOD inputs
-------------------------------------------
-
-The following commands will run over a selection of PxAOD inputs (mc23a and data 2022) to produce different kinematic distributions in WZ CR for 3L channel.
-
-```bash
-cd ../yyMLAnalysisCode/share
-./prepare.py HHML_example/config/master/prepare-HHML_3L.cfg
-./initialize.py HHML_example/config/master/initialize-HHML_3L.cfg
-./analyze.py HHML_example/config/master/analyze-HHML_3L.cfg
-./visualize.py HHML_example/config/master/visualize-HHML_3L.cfg
-```
-
-Running an example analysis using easyjet ntuple output
-------------------------------------------
-The following commands will run over a test ntuple and produce the leading electron pt in 2LSC channel
-
-```bash
-./prepare.py easyjet/config/master/prepare-2LSS.cfg 
-./initialize.py easyjet_example/config/master/initialize-2LSC.cfg
-./analyze.py easyjet_example/config/master/analyze-2LSC.cfg
-```
-Running from an arbitrary location
-----------------------------------
-
-Alternatively, each of the analysis scripts above can also be run from an arbitrary directory. The master config files still have to be specified relative to the share folder, although they can be discovered via tab completion:
-
-e.g.
-
-```bash
-cd any/location/
-./prepare.py flatNTuple/config/master/prepare-flatNTuple-Example.cfg
-./initialize.py flatNTuple/config/master/initialize-flatNTuple-Example.cfg
-./analyze.py flatNTuple/config/master/analyze-flatNTuple-Example.cfg
-./visualize.py flatNTuple/config/master/visualize-flatNTuple-Example.cfg
-```
-
-On Every Login
---------------
-
-Navigate to the working directory and
-
-```bash
-setupATLAS
-lsetup git
-cd build
-asetup --restore
-source setupAnalysis.sh
-```
+6. **Weight branches**: update weightExpression in cuts.def to match
+   your actual weight branch names (pileup, lepton SF, etc.)
