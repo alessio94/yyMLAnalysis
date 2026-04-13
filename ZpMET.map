@@ -1,0 +1,40 @@
+# ZpMET DSID → SampleFolder path map
+# Replaces the path-mapping half of ZpMET-samples.txt.
+# Referenced from prepare-ZpMET.cfg as `XsecMap`.
+#
+# Format: DSID /path/in/SampleFolder
+# Placeholders $(channel) and $(campaign) are expanded by CAF.
+#
+# Reference: yyML share/config/samples/maps/common/run3-mc23.map
+
+#--------------------------------
+# Signal: Z' -> ll  (SSM, 500 GeV .. 4000 GeV)
+# NOTE: user's original samples.txt put all DSIDs under sig/ee/.
+# If the paired DSIDs are actually ee+mumu (e.g. 546587=ee, 546588=mumu),
+# edit the paths below accordingly (use /sig/ee/... or /sig/mm/... as needed,
+# OR use $(channel) if each DSID is inclusive over channels).
+
+546587 /sig/$(channel)/$(campaign)/Zp500
+546588 /sig/$(channel)/$(campaign)/Zp500
+546597 /sig/$(channel)/$(campaign)/Zp750
+546598 /sig/$(channel)/$(campaign)/Zp750
+546605 /sig/$(channel)/$(campaign)/Zp1000
+546606 /sig/$(channel)/$(campaign)/Zp1000
+546607 /sig/$(channel)/$(campaign)/Zp1500
+546608 /sig/$(channel)/$(campaign)/Zp1500
+546609 /sig/$(channel)/$(campaign)/Zp2000
+546610 /sig/$(channel)/$(campaign)/Zp2000
+546611 /sig/$(channel)/$(campaign)/Zp2500
+546612 /sig/$(channel)/$(campaign)/Zp2500
+546613 /sig/$(channel)/$(campaign)/Zp3000
+546614 /sig/$(channel)/$(campaign)/Zp3000
+546615 /sig/$(channel)/$(campaign)/Zp4000
+546616 /sig/$(channel)/$(campaign)/Zp4000
+
+#--------------------------------
+# Backgrounds (TODO: fill in)
+# e.g.:  700320 /bkg/$(channel)/$(campaign)/DY
+
+#--------------------------------
+# Data (TODO: fill in)
+# e.g.:  data15 /data/$(channel)/$(campaign)/data
