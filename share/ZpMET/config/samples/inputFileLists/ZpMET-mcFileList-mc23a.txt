@@ -1,0 +1,24 @@
+# MC signal file list for campaign mc23a -- Z'+MET (ANA-EXOT-2023-28)
+# Format: one xrootd PFN per line, no trailing whitespace, # for comments.
+# Paths must be direct paths to output-tree.root files (NOT Rucio dataset names).
+#
+# Base path on EOS:
+#   root://eosatlas.cern.ch:1094//eos/atlas/atlasgroupdisk/phys-exotics/dq2/rucio/user/alpizzin/
+#
+# To retrieve PFNs:
+#   rucio list-files user.alpizzin:<dataset> | awk '{print "root://eosatlas.cern.ch:1094/"$0}'
+# Or browse directly:
+#   ls /eos/atlas/atlasgroupdisk/phys-exotics/dq2/rucio/user/alpizzin/
+#
+# DSIDs for mc23a (subcampaign tags: r15540 / r14622 / r15530 / r15224):
+#   546587  SSM Zp500  ee       546588  SSM Zp500  mumu
+#   546597  SSM Zp750  ee       546598  SSM Zp750  mumu
+#   546605  SSM Zp1000 ee       546606  SSM Zp1000 mumu
+#   546607  SSM Zp1500 ee       546608  SSM Zp1500 mumu
+#   546609  SSM Zp2000 ee       546610  SSM Zp2000 mumu
+#   546611  SSM Zp2500 ee       546612  SSM Zp2500 mumu
+#   546613  SSM Zp3000 ee       546614  SSM Zp3000 mumu
+#   546615  SSM Zp4000 ee       546616  SSM Zp4000 mumu
+#
+# TODO: fill in actual xrootd PFNs from user.alpizzin EOS area, e.g.:
+# root://eosatlas.cern.ch:1094//eos/atlas/atlasgroupdisk/phys-exotics/dq2/rucio/user/alpizzin/XX/YY/user.alpizzin.546587.mc23a_s4162_r15540_TREE._000001.output-tree.root
