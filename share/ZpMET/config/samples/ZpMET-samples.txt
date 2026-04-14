@@ -1,0 +1,24 @@
+# ZpMET sample list — DSID to SampleFolder path mapping
+# Corrected mass assignments from mc_Zprime_allMasses_DAOD_PHYS.txt
+#
+# Format: DSID  path/in/SampleFolder
+
+# ── Z' -> ee ──────────────────────────────────────────────────────────────────
+546587  sig/ee/Zp500
+546597  sig/ee/Zp1000
+546605  sig/ee/Zp1500
+546607  sig/ee/Zp2000
+546609  sig/ee/Zp2500
+546611  sig/ee/Zp3000
+546613  sig/ee/Zp3500
+546615  sig/ee/Zp4000
+
+# ── Z' -> mm ──────────────────────────────────────────────────────────────────
+546588  sig/mm/Zp500
+546598  sig/mm/Zp1000
+546606  sig/mm/Zp1500
+546608  sig/mm/Zp2000
+546610  sig/mm/Zp2500
+546612  sig/mm/Zp3000
+546614  sig/mm/Zp3500
+546616  sig/mm/Zp4000

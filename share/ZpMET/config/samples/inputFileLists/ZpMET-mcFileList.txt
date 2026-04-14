@@ -1,0 +1,43 @@
+# ZpMET signal input file list
+# Format expected by CAF initialize.py:
+#   <path_to_file>:<treename>  (one per line)
+# OR just paths if mcFileListTreeName is set in initialize cfg
+#
+# EOS base: /eos/atlas/atlascerngroupdisk/phys-exotics/lpx/ANA-EXOT-2023-28_leptonsplusmet/ZpMET/Run3/ntuples
+# Access via xrootd from lxplus
+
+# ── Z' -> ee ──────────────────────────────────────────────────────────────────
+# 500 GeV
+root://eosatlas.cern.ch//eos/atlas/atlascerngroupdisk/phys-exotics/lpx/ANA-EXOT-2023-28_leptonsplusmet/ZpMET/Run3/ntuples/user.alpizzin.48996493._000001.output-tree.root
+# 750 GeV
+root://eosatlas.cern.ch//eos/atlas/atlascerngroupdisk/phys-exotics/lpx/ANA-EXOT-2023-28_leptonsplusmet/ZpMET/Run3/ntuples/user.alpizzin.48995036._000001.output-tree.root
+# 1000 GeV
+root://eosatlas.cern.ch//eos/atlas/atlascerngroupdisk/phys-exotics/lpx/ANA-EXOT-2023-28_leptonsplusmet/ZpMET/Run3/ntuples/user.alpizzin.48996502._000001.output-tree.root
+# 1500 GeV
+root://eosatlas.cern.ch//eos/atlas/atlascerngroupdisk/phys-exotics/lpx/ANA-EXOT-2023-28_leptonsplusmet/ZpMET/Run3/ntuples/user.alpizzin.48996509._000001.output-tree.root
+# 2000 GeV
+root://eosatlas.cern.ch//eos/atlas/atlascerngroupdisk/phys-exotics/lpx/ANA-EXOT-2023-28_leptonsplusmet/ZpMET/Run3/ntuples/user.alpizzin.48996515._000001.output-tree.root
+# 2500 GeV
+root://eosatlas.cern.ch//eos/atlas/atlascerngroupdisk/phys-exotics/lpx/ANA-EXOT-2023-28_leptonsplusmet/ZpMET/Run3/ntuples/user.alpizzin.48996522._000001.output-tree.root
+# 3000 GeV
+root://eosatlas.cern.ch//eos/atlas/atlascerngroupdisk/phys-exotics/lpx/ANA-EXOT-2023-28_leptonsplusmet/ZpMET/Run3/ntuples/user.alpizzin.48996528._000001.output-tree.root
+# 4000 GeV
+root://eosatlas.cern.ch//eos/atlas/atlascerngroupdisk/phys-exotics/lpx/ANA-EXOT-2023-28_leptonsplusmet/ZpMET/Run3/ntuples/user.alpizzin.48996538._000001.output-tree.root
+
+# ── Z' -> mm ──────────────────────────────────────────────────────────────────
+# 500 GeV
+root://eosatlas.cern.ch//eos/atlas/atlascerngroupdisk/phys-exotics/lpx/ANA-EXOT-2023-28_leptonsplusmet/ZpMET/Run3/ntuples/user.alpizzin.48996496._000001.output-tree.root
+# 750 GeV
+root://eosatlas.cern.ch//eos/atlas/atlascerngroupdisk/phys-exotics/lpx/ANA-EXOT-2023-28_leptonsplusmet/ZpMET/Run3/ntuples/user.alpizzin.48995037._000001.output-tree.root
+# 1000 GeV
+root://eosatlas.cern.ch//eos/atlas/atlascerngroupdisk/phys-exotics/lpx/ANA-EXOT-2023-28_leptonsplusmet/ZpMET/Run3/ntuples/user.alpizzin.48996506._000001.output-tree.root
+# 1500 GeV
+root://eosatlas.cern.ch//eos/atlas/atlascerngroupdisk/phys-exotics/lpx/ANA-EXOT-2023-28_leptonsplusmet/ZpMET/Run3/ntuples/user.alpizzin.48996512._000001.output-tree.root
+# 2000 GeV
+root://eosatlas.cern.ch//eos/atlas/atlascerngroupdisk/phys-exotics/lpx/ANA-EXOT-2023-28_leptonsplusmet/ZpMET/Run3/ntuples/user.alpizzin.48996519._000001.output-tree.root
+# 2500 GeV
+root://eosatlas.cern.ch//eos/atlas/atlascerngroupdisk/phys-exotics/lpx/ANA-EXOT-2023-28_leptonsplusmet/ZpMET/Run3/ntuples/user.alpizzin.48996525._000001.output-tree.root
+# 3000 GeV
+root://eosatlas.cern.ch//eos/atlas/atlascerngroupdisk/phys-exotics/lpx/ANA-EXOT-2023-28_leptonsplusmet/ZpMET/Run3/ntuples/user.alpizzin.48996532._000001.output-tree.root
+# 4000 GeV
+root://eosatlas.cern.ch//eos/atlas/atlascerngroupdisk/phys-exotics/lpx/ANA-EXOT-2023-28_leptonsplusmet/ZpMET/Run3/ntuples/user.alpizzin.48996542._000001.output-tree.root
