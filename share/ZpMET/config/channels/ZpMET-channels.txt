@@ -1,0 +1,3 @@
+name	path	latex	datapath
+ee	ee	e^{+}e^{-}	ee
+mm	mm	\mu^{+}\mu^{-}	mm

@@ -1,0 +1,16 @@
+/eos/user/a/alpizzin/ZpMET_sig_links/user.alpizzin.ZpMET_Run3_v3.546587.e8588_a934_r16083_p6697_TREE.650816320.650816320/user.alpizzin.48996493._000001.output-tree.root
+/eos/user/a/alpizzin/ZpMET_sig_links/user.alpizzin.ZpMET_Run3_v3.546588.e8588_a934_r16083_p6697_TREE.650816344.650816344/user.alpizzin.48996496._000001.output-tree.root
+/eos/user/a/alpizzin/ZpMET_sig_links/user.alpizzin.ZpMET_Run3_v3.546597.e8588_a934_r16083_p6697_TREE.650797123.650797123/user.alpizzin.48995036._000001.output-tree.root
+/eos/user/a/alpizzin/ZpMET_sig_links/user.alpizzin.ZpMET_Run3_v3.546598.e8588_a934_r16083_p6697_TREE.650797129.650797129/user.alpizzin.48995037._000001.output-tree.root
+/eos/user/a/alpizzin/ZpMET_sig_links/user.alpizzin.ZpMET_Run3_v3.546605.e8588_a934_r16083_p6697_TREE.650816407.650816407/user.alpizzin.48996502._000001.output-tree.root
+/eos/user/a/alpizzin/ZpMET_sig_links/user.alpizzin.ZpMET_Run3_v3.546606.e8588_a934_r16083_p6697_TREE.650816438.650816438/user.alpizzin.48996506._000001.output-tree.root
+/eos/user/a/alpizzin/ZpMET_sig_links/user.alpizzin.ZpMET_Run3_v3.546607.e8588_a934_r16083_p6697_TREE.650816472.650816472/user.alpizzin.48996509._000001.output-tree.root
+/eos/user/a/alpizzin/ZpMET_sig_links/user.alpizzin.ZpMET_Run3_v3.546608.e8588_a934_r16083_p6697_TREE.650816475.650816475/user.alpizzin.48996512._000001.output-tree.root
+/eos/user/a/alpizzin/ZpMET_sig_links/user.alpizzin.ZpMET_Run3_v3.546609.e8588_a934_r16083_p6697_TREE.650816512.650816512/user.alpizzin.48996515._000001.output-tree.root
+/eos/user/a/alpizzin/ZpMET_sig_links/user.alpizzin.ZpMET_Run3_v3.546610.e8588_a934_r16083_p6697_TREE.650816586.650816586/user.alpizzin.48996519._000001.output-tree.root
+/eos/user/a/alpizzin/ZpMET_sig_links/user.alpizzin.ZpMET_Run3_v3.546611.e8588_a934_r16083_p6697_TREE.650816589.650816589/user.alpizzin.48996522._000001.output-tree.root
+/eos/user/a/alpizzin/ZpMET_sig_links/user.alpizzin.ZpMET_Run3_v3.546612.e8588_a934_r16083_p6697_TREE.650816630.650816630/user.alpizzin.48996525._000001.output-tree.root
+/eos/user/a/alpizzin/ZpMET_sig_links/user.alpizzin.ZpMET_Run3_v3.546613.e8588_a934_r16083_p6697_TREE.650816675.650816675/user.alpizzin.48996528._000001.output-tree.root
+/eos/user/a/alpizzin/ZpMET_sig_links/user.alpizzin.ZpMET_Run3_v3.546614.e8588_a934_r16083_p6697_TREE.650816768.650816768/user.alpizzin.48996532._000001.output-tree.root
+/eos/user/a/alpizzin/ZpMET_sig_links/user.alpizzin.ZpMET_Run3_v3.546615.e8588_a934_r16083_p6697_TREE.650816809.650816809/user.alpizzin.48996538._000001.output-tree.root
+/eos/user/a/alpizzin/ZpMET_sig_links/user.alpizzin.ZpMET_Run3_v3.546616.e8588_a934_r16083_p6697_TREE.650816855.650816855/user.alpizzin.48996542._000001.output-tree.root

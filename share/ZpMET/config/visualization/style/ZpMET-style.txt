@@ -1,0 +1,1 @@
+<style.default.histLineColor = 600, style.default.histFillColor = 0> @ /sig/?/mc23e/?/;

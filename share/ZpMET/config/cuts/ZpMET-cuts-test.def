@@ -1,0 +1,10 @@
++CutInitial {
+  <.cutExpression    = "1",
+   .weightExpression = "[generatorWeight_NOSYS]*[PileupWeight_NOSYS]",
+   .title            = "Initial">
+
+  +CutMMPtTest {
+    <.cutExpression = "[VecAT([mu_pt_NOSYS],0)] > 27000.",
+     .title = "Test: leading mu pT">
+  } #End: CutMMPtTest
+} #End: CutInitial
