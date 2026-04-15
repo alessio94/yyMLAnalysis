@@ -1,0 +1,4 @@
+.path = "sig/$(channel)/mc23e/Zp500",  .name = "Zp500",  .title = "Zp500"
+.path = "sig/$(channel)/mc23e/Zp1000", .name = "Zp1000", .title = "Zp1000"
+.path = "sig/$(channel)/mc23e/Zp2000", .name = "Zp2000", .title = "Zp2000"
+.path = "sig/$(channel)/mc23e/Zp4000", .name = "Zp4000", .title = "Zp4000"

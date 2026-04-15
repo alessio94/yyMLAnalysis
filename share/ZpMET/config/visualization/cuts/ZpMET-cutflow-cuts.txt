@@ -1,0 +1,3 @@
+.name="CutInitial",   .title="Initial"
+.name="CutLeadLepPt", .title="Leading electron pT > 27 GeV"
+.name="CutMET",       .title="MET > 80 GeV"

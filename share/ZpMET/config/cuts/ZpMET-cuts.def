@@ -1,77 +1,12 @@
-# -*- mode: tqfolder -*-
-# CAF cut definition for Z'+MET analysis (ANA-EXOT-2023-28)
-# Modelled on share/config/cuts/yyML/yyML-cuts.def
-#
-# Vector branch element access:
-#   _0/_1 suffix is NOT supported without a custom observable factory.
-#   Use VecAT([branch_NOSYS], index) inside a Multi: expression instead.
-#   Scalar branches (met_met_NOSYS, mll_NOSYS, ...) use plain [branch] syntax.
-#
-# Units: ATLAS ntuples store pT / mass / MET in MeV.
-#   27 GeV = 27000.   20 GeV = 20000.   30 GeV = 30000.   106 GeV = 106000.
++CutInitial {
+  <.cutExpression = "1", .weightExpression = "[generatorWeight_NOSYS]*[PileupWeight_NOSYS]*[jvt_effSF_NOSYS]", .title = "Initial">
 
-+CutAll {
-    <.cutExpression = "1", .weightExpression = "1", .title = "Pass all (no selection)">
+  +CutLeadLepPt {
+    <.cutExpression = "[VecAT([el_pt_NOSYS],0)] > 27000.", .title = "Leading electron pT > 27 GeV">
 
-    # =========================================================================
-    # Electron channel (ee)
-    # Histograms for ee signal: reference CutEE* nodes in histograms file.
-    # =========================================================================
+    +CutMET {
+      <.cutExpression = "[met_met_NOSYS] > 80000.", .title = "MET > 80 GeV">
+    } #End: CutMET
+  } #End: CutLeadLepPt
 
-    +CutEEPassOR {
-        <.cutExpression = "Multi:[VecAT([el_passesOR_NOSYS],0)] && [VecAT([el_passesOR_NOSYS],1)]",
-         .title = "2 electrons pass overlap removal">
-
-        +CutEEPt {
-            <.cutExpression = "Multi:[VecAT([el_pt_NOSYS],0)] > 27000. && [VecAT([el_pt_NOSYS],1)] > 20000.",
-             .title = "el pT: leading > 27 GeV, sub-leading > 20 GeV">
-
-            +CutEEOS {
-                <.cutExpression = "Multi:[VecAT([el_charge_NOSYS],0)] * [VecAT([el_charge_NOSYS],1)] < 0",
-                 .title = "OS electron pair">
-
-                +CutEEMET {
-                    <.cutExpression = "[met_met_NOSYS] > 30000.",
-                     .title = "MET > 30 GeV">
-
-                    +CutEEmll {
-                        <.cutExpression = "[mll_NOSYS] > 106000.",
-                         .title = "m_{ll} > 106 GeV (above Z peak)">
-
-                    } # End: CutEEmll
-                } # End: CutEEMET
-            } # End: CutEEOS
-        } # End: CutEEPt
-    } # End: CutEEPassOR
-
-    # =========================================================================
-    # Muon channel (mm)
-    # =========================================================================
-
-    +CutMMPassOR {
-        <.cutExpression = "Multi:[VecAT([mu_passesOR_NOSYS],0)] && [VecAT([mu_passesOR_NOSYS],1)]",
-         .title = "2 muons pass overlap removal">
-
-        +CutMMPt {
-            <.cutExpression = "Multi:[VecAT([mu_pt_NOSYS],0)] > 27000. && [VecAT([mu_pt_NOSYS],1)] > 20000.",
-             .title = "mu pT: leading > 27 GeV, sub-leading > 20 GeV">
-
-            +CutMMOS {
-                <.cutExpression = "Multi:[VecAT([mu_charge_NOSYS],0)] * [VecAT([mu_charge_NOSYS],1)] < 0",
-                 .title = "OS muon pair">
-
-                +CutMMMET {
-                    <.cutExpression = "[met_met_NOSYS] > 30000.",
-                     .title = "MET > 30 GeV">
-
-                    +CutMMmll {
-                        <.cutExpression = "[mll_NOSYS] > 106000.",
-                         .title = "m_{ll} > 106 GeV (above Z peak)">
-
-                    } # End: CutMMmll
-                } # End: CutMMMET
-            } # End: CutMMOS
-        } # End: CutMMPt
-    } # End: CutMMPassOR
-
-} # End: CutAll
+} #End: CutInitial
