@@ -1,14 +1,29 @@
 # CAF histogram definitions for Z'+MET analysis (ANA-EXOT-2023-28)
 # Modelled on share/config/histograms/yyML/yyML-histograms.txt
 #
-# Format: TH1F('name', 'title', nbins, xmin, xmax) << ( expression : 'x-axis label' );
-# Apply to cut nodes with: @CutName/*: histogram_name;
-#
-# TODO: replace expressions with real ntuple branch names once confirmed.
-#       Key Z'+MET variables to histogram: mll, met_et, lep_pt_0, lep_pt_1
+# Vector branches: use Multi:VecAT([branch_NOSYS],index) syntax (same as cuts).
+# Scalar branches: plain [branch_NOSYS] syntax.
+# Units: MeV throughout (pT in MeV, mass in MeV).
 
-# Event counter — always valid (expression = 1)
+# ── Scalar histograms (scalar branches, no VecAT needed) ──────────────────────
+TH1F('mll',     '', 50,   0., 5000000.) << ( [mll_NOSYS]     : 'm_{ll} [MeV]'  );
+TH1F('met',     '', 50,   0., 1000000.) << ( [met_met_NOSYS] : 'MET [MeV]'     );
+
+# ── Vector-element histograms (require Multi:VecAT) ────────────────────────────
+TH1F('el_pt_0', '', 50,   0., 1000000.) << ( Multi:[VecAT([el_pt_NOSYS],0)]     : 'el p_{T}^{lead} [MeV]'    );
+TH1F('el_pt_1', '', 50,   0.,  500000.) << ( Multi:[VecAT([el_pt_NOSYS],1)]     : 'el p_{T}^{sub} [MeV]'     );
+TH1F('mu_pt_0', '', 50,   0., 1000000.) << ( Multi:[VecAT([mu_pt_NOSYS],0)]     : 'mu p_{T}^{lead} [MeV]'    );
+TH1F('mu_pt_1', '', 50,   0.,  500000.) << ( Multi:[VecAT([mu_pt_NOSYS],1)]     : 'mu p_{T}^{sub} [MeV]'     );
+
+# Event counter (always valid)
 TH1F('eventcount', '', 1, 0.5, 1.5) << ( 1 : 'events' );
 
-# Apply eventcount histogram at all nodes under CutAll
-@CutAll/*: eventcount;
+# ── Apply histograms at cut nodes ──────────────────────────────────────────────
+# Scalar histograms at the final ee cut node
+@CutEEmll:     mll, met, el_pt_0, el_pt_1, eventcount;
+
+# Scalar histograms at the final mm cut node
+@CutMMmll:     mll, met, mu_pt_0, mu_pt_1, eventcount;
+
+# eventcount at every node (for cutflow)
+@CutAll/*:     eventcount;
