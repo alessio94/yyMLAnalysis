@@ -1,0 +1,19 @@
+# -*- mode: tqfolder -*-
+# CAF cut definition for Z'+MET analysis (ANA-EXOT-2023-28)
+# Modelled on share/config/cuts/yyML/yyML-cuts.def
+#
+# TODO: replace cut expressions with real ntuple branch names once confirmed.
+#       Common Z'+MET variables: mll, met_et, lep_pt_0, lep_pt_1, lep_eta_0, ...
+#
+# The top-level cut must be named and must cover both ee and mm.
+# Use .weightExpression = "$(weights)" once a weight branch is known.
+
++CutAll {
+    <.cutExpression = "1", .weightExpression = "1", .title = "Pass all (no selection)">
+
+    +CutChannel {
+        <.cutExpression = "1", .title = "Channel placeholder">
+
+    } # End: CutChannel
+
+} # End: CutAll

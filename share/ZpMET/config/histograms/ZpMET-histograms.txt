@@ -1,0 +1,14 @@
+# CAF histogram definitions for Z'+MET analysis (ANA-EXOT-2023-28)
+# Modelled on share/config/histograms/yyML/yyML-histograms.txt
+#
+# Format: TH1F('name', 'title', nbins, xmin, xmax) << ( expression : 'x-axis label' );
+# Apply to cut nodes with: @CutName/*: histogram_name;
+#
+# TODO: replace expressions with real ntuple branch names once confirmed.
+#       Key Z'+MET variables to histogram: mll, met_et, lep_pt_0, lep_pt_1
+
+# Event counter — always valid (expression = 1)
+TH1F('eventcount', '', 1, 0.5, 1.5) << ( 1 : 'events' );
+
+# Apply eventcount histogram at all nodes under CutAll
+@CutAll/*: eventcount;
