@@ -1,12 +1,68 @@
+# ZpMET cuts definition file
+# Vector branch elements accessed via VecAT([branch],index)
+# All pT/MET values in MeV
+
 +CutInitial {
-  <.cutExpression = "1", .weightExpression = "[generatorWeight_NOSYS]*[PileupWeight_NOSYS]*[jvt_effSF_NOSYS]", .title = "Initial">
+  <.cutExpression    = "1",
+   .weightExpression = "[generatorWeight_NOSYS]*[PileupWeight_NOSYS]*[jvt_effSF_NOSYS]",
+   .title            = "Initial">
 
-  +CutLeadLepPt {
-    <.cutExpression = "[VecAT([el_pt_NOSYS],0)] > 27000.", .title = "Leading electron pT > 27 GeV">
+  # ── Trigger ────────────────────────────────────────────────────────────────
+  +CutTrigger {
+    <.cutExpression = "([trigPassed_HLT_e26_lhtight_ivarloose_L1eEM26M] || [trigPassed_HLT_e60_lhmedium_L1eEM26M] || [trigPassed_HLT_e140_lhloose_L1eEM26M]) || ([trigPassed_HLT_mu24_ivarmedium_L1MU14FCH] || [trigPassed_HLT_mu50_L1MU14FCH] || [trigPassed_HLT_mu60_L1MU14FCH])",
+     .title = "Trigger">
 
-    +CutMET {
-      <.cutExpression = "[met_met_NOSYS] > 80000.", .title = "MET > 80 GeV">
-    } #End: CutMET
-  } #End: CutLeadLepPt
+    # ── ee channel ───────────────────────────────────────────────────────────
+    +CutEETrigger {
+      <.cutExpression = "[trigPassed_HLT_e26_lhtight_ivarloose_L1eEM26M] || [trigPassed_HLT_e60_lhmedium_L1eEM26M] || [trigPassed_HLT_e140_lhloose_L1eEM26M]",
+       .title = "ee trigger">
 
+      +CutEE2El {
+        <.cutExpression = "[VecAT([el_passesOR_NOSYS],0)] == 1 && [VecAT([el_passesOR_NOSYS],1)] == 1",
+         .title = "2 electrons pass OR">
+
+        +CutEEOS {
+          <.cutExpression = "[VecAT([el_charge_NOSYS],0)] * [VecAT([el_charge_NOSYS],1)] < 0",
+           .title = "OS electrons">
+
+          +CutEEPt {
+            <.cutExpression = "[VecAT([el_pt_NOSYS],0)] > 27000. && [VecAT([el_pt_NOSYS],1)] > 20000.",
+             .title = "Electron pT cuts">
+
+            +CutEEMET {
+              <.cutExpression = "[met_met_NOSYS] > 80000.",
+               .title = "MET > 80 GeV (ee)">
+            } #End: CutEEMET
+          } #End: CutEEPt
+        } #End: CutEEOS
+      } #End: CutEE2El
+    } #End: CutEETrigger
+
+    # ── mm channel ───────────────────────────────────────────────────────────
+    +CutMMTrigger {
+      <.cutExpression = "[trigPassed_HLT_mu24_ivarmedium_L1MU14FCH] || [trigPassed_HLT_mu50_L1MU14FCH] || [trigPassed_HLT_mu60_L1MU14FCH]",
+       .title = "mm trigger">
+
+      +CutMM2Mu {
+        <.cutExpression = "[VecAT([mu_passesOR_NOSYS],0)] == 1 && [VecAT([mu_passesOR_NOSYS],1)] == 1",
+         .title = "2 muons pass OR">
+
+        +CutMMOS {
+          <.cutExpression = "[VecAT([mu_charge_NOSYS],0)] * [VecAT([mu_charge_NOSYS],1)] < 0",
+           .title = "OS muons">
+
+          +CutMMPt {
+            <.cutExpression = "[VecAT([mu_pt_NOSYS],0)] > 27000. && [VecAT([mu_pt_NOSYS],1)] > 20000.",
+             .title = "Muon pT cuts">
+
+            +CutMMMET {
+              <.cutExpression = "[met_met_NOSYS] > 80000.",
+               .title = "MET > 80 GeV (mm)">
+            } #End: CutMMMET
+          } #End: CutMMPt
+        } #End: CutMMOS
+      } #End: CutMM2Mu
+    } #End: CutMMTrigger
+
+  } #End: CutTrigger
 } #End: CutInitial
