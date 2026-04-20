@@ -14,7 +14,7 @@
        .title = "ee trigger">
 
       +CutEE2El {
-        <.cutExpression = "[@el_pt_NOSYS] >= 2",
+        <.cutExpression = "@el_pt_NOSYS.size() >= 2",
          .title = "2 electrons">
 
         +CutEEOS {
@@ -40,7 +40,7 @@
        .title = "mm trigger">
 
       +CutMM2Mu {
-        <.cutExpression = "[@mu_pt_NOSYS] >= 2",
+        <.cutExpression = "@mu_pt_NOSYS.size() >= 2",
          .title = "2 muons">
 
         +CutMMOS {
