@@ -3,62 +3,46 @@
    .weightExpression = "[generatorWeight_NOSYS]*[PileupWeight_NOSYS]*[jvt_effSF_NOSYS]",
    .title            = "Initial">
 
-  # ── Trigger ────────────────────────────────────────────────────────────────
-  +CutTrigger {
-    <.cutExpression = "([trigPassed_HLT_e26_lhtight_ivarloose_L1eEM26M] || [trigPassed_HLT_e60_lhmedium_L1eEM26M] || [trigPassed_HLT_e140_lhloose_L1eEM26M]) || ([trigPassed_HLT_mu24_ivarmedium_L1MU14FCH] || [trigPassed_HLT_mu50_L1MU14FCH] || [trigPassed_HLT_mu60_L1MU14FCH])",
-     .title = "Trigger">
+  # ── ee channel ─────────────────────────────────────────────────────────────
+  +CutEE2El {
+    <.cutExpression = "@el_pt_NOSYS.size() >= 2",
+     .title         = "ee: >= 2 electrons">
 
-    # ── ee channel ───────────────────────────────────────────────────────────
-    +CutEETrigger {
-      <.cutExpression = "[trigPassed_HLT_e26_lhtight_ivarloose_L1eEM26M] || [trigPassed_HLT_e60_lhmedium_L1eEM26M] || [trigPassed_HLT_e140_lhloose_L1eEM26M]",
-       .title = "ee trigger">
+    +CutEEOS {
+      <.cutExpression = "[VecAT([el_charge_NOSYS],0)] * [VecAT([el_charge_NOSYS],1)] < 0",
+       .title         = "ee: OS pair">
 
-      +CutEE2El {
-        <.cutExpression = "@el_pt_NOSYS.size() >= 2",
-         .title = "2 electrons">
+      +CutEEPt {
+        <.cutExpression = "[VecAT([el_pt_NOSYS],0)] > 27000. && [VecAT([el_pt_NOSYS],1)] > 20000.",
+         .title         = "ee: lepton pT cuts">
 
-        +CutEEOS {
-          <.cutExpression = "[VecAT([el_charge_NOSYS],0)] * [VecAT([el_charge_NOSYS],1)] < 0",
-           .title = "OS electrons">
+        +CutEEMET {
+          <.cutExpression = "[met_met_NOSYS] > 80000.",
+           .title         = "ee: MET > 80 GeV">
+        } #End: CutEEMET
+      } #End: CutEEPt
+    } #End: CutEEOS
+  } #End: CutEE2El
 
-          +CutEEPt {
-            <.cutExpression = "[VecAT([el_pt_NOSYS],0)] > 27000. && [VecAT([el_pt_NOSYS],1)] > 20000.",
-             .title = "Electron pT cuts">
+  # ── mm channel ─────────────────────────────────────────────────────────────
+  +CutMM2Mu {
+    <.cutExpression = "@mu_pt_NOSYS.size() >= 2",
+     .title         = "mm: >= 2 muons">
 
-            +CutEEMET {
-              <.cutExpression = "[met_met_NOSYS] > 80000.",
-               .title = "MET > 80 GeV (ee)">
-            } #End: CutEEMET
-          } #End: CutEEPt
-        } #End: CutEEOS
-      } #End: CutEE2El
-    } #End: CutEETrigger
+    +CutMMOS {
+      <.cutExpression = "[VecAT([mu_charge_NOSYS],0)] * [VecAT([mu_charge_NOSYS],1)] < 0",
+       .title         = "mm: OS pair">
 
-    # ── mm channel ───────────────────────────────────────────────────────────
-    +CutMMTrigger {
-      <.cutExpression = "[trigPassed_HLT_mu24_ivarmedium_L1MU14FCH] || [trigPassed_HLT_mu50_L1MU14FCH] || [trigPassed_HLT_mu60_L1MU14FCH]",
-       .title = "mm trigger">
+      +CutMMPt {
+        <.cutExpression = "[VecAT([mu_pt_NOSYS],0)] > 27000. && [VecAT([mu_pt_NOSYS],1)] > 20000.",
+         .title         = "mm: lepton pT cuts">
 
-      +CutMM2Mu {
-        <.cutExpression = "@mu_pt_NOSYS.size() >= 2",
-         .title = "2 muons">
+        +CutMMMET {
+          <.cutExpression = "[met_met_NOSYS] > 80000.",
+           .title         = "mm: MET > 80 GeV">
+        } #End: CutMMMET
+      } #End: CutMMPt
+    } #End: CutMMOS
+  } #End: CutMM2Mu
 
-        +CutMMOS {
-          <.cutExpression = "[VecAT([mu_charge_NOSYS],0)] * [VecAT([mu_charge_NOSYS],1)] < 0",
-           .title = "OS muons">
-
-          +CutMMPt {
-            <.cutExpression = "[VecAT([mu_pt_NOSYS],0)] > 27000. && [VecAT([mu_pt_NOSYS],1)] > 20000.",
-             .title = "Muon pT cuts">
-
-            +CutMMMET {
-              <.cutExpression = "[met_met_NOSYS] > 80000.",
-               .title = "MET > 80 GeV (mm)">
-            } #End: CutMMMET
-          } #End: CutMMPt
-        } #End: CutMMOS
-      } #End: CutMM2Mu
-    } #End: CutMMTrigger
-
-  } #End: CutTrigger
 } #End: CutInitial
