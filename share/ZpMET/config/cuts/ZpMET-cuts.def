@@ -1,12 +1,50 @@
 +CutInitial {
-  <.cutExpression = "1", .weightExpression = "[generatorWeight_NOSYS]*[PileupWeight_NOSYS]*[jvt_effSF_NOSYS]", .title = "Initial">
+  <.cutExpression    = "1",
+   .weightExpression = "[generatorWeight_NOSYS]*[PileupWeight_NOSYS]*[jvt_effSF_NOSYS]",
+   .title            = "Initial">
 
-  +CutLeadLepPt {
-    <.cutExpression = "[VecAT([el_pt_NOSYS],0)] > 27000.", .title = "Leading electron pT > 27 GeV">
+  # ── ee channel branch ─────────────────────────────────────────────────────
+  +CutEE2El {
+    <.cutExpression = "[n_el_NOSYS] >= 2",
+     .title         = "ee: >= 2 electrons">
 
-    +CutMET {
-      <.cutExpression = "[met_met_NOSYS] > 80000.", .title = "MET > 80 GeV">
-    } #End: CutMET
-  } #End: CutLeadLepPt
+    +CutEEOS {
+      <.cutExpression = "[VecAT([el_charge_NOSYS],0)] * [VecAT([el_charge_NOSYS],1)] < 0",
+       .title         = "ee: OS pair">
+
+      +CutEEPt {
+        <.cutExpression = "[VecAT([el_pt_NOSYS],0)] > 27000. && [VecAT([el_pt_NOSYS],1)] > 20000.",
+         .title         = "ee: lepton pT cuts">
+
+        +CutEEMET {
+          <.cutExpression = "[met_met_NOSYS] > 80000.",
+           .title         = "ee: MET > 80 GeV">
+        } #End: CutEEMET
+
+      } #End: CutEEPt
+    } #End: CutEEOS
+  } #End: CutEE2El
+
+  # ── mm channel branch ─────────────────────────────────────────────────────
+  +CutMM2Mu {
+    <.cutExpression = "[n_mu_NOSYS] >= 2",
+     .title         = "mm: >= 2 muons">
+
+    +CutMMOS {
+      <.cutExpression = "[VecAT([mu_charge_NOSYS],0)] * [VecAT([mu_charge_NOSYS],1)] < 0",
+       .title         = "mm: OS pair">
+
+      +CutMMPt {
+        <.cutExpression = "[VecAT([mu_pt_NOSYS],0)] > 27000. && [VecAT([mu_pt_NOSYS],1)] > 20000.",
+         .title         = "mm: lepton pT cuts">
+
+        +CutMMMET {
+          <.cutExpression = "[met_met_NOSYS] > 80000.",
+           .title         = "mm: MET > 80 GeV">
+        } #End: CutMMMET
+
+      } #End: CutMMPt
+    } #End: CutMMOS
+  } #End: CutMM2Mu
 
 } #End: CutInitial
