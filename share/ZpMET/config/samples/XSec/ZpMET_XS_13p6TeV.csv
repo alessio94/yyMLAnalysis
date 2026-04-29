@@ -1,23 +1,24 @@
 SampleID , xsection , kfactor , filtereff , uncertainty , mh , generator , process , simulation
 
-# Z' SSM signal (ANA-EXOT-2023-28)
-# xsec values are placeholders (1.0 pb) -- replace with real SSM values from Rachid
+# Z'+MET leptovector off-shell signal (ANA-EXOT-2023-28)
+# Generator: MadGraph+Pythia8 (MGPy8EG), process: lv_offsh (leptovector off-shell mediator)
+# xsec from AMI (converted from nb to pb: AMI value × 1000), kfactor=1.0, filtereff=1.0 (TODO: verify)
 
-546587, 1.0, 1.0, 1.0, --, 0, Pythia8, SSM_Zp500_ee, DUMMY
-546588, 1.0, 1.0, 1.0, --, 0, Pythia8, SSM_Zp500_mumu, DUMMY
-546597, 1.0, 1.0, 1.0, --, 0, Pythia8, SSM_Zp750_ee, DUMMY
-546598, 1.0, 1.0, 1.0, --, 0, Pythia8, SSM_Zp750_mumu, DUMMY
-546605, 1.0, 1.0, 1.0, --, 0, Pythia8, SSM_Zp1000_ee, DUMMY
-546606, 1.0, 1.0, 1.0, --, 0, Pythia8, SSM_Zp1000_mumu, DUMMY
-546607, 1.0, 1.0, 1.0, --, 0, Pythia8, SSM_Zp1500_ee, DUMMY
-546608, 1.0, 1.0, 1.0, --, 0, Pythia8, SSM_Zp1500_mumu, DUMMY
-546609, 1.0, 1.0, 1.0, --, 0, Pythia8, SSM_Zp2000_ee, DUMMY
-546610, 1.0, 1.0, 1.0, --, 0, Pythia8, SSM_Zp2000_mumu, DUMMY
-546611, 1.0, 1.0, 1.0, --, 0, Pythia8, SSM_Zp2500_ee, DUMMY
-546612, 1.0, 1.0, 1.0, --, 0, Pythia8, SSM_Zp2500_mumu, DUMMY
-546613, 1.0, 1.0, 1.0, --, 0, Pythia8, SSM_Zp3000_ee, DUMMY
-546614, 1.0, 1.0, 1.0, --, 0, Pythia8, SSM_Zp3000_mumu, DUMMY
-546615, 1.0, 1.0, 1.0, --, 0, Pythia8, SSM_Zp4000_ee, DUMMY
-546616, 1.0, 1.0, 1.0, --, 0, Pythia8, SSM_Zp4000_mumu, DUMMY
+546587, 2.908e-02,  1.0, 1.0, --, 500,  MGPy8EG, lv_offsh_mZp500_ee,   mc23e
+546588, 2.9082e-02, 1.0, 1.0, --, 500,  MGPy8EG, lv_offsh_mZp500_mumu,  mc23e
+546597, 2.0556e-03, 1.0, 1.0, --, 750,  MGPy8EG, lv_offsh_mZp750_ee,   mc23e
+546598, 2.0553e-03, 1.0, 1.0, --, 750,  MGPy8EG, lv_offsh_mZp750_mumu,  mc23e
+546605, 3.2934e-04, 1.0, 1.0, --, 1000, MGPy8EG, lv_offsh_mZp1000_ee,  mc23e
+546606, 3.2953e-04, 1.0, 1.0, --, 1000, MGPy8EG, lv_offsh_mZp1000_mumu, mc23e
+546607, 7.6166e-05, 1.0, 1.0, --, 1500, MGPy8EG, lv_offsh_mZp1500_ee,  mc23e
+546608, 7.6174e-05, 1.0, 1.0, --, 1500, MGPy8EG, lv_offsh_mZp1500_mumu, mc23e
+546609, 2.1429e-05, 1.0, 1.0, --, 2000, MGPy8EG, lv_offsh_mZp2000_ee,  mc23e
+546610, 2.1459e-05, 1.0, 1.0, --, 2000, MGPy8EG, lv_offsh_mZp2000_mumu, mc23e
+546611, 6.7147e-06, 1.0, 1.0, --, 2500, MGPy8EG, lv_offsh_mZp2500_ee,  mc23e
+546612, 6.7131e-06, 1.0, 1.0, --, 2500, MGPy8EG, lv_offsh_mZp2500_mumu, mc23e
+546613, 2.2544e-06, 1.0, 1.0, --, 3000, MGPy8EG, lv_offsh_mZp3000_ee,  mc23e
+546614, 2.2599e-06, 1.0, 1.0, --, 3000, MGPy8EG, lv_offsh_mZp3000_mumu, mc23e
+546615, 7.9265e-07, 1.0, 1.0, --, 4000, MGPy8EG, lv_offsh_mZp4000_ee,  mc23e
+546616, 7.9311e-07, 1.0, 1.0, --, 4000, MGPy8EG, lv_offsh_mZp4000_mumu, mc23e
 
 # Backgrounds (TODO)
