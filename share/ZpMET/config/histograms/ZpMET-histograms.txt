@@ -1,6 +1,22 @@
-TH1F('met',     '', 50,  0.,  500.) << ( [met_met_NOSYS]/1000. : 'MET [GeV]' );
-TH1F('met_phi', '', 32, -3.2, 3.2)  << ( [met_phi_NOSYS]       : 'MET phi'   );
+# ── Common observables ────────────────────────────────────────────────────────
+TH1F('met',     '', 50,  0.,  500.) << ( [met_met_NOSYS]/1000.  : 'MET [GeV]'  );
+TH1F('met_phi', '', 32, -3.2, 3.2)  << ( [met_phi_NOSYS]        : 'MET #phi'   );
 
+# ── ee observables ────────────────────────────────────────────────────────────
+TH1F('el_pt_lead',    '', 50,  0., 500.) << ( [VecAT([el_pt_NOSYS],0)]/1000.  : 'Leading e p_{T} [GeV]'    );
+TH1F('el_pt_sublead', '', 50,  0., 300.) << ( [VecAT([el_pt_NOSYS],1)]/1000.  : 'Subleading e p_{T} [GeV]' );
+TH1F('el_eta_lead',   '', 50, -3.,   3.) << ( [VecAT([el_eta_NOSYS],0)]        : 'Leading e #eta'            );
+TH1F('el_phi_lead',   '', 32, -3.2, 3.2) << ( [VecAT([el_phi_NOSYS],0)]       : 'Leading e #phi'            );
+TH1F('mll_ee',  '', 50,  0., 500.) << ( sqrt(2*[VecAT([el_pt_NOSYS],0)]*[VecAT([el_pt_NOSYS],1)]*(cosh([VecAT([el_eta_NOSYS],0)]-[VecAT([el_eta_NOSYS],1)])-cos([VecAT([el_phi_NOSYS],0)]-[VecAT([el_phi_NOSYS],1)])))/1000. : 'm_{ll}^{ee} [GeV]' );
+
+# ── mm observables ────────────────────────────────────────────────────────────
+TH1F('mu_pt_lead',    '', 50,  0., 500.) << ( [VecAT([mu_pt_NOSYS],0)]/1000.  : 'Leading #mu p_{T} [GeV]'    );
+TH1F('mu_pt_sublead', '', 50,  0., 300.) << ( [VecAT([mu_pt_NOSYS],1)]/1000.  : 'Subleading #mu p_{T} [GeV]' );
+TH1F('mu_eta_lead',   '', 50, -3.,   3.) << ( [VecAT([mu_eta_NOSYS],0)]        : '#mu #eta'                    );
+TH1F('mu_phi_lead',   '', 32, -3.2, 3.2) << ( [VecAT([mu_phi_NOSYS],0)]       : 'Leading #mu #phi'            );
+TH1F('mll_mm',  '', 50,  0., 500.) << ( sqrt(2*[VecAT([mu_pt_NOSYS],0)]*[VecAT([mu_pt_NOSYS],1)]*(cosh([VecAT([mu_eta_NOSYS],0)]-[VecAT([mu_eta_NOSYS],1)])-cos([VecAT([mu_phi_NOSYS],0)]-[VecAT([mu_phi_NOSYS],1)])))/1000. : 'm_{ll}^{#mu#mu} [GeV]' );
+
+# ── Booking ───────────────────────────────────────────────────────────────────
 @CutInitial: met, met_phi;
-@CutEEMET:   met, met_phi;
-@CutMMMET:   met, met_phi;
+@CutEEMET:   met, met_phi, el_pt_lead, el_pt_sublead, el_eta_lead, el_phi_lead, mll_ee;
+@CutMMMET:   met, met_phi, mu_pt_lead, mu_pt_sublead, mu_eta_lead, mu_phi_lead, mll_mm;
