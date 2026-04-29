@@ -1,0 +1,36 @@
+# -*- mode: tqfolder -*-
+# Pre-initialize patch for Z'+MET analysis (ANA-EXOT-2023-28)
+# Applied before initialize.initializeMonteCarlo() via preInit_patches in initialize-ZpMET.cfg.
+# Sets usemcweights (required by TQSampleInitializerBase to enter the
+# bookkeeping / sumOfWeights extraction branch) and the per-sample
+# count histogram name (CutBookkeeper histogram baked into each ntuple).
+#
+# Bin convention (matches default-preinitialize-patch.txt):
+#   ROOT bin 1 = nEvents, ROOT bin 2 = sumOfWeights  -> use bin = 2
+
+<usemcweights=true, isData=false, isMC=true> @ /sig ;
+
+# ── Count histogram: bin to read ──────────────────────────────────────────────
+<.init.countHistogram.bin = 2> @ /sig ;
+
+# ── Count histogram: name per (channel, mass point) ──────────────────────────
+# Each DSID has its own CutBookkeeper_<DSID>_470000_NOSYS histogram in its ntuple.
+# With the fixed map (explicit ee/mm paths, no $(channel) placeholder) each
+# sample folder contains exactly one DSID, so the name can be set unambiguously.
+
+<.init.countHistogram.name = "CutBookkeeper_546587_470000_NOSYS"> @ /sig/ee/mc23e/Zp500 ;
+<.init.countHistogram.name = "CutBookkeeper_546588_470000_NOSYS"> @ /sig/mm/mc23e/Zp500 ;
+<.init.countHistogram.name = "CutBookkeeper_546597_470000_NOSYS"> @ /sig/ee/mc23e/Zp750 ;
+<.init.countHistogram.name = "CutBookkeeper_546598_470000_NOSYS"> @ /sig/mm/mc23e/Zp750 ;
+<.init.countHistogram.name = "CutBookkeeper_546605_470000_NOSYS"> @ /sig/ee/mc23e/Zp1000 ;
+<.init.countHistogram.name = "CutBookkeeper_546606_470000_NOSYS"> @ /sig/mm/mc23e/Zp1000 ;
+<.init.countHistogram.name = "CutBookkeeper_546607_470000_NOSYS"> @ /sig/ee/mc23e/Zp1500 ;
+<.init.countHistogram.name = "CutBookkeeper_546608_470000_NOSYS"> @ /sig/mm/mc23e/Zp1500 ;
+<.init.countHistogram.name = "CutBookkeeper_546609_470000_NOSYS"> @ /sig/ee/mc23e/Zp2000 ;
+<.init.countHistogram.name = "CutBookkeeper_546610_470000_NOSYS"> @ /sig/mm/mc23e/Zp2000 ;
+<.init.countHistogram.name = "CutBookkeeper_546611_470000_NOSYS"> @ /sig/ee/mc23e/Zp2500 ;
+<.init.countHistogram.name = "CutBookkeeper_546612_470000_NOSYS"> @ /sig/mm/mc23e/Zp2500 ;
+<.init.countHistogram.name = "CutBookkeeper_546613_470000_NOSYS"> @ /sig/ee/mc23e/Zp3000 ;
+<.init.countHistogram.name = "CutBookkeeper_546614_470000_NOSYS"> @ /sig/mm/mc23e/Zp3000 ;
+<.init.countHistogram.name = "CutBookkeeper_546615_470000_NOSYS"> @ /sig/ee/mc23e/Zp4000 ;
+<.init.countHistogram.name = "CutBookkeeper_546616_470000_NOSYS"> @ /sig/mm/mc23e/Zp4000 ;
