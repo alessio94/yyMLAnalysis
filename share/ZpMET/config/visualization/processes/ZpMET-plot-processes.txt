@@ -1,8 +1,8 @@
-.path = "sig/$(channel)/mc23e/Zp500",  .title = "Z' 500 GeV"
-.path = "sig/$(channel)/mc23e/Zp750",  .title = "Z' 750 GeV"
-.path = "sig/$(channel)/mc23e/Zp1000", .title = "Z' 1000 GeV"
-.path = "sig/$(channel)/mc23e/Zp1500", .title = "Z' 1500 GeV"
-.path = "sig/$(channel)/mc23e/Zp2000", .title = "Z' 2000 GeV"
-.path = "sig/$(channel)/mc23e/Zp2500", .title = "Z' 2500 GeV"
-.path = "sig/$(channel)/mc23e/Zp3000", .title = "Z' 3000 GeV"
-.path = "sig/$(channel)/mc23e/Zp4000", .title = "Z' 4000 GeV"
+.path = "sig/$(channel)/mc23e/Zp500",  .name = "Zp500",  .title = "Z' 500 GeV",  .isSignal = true
+.path = "sig/$(channel)/mc23e/Zp750",  .name = "Zp750",  .title = "Z' 750 GeV",  .isSignal = true
+.path = "sig/$(channel)/mc23e/Zp1000", .name = "Zp1000", .title = "Z' 1000 GeV", .isSignal = true
+.path = "sig/$(channel)/mc23e/Zp1500", .name = "Zp1500", .title = "Z' 1500 GeV", .isSignal = true
+.path = "sig/$(channel)/mc23e/Zp2000", .name = "Zp2000", .title = "Z' 2000 GeV", .isSignal = true
+.path = "sig/$(channel)/mc23e/Zp2500", .name = "Zp2500", .title = "Z' 2500 GeV", .isSignal = true
+.path = "sig/$(channel)/mc23e/Zp3000", .name = "Zp3000", .title = "Z' 3000 GeV", .isSignal = true
+.path = "sig/$(channel)/mc23e/Zp4000", .name = "Zp4000", .title = "Z' 4000 GeV", .isSignal = true
