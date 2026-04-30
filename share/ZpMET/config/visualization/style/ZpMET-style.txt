@@ -1,1 +1,9 @@
-<style.default.histLineColor = 600, style.default.histFillColor = 0> @ /sig/?/mc23e/?/;
+<style.default.histFillColor = 0, style.default.histLineWidth = 2> @ /sig;
+<style.default.histLineColor = kRed,    style.default.title = "Z' 500 GeV">  @ /sig/?/mc23e/Zp500;
+<style.default.histLineColor = kBlue,   style.default.title = "Z' 750 GeV">  @ /sig/?/mc23e/Zp750;
+<style.default.histLineColor = kGreen+2, style.default.title = "Z' 1000 GeV"> @ /sig/?/mc23e/Zp1000;
+<style.default.histLineColor = kOrange+7, style.default.title = "Z' 1500 GeV"> @ /sig/?/mc23e/Zp1500;
+<style.default.histLineColor = kViolet,  style.default.title = "Z' 2000 GeV"> @ /sig/?/mc23e/Zp2000;
+<style.default.histLineColor = kCyan+1,  style.default.title = "Z' 2500 GeV"> @ /sig/?/mc23e/Zp2500;
+<style.default.histLineColor = kMagenta, style.default.title = "Z' 3000 GeV"> @ /sig/?/mc23e/Zp3000;
+<style.default.histLineColor = kGray+2,  style.default.title = "Z' 4000 GeV"> @ /sig/?/mc23e/Zp4000;
