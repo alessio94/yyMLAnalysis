@@ -9,11 +9,11 @@
      .title         = "ee: >= 2 electrons">
 
     +CutEEOS {
-      <.cutExpression = "[VecAT([el_charge_NOSYS],0)] * [VecAT([el_charge_NOSYS],1)] < 0",
+      <.cutExpression = "[VecAT(el_charge_NOSYS,0)] * [VecAT(el_charge_NOSYS,1)] < 0",
        .title         = "ee: OS pair">
 
       +CutEEPt {
-        <.cutExpression = "[VecAT([el_pt_NOSYS],0)] > 27000. && [VecAT([el_pt_NOSYS],1)] > 20000.",
+        <.cutExpression = "[VecAT(el_pt_NOSYS,0)] > 27000. && [VecAT(el_pt_NOSYS,1)] > 20000.",
          .title         = "ee: lepton pT cuts">
 
         +CutEEMET {
@@ -30,11 +30,11 @@
      .title         = "mm: >= 2 muons">
 
     +CutMMOS {
-      <.cutExpression = "[VecAT([mu_charge_NOSYS],0)] * [VecAT([mu_charge_NOSYS],1)] < 0",
+      <.cutExpression = "[VecAT(mu_charge_NOSYS,0)] * [VecAT(mu_charge_NOSYS,1)] < 0",
        .title         = "mm: OS pair">
 
       +CutMMPt {
-        <.cutExpression = "[VecAT([mu_pt_NOSYS],0)] > 27000. && [VecAT([mu_pt_NOSYS],1)] > 20000.",
+        <.cutExpression = "[VecAT(mu_pt_NOSYS,0)] > 27000. && [VecAT(mu_pt_NOSYS,1)] > 20000.",
          .title         = "mm: lepton pT cuts">
 
         +CutMMMET {
